@@ -124,7 +124,7 @@
             this.btnBlock.Name = "btnBlock";
             this.btnBlock.Size = new System.Drawing.Size(68, 41);
             this.btnBlock.TabIndex = 4;
-            this.btnBlock.Text = "Block";
+            this.btnBlock.Text = "COCKBLOCK";
             this.btnBlock.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnBlock.UseVisualStyleBackColor = false;
             this.btnBlock.Click += new System.EventHandler(this.btnBlock_Click);

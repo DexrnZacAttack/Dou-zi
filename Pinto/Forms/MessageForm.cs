@@ -154,8 +154,8 @@ namespace PintoNS.Forms
         private void btnBlock_Click(object sender, EventArgs e)
         {
             MsgBox.ShowNotification(this,
-                "This option is unavailable in this version!",
-                "Option Unavailable",
+                "cock blocking unsuccessful!",
+                "fuck off",
                 MsgBoxIconType.WARNING);
         }
 
