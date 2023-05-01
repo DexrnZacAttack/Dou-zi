@@ -181,5 +181,25 @@ namespace PintoNS.Forms
             if (!cbSavePassword.Checked)
                 DeleteLogin();
         }
+
+        private void pbAd_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtPassword_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxWithPlaceholderSupport1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtUsername_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
