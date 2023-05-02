@@ -59,6 +59,7 @@
             this.tcSections = new System.Windows.Forms.TabControl();
             this.pbAd = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.LinkToDebugUI = new System.Windows.Forms.LinkLabel();
             this.tpRegister.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudRegisterPort)).BeginInit();
@@ -205,6 +206,7 @@
             // 
             // tpMain
             // 
+            this.tpMain.Controls.Add(this.LinkToDebugUI);
             this.tpMain.Controls.Add(this.pbAd);
             this.tpMain.Controls.Add(this.btnRegisterPage);
             this.tpMain.Controls.Add(this.btnCancel);
@@ -411,6 +413,17 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
+            // LinkToDebugUI
+            // 
+            this.LinkToDebugUI.AutoSize = true;
+            this.LinkToDebugUI.Location = new System.Drawing.Point(365, 255);
+            this.LinkToDebugUI.Name = "LinkToDebugUI";
+            this.LinkToDebugUI.Size = new System.Drawing.Size(39, 13);
+            this.LinkToDebugUI.TabIndex = 15;
+            this.LinkToDebugUI.TabStop = true;
+            this.LinkToDebugUI.Text = "Debug";
+            this.LinkToDebugUI.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
             // UsingPintoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -473,5 +486,6 @@
         private System.Windows.Forms.Button btnConnect;
         private System.Windows.Forms.CheckBox cbSavePassword;
         private System.Windows.Forms.TabControl tcSections;
+        private System.Windows.Forms.LinkLabel LinkToDebugUI;
     }
 }

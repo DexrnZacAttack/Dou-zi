@@ -218,5 +218,10 @@ namespace PintoNS.Forms
         {
 
         }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            new DebugForm().ShowDialog();
+        }
     }
 }
