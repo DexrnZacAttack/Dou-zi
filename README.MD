@@ -9,3 +9,6 @@
 
 # 💬 豆子（Dou'zi)
 shitty fork of Pinto that tries to make it look like QQ.
+<p align="center">
+    <img src="dou'zi.png">
+</p>
