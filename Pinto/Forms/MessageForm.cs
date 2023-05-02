@@ -1,6 +1,7 @@
 ﻿using PintoNS.Forms.Notification;
 using PintoNS.General;
 using PintoNS;
+using PintoNS.Networking;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,6 +18,7 @@ namespace PintoNS.Forms
     public partial class MessageForm : Form
     {
         private MainForm mainForm;
+        public NetworkManager NetManager;
         public Contact Receiver;
         private bool isTypingLastStatus;
         public bool HasBeenInactive;
@@ -154,8 +156,8 @@ namespace PintoNS.Forms
         private void btnBlock_Click(object sender, EventArgs e)
         {
             MsgBox.ShowNotification(this,
-                "cock blocking unsuccessful!",
-                "fuck off",
+                "This option is unavailable in this version!",
+                "Option Unavailable",
                 MsgBoxIconType.WARNING);
         }
 
@@ -169,6 +171,14 @@ namespace PintoNS.Forms
         private void rtxtInput_SelectionChanged(object sender, EventArgs e)
         {
             UpdateColorPicker();
+        }
+
+        private void tsmiMenuBarFileAddContact_Click(object sender, EventArgs e)
+        {
+            MsgBox.ShowNotification(this,
+                "Douzi Error: This option is unavailable in this version!",
+                "Option Unavailable",
+                MsgBoxIconType.WARNING);
         }
     }
 }

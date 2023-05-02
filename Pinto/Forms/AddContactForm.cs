@@ -14,11 +14,17 @@ namespace PintoNS.Forms
     public partial class AddContactForm : Form
     {
         private MainForm mainForm;
+        private MessageForm messageForm;
 
         public AddContactForm(MainForm mainForm)
         {
             InitializeComponent();
             this.mainForm = mainForm;
+        }
+
+        public AddContactForm(MessageForm messageForm)
+        {
+            this.messageForm = messageForm;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)

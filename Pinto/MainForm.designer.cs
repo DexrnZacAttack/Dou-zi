@@ -145,10 +145,10 @@ namespace PintoNS
             this.tcTabs.Controls.Add(this.tpContacts);
             this.tcTabs.Controls.Add(this.tpCall);
             this.tcTabs.ImageList = this.ilTabImages;
-            this.tcTabs.Location = new System.Drawing.Point(3, 47);
+            this.tcTabs.Location = new System.Drawing.Point(3, 72);
             this.tcTabs.Name = "tcTabs";
             this.tcTabs.SelectedIndex = 0;
-            this.tcTabs.Size = new System.Drawing.Size(266, 270);
+            this.tcTabs.Size = new System.Drawing.Size(266, 327);
             this.tcTabs.TabIndex = 2;
             // 
             // tpLogin
@@ -158,7 +158,7 @@ namespace PintoNS
             this.tpLogin.ImageKey = "HOUSE.png";
             this.tpLogin.Location = new System.Drawing.Point(4, 23);
             this.tpLogin.Name = "tpLogin";
-            this.tpLogin.Size = new System.Drawing.Size(258, 243);
+            this.tpLogin.Size = new System.Drawing.Size(258, 300);
             this.tpLogin.TabIndex = 0;
             this.tpLogin.Text = "Login";
             // 
@@ -214,7 +214,7 @@ namespace PintoNS
             this.tpContacts.Location = new System.Drawing.Point(4, 23);
             this.tpContacts.Name = "tpContacts";
             this.tpContacts.Padding = new System.Windows.Forms.Padding(3);
-            this.tpContacts.Size = new System.Drawing.Size(258, 243);
+            this.tpContacts.Size = new System.Drawing.Size(258, 300);
             this.tpContacts.TabIndex = 1;
             this.tpContacts.Text = "Contacts";
             // 
@@ -242,7 +242,7 @@ namespace PintoNS
             this.dgvContacts.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgvContacts.RowHeadersVisible = false;
             this.dgvContacts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvContacts.Size = new System.Drawing.Size(252, 237);
+            this.dgvContacts.Size = new System.Drawing.Size(252, 294);
             this.dgvContacts.TabIndex = 0;
             this.dgvContacts.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvContacts_CellDoubleClick);
             this.dgvContacts.SelectionChanged += new System.EventHandler(this.dgvContacts_SelectionChanged);
@@ -321,10 +321,11 @@ namespace PintoNS
             // 
             // ssStatusBar
             // 
+            this.ssStatusBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.ssStatusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsddbStatusBarStatus,
             this.tsslStatusBarStatusText});
-            this.ssStatusBar.Location = new System.Drawing.Point(0, 394);
+            this.ssStatusBar.Location = new System.Drawing.Point(0, 25);
             this.ssStatusBar.Name = "ssStatusBar";
             this.ssStatusBar.Size = new System.Drawing.Size(269, 22);
             this.ssStatusBar.TabIndex = 3;
@@ -350,7 +351,7 @@ namespace PintoNS
             // 
             this.tsmiStatusBarStatusOnline.Image = global::PintoNS.Statuses.ONLINE;
             this.tsmiStatusBarStatusOnline.Name = "tsmiStatusBarStatusOnline";
-            this.tsmiStatusBarStatusOnline.Size = new System.Drawing.Size(117, 22);
+            this.tsmiStatusBarStatusOnline.Size = new System.Drawing.Size(180, 22);
             this.tsmiStatusBarStatusOnline.Text = "Online";
             this.tsmiStatusBarStatusOnline.Click += new System.EventHandler(this.tsmiStatusBarStatusOnline_Click);
             // 
@@ -358,7 +359,7 @@ namespace PintoNS
             // 
             this.tsmiStatusBarStatusAway.Image = global::PintoNS.Statuses.AWAY;
             this.tsmiStatusBarStatusAway.Name = "tsmiStatusBarStatusAway";
-            this.tsmiStatusBarStatusAway.Size = new System.Drawing.Size(117, 22);
+            this.tsmiStatusBarStatusAway.Size = new System.Drawing.Size(180, 22);
             this.tsmiStatusBarStatusAway.Text = "Away";
             this.tsmiStatusBarStatusAway.Click += new System.EventHandler(this.tsmiStatusBarStatusAway_Click);
             // 
@@ -366,7 +367,7 @@ namespace PintoNS
             // 
             this.tsmiStatusBarStatusBusy.Image = global::PintoNS.Statuses.BUSY;
             this.tsmiStatusBarStatusBusy.Name = "tsmiStatusBarStatusBusy";
-            this.tsmiStatusBarStatusBusy.Size = new System.Drawing.Size(117, 22);
+            this.tsmiStatusBarStatusBusy.Size = new System.Drawing.Size(180, 22);
             this.tsmiStatusBarStatusBusy.Text = "Busy";
             this.tsmiStatusBarStatusBusy.Click += new System.EventHandler(this.tsmiStatusBarStatusBusy_Click);
             // 
@@ -374,7 +375,7 @@ namespace PintoNS
             // 
             this.tsmiStatusBarStatusInvisible.Image = global::PintoNS.Statuses.INVISIBLE;
             this.tsmiStatusBarStatusInvisible.Name = "tsmiStatusBarStatusInvisible";
-            this.tsmiStatusBarStatusInvisible.Size = new System.Drawing.Size(117, 22);
+            this.tsmiStatusBarStatusInvisible.Size = new System.Drawing.Size(180, 22);
             this.tsmiStatusBarStatusInvisible.Text = "Invisible";
             this.tsmiStatusBarStatusInvisible.Click += new System.EventHandler(this.tsmiStatusBarStatusInvisible_Click);
             // 
@@ -448,7 +449,7 @@ namespace PintoNS
             // tsmiMenuBarToolsOptions
             // 
             this.tsmiMenuBarToolsOptions.Name = "tsmiMenuBarToolsOptions";
-            this.tsmiMenuBarToolsOptions.Size = new System.Drawing.Size(116, 22);
+            this.tsmiMenuBarToolsOptions.Size = new System.Drawing.Size(180, 22);
             this.tsmiMenuBarToolsOptions.Text = "Options";
             this.tsmiMenuBarToolsOptions.Click += new System.EventHandler(this.tsmiMenuBarToolsOptions_Click);
             // 
@@ -490,7 +491,7 @@ namespace PintoNS
             this.tsmiTrayChangeStatus,
             this.tsmiTrayExit});
             this.cmsTray.Name = "cmsTray";
-            this.cmsTray.Size = new System.Drawing.Size(181, 70);
+            this.cmsTray.Size = new System.Drawing.Size(151, 48);
             // 
             // tsmiTrayChangeStatus
             // 
@@ -501,14 +502,14 @@ namespace PintoNS
             this.tsmiTrayChangeStatusInvisible});
             this.tsmiTrayChangeStatus.Image = global::PintoNS.Statuses.ONLINE;
             this.tsmiTrayChangeStatus.Name = "tsmiTrayChangeStatus";
-            this.tsmiTrayChangeStatus.Size = new System.Drawing.Size(180, 22);
+            this.tsmiTrayChangeStatus.Size = new System.Drawing.Size(150, 22);
             this.tsmiTrayChangeStatus.Text = "Change Status";
             // 
             // tsmiTrayChangeStatusOnline
             // 
             this.tsmiTrayChangeStatusOnline.Image = global::PintoNS.Statuses.ONLINE;
             this.tsmiTrayChangeStatusOnline.Name = "tsmiTrayChangeStatusOnline";
-            this.tsmiTrayChangeStatusOnline.Size = new System.Drawing.Size(180, 22);
+            this.tsmiTrayChangeStatusOnline.Size = new System.Drawing.Size(117, 22);
             this.tsmiTrayChangeStatusOnline.Text = "Online";
             this.tsmiTrayChangeStatusOnline.Click += new System.EventHandler(this.tsmiStatusBarStatusOnline_Click);
             // 
@@ -516,7 +517,7 @@ namespace PintoNS
             // 
             this.tsmiTrayChangeStatusAway.Image = global::PintoNS.Statuses.AWAY;
             this.tsmiTrayChangeStatusAway.Name = "tsmiTrayChangeStatusAway";
-            this.tsmiTrayChangeStatusAway.Size = new System.Drawing.Size(180, 22);
+            this.tsmiTrayChangeStatusAway.Size = new System.Drawing.Size(117, 22);
             this.tsmiTrayChangeStatusAway.Text = "Away";
             this.tsmiTrayChangeStatusAway.Click += new System.EventHandler(this.tsmiStatusBarStatusAway_Click);
             // 
@@ -524,7 +525,7 @@ namespace PintoNS
             // 
             this.tsmiTrayChangeStatusBusy.Image = global::PintoNS.Statuses.BUSY;
             this.tsmiTrayChangeStatusBusy.Name = "tsmiTrayChangeStatusBusy";
-            this.tsmiTrayChangeStatusBusy.Size = new System.Drawing.Size(180, 22);
+            this.tsmiTrayChangeStatusBusy.Size = new System.Drawing.Size(117, 22);
             this.tsmiTrayChangeStatusBusy.Text = "Busy";
             this.tsmiTrayChangeStatusBusy.Click += new System.EventHandler(this.tsmiStatusBarStatusBusy_Click);
             // 
@@ -532,7 +533,7 @@ namespace PintoNS
             // 
             this.tsmiTrayChangeStatusInvisible.Image = global::PintoNS.Statuses.INVISIBLE;
             this.tsmiTrayChangeStatusInvisible.Name = "tsmiTrayChangeStatusInvisible";
-            this.tsmiTrayChangeStatusInvisible.Size = new System.Drawing.Size(180, 22);
+            this.tsmiTrayChangeStatusInvisible.Size = new System.Drawing.Size(117, 22);
             this.tsmiTrayChangeStatusInvisible.Text = "Invisible";
             this.tsmiTrayChangeStatusInvisible.Click += new System.EventHandler(this.tsmiStatusBarStatusInvisible_Click);
             // 
@@ -540,7 +541,7 @@ namespace PintoNS
             // 
             this.tsmiTrayExit.Image = global::PintoNS.Assets.WARNING;
             this.tsmiTrayExit.Name = "tsmiTrayExit";
-            this.tsmiTrayExit.Size = new System.Drawing.Size(180, 22);
+            this.tsmiTrayExit.Size = new System.Drawing.Size(150, 22);
             this.tsmiTrayExit.Text = "Exit";
             this.tsmiTrayExit.Click += new System.EventHandler(this.tsmiTrayExit_Click);
             // 
@@ -549,7 +550,7 @@ namespace PintoNS
             this.btnEndCall.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnEndCall.Enabled = false;
             this.btnEndCall.Image = global::PintoNS.Assets.ENDCALL_DISABLED;
-            this.btnEndCall.Location = new System.Drawing.Point(164, 351);
+            this.btnEndCall.Location = new System.Drawing.Point(168, 401);
             this.btnEndCall.Name = "btnEndCall";
             this.btnEndCall.Size = new System.Drawing.Size(32, 32);
             this.btnEndCall.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -562,7 +563,7 @@ namespace PintoNS
             this.btnStartCall.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnStartCall.Enabled = false;
             this.btnStartCall.Image = global::PintoNS.Assets.STARTCALL_DISABLED;
-            this.btnStartCall.Location = new System.Drawing.Point(68, 351);
+            this.btnStartCall.Location = new System.Drawing.Point(68, 401);
             this.btnStartCall.Name = "btnStartCall";
             this.btnStartCall.Size = new System.Drawing.Size(32, 32);
             this.btnStartCall.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -572,17 +573,18 @@ namespace PintoNS
             // 
             // txtSearchBox
             // 
-            this.txtSearchBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtSearchBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSearchBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
             this.txtSearchBox.BackColor = System.Drawing.Color.White;
             this.txtSearchBox.Enabled = false;
             this.txtSearchBox.ForeColor = System.Drawing.Color.DimGray;
-            this.txtSearchBox.Location = new System.Drawing.Point(3, 315);
+            this.txtSearchBox.Location = new System.Drawing.Point(3, 50);
             this.txtSearchBox.Name = "txtSearchBox";
             this.txtSearchBox.PlaceholderText = "Type the username you would like to search for";
             this.txtSearchBox.PlaceholderTextForeColor = System.Drawing.Color.DimGray;
-            this.txtSearchBox.Size = new System.Drawing.Size(264, 20);
+            this.txtSearchBox.Size = new System.Drawing.Size(262, 20);
             this.txtSearchBox.TabIndex = 4;
             this.txtSearchBox.Text = "Type the username you would like to search for";
             this.txtSearchBox.TextForeColor = System.Drawing.Color.Black;
@@ -591,7 +593,7 @@ namespace PintoNS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(269, 416);
+            this.ClientSize = new System.Drawing.Size(269, 498);
             this.Controls.Add(this.btnEndCall);
             this.Controls.Add(this.btnStartCall);
             this.Controls.Add(this.txtSearchBox);
