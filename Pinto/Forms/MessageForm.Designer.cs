@@ -122,7 +122,7 @@
             this.btnBlock.ImageList = this.ilButtons;
             this.btnBlock.Location = new System.Drawing.Point(86, 28);
             this.btnBlock.Name = "btnBlock";
-            this.btnBlock.Size = new System.Drawing.Size(68, 41);
+            this.btnBlock.Size = new System.Drawing.Size(108, 41);
             this.btnBlock.TabIndex = 4;
             this.btnBlock.Text = "COCKBLOCK";
             this.btnBlock.TextAlign = System.Drawing.ContentAlignment.MiddleRight;

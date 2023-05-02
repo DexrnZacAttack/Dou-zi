@@ -26,14 +26,14 @@ namespace PintoNS.Forms
             this.mainForm = mainForm;
         }
 
-        private void LoadLogin() 
+        private void LoadLogin()
         {
             Program.Console.WriteMessage("[General] Loading saved login information...");
             try
             {
                 string filePath = Path.Combine(mainForm.DataFolder, "login.json");
                 if (!File.Exists(filePath)) return;
-                
+
                 string fileData = File.ReadAllText(filePath);
                 JObject data = JsonConvert.DeserializeObject<JObject>(fileData);
 
@@ -42,7 +42,7 @@ namespace PintoNS.Forms
                 txtIP.Text = data["ip"].Value<string>();
                 nudPort.Value = data["port"].Value<int>();
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 Program.Console.WriteMessage($"[General]" +
                     $" Unable to load the saved login information: {ex}");
@@ -52,10 +52,10 @@ namespace PintoNS.Forms
             }
         }
 
-        private void SaveLogin() 
+        private void SaveLogin()
         {
             Program.Console.WriteMessage("[General] Saving login information...");
-            try 
+            try
             {
                 string filePath = Path.Combine(mainForm.DataFolder, "login.json");
                 JObject data = new JObject();
@@ -67,7 +67,7 @@ namespace PintoNS.Forms
 
                 File.WriteAllText(filePath, data.ToString(Newtonsoft.Json.Formatting.Indented));
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 Program.Console.WriteMessage($"[General]" +
                     $" Unable to save the login information: {ex}");
@@ -77,7 +77,7 @@ namespace PintoNS.Forms
             }
         }
 
-        private void DeleteLogin() 
+        private void DeleteLogin()
         {
             Program.Console.WriteMessage("[General] Deleting saved login information...");
             try
@@ -103,55 +103,42 @@ namespace PintoNS.Forms
 
         private async void btnConnect_Click(object sender, EventArgs e)
         {
-            if (rbCreate.Checked)
+            if (string.IsNullOrWhiteSpace(txtUsername.Text) || string.IsNullOrWhiteSpace(txtPassword.Text))
             {
-                tcSections.SelectedTab = tpRegister;
+                MsgBox.ShowNotification(this, "Blank username or password!",
+                    "Error", MsgBoxIconType.ERROR);
+                return;
             }
-            else
-            {
-                string ip = txtIP.Text.Trim();
-                int port = (int)nudPort.Value;
-                string username = txtUsername.Text.Trim();
-                string password = txtPassword.Text;
 
-                if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
-                {
-                    MsgBox.ShowNotification(this, "Blank username or password!",
-                        "Error", MsgBoxIconType.ERROR);
-                    return;
-                }
+            string ip = txtIP.Text.Trim();
+            int port = (int)nudPort.Value;
+            string username = txtUsername.Text.Trim();
+            string password = txtPassword.Text;
 
-                if (cbSavePassword.Checked)
-                    SaveLogin();
-                Close();
-                await mainForm.Connect(ip, port, username, password);
-            }
+            if (cbSavePassword.Checked)
+                SaveLogin();
+            Close();
+            await mainForm.Connect(ip, port, username, password);
         }
 
-        private void rbCreate_CheckedChanged(object sender, EventArgs e)
-        {
-            bool state = rbCreate.Checked;
-
-            txtUsername.Enabled = !state;
-            txtPassword.Enabled = !state;
-            txtIP.Enabled = !state;
-            nudPort.Enabled = !state;
-            cbSavePassword.Enabled = !state;
-            llForgotPassword.Enabled = !state;
-
-            if (state)
-                btnConnect.Text = "Continue";
-            else
-                btnConnect.Text = "Connect";
-        }
 
         private void UsingPintoForm_Load(object sender, EventArgs e)
         {
-            tcSections.Appearance = TabAppearance.FlatButtons;
-            tcSections.ItemSize = new Size(0, 1);
-            tcSections.SizeMode = TabSizeMode.Fixed;
-            LoadLogin();
+            // Add a button to navigate to the registration page
+            Button btnRegisterPage = new Button();
+            btnRegisterPage.Text = "Register";
+            btnRegisterPage.Size = new Size(75, 23);
+            btnRegisterPage.Location = new Point(12, 12);
+            btnRegisterPage.Click += BtnRegisterPage_Click;
+            this.Controls.Add(btnRegisterPage);
         }
+
+        private void BtnRegisterPage_Click(object sender, EventArgs e)
+        {
+            // Switch to the registration tab
+            tcSections.SelectedTab = tpRegister;
+        }
+
 
         private async void btnRegister_Click(object sender, EventArgs e)
         {
@@ -198,6 +185,16 @@ namespace PintoNS.Forms
         }
 
         private void txtUsername_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnRegisterPage_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtUsername_TextChanged(object sender, EventArgs e)
         {
 
         }

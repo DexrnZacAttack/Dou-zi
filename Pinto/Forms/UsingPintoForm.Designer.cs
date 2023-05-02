@@ -38,15 +38,13 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.pLoginControls = new System.Windows.Forms.Panel();
-            this.rbLogin = new System.Windows.Forms.RadioButton();
-            this.rbCreate = new System.Windows.Forms.RadioButton();
-            this.cbSavePassword = new System.Windows.Forms.CheckBox();
             this.llForgotPassword = new System.Windows.Forms.LinkLabel();
+            this.cbSavePassword = new System.Windows.Forms.CheckBox();
             this.pbAd = new System.Windows.Forms.PictureBox();
             this.tcSections = new System.Windows.Forms.TabControl();
             this.tpMain = new System.Windows.Forms.TabPage();
+            this.btnRegisterPage = new System.Windows.Forms.Button();
             this.tpRegister = new System.Windows.Forms.TabPage();
-            this.label5 = new System.Windows.Forms.Label();
             this.btnRegisterBack = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
@@ -58,8 +56,9 @@
             this.label9 = new System.Windows.Forms.Label();
             this.txtRegisterUsername = new System.Windows.Forms.TextBox();
             this.btnRegister = new System.Windows.Forms.Button();
-            this.txtPassword = new PintoNS.Controls.TextBoxWithPlaceholderSupport();
-            this.txtUsername = new PintoNS.Controls.TextBoxWithPlaceholderSupport();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.txtPassword = new System.Windows.Forms.MaskedTextBox();
+            this.txtUsername = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.nudPort)).BeginInit();
             this.pLoginControls.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbAd)).BeginInit();
@@ -68,13 +67,14 @@
             this.tpRegister.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudRegisterPort)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(215, 302);
+            this.btnCancel.Location = new System.Drawing.Point(168, 252);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.Size = new System.Drawing.Size(67, 23);
             this.btnCancel.TabIndex = 0;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -82,9 +82,9 @@
             // 
             // btnConnect
             // 
-            this.btnConnect.Location = new System.Drawing.Point(154, 273);
+            this.btnConnect.Location = new System.Drawing.Point(66, 221);
             this.btnConnect.Name = "btnConnect";
-            this.btnConnect.Size = new System.Drawing.Size(194, 23);
+            this.btnConnect.Size = new System.Drawing.Size(273, 23);
             this.btnConnect.TabIndex = 1;
             this.btnConnect.Text = "Connect";
             this.btnConnect.UseVisualStyleBackColor = true;
@@ -92,15 +92,15 @@
             // 
             // txtIP
             // 
-            this.txtIP.Location = new System.Drawing.Point(234, 65);
+            this.txtIP.Location = new System.Drawing.Point(234, 11);
             this.txtIP.Name = "txtIP";
             this.txtIP.Size = new System.Drawing.Size(106, 20);
             this.txtIP.TabIndex = 2;
-            this.txtIP.Text = "127.0.0.1";
+            this.txtIP.Text = "ponso00.com";
             // 
             // nudPort
             // 
-            this.nudPort.Location = new System.Drawing.Point(243, 89);
+            this.nudPort.Location = new System.Drawing.Point(243, 35);
             this.nudPort.Maximum = new decimal(new int[] {
             65535,
             0,
@@ -123,7 +123,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(208, 68);
+            this.label1.Location = new System.Drawing.Point(208, 14);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(20, 13);
             this.label1.TabIndex = 4;
@@ -132,7 +132,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(208, 91);
+            this.label2.Location = new System.Drawing.Point(208, 37);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(29, 13);
             this.label2.TabIndex = 5;
@@ -141,7 +141,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(19, 65);
+            this.label3.Location = new System.Drawing.Point(19, 11);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(58, 13);
             this.label3.TabIndex = 8;
@@ -150,7 +150,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(19, 92);
+            this.label4.Location = new System.Drawing.Point(19, 38);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(56, 13);
             this.label4.TabIndex = 9;
@@ -161,49 +161,34 @@
             this.pLoginControls.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pLoginControls.Controls.Add(this.txtUsername);
             this.pLoginControls.Controls.Add(this.txtPassword);
-            this.pLoginControls.Controls.Add(this.rbCreate);
-            this.pLoginControls.Controls.Add(this.rbLogin);
-            this.pLoginControls.Controls.Add(this.llForgotPassword);
             this.pLoginControls.Controls.Add(this.label1);
             this.pLoginControls.Controls.Add(this.label4);
             this.pLoginControls.Controls.Add(this.txtIP);
             this.pLoginControls.Controls.Add(this.label3);
             this.pLoginControls.Controls.Add(this.nudPort);
             this.pLoginControls.Controls.Add(this.label2);
-            this.pLoginControls.Location = new System.Drawing.Point(70, 111);
+            this.pLoginControls.Location = new System.Drawing.Point(32, 120);
             this.pLoginControls.Name = "pLoginControls";
-            this.pLoginControls.Size = new System.Drawing.Size(348, 136);
+            this.pLoginControls.Size = new System.Drawing.Size(348, 70);
             this.pLoginControls.TabIndex = 10;
             // 
-            // rbLogin
+            // llForgotPassword
             // 
-            this.rbLogin.AutoSize = true;
-            this.rbLogin.Checked = true;
-            this.rbLogin.Location = new System.Drawing.Point(22, 39);
-            this.rbLogin.Name = "rbLogin";
-            this.rbLogin.Size = new System.Drawing.Size(170, 17);
-            this.rbLogin.TabIndex = 13;
-            this.rbLogin.TabStop = true;
-            this.rbLogin.Text = "I already have a Pinto account";
-            this.rbLogin.UseVisualStyleBackColor = true;
-            // 
-            // rbCreate
-            // 
-            this.rbCreate.AutoSize = true;
-            this.rbCreate.Location = new System.Drawing.Point(23, 16);
-            this.rbCreate.Name = "rbCreate";
-            this.rbCreate.Size = new System.Drawing.Size(224, 17);
-            this.rbCreate.TabIndex = 12;
-            this.rbCreate.Text = "I would like to create a new Pinto account";
-            this.rbCreate.UseVisualStyleBackColor = true;
-            this.rbCreate.CheckedChanged += new System.EventHandler(this.rbCreate_CheckedChanged);
+            this.llForgotPassword.AutoSize = true;
+            this.llForgotPassword.Enabled = false;
+            this.llForgotPassword.Location = new System.Drawing.Point(6, 255);
+            this.llForgotPassword.Name = "llForgotPassword";
+            this.llForgotPassword.Size = new System.Drawing.Size(114, 13);
+            this.llForgotPassword.TabIndex = 10;
+            this.llForgotPassword.TabStop = true;
+            this.llForgotPassword.Text = "Forgot your password?";
             // 
             // cbSavePassword
             // 
             this.cbSavePassword.AutoSize = true;
             this.cbSavePassword.Checked = true;
             this.cbSavePassword.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbSavePassword.Location = new System.Drawing.Point(77, 253);
+            this.cbSavePassword.Location = new System.Drawing.Point(39, 192);
             this.cbSavePassword.Name = "cbSavePassword";
             this.cbSavePassword.Size = new System.Drawing.Size(196, 17);
             this.cbSavePassword.TabIndex = 11;
@@ -211,24 +196,13 @@
             this.cbSavePassword.UseVisualStyleBackColor = true;
             this.cbSavePassword.CheckedChanged += new System.EventHandler(this.cbSavePassword_CheckedChanged);
             // 
-            // llForgotPassword
-            // 
-            this.llForgotPassword.AutoSize = true;
-            this.llForgotPassword.Enabled = false;
-            this.llForgotPassword.Location = new System.Drawing.Point(20, 116);
-            this.llForgotPassword.Name = "llForgotPassword";
-            this.llForgotPassword.Size = new System.Drawing.Size(114, 13);
-            this.llForgotPassword.TabIndex = 10;
-            this.llForgotPassword.TabStop = true;
-            this.llForgotPassword.Text = "Forgot your password?";
-            // 
             // pbAd
             // 
             this.pbAd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pbAd.Image = global::PintoNS.Assets.LOGIN_PLACEHOLDER;
             this.pbAd.Location = new System.Drawing.Point(-4, -22);
             this.pbAd.Name = "pbAd";
-            this.pbAd.Size = new System.Drawing.Size(510, 136);
+            this.pbAd.Size = new System.Drawing.Size(418, 136);
             this.pbAd.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbAd.TabIndex = 12;
             this.pbAd.TabStop = false;
@@ -242,12 +216,14 @@
             this.tcSections.Location = new System.Drawing.Point(0, 0);
             this.tcSections.Name = "tcSections";
             this.tcSections.SelectedIndex = 0;
-            this.tcSections.Size = new System.Drawing.Size(517, 352);
+            this.tcSections.Size = new System.Drawing.Size(420, 301);
             this.tcSections.TabIndex = 14;
             // 
             // tpMain
             // 
+            this.tpMain.Controls.Add(this.btnRegisterPage);
             this.tpMain.Controls.Add(this.btnCancel);
+            this.tpMain.Controls.Add(this.llForgotPassword);
             this.tpMain.Controls.Add(this.pLoginControls);
             this.tpMain.Controls.Add(this.btnConnect);
             this.tpMain.Controls.Add(this.cbSavePassword);
@@ -255,38 +231,39 @@
             this.tpMain.Location = new System.Drawing.Point(4, 22);
             this.tpMain.Name = "tpMain";
             this.tpMain.Padding = new System.Windows.Forms.Padding(3);
-            this.tpMain.Size = new System.Drawing.Size(509, 326);
+            this.tpMain.Size = new System.Drawing.Size(412, 275);
             this.tpMain.TabIndex = 0;
             this.tpMain.Text = "Main";
             this.tpMain.UseVisualStyleBackColor = true;
             // 
+            // btnRegisterPage
+            // 
+            this.btnRegisterPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRegisterPage.Location = new System.Drawing.Point(305, 188);
+            this.btnRegisterPage.Name = "btnRegisterPage";
+            this.btnRegisterPage.Size = new System.Drawing.Size(75, 23);
+            this.btnRegisterPage.TabIndex = 13;
+            this.btnRegisterPage.Text = "Register";
+            this.btnRegisterPage.UseVisualStyleBackColor = true;
+            this.btnRegisterPage.Click += new System.EventHandler(this.BtnRegisterPage_Click);
+            // 
             // tpRegister
             // 
-            this.tpRegister.Controls.Add(this.label5);
+            this.tpRegister.Controls.Add(this.pictureBox1);
             this.tpRegister.Controls.Add(this.btnRegisterBack);
             this.tpRegister.Controls.Add(this.panel1);
             this.tpRegister.Controls.Add(this.btnRegister);
             this.tpRegister.Location = new System.Drawing.Point(4, 22);
             this.tpRegister.Name = "tpRegister";
             this.tpRegister.Padding = new System.Windows.Forms.Padding(3);
-            this.tpRegister.Size = new System.Drawing.Size(509, 351);
+            this.tpRegister.Size = new System.Drawing.Size(412, 275);
             this.tpRegister.TabIndex = 1;
             this.tpRegister.Text = "Register";
             this.tpRegister.UseVisualStyleBackColor = true;
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(19, 2);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(148, 20);
-            this.label5.TabIndex = 16;
-            this.label5.Text = "Register on Pinto";
-            // 
             // btnRegisterBack
             // 
-            this.btnRegisterBack.Location = new System.Drawing.Point(216, 273);
+            this.btnRegisterBack.Location = new System.Drawing.Point(163, 220);
             this.btnRegisterBack.Name = "btnRegisterBack";
             this.btnRegisterBack.Size = new System.Drawing.Size(75, 23);
             this.btnRegisterBack.TabIndex = 13;
@@ -305,7 +282,7 @@
             this.panel1.Controls.Add(this.txtRegisterPassword);
             this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.txtRegisterUsername);
-            this.panel1.Location = new System.Drawing.Point(78, 148);
+            this.panel1.Location = new System.Drawing.Point(30, 120);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(348, 65);
             this.panel1.TabIndex = 15;
@@ -395,7 +372,7 @@
             // 
             // btnRegister
             // 
-            this.btnRegister.Location = new System.Drawing.Point(149, 244);
+            this.btnRegister.Location = new System.Drawing.Point(96, 191);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(215, 23);
             this.btnRegister.TabIndex = 14;
@@ -403,34 +380,38 @@
             this.btnRegister.UseVisualStyleBackColor = true;
             this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBox1.Image = global::PintoNS.Assets.LOGIN_PLACEHOLDER;
+            this.pictureBox1.Location = new System.Drawing.Point(-4, -22);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(418, 136);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 16;
+            this.pictureBox1.TabStop = false;
+            // 
             // txtPassword
             // 
-            this.txtPassword.ForeColor = System.Drawing.Color.DimGray;
-            this.txtPassword.Location = new System.Drawing.Point(83, 88);
+            this.txtPassword.Location = new System.Drawing.Point(83, 37);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.PlaceholderText = "password";
-            this.txtPassword.PlaceholderTextForeColor = System.Drawing.Color.DimGray;
             this.txtPassword.Size = new System.Drawing.Size(119, 20);
-            this.txtPassword.TabIndex = 15;
-            this.txtPassword.TextForeColor = System.Drawing.Color.Black;
-            this.txtPassword.TextChanged += new System.EventHandler(this.textBoxWithPlaceholderSupport1_TextChanged);
+            this.txtPassword.TabIndex = 14;
+            this.txtPassword.UseSystemPasswordChar = true;
             // 
             // txtUsername
             // 
-            this.txtUsername.ForeColor = System.Drawing.Color.DimGray;
-            this.txtUsername.Location = new System.Drawing.Point(83, 62);
+            this.txtUsername.Location = new System.Drawing.Point(83, 8);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.PlaceholderText = "username";
-            this.txtUsername.PlaceholderTextForeColor = System.Drawing.Color.DimGray;
             this.txtUsername.Size = new System.Drawing.Size(119, 20);
-            this.txtUsername.TabIndex = 16;
-            this.txtUsername.TextForeColor = System.Drawing.Color.Black;
+            this.txtUsername.TabIndex = 14;
+            this.txtUsername.TextChanged += new System.EventHandler(this.txtUsername_TextChanged);
             // 
             // UsingPintoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(517, 352);
+            this.ClientSize = new System.Drawing.Size(420, 301);
             this.Controls.Add(this.tcSections);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -449,10 +430,10 @@
             this.tpMain.ResumeLayout(false);
             this.tpMain.PerformLayout();
             this.tpRegister.ResumeLayout(false);
-            this.tpRegister.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudRegisterPort)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -470,13 +451,10 @@
         private System.Windows.Forms.Panel pLoginControls;
         private System.Windows.Forms.LinkLabel llForgotPassword;
         private System.Windows.Forms.CheckBox cbSavePassword;
-        private System.Windows.Forms.RadioButton rbLogin;
-        private System.Windows.Forms.RadioButton rbCreate;
         private System.Windows.Forms.PictureBox pbAd;
         private System.Windows.Forms.TabControl tcSections;
         private System.Windows.Forms.TabPage tpMain;
         private System.Windows.Forms.TabPage tpRegister;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnRegisterBack;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label6;
@@ -488,7 +466,9 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtRegisterUsername;
         private System.Windows.Forms.Button btnRegister;
-        private Controls.TextBoxWithPlaceholderSupport txtPassword;
-        private Controls.TextBoxWithPlaceholderSupport txtUsername;
+        private System.Windows.Forms.Button btnRegisterPage;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.TextBox txtUsername;
+        private System.Windows.Forms.MaskedTextBox txtPassword;
     }
 }
