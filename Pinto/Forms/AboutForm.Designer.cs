@@ -38,6 +38,7 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = global::PintoNS.Logo.LOGO;
             this.pictureBox1.Location = new System.Drawing.Point(85, 16);
             this.pictureBox1.Name = "pictureBox1";
@@ -61,11 +62,12 @@
             // lVersion
             // 
             this.lVersion.AutoSize = true;
+            this.lVersion.BackColor = System.Drawing.Color.Transparent;
             this.lVersion.Location = new System.Drawing.Point(12, 195);
             this.lVersion.Name = "lVersion";
-            this.lVersion.Size = new System.Drawing.Size(89, 13);
+            this.lVersion.Size = new System.Drawing.Size(150, 13);
             this.lVersion.TabIndex = 3;
-            this.lVersion.Text = "Version unknown";
+            this.lVersion.Text = "豆子 Version a1.0 Milestone 1";
             // 
             // label3
             // 
@@ -98,7 +100,7 @@
             this.Name = "AboutForm";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Pinto! - About";
+            this.Text = "豆子 - About";
             this.Load += new System.EventHandler(this.AboutForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

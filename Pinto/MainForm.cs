@@ -470,8 +470,8 @@ namespace PintoNS
             if (WindowState == FormWindowState.Minimized) 
             {
                 Hide();
-                niTray.ShowBalloonTip(0, "Minimization Notice", "Pinto! has been minimized to the system tray!" +
-                    " You can restore Pinto! by clicking on the system tray icon!", ToolTipIcon.Info);
+                niTray.ShowBalloonTip(0, "Minimization Notice", "豆子 has been minimized to the system tray!" +
+                    " You can restore 豆子 by clicking on the system tray icon!", ToolTipIcon.Info);
             }
         }
 
@@ -485,6 +485,11 @@ namespace PintoNS
         {
             OptionsForm optionsForm = new OptionsForm();
             optionsForm.ShowDialog(this);
+        }
+
+        private void tpLogin_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

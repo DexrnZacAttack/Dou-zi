@@ -79,7 +79,7 @@
             this.Controls.Add(this.rtxtLog);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ConsoleForm";
-            this.Text = "Pinto! - Console";
+            this.Text = "豆子 - Console";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ConsoleForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();

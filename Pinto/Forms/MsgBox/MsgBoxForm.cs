@@ -52,5 +52,10 @@ namespace PintoNS.Forms.Notification
             invokedAction = true;
             Close();
         }
+
+        private void pHeader_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

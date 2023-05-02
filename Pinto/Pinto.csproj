@@ -281,6 +281,7 @@
     <EmbeddedResource Include="Logo.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Logo.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MsgBox\MsgBoxForm.resx">
       <DependentUpon>MsgBoxForm.cs</DependentUpon>
@@ -355,6 +356,8 @@
     <Content Include="Resources\Assets\TRASHCAN_DISABLED.png" />
     <Content Include="Resources\Assets\TRASHCAN_ENABLED.png" />
     <Content Include="Resources\Assets\WARNING.png" />
+    <None Include="Resources\logobeans64.png" />
+    <None Include="Resources\Logo.png" />
     <Content Include="Resources\Logo\LOADING.gif" />
     <None Include="Resources\Logo\LOGO.ICO" />
     <Content Include="Resources\Logo\LOGO.png" />

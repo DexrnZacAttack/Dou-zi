@@ -423,7 +423,7 @@
             this.Name = "UsingPintoForm";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Dou\'zi - Login";
+            this.Text = "豆子 - Login";
             this.Load += new System.EventHandler(this.UsingPintoForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nudPort)).EndInit();
             this.pLoginControls.ResumeLayout(false);

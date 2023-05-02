@@ -158,9 +158,10 @@ namespace PintoNS
             this.tpLogin.ImageKey = "HOUSE.png";
             this.tpLogin.Location = new System.Drawing.Point(4, 23);
             this.tpLogin.Name = "tpLogin";
-            this.tpLogin.Size = new System.Drawing.Size(258, 300);
+            this.tpLogin.Size = new System.Drawing.Size(258, 251);
             this.tpLogin.TabIndex = 0;
             this.tpLogin.Text = "Login";
+            this.tpLogin.Click += new System.EventHandler(this.tpLogin_Click);
             // 
             // llLogin
             // 
@@ -182,7 +183,7 @@ namespace PintoNS
             this.tpConnecting.Location = new System.Drawing.Point(4, 23);
             this.tpConnecting.Name = "tpConnecting";
             this.tpConnecting.Padding = new System.Windows.Forms.Padding(3);
-            this.tpConnecting.Size = new System.Drawing.Size(258, 243);
+            this.tpConnecting.Size = new System.Drawing.Size(258, 251);
             this.tpConnecting.TabIndex = 2;
             this.tpConnecting.Text = "Connecting";
             // 
@@ -273,7 +274,7 @@ namespace PintoNS
             this.tpCall.Location = new System.Drawing.Point(4, 23);
             this.tpCall.Name = "tpCall";
             this.tpCall.Padding = new System.Windows.Forms.Padding(3);
-            this.tpCall.Size = new System.Drawing.Size(258, 243);
+            this.tpCall.Size = new System.Drawing.Size(258, 251);
             this.tpCall.TabIndex = 3;
             this.tpCall.UseVisualStyleBackColor = true;
             // 
@@ -351,7 +352,7 @@ namespace PintoNS
             // 
             this.tsmiStatusBarStatusOnline.Image = global::PintoNS.Statuses.ONLINE;
             this.tsmiStatusBarStatusOnline.Name = "tsmiStatusBarStatusOnline";
-            this.tsmiStatusBarStatusOnline.Size = new System.Drawing.Size(180, 22);
+            this.tsmiStatusBarStatusOnline.Size = new System.Drawing.Size(117, 22);
             this.tsmiStatusBarStatusOnline.Text = "Online";
             this.tsmiStatusBarStatusOnline.Click += new System.EventHandler(this.tsmiStatusBarStatusOnline_Click);
             // 
@@ -359,7 +360,7 @@ namespace PintoNS
             // 
             this.tsmiStatusBarStatusAway.Image = global::PintoNS.Statuses.AWAY;
             this.tsmiStatusBarStatusAway.Name = "tsmiStatusBarStatusAway";
-            this.tsmiStatusBarStatusAway.Size = new System.Drawing.Size(180, 22);
+            this.tsmiStatusBarStatusAway.Size = new System.Drawing.Size(117, 22);
             this.tsmiStatusBarStatusAway.Text = "Away";
             this.tsmiStatusBarStatusAway.Click += new System.EventHandler(this.tsmiStatusBarStatusAway_Click);
             // 
@@ -367,7 +368,7 @@ namespace PintoNS
             // 
             this.tsmiStatusBarStatusBusy.Image = global::PintoNS.Statuses.BUSY;
             this.tsmiStatusBarStatusBusy.Name = "tsmiStatusBarStatusBusy";
-            this.tsmiStatusBarStatusBusy.Size = new System.Drawing.Size(180, 22);
+            this.tsmiStatusBarStatusBusy.Size = new System.Drawing.Size(117, 22);
             this.tsmiStatusBarStatusBusy.Text = "Busy";
             this.tsmiStatusBarStatusBusy.Click += new System.EventHandler(this.tsmiStatusBarStatusBusy_Click);
             // 
@@ -375,7 +376,7 @@ namespace PintoNS
             // 
             this.tsmiStatusBarStatusInvisible.Image = global::PintoNS.Statuses.INVISIBLE;
             this.tsmiStatusBarStatusInvisible.Name = "tsmiStatusBarStatusInvisible";
-            this.tsmiStatusBarStatusInvisible.Size = new System.Drawing.Size(180, 22);
+            this.tsmiStatusBarStatusInvisible.Size = new System.Drawing.Size(117, 22);
             this.tsmiStatusBarStatusInvisible.Text = "Invisible";
             this.tsmiStatusBarStatusInvisible.Click += new System.EventHandler(this.tsmiStatusBarStatusInvisible_Click);
             // 
@@ -449,7 +450,7 @@ namespace PintoNS
             // tsmiMenuBarToolsOptions
             // 
             this.tsmiMenuBarToolsOptions.Name = "tsmiMenuBarToolsOptions";
-            this.tsmiMenuBarToolsOptions.Size = new System.Drawing.Size(180, 22);
+            this.tsmiMenuBarToolsOptions.Size = new System.Drawing.Size(116, 22);
             this.tsmiMenuBarToolsOptions.Text = "Options";
             this.tsmiMenuBarToolsOptions.Click += new System.EventHandler(this.tsmiMenuBarToolsOptions_Click);
             // 

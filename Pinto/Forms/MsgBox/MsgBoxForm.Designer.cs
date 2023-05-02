@@ -81,6 +81,7 @@
             this.pHeader.Name = "pHeader";
             this.pHeader.Size = new System.Drawing.Size(351, 52);
             this.pHeader.TabIndex = 4;
+            this.pHeader.Paint += new System.Windows.Forms.PaintEventHandler(this.pHeader_Paint);
             // 
             // btnYes
             // 

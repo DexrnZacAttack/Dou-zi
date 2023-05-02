@@ -94,7 +94,7 @@ namespace PintoNS.Forms
             this.MinimumSize = new System.Drawing.Size(582, 463);
             this.Name = "OptionsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Pinto! - Options";
+            this.Text = "豆子 - Options";
             this.ResumeLayout(false);
             this.PerformLayout();
 
