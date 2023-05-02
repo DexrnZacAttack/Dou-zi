@@ -198,5 +198,11 @@ namespace PintoNS.Forms
         {
 
         }
+
+        private void btnRegisterPage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            // Switch to the registration tab
+            tcSections.SelectedTab = tpRegister;
+        }
     }
 }

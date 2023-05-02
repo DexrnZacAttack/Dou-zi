@@ -43,7 +43,6 @@
             this.pbAd = new System.Windows.Forms.PictureBox();
             this.tcSections = new System.Windows.Forms.TabControl();
             this.tpMain = new System.Windows.Forms.TabPage();
-            this.btnRegisterPage = new System.Windows.Forms.Button();
             this.tpRegister = new System.Windows.Forms.TabPage();
             this.btnRegisterBack = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -59,6 +58,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txtPassword = new System.Windows.Forms.MaskedTextBox();
             this.txtUsername = new System.Windows.Forms.TextBox();
+            this.btnRegisterPage = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.nudPort)).BeginInit();
             this.pLoginControls.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbAd)).BeginInit();
@@ -236,17 +236,6 @@
             this.tpMain.Text = "Main";
             this.tpMain.UseVisualStyleBackColor = true;
             // 
-            // btnRegisterPage
-            // 
-            this.btnRegisterPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRegisterPage.Location = new System.Drawing.Point(305, 188);
-            this.btnRegisterPage.Name = "btnRegisterPage";
-            this.btnRegisterPage.Size = new System.Drawing.Size(75, 23);
-            this.btnRegisterPage.TabIndex = 13;
-            this.btnRegisterPage.Text = "Register";
-            this.btnRegisterPage.UseVisualStyleBackColor = true;
-            this.btnRegisterPage.Click += new System.EventHandler(this.BtnRegisterPage_Click);
-            // 
             // tpRegister
             // 
             this.tpRegister.Controls.Add(this.pictureBox1);
@@ -407,6 +396,19 @@
             this.txtUsername.TabIndex = 14;
             this.txtUsername.TextChanged += new System.EventHandler(this.txtUsername_TextChanged);
             // 
+            // btnRegisterPage
+            // 
+            this.btnRegisterPage.AutoSize = true;
+            this.btnRegisterPage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegisterPage.Location = new System.Drawing.Point(322, 191);
+            this.btnRegisterPage.Name = "btnRegisterPage";
+            this.btnRegisterPage.Size = new System.Drawing.Size(58, 16);
+            this.btnRegisterPage.TabIndex = 14;
+            this.btnRegisterPage.TabStop = true;
+            this.btnRegisterPage.Text = "Register";
+            this.btnRegisterPage.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.btnRegisterPage_LinkClicked);
+            this.btnRegisterPage.Click += new System.EventHandler(this.BtnRegisterPage_Click);
+            // 
             // UsingPintoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -420,7 +422,7 @@
             this.Name = "UsingPintoForm";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Pinto! - Using Pinto";
+            this.Text = "Dou\'zi - Login";
             this.Load += new System.EventHandler(this.UsingPintoForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nudPort)).EndInit();
             this.pLoginControls.ResumeLayout(false);
@@ -466,9 +468,9 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtRegisterUsername;
         private System.Windows.Forms.Button btnRegister;
-        private System.Windows.Forms.Button btnRegisterPage;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TextBox txtUsername;
         private System.Windows.Forms.MaskedTextBox txtPassword;
+        private System.Windows.Forms.LinkLabel btnRegisterPage;
     }
 }
