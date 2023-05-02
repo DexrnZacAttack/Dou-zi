@@ -30,6 +30,30 @@ namespace PintoNS.Forms
             Receiver = receiver;
             Text = $"Pinto! - Instant Messaging - Chatting with {Receiver.Name}";
             UpdateColorPicker();
+            mainForm.ContactsMgr.OnChange += ContactsMgr_OnChange;
+            ContactsMgr_OnChange(this, EventArgs.Empty);
+        }
+
+        private void ContactsMgr_OnChange(object sender, EventArgs e)
+        {
+            if (IsDisposed || mainForm == null) return;
+            dgvContacts.Rows.Clear();
+
+            //to copy the rows you need to have created the columns:
+            foreach (DataGridViewColumn c in mainForm.dgvContacts.Columns)
+            {
+                dgvContacts.Columns.Add(c.Clone() as DataGridViewColumn);
+            }
+
+            //then you can copy the rows values one by one (working on the selectedrows collection)
+            foreach (DataGridViewRow r in mainForm.dgvContacts.Rows)
+            {
+                int index = dgvContacts.Rows.Add(r.Clone() as DataGridViewRow);
+                foreach (DataGridViewCell o in r.Cells)
+                {
+                    dgvContacts.Rows[index].Cells[o.ColumnIndex].Value = o.Value;
+                }
+            }
         }
 
         public void WriteMessage(string msg, Color color, bool newLine = true)
@@ -128,6 +152,7 @@ namespace PintoNS.Forms
         {
             if (mainForm.MessageForms != null)
                 mainForm.MessageForms.Remove(this);
+            mainForm.ContactsMgr.OnChange -= ContactsMgr_OnChange;
         }
 
         private void tsmiMenuBarHelpAbout_Click(object sender, EventArgs e)

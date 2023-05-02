@@ -49,13 +49,13 @@
             this.pNotification.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pNotification.Location = new System.Drawing.Point(0, 0);
             this.pNotification.Name = "pNotification";
-            this.pNotification.Size = new System.Drawing.Size(200, 177);
+            this.pNotification.Size = new System.Drawing.Size(200, 98);
             this.pNotification.TabIndex = 0;
             // 
             // lSeeContent
             // 
             this.lSeeContent.AutoSize = true;
-            this.lSeeContent.Location = new System.Drawing.Point(61, 155);
+            this.lSeeContent.Location = new System.Drawing.Point(60, 69);
             this.lSeeContent.Name = "lSeeContent";
             this.lSeeContent.Size = new System.Drawing.Size(78, 13);
             this.lSeeContent.TabIndex = 3;
@@ -77,12 +77,13 @@
             // 
             // lBody
             // 
-            this.lBody.Location = new System.Drawing.Point(13, 36);
+            this.lBody.Location = new System.Drawing.Point(13, 34);
             this.lBody.Name = "lBody";
-            this.lBody.Size = new System.Drawing.Size(175, 119);
+            this.lBody.Size = new System.Drawing.Size(175, 35);
             this.lBody.TabIndex = 1;
             this.lBody.Text = "Body";
             this.lBody.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lBody.Click += new System.EventHandler(this.lBody_Click);
             // 
             // lTitle
             // 
@@ -92,6 +93,7 @@
             this.lTitle.Size = new System.Drawing.Size(150, 23);
             this.lTitle.TabIndex = 0;
             this.lTitle.Text = "Title";
+            this.lTitle.Click += new System.EventHandler(this.lTitle_Click);
             // 
             // tAnim
             // 
@@ -108,7 +110,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(200, 177);
+            this.ClientSize = new System.Drawing.Size(200, 98);
             this.Controls.Add(this.pNotification);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "PopupForm";

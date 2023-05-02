@@ -54,5 +54,15 @@ namespace PintoNS.Forms
             viewAllPopupContentForm.rtxtContent.Text = lBody.Text;
             viewAllPopupContentForm.Show();
         }
+
+        private void lTitle_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lBody_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

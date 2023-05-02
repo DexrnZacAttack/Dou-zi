@@ -124,6 +124,10 @@ namespace PintoNS.Forms
 
         private void UsingPintoForm_Load(object sender, EventArgs e)
         {
+            tcSections.Appearance = TabAppearance.FlatButtons;
+            tcSections.ItemSize = new Size(0, 1);
+            tcSections.SizeMode = TabSizeMode.Fixed;
+            LoadLogin();
             // Add a button to navigate to the registration page
             Button btnRegisterPage = new Button();
             btnRegisterPage.Text = "Register";
@@ -203,6 +207,11 @@ namespace PintoNS.Forms
         {
             // Switch to the registration tab
             tcSections.SelectedTab = tpRegister;
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

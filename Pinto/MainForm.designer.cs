@@ -148,7 +148,7 @@ namespace PintoNS
             this.tcTabs.Location = new System.Drawing.Point(3, 72);
             this.tcTabs.Name = "tcTabs";
             this.tcTabs.SelectedIndex = 0;
-            this.tcTabs.Size = new System.Drawing.Size(266, 327);
+            this.tcTabs.Size = new System.Drawing.Size(266, 278);
             this.tcTabs.TabIndex = 2;
             // 
             // tpLogin
@@ -214,7 +214,7 @@ namespace PintoNS
             this.tpContacts.Location = new System.Drawing.Point(4, 23);
             this.tpContacts.Name = "tpContacts";
             this.tpContacts.Padding = new System.Windows.Forms.Padding(3);
-            this.tpContacts.Size = new System.Drawing.Size(258, 300);
+            this.tpContacts.Size = new System.Drawing.Size(258, 251);
             this.tpContacts.TabIndex = 1;
             this.tpContacts.Text = "Contacts";
             // 
@@ -242,7 +242,7 @@ namespace PintoNS
             this.dgvContacts.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgvContacts.RowHeadersVisible = false;
             this.dgvContacts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvContacts.Size = new System.Drawing.Size(252, 294);
+            this.dgvContacts.Size = new System.Drawing.Size(252, 245);
             this.dgvContacts.TabIndex = 0;
             this.dgvContacts.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvContacts_CellDoubleClick);
             this.dgvContacts.SelectionChanged += new System.EventHandler(this.dgvContacts_SelectionChanged);
@@ -550,7 +550,7 @@ namespace PintoNS
             this.btnEndCall.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnEndCall.Enabled = false;
             this.btnEndCall.Image = global::PintoNS.Assets.ENDCALL_DISABLED;
-            this.btnEndCall.Location = new System.Drawing.Point(168, 401);
+            this.btnEndCall.Location = new System.Drawing.Point(168, 356);
             this.btnEndCall.Name = "btnEndCall";
             this.btnEndCall.Size = new System.Drawing.Size(32, 32);
             this.btnEndCall.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -563,7 +563,7 @@ namespace PintoNS
             this.btnStartCall.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnStartCall.Enabled = false;
             this.btnStartCall.Image = global::PintoNS.Assets.STARTCALL_DISABLED;
-            this.btnStartCall.Location = new System.Drawing.Point(68, 401);
+            this.btnStartCall.Location = new System.Drawing.Point(68, 356);
             this.btnStartCall.Name = "btnStartCall";
             this.btnStartCall.Size = new System.Drawing.Size(32, 32);
             this.btnStartCall.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -593,7 +593,7 @@ namespace PintoNS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(269, 498);
+            this.ClientSize = new System.Drawing.Size(269, 400);
             this.Controls.Add(this.btnEndCall);
             this.Controls.Add(this.btnStartCall);
             this.Controls.Add(this.txtSearchBox);

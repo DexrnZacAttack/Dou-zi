@@ -14,6 +14,7 @@ namespace PintoNS.General
         private MainForm mainForm;
         private DataGridView dgvContacts;
         private List<Contact> contacts = new List<Contact>();
+        public event EventHandler OnChange = new EventHandler((object sender, EventArgs e) => { });
 
         public ContactsManager(MainForm mainForm) 
         {
@@ -39,6 +40,7 @@ namespace PintoNS.General
             if (GetContactListEntry(contact.Name) == null) 
             {
                 dgvContacts.Rows.Add(User.StatusToBitmap(contact.Status), contact.Name);
+                OnChange.Invoke(this, EventArgs.Empty);
             }
         }
 
@@ -48,6 +50,7 @@ namespace PintoNS.General
             if ((row = GetContactListEntry(contact.Name)) != null) 
             {
                 dgvContacts.Rows.Remove(row);
+                OnChange.Invoke(this, EventArgs.Empty);
             }
         }
 
@@ -58,6 +61,7 @@ namespace PintoNS.General
             {
                 row.Cells[0].Value = User.StatusToBitmap(contact.Status);
                 row.Cells[1].Value = contact.Name;
+                OnChange.Invoke(this, EventArgs.Empty);
             }
         }
 
@@ -91,6 +95,7 @@ namespace PintoNS.General
             {
                 AddContactListEntry(contact);
                 contacts.Add(contact);
+                OnChange.Invoke(this, EventArgs.Empty);
             }
         }
 
@@ -100,6 +105,7 @@ namespace PintoNS.General
             {
                 RemoveContactListEntry(contact);
                 contacts.Remove(contact);
+                OnChange.Invoke(this, EventArgs.Empty);
             }
         }
 
@@ -110,6 +116,7 @@ namespace PintoNS.General
                 UpdateContactListEntry(contact);
                 contacts.Remove(GetContact(contact.Name));
                 contacts.Add(contact);
+                OnChange.Invoke(this, EventArgs.Empty);
             }
         }
     }
