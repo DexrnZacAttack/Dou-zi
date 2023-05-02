@@ -313,6 +313,16 @@ namespace PintoNS {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap QQBUTTON {
+            get {
+                object obj = ResourceManager.GetObject("QQBUTTON", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap REMOVECONTACT_DISABLED {
             get {
                 object obj = ResourceManager.GetObject("REMOVECONTACT_DISABLED", resourceCulture);
