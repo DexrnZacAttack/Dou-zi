@@ -213,5 +213,10 @@ namespace PintoNS.Forms
         {
 
         }
+
+        private void tcSections_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

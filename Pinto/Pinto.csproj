@@ -335,6 +335,7 @@
     <Content Include="Resources\Assets\INFO_ENABLED.png" />
     <Content Include="Resources\Assets\LOCK_DISABLED.png" />
     <Content Include="Resources\Assets\LOCK_ENABLED.png" />
+    <None Include="Resources\Assets\LOGIN_BACKGROUND.gif" />
     <Content Include="Resources\Assets\LOGIN_PLACEHOLDER.png" />
     <Content Include="Resources\Assets\MICROPHONE_DISABLED.png" />
     <Content Include="Resources\Assets\MICROPHONE_ENABLED.png" />
@@ -356,6 +357,7 @@
     <Content Include="Resources\Assets\TRASHCAN_DISABLED.png" />
     <Content Include="Resources\Assets\TRASHCAN_ENABLED.png" />
     <Content Include="Resources\Assets\WARNING.png" />
+    <None Include="Resources\Assets\Midnight-dynamic-background.webp" />
     <None Include="Resources\logobeans64.png" />
     <None Include="Resources\Logo.png" />
     <Content Include="Resources\Logo\LOADING.gif" />

@@ -100,7 +100,7 @@ namespace PintoNS.Networking
             Program.Console.WriteMessage($"[Contacts] Adding {packet.ContactName} to the contact list...");
             mainForm.Invoke(new Action(() =>
             {
-                mainForm.ContactsMgr.AddContact(new Contact() { Name = packet.ContactName, Status = UserStatus.OFFLINE });
+                mainForm.ContactsMgr.AddContact(new Contact() { Name = packet.ContactName, Status = packet.Status });
             }));
         }
 
@@ -112,13 +112,12 @@ namespace PintoNS.Networking
                 mainForm.ContactsMgr.RemoveContact(mainForm.ContactsMgr.GetContact(packet.ContactName));
             }));
         }
-
         public void HandleStatusPacket(PacketStatus packet)
         {
             Program.Console.WriteMessage(
                 $"[General] Status change: " +
                 $"{(string.IsNullOrWhiteSpace(packet.ContactName) ? "SELF" : packet.ContactName)} -> {packet.Status}");
-            
+
             mainForm.Invoke(new Action(() =>
             {
                 if (string.IsNullOrWhiteSpace(packet.ContactName))
@@ -126,14 +125,12 @@ namespace PintoNS.Networking
                 else
                 {
                     Contact contact = mainForm.ContactsMgr.GetContact(packet.ContactName);
-
-                    if (contact == null) 
+                    if (contact == null)
                     {
                         Program.Console.WriteMessage($"[General] Received invalid status change" +
                             $", \"{packet.ContactName}\" is not a valid contact!");
                         return;
                     }
-
                     if (packet.Status == UserStatus.OFFLINE && contact.Status != UserStatus.OFFLINE)
                     {
                         mainForm.PopupController.CreatePopup($"{packet.ContactName} is now offline",
@@ -146,12 +143,10 @@ namespace PintoNS.Networking
                             "Status change");
                         new SoundPlayer() { Stream = Sounds.ONLINE }.Play();
                     }
-
                     mainForm.ContactsMgr.UpdateContact(new Contact() { Name = packet.ContactName, Status = packet.Status });
                 }
             }));
         }
-
         public void HandleContactRequestPacket(PacketContactRequest packet)
         {
             Program.Console.WriteMessage($"[Networking] Received contact request from {packet.ContactName}");
@@ -166,7 +161,6 @@ namespace PintoNS.Networking
                     });
             }));
         }
-
         public void HandleClearContactsPacket()
         {
             Program.Console.WriteMessage($"[Contacts] Clearing contact list...");
@@ -249,7 +243,7 @@ namespace PintoNS.Networking
 
         public void SendAddContactPacket(string name)
         {
-            networkClient.AddToSendQueue(new PacketAddContact(name));
+            networkClient.AddToSendQueue(new PacketAddContact(name, UserStatus.OFFLINE));
         }
 
         public void SendRemoveContactPacket(string name)
