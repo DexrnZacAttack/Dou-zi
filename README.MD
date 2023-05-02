@@ -7,5 +7,5 @@
     <img src="https://img.shields.io/badge/License-GPLv3-brightgreen">
 </p>
 
-# 💬 Douzi
+# 💬 豆子（Dou'zi)
 shitty fork of Pinto that tries to make it look like QQ.
