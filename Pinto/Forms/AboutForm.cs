@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PintoNS.Networking;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,7 +20,7 @@ namespace PintoNS.Forms
 
         private void AboutForm_Load(object sender, EventArgs e)
         {
-            lVersion.Text = $"Version {Program.VERSION}";
+            lVersion.Text = $"Version {Program.DOUZIVERSION}";
         }
 
         private void label1_Click(object sender, EventArgs e)

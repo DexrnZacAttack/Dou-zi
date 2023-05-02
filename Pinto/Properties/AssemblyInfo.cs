@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("A modernish IM client inspired by Skype 0.97")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("PintoIM")]
-[assembly: AssemblyProduct("Pinto")]
+[assembly: AssemblyProduct("Pint")]
 [assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
