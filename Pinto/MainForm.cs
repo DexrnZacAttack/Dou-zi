@@ -61,7 +61,7 @@ namespace PintoNS
             tsmiMenuBarFileAddContact.Enabled = true;
             tsmiMenuBarFileRemoveContact.Enabled = true;
             tsmiMenuBarFileLogOut.Enabled = true;
-            Text = $"Pinto! - {CurrentUser.Name}";
+            Text = $"豆子 - {CurrentUser.Name}";
 
             new SoundPlayer(Sounds.LOGIN).Play();
         }
@@ -102,7 +102,7 @@ namespace PintoNS
             tsmiMenuBarFileAddContact.Enabled = false;
             tsmiMenuBarFileRemoveContact.Enabled = false;
             tsmiMenuBarFileLogOut.Enabled = false;
-            Text = "Pinto!";
+            Text = "豆子!";
             //InCall = false;
 
             if (!noSound)
@@ -113,7 +113,7 @@ namespace PintoNS
         {
             niTray.Visible = true;
             niTray.Icon = User.StatusToIcon(CurrentUser.Status);
-            niTray.Text = $"Pinto! - " + 
+            niTray.Text = $"豆子! - " + 
                 (CurrentUser.Status != UserStatus.OFFLINE ? 
                 $"{CurrentUser.Name} - {User.StatusToText(CurrentUser.Status)}" : "Not logged in");
         }
