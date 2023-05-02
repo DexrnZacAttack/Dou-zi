@@ -223,5 +223,10 @@ namespace PintoNS.Forms
         {
             new DebugForm().ShowDialog();
         }
+
+        private void txtIP_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -250,25 +250,5 @@ namespace PintoNS.Networking
         {
             networkClient.AddToSendQueue(new PacketRemoveContact(name));
         }
-
-        public void SendCallStartPacket(string name)
-        {
-            networkClient.AddToSendQueue(new PacketCallStart(name));
-        }
-
-        public void SendCallRequestPacket(string name, bool approved)
-        {
-            networkClient.AddToSendQueue(new PacketCallRequest($"{name}:{(approved ? "yes" : "no")}"));
-        }
-
-        public void SendCallPartyInfoPacket(int port)
-        {
-            networkClient.AddToSendQueue(new PacketCallPartyInfo("", port));
-        }
-
-        public void SendCallEndPacket()
-        {
-            networkClient.AddToSendQueue(new PacketCallEnd());
-        }
     }
 }

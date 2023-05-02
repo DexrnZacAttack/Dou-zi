@@ -3,6 +3,8 @@ using PintoNS.Networking;
 using PintoNS;
 using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -118,101 +120,7 @@ namespace PintoNS
                 $"{CurrentUser.Name} - {User.StatusToText(CurrentUser.Status)}" : "Not logged in");
         }
 
-        /*
-        internal void OnCallStart()
-        {
-            InCall = true;
-            CallClient = new UdpClient();
-            AudioRecPlyr = new AudioRecorderPlayer();
-            CallReceiveThread = new Thread(new ThreadStart(() => 
-            {
-                while (InCall)
-                {
-                    try
-                    {
-                        if (CallClient != null && CallTargetIP != null && AudioRecPlyr != null)
-                        {
-                            byte[] data = CallClient.Receive(ref CallTargetIP);
-                            AudioRecPlyr.Play(data);
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        new SoundPlayer(Sounds.CALL_ERROR1).Play();
-                        EndCall();
-                        Program.Console.WriteMessage($"[Calling] Call error: {ex}");
-                        InWindowPopupController.CreatePopup("Your call has ended due to an error");
-                    }
-                }
-            }));
 
-            btnStartCall.Enabled = false;
-            btnStartCall.Image = Assets.STARTCALL_DISABLED;
-            btnEndCall.Enabled = true;
-            btnEndCall.Image = Assets.ENDCALL_ENABLED;
-
-            lCallTarget.Text = $"In call with {CallTarget}";
-            tpCall.Text = CallTarget;
-
-            tcTabs.TabPages.Add(tpCall);
-            tcTabs.SelectedTab = tpCall;
-
-            AudioRecPlyr.MicrophoneDataAvailable += delegate (object sender, byte[] data) 
-            {
-                if (InCall && CallClient != null && CallTargetIP != null)
-                {
-                    try
-                    {
-                        CallClient.Send(data, data.Length, CallTargetIP);
-                    }
-                    catch (Exception ex)
-                    {
-                        new SoundPlayer(Sounds.CALL_ERROR1).Play();
-                        EndCall();
-                        Program.Console.WriteMessage($"[Calling] Call error: {ex}");
-                        InWindowPopupController.CreatePopup("Your call has ended due to an error");
-                    }
-                }
-            };
-
-            CallClient.Client.Bind(new IPEndPoint(IPAddress.Any, 0));
-            AudioRecPlyr.Start();
-            CallReceiveThread.Start();
-        }
-
-        internal void OnCallStop()
-        {
-            if (CallClient != null && CallClient.Client != null) 
-            {
-                CallClient.Client.Close();
-                CallClient.Close();
-            }
-            AudioRecPlyr.Stop();
-
-            InCall = false;
-            CallClient = null;
-            CallTarget = null;
-            CallTargetIP = null;
-            AudioRecPlyr = null;
-            CallReceiveThread = null;
-
-            if (dgvContacts.SelectedRows.Count > 0)
-            {
-                btnStartCall.Enabled = true;
-                btnStartCall.Image = Assets.STARTCALL_ENABLED;
-            }
-            else
-            {
-                btnStartCall.Enabled = false;
-                btnStartCall.Image = Assets.STARTCALL_DISABLED;
-            }
-            btnEndCall.Enabled = false;
-            btnEndCall.Image = Assets.ENDCALL_DISABLED;
-
-            lCallTarget.Text = $"In call with";
-            tcTabs.SelectedTab = tpContacts;
-            tcTabs.TabPages.Remove(tpCall);
-        }*/
 
         public async Task Connect(string ip, int port, string username, string password) 
         {
