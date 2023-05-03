@@ -59,13 +59,6 @@ namespace PintoNS
             this.tsslStatusBarStatusText = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsMenuBar = new System.Windows.Forms.ToolStrip();
             this.tsmiMenuBarAbout = new System.Windows.Forms.ToolStripButton();
-            this.tsddbMenuBarFile = new System.Windows.Forms.ToolStripDropDownButton();
-            this.tsmiMenuBarFileAddContact = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiMenuBarFileRemoveContact = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiMenuBarFileLogOut = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiMenuBarFileExit = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsddbMenuBarHelp = new System.Windows.Forms.ToolStripDropDownButton();
-            this.tsmiMenuBarHelpToggleConsole = new System.Windows.Forms.ToolStripMenuItem();
             this.niTray = new System.Windows.Forms.NotifyIcon(this.components);
             this.cmsTray = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmiTrayChangeStatus = new System.Windows.Forms.ToolStripMenuItem();
@@ -77,7 +70,15 @@ namespace PintoNS
             this.btnEndCall = new System.Windows.Forms.PictureBox();
             this.txtSearchBox = new PintoNS.Controls.TextBoxWithPlaceholderSupport();
             this.BottomtoolStrip = new System.Windows.Forms.ToolStrip();
-            this.tsmiMenuBarOptions = new System.Windows.Forms.ToolStripButton();
+            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.tsmiMenuBarHelpToggleConsole = new System.Windows.Forms.ToolStripMenuItem();
+            this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmiMenuBarFileLogOut = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripDropDownButton2 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.tsmiMenuBarFileAddContact = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiMenuBarFileRemoveContact = new System.Windows.Forms.ToolStripMenuItem();
             this.tcTabs.SuspendLayout();
             this.tpLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnStartCall)).BeginInit();
@@ -381,89 +382,27 @@ namespace PintoNS
             this.tsMenuBar.AutoSize = false;
             this.tsMenuBar.BackColor = System.Drawing.Color.Transparent;
             this.tsMenuBar.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.tsMenuBar.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.tsMenuBar.ImageScalingSize = new System.Drawing.Size(48, 48);
             this.tsMenuBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiMenuBarAbout,
-            this.tsddbMenuBarFile,
-            this.tsddbMenuBarHelp});
+            this.tsmiMenuBarAbout});
             this.tsMenuBar.Location = new System.Drawing.Point(0, 0);
             this.tsMenuBar.Name = "tsMenuBar";
             this.tsMenuBar.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.tsMenuBar.Size = new System.Drawing.Size(269, 29);
+            this.tsMenuBar.Size = new System.Drawing.Size(269, 28);
             this.tsMenuBar.TabIndex = 0;
             this.tsMenuBar.Text = "toolStrip1";
             // 
             // tsmiMenuBarAbout
             // 
+            this.tsmiMenuBarAbout.AutoSize = false;
             this.tsmiMenuBarAbout.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsmiMenuBarAbout.Image = global::PintoNS.Logo.LOGO_WHITE_LARGE_TRANSPARENT;
+            this.tsmiMenuBarAbout.Image = global::PintoNS.Logo.LOGO_WHITE_LARGE_TRANSPARENT_TEXT;
+            this.tsmiMenuBarAbout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.tsmiMenuBarAbout.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsmiMenuBarAbout.Name = "tsmiMenuBarAbout";
-            this.tsmiMenuBarAbout.Size = new System.Drawing.Size(28, 26);
+            this.tsmiMenuBarAbout.Size = new System.Drawing.Size(64, 32);
             this.tsmiMenuBarAbout.Text = "toolStripButton1";
             this.tsmiMenuBarAbout.Click += new System.EventHandler(this.tsmiMenuBarHelpAbout_Click);
-            // 
-            // tsddbMenuBarFile
-            // 
-            this.tsddbMenuBarFile.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tsddbMenuBarFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiMenuBarFileAddContact,
-            this.tsmiMenuBarFileRemoveContact,
-            this.tsmiMenuBarFileLogOut,
-            this.tsmiMenuBarFileExit});
-            this.tsddbMenuBarFile.Image = ((System.Drawing.Image)(resources.GetObject("tsddbMenuBarFile.Image")));
-            this.tsddbMenuBarFile.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsddbMenuBarFile.Name = "tsddbMenuBarFile";
-            this.tsddbMenuBarFile.ShowDropDownArrow = false;
-            this.tsddbMenuBarFile.Size = new System.Drawing.Size(29, 26);
-            this.tsddbMenuBarFile.Text = "File";
-            // 
-            // tsmiMenuBarFileAddContact
-            // 
-            this.tsmiMenuBarFileAddContact.Name = "tsmiMenuBarFileAddContact";
-            this.tsmiMenuBarFileAddContact.Size = new System.Drawing.Size(160, 22);
-            this.tsmiMenuBarFileAddContact.Text = "Add contact";
-            this.tsmiMenuBarFileAddContact.Click += new System.EventHandler(this.tsmiMenuBarFileAddContact_Click);
-            // 
-            // tsmiMenuBarFileRemoveContact
-            // 
-            this.tsmiMenuBarFileRemoveContact.Name = "tsmiMenuBarFileRemoveContact";
-            this.tsmiMenuBarFileRemoveContact.Size = new System.Drawing.Size(160, 22);
-            this.tsmiMenuBarFileRemoveContact.Text = "Remove contact";
-            this.tsmiMenuBarFileRemoveContact.Click += new System.EventHandler(this.tsmiMenuBarFileRemoveContact_Click);
-            // 
-            // tsmiMenuBarFileLogOut
-            // 
-            this.tsmiMenuBarFileLogOut.Name = "tsmiMenuBarFileLogOut";
-            this.tsmiMenuBarFileLogOut.Size = new System.Drawing.Size(160, 22);
-            this.tsmiMenuBarFileLogOut.Text = "Log out";
-            this.tsmiMenuBarFileLogOut.Click += new System.EventHandler(this.tsmiMenuBarFileLogOut_Click);
-            // 
-            // tsmiMenuBarFileExit
-            // 
-            this.tsmiMenuBarFileExit.Name = "tsmiMenuBarFileExit";
-            this.tsmiMenuBarFileExit.Size = new System.Drawing.Size(160, 22);
-            this.tsmiMenuBarFileExit.Text = "Exit";
-            this.tsmiMenuBarFileExit.Click += new System.EventHandler(this.tsmiMenuBarFileExit_Click);
-            // 
-            // tsddbMenuBarHelp
-            // 
-            this.tsddbMenuBarHelp.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tsddbMenuBarHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiMenuBarHelpToggleConsole});
-            this.tsddbMenuBarHelp.Image = ((System.Drawing.Image)(resources.GetObject("tsddbMenuBarHelp.Image")));
-            this.tsddbMenuBarHelp.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsddbMenuBarHelp.Name = "tsddbMenuBarHelp";
-            this.tsddbMenuBarHelp.ShowDropDownArrow = false;
-            this.tsddbMenuBarHelp.Size = new System.Drawing.Size(36, 26);
-            this.tsddbMenuBarHelp.Text = "Help";
-            // 
-            // tsmiMenuBarHelpToggleConsole
-            // 
-            this.tsmiMenuBarHelpToggleConsole.Name = "tsmiMenuBarHelpToggleConsole";
-            this.tsmiMenuBarHelpToggleConsole.Size = new System.Drawing.Size(153, 22);
-            this.tsmiMenuBarHelpToggleConsole.Text = "Toggle console";
-            this.tsmiMenuBarHelpToggleConsole.Click += new System.EventHandler(this.tsmiMenuBarHelpToggleConsole_Click);
             // 
             // niTray
             // 
@@ -562,23 +501,100 @@ namespace PintoNS
             this.BottomtoolStrip.AutoSize = false;
             this.BottomtoolStrip.BackColor = System.Drawing.Color.White;
             this.BottomtoolStrip.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.BottomtoolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.BottomtoolStrip.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.BottomtoolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiMenuBarOptions});
-            this.BottomtoolStrip.Location = new System.Drawing.Point(0, 409);
+            this.toolStripDropDownButton1,
+            this.toolStripDropDownButton2});
+            this.BottomtoolStrip.Location = new System.Drawing.Point(0, 405);
             this.BottomtoolStrip.Name = "BottomtoolStrip";
-            this.BottomtoolStrip.Size = new System.Drawing.Size(269, 37);
+            this.BottomtoolStrip.Size = new System.Drawing.Size(269, 41);
             this.BottomtoolStrip.TabIndex = 2;
             this.BottomtoolStrip.Text = "toolStrip1";
             // 
-            // tsmiMenuBarOptions
+            // toolStripDropDownButton1
             // 
-            this.tsmiMenuBarOptions.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsmiMenuBarOptions.Image = global::PintoNS.Assets.HAMBURGER;
-            this.tsmiMenuBarOptions.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsmiMenuBarOptions.Name = "tsmiMenuBarOptions";
-            this.tsmiMenuBarOptions.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.tsmiMenuBarOptions.Size = new System.Drawing.Size(23, 34);
-            this.tsmiMenuBarOptions.Text = "Options";
+            this.toolStripDropDownButton1.AutoSize = false;
+            this.toolStripDropDownButton1.BackColor = System.Drawing.Color.Transparent;
+            this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiMenuBarHelpToggleConsole,
+            this.optionsToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.tsmiMenuBarFileLogOut,
+            this.exitToolStripMenuItem});
+            this.toolStripDropDownButton1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.toolStripDropDownButton1.Image = global::PintoNS.Assets.HAMBURGER;
+            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButton1.Margin = new System.Windows.Forms.Padding(0);
+            this.toolStripDropDownButton1.MergeIndex = 0;
+            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
+            this.toolStripDropDownButton1.ShowDropDownArrow = false;
+            this.toolStripDropDownButton1.Size = new System.Drawing.Size(32, 34);
+            this.toolStripDropDownButton1.Text = "toolStripDropDownButton1";
+            this.toolStripDropDownButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
+            // 
+            // tsmiMenuBarHelpToggleConsole
+            // 
+            this.tsmiMenuBarHelpToggleConsole.AutoToolTip = true;
+            this.tsmiMenuBarHelpToggleConsole.Name = "tsmiMenuBarHelpToggleConsole";
+            this.tsmiMenuBarHelpToggleConsole.Size = new System.Drawing.Size(180, 22);
+            this.tsmiMenuBarHelpToggleConsole.Text = "Toggle console";
+            this.tsmiMenuBarHelpToggleConsole.Click += new System.EventHandler(this.tsmiMenuBarHelpToggleConsole_Click);
+            // 
+            // optionsToolStripMenuItem
+            // 
+            this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.optionsToolStripMenuItem.Text = "Options";
+            this.optionsToolStripMenuItem.Click += new System.EventHandler(this.tsmiMenuBarToolsOptions_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            // 
+            // tsmiMenuBarFileLogOut
+            // 
+            this.tsmiMenuBarFileLogOut.Name = "tsmiMenuBarFileLogOut";
+            this.tsmiMenuBarFileLogOut.Size = new System.Drawing.Size(180, 22);
+            this.tsmiMenuBarFileLogOut.Text = "Log Out";
+            this.tsmiMenuBarFileLogOut.Click += new System.EventHandler(this.tsmiMenuBarFileLogOut_Click);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.tsmiMenuBarFileExit_Click);
+            // 
+            // toolStripDropDownButton2
+            // 
+            this.toolStripDropDownButton2.AutoSize = false;
+            this.toolStripDropDownButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripDropDownButton2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiMenuBarFileAddContact,
+            this.tsmiMenuBarFileRemoveContact});
+            this.toolStripDropDownButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton2.Image")));
+            this.toolStripDropDownButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButton2.Name = "toolStripDropDownButton2";
+            this.toolStripDropDownButton2.ShowDropDownArrow = false;
+            this.toolStripDropDownButton2.Size = new System.Drawing.Size(34, 34);
+            this.toolStripDropDownButton2.Text = "toolStripDropDownButton2";
+            // 
+            // tsmiMenuBarFileAddContact
+            // 
+            this.tsmiMenuBarFileAddContact.Name = "tsmiMenuBarFileAddContact";
+            this.tsmiMenuBarFileAddContact.Size = new System.Drawing.Size(153, 22);
+            this.tsmiMenuBarFileAddContact.Text = "Add Friend";
+            this.tsmiMenuBarFileAddContact.Click += new System.EventHandler(this.tsmiMenuBarFileAddContact_Click);
+            // 
+            // tsmiMenuBarFileRemoveContact
+            // 
+            this.tsmiMenuBarFileRemoveContact.Name = "tsmiMenuBarFileRemoveContact";
+            this.tsmiMenuBarFileRemoveContact.Size = new System.Drawing.Size(153, 22);
+            this.tsmiMenuBarFileRemoveContact.Text = "Remove Friend";
+            this.tsmiMenuBarFileRemoveContact.Click += new System.EventHandler(this.tsmiMenuBarFileRemoveContact_Click);
             // 
             // MainForm
             // 
@@ -633,13 +649,10 @@ namespace PintoNS
         private System.Windows.Forms.PictureBox btnEndCall;
         private System.Windows.Forms.ToolStripDropDownButton tsddbStatusBarStatus;
         private System.Windows.Forms.ToolStripStatusLabel tsslStatusBarStatusText;
-        private System.Windows.Forms.ToolStripDropDownButton tsddbMenuBarFile;
-        private System.Windows.Forms.ToolStripDropDownButton tsddbMenuBarHelp;
         private System.Windows.Forms.ToolStrip tsMenuBar;
         private System.Windows.Forms.TabPage tpContacts;
         public System.Windows.Forms.DataGridView dgvContacts;
         private System.Windows.Forms.LinkLabel llLogin;
-        private System.Windows.Forms.ToolStripMenuItem tsmiMenuBarFileLogOut;
         private System.Windows.Forms.TabPage tpConnecting;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lConnectingStatus;
@@ -649,13 +662,10 @@ namespace PintoNS
         private System.Windows.Forms.ToolStripMenuItem tsmiStatusBarStatusAway;
         private System.Windows.Forms.ToolStripMenuItem tsmiStatusBarStatusBusy;
         private System.Windows.Forms.ToolStripMenuItem tsmiStatusBarStatusInvisible;
-        private System.Windows.Forms.ToolStripMenuItem tsmiMenuBarFileAddContact;
-        private System.Windows.Forms.ToolStripMenuItem tsmiMenuBarFileRemoveContact;
         private System.Windows.Forms.TabPage tpCall;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label lCallTarget;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ToolStripMenuItem tsmiMenuBarHelpToggleConsole;
         private System.Windows.Forms.NotifyIcon niTray;
         private System.Windows.Forms.ContextMenuStrip cmsTray;
         private System.Windows.Forms.ToolStripMenuItem tsmiTrayExit;
@@ -664,9 +674,16 @@ namespace PintoNS
         private System.Windows.Forms.ToolStripMenuItem tsmiTrayChangeStatusAway;
         private System.Windows.Forms.ToolStripMenuItem tsmiTrayChangeStatusBusy;
         private System.Windows.Forms.ToolStripMenuItem tsmiTrayChangeStatusInvisible;
-        private System.Windows.Forms.ToolStripMenuItem tsmiMenuBarFileExit;
         private System.Windows.Forms.ToolStripButton tsmiMenuBarAbout;
         private System.Windows.Forms.ToolStrip BottomtoolStrip;
-        private System.Windows.Forms.ToolStripButton tsmiMenuBarOptions;
+        private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmiMenuBarFileLogOut;
+        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton2;
+        private System.Windows.Forms.ToolStripMenuItem tsmiMenuBarFileRemoveContact;
+        private System.Windows.Forms.ToolStripMenuItem tsmiMenuBarFileAddContact;
+        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
+        private System.Windows.Forms.ToolStripMenuItem tsmiMenuBarHelpToggleConsole;
     }
 }

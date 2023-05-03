@@ -384,6 +384,8 @@
     <None Include="Resources\Res.rdb.000affaf_b4.png" />
     <None Include="Resources\Res.rdb.000afa4d_0268.png" />
     <None Include="Resources\Res.rdb.00485ceb_dd.png" />
+    <None Include="Resources\Logo\LOGO_LARGE_WHITE_TEXT.png" />
+    <None Include="Resources\Logo\LOGO_WHITE_LARGE_TRANSPARENT_TEXT.png" />
     <Content Include="Resources\Sounds\BUSY.WAV" />
     <Content Include="Resources\Sounds\CALL_ERROR1.WAV" />
     <Content Include="Resources\Sounds\CALL_ERROR2.WAV" />

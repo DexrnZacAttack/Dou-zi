@@ -123,6 +123,16 @@ namespace PintoNS {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap LOGO_LARGE_WHITE_TEXT {
+            get {
+                object obj = ResourceManager.GetObject("LOGO_LARGE_WHITE_TEXT", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap LOGO_NOTEXT {
             get {
                 object obj = ResourceManager.GetObject("LOGO_NOTEXT", resourceCulture);
@@ -146,6 +156,16 @@ namespace PintoNS {
         internal static System.Drawing.Bitmap LOGO_WHITE_LARGE_TRANSPARENT {
             get {
                 object obj = ResourceManager.GetObject("LOGO_WHITE_LARGE_TRANSPARENT", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap LOGO_WHITE_LARGE_TRANSPARENT_TEXT {
+            get {
+                object obj = ResourceManager.GetObject("LOGO_WHITE_LARGE_TRANSPARENT_TEXT", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

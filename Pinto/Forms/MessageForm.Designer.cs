@@ -100,6 +100,7 @@ namespace PintoNS.Forms
             // 
             // btnTalk
             // 
+            this.btnTalk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnTalk.BackColor = System.Drawing.SystemColors.Control;
             this.btnTalk.FlatAppearance.BorderSize = 0;
             this.btnTalk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -170,9 +171,8 @@ namespace PintoNS.Forms
             // 
             // tcTabs
             // 
-            this.tcTabs.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tcTabs.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.tcTabs.Controls.Add(this.tpContactsMessageForm);
             this.tcTabs.Location = new System.Drawing.Point(12, 28);
             this.tcTabs.Name = "tcTabs";
@@ -231,9 +231,6 @@ namespace PintoNS.Forms
             // 
             // txtSearchBox
             // 
-            this.txtSearchBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSearchBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
             this.txtSearchBox.BackColor = System.Drawing.Color.White;
             this.txtSearchBox.Enabled = false;
