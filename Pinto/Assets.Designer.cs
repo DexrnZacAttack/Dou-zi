@@ -113,6 +113,36 @@ namespace PintoNS {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap HAMBURGER {
+            get {
+                object obj = ResourceManager.GetObject("HAMBURGER", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap HAMBURGER_BLUE {
+            get {
+                object obj = ResourceManager.GetObject("HAMBURGER_BLUE", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap HAMBURGER_DOTS {
+            get {
+                object obj = ResourceManager.GetObject("HAMBURGER_DOTS", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap HISTORY_DISABLED {
             get {
                 object obj = ResourceManager.GetObject("HISTORY_DISABLED", resourceCulture);

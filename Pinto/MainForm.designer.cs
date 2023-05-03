@@ -32,13 +32,12 @@ namespace PintoNS
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.pQuickActionBar = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tcTabs = new System.Windows.Forms.TabControl();
             this.tpLogin = new System.Windows.Forms.TabPage();
             this.llLogin = new System.Windows.Forms.LinkLabel();
+            this.btnStartCall = new System.Windows.Forms.PictureBox();
             this.tpConnecting = new System.Windows.Forms.TabPage();
             this.lConnectingStatus = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -65,8 +64,6 @@ namespace PintoNS
             this.tsmiMenuBarFileRemoveContact = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiMenuBarFileLogOut = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiMenuBarFileExit = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsddbMenuBarTools = new System.Windows.Forms.ToolStripDropDownButton();
-            this.tsmiMenuBarToolsOptions = new System.Windows.Forms.ToolStripMenuItem();
             this.tsddbMenuBarHelp = new System.Windows.Forms.ToolStripDropDownButton();
             this.tsmiMenuBarHelpToggleConsole = new System.Windows.Forms.ToolStripMenuItem();
             this.niTray = new System.Windows.Forms.NotifyIcon(this.components);
@@ -78,11 +75,12 @@ namespace PintoNS
             this.tsmiTrayChangeStatusInvisible = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiTrayExit = new System.Windows.Forms.ToolStripMenuItem();
             this.btnEndCall = new System.Windows.Forms.PictureBox();
-            this.btnStartCall = new System.Windows.Forms.PictureBox();
             this.txtSearchBox = new PintoNS.Controls.TextBoxWithPlaceholderSupport();
-            this.pQuickActionBar.SuspendLayout();
+            this.BottomtoolStrip = new System.Windows.Forms.ToolStrip();
+            this.tsmiMenuBarOptions = new System.Windows.Forms.ToolStripButton();
             this.tcTabs.SuspendLayout();
             this.tpLogin.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnStartCall)).BeginInit();
             this.tpConnecting.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tpContacts.SuspendLayout();
@@ -93,29 +91,8 @@ namespace PintoNS
             this.tsMenuBar.SuspendLayout();
             this.cmsTray.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnEndCall)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnStartCall)).BeginInit();
+            this.BottomtoolStrip.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // pQuickActionBar
-            // 
-            this.pQuickActionBar.BackColor = System.Drawing.Color.Transparent;
-            this.pQuickActionBar.Controls.Add(this.label1);
-            this.pQuickActionBar.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pQuickActionBar.Location = new System.Drawing.Point(0, 419);
-            this.pQuickActionBar.Name = "pQuickActionBar";
-            this.pQuickActionBar.Size = new System.Drawing.Size(269, 27);
-            this.pQuickActionBar.TabIndex = 1;
-            this.pQuickActionBar.Visible = false;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(65, 8);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(135, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Quick actions coming soon";
             // 
             // tabPage1
             // 
@@ -150,17 +127,18 @@ namespace PintoNS
             this.tcTabs.Location = new System.Drawing.Point(0, 96);
             this.tcTabs.Name = "tcTabs";
             this.tcTabs.SelectedIndex = 0;
-            this.tcTabs.Size = new System.Drawing.Size(269, 328);
+            this.tcTabs.Size = new System.Drawing.Size(269, 317);
             this.tcTabs.TabIndex = 2;
             // 
             // tpLogin
             // 
             this.tpLogin.BackColor = System.Drawing.Color.Transparent;
             this.tpLogin.Controls.Add(this.llLogin);
+            this.tpLogin.Controls.Add(this.btnStartCall);
             this.tpLogin.ImageKey = "HOUSE.png";
             this.tpLogin.Location = new System.Drawing.Point(4, 23);
             this.tpLogin.Name = "tpLogin";
-            this.tpLogin.Size = new System.Drawing.Size(261, 301);
+            this.tpLogin.Size = new System.Drawing.Size(261, 290);
             this.tpLogin.TabIndex = 0;
             this.tpLogin.Text = "Login";
             // 
@@ -175,6 +153,15 @@ namespace PintoNS
             this.llLogin.Text = "Click here to log in";
             this.llLogin.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llLogin_LinkClicked);
             // 
+            // btnStartCall
+            // 
+            this.btnStartCall.Location = new System.Drawing.Point(130, 183);
+            this.btnStartCall.Name = "btnStartCall";
+            this.btnStartCall.Size = new System.Drawing.Size(100, 50);
+            this.btnStartCall.TabIndex = 2;
+            this.btnStartCall.TabStop = false;
+            this.btnStartCall.Visible = false;
+            // 
             // tpConnecting
             // 
             this.tpConnecting.BackColor = System.Drawing.SystemColors.Window;
@@ -184,7 +171,7 @@ namespace PintoNS
             this.tpConnecting.Location = new System.Drawing.Point(4, 23);
             this.tpConnecting.Name = "tpConnecting";
             this.tpConnecting.Padding = new System.Windows.Forms.Padding(3);
-            this.tpConnecting.Size = new System.Drawing.Size(261, 303);
+            this.tpConnecting.Size = new System.Drawing.Size(261, 290);
             this.tpConnecting.TabIndex = 2;
             this.tpConnecting.Text = "Connecting";
             // 
@@ -216,7 +203,7 @@ namespace PintoNS
             this.tpContacts.Location = new System.Drawing.Point(4, 23);
             this.tpContacts.Name = "tpContacts";
             this.tpContacts.Padding = new System.Windows.Forms.Padding(3);
-            this.tpContacts.Size = new System.Drawing.Size(261, 303);
+            this.tpContacts.Size = new System.Drawing.Size(261, 290);
             this.tpContacts.TabIndex = 1;
             this.tpContacts.Text = "Contacts";
             // 
@@ -244,7 +231,7 @@ namespace PintoNS
             this.dgvContacts.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgvContacts.RowHeadersVisible = false;
             this.dgvContacts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvContacts.Size = new System.Drawing.Size(255, 297);
+            this.dgvContacts.Size = new System.Drawing.Size(255, 284);
             this.dgvContacts.TabIndex = 0;
             this.dgvContacts.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvContacts_CellDoubleClick);
             this.dgvContacts.SelectionChanged += new System.EventHandler(this.dgvContacts_SelectionChanged);
@@ -275,7 +262,7 @@ namespace PintoNS
             this.tpCall.Location = new System.Drawing.Point(4, 23);
             this.tpCall.Name = "tpCall";
             this.tpCall.Padding = new System.Windows.Forms.Padding(3);
-            this.tpCall.Size = new System.Drawing.Size(261, 303);
+            this.tpCall.Size = new System.Drawing.Size(261, 290);
             this.tpCall.TabIndex = 3;
             this.tpCall.UseVisualStyleBackColor = true;
             // 
@@ -348,7 +335,7 @@ namespace PintoNS
             this.tsddbStatusBarStatus.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsddbStatusBarStatus.Name = "tsddbStatusBarStatus";
             this.tsddbStatusBarStatus.ShowDropDownArrow = false;
-            this.tsddbStatusBarStatus.Size = new System.Drawing.Size(20, 20);
+            this.tsddbStatusBarStatus.Size = new System.Drawing.Size(20, 40);
             this.tsddbStatusBarStatus.Text = "Status";
             // 
             // tsmiStatusBarStatusOnline
@@ -386,7 +373,7 @@ namespace PintoNS
             // tsslStatusBarStatusText
             // 
             this.tsslStatusBarStatusText.Name = "tsslStatusBarStatusText";
-            this.tsslStatusBarStatusText.Size = new System.Drawing.Size(80, 17);
+            this.tsslStatusBarStatusText.Size = new System.Drawing.Size(80, 37);
             this.tsslStatusBarStatusText.Text = "Not logged in";
             // 
             // tsMenuBar
@@ -398,7 +385,6 @@ namespace PintoNS
             this.tsMenuBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiMenuBarAbout,
             this.tsddbMenuBarFile,
-            this.tsddbMenuBarTools,
             this.tsddbMenuBarHelp});
             this.tsMenuBar.Location = new System.Drawing.Point(0, 0);
             this.tsMenuBar.Name = "tsMenuBar";
@@ -413,7 +399,7 @@ namespace PintoNS
             this.tsmiMenuBarAbout.Image = global::PintoNS.Logo.LOGO_WHITE_LARGE_TRANSPARENT;
             this.tsmiMenuBarAbout.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsmiMenuBarAbout.Name = "tsmiMenuBarAbout";
-            this.tsmiMenuBarAbout.Size = new System.Drawing.Size(36, 36);
+            this.tsmiMenuBarAbout.Size = new System.Drawing.Size(28, 26);
             this.tsmiMenuBarAbout.Text = "toolStripButton1";
             this.tsmiMenuBarAbout.Click += new System.EventHandler(this.tsmiMenuBarHelpAbout_Click);
             // 
@@ -429,7 +415,7 @@ namespace PintoNS
             this.tsddbMenuBarFile.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsddbMenuBarFile.Name = "tsddbMenuBarFile";
             this.tsddbMenuBarFile.ShowDropDownArrow = false;
-            this.tsddbMenuBarFile.Size = new System.Drawing.Size(29, 36);
+            this.tsddbMenuBarFile.Size = new System.Drawing.Size(29, 26);
             this.tsddbMenuBarFile.Text = "File";
             // 
             // tsmiMenuBarFileAddContact
@@ -459,25 +445,6 @@ namespace PintoNS
             this.tsmiMenuBarFileExit.Size = new System.Drawing.Size(160, 22);
             this.tsmiMenuBarFileExit.Text = "Exit";
             this.tsmiMenuBarFileExit.Click += new System.EventHandler(this.tsmiMenuBarFileExit_Click);
-            // 
-            // tsddbMenuBarTools
-            // 
-            this.tsddbMenuBarTools.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tsddbMenuBarTools.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiMenuBarToolsOptions});
-            this.tsddbMenuBarTools.Image = ((System.Drawing.Image)(resources.GetObject("tsddbMenuBarTools.Image")));
-            this.tsddbMenuBarTools.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsddbMenuBarTools.Name = "tsddbMenuBarTools";
-            this.tsddbMenuBarTools.ShowDropDownArrow = false;
-            this.tsddbMenuBarTools.Size = new System.Drawing.Size(38, 36);
-            this.tsddbMenuBarTools.Text = "Tools";
-            // 
-            // tsmiMenuBarToolsOptions
-            // 
-            this.tsmiMenuBarToolsOptions.Name = "tsmiMenuBarToolsOptions";
-            this.tsmiMenuBarToolsOptions.Size = new System.Drawing.Size(116, 22);
-            this.tsmiMenuBarToolsOptions.Text = "Options";
-            this.tsmiMenuBarToolsOptions.Click += new System.EventHandler(this.tsmiMenuBarToolsOptions_Click);
             // 
             // tsddbMenuBarHelp
             // 
@@ -572,15 +539,6 @@ namespace PintoNS
             this.btnEndCall.TabStop = false;
             this.btnEndCall.Visible = false;
             // 
-            // btnStartCall
-            // 
-            this.btnStartCall.Location = new System.Drawing.Point(139, 356);
-            this.btnStartCall.Name = "btnStartCall";
-            this.btnStartCall.Size = new System.Drawing.Size(100, 50);
-            this.btnStartCall.TabIndex = 2;
-            this.btnStartCall.TabStop = false;
-            this.btnStartCall.Visible = false;
-            // 
             // txtSearchBox
             // 
             this.txtSearchBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -599,6 +557,29 @@ namespace PintoNS
             this.txtSearchBox.Text = "Type the username you would like to search for";
             this.txtSearchBox.TextForeColor = System.Drawing.Color.Black;
             // 
+            // BottomtoolStrip
+            // 
+            this.BottomtoolStrip.AutoSize = false;
+            this.BottomtoolStrip.BackColor = System.Drawing.Color.White;
+            this.BottomtoolStrip.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.BottomtoolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiMenuBarOptions});
+            this.BottomtoolStrip.Location = new System.Drawing.Point(0, 409);
+            this.BottomtoolStrip.Name = "BottomtoolStrip";
+            this.BottomtoolStrip.Size = new System.Drawing.Size(269, 37);
+            this.BottomtoolStrip.TabIndex = 2;
+            this.BottomtoolStrip.Text = "toolStrip1";
+            // 
+            // tsmiMenuBarOptions
+            // 
+            this.tsmiMenuBarOptions.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsmiMenuBarOptions.Image = global::PintoNS.Assets.HAMBURGER;
+            this.tsmiMenuBarOptions.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsmiMenuBarOptions.Name = "tsmiMenuBarOptions";
+            this.tsmiMenuBarOptions.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.tsmiMenuBarOptions.Size = new System.Drawing.Size(23, 34);
+            this.tsmiMenuBarOptions.Text = "Options";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -606,23 +587,21 @@ namespace PintoNS
             this.BackColor = System.Drawing.SystemColors.Control;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(269, 446);
+            this.Controls.Add(this.BottomtoolStrip);
             this.Controls.Add(this.ssStatusBar);
             this.Controls.Add(this.btnEndCall);
-            this.Controls.Add(this.btnStartCall);
             this.Controls.Add(this.txtSearchBox);
             this.Controls.Add(this.tcTabs);
-            this.Controls.Add(this.pQuickActionBar);
             this.Controls.Add(this.tsMenuBar);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.Resize += new System.EventHandler(this.MainForm_Resize);
-            this.pQuickActionBar.ResumeLayout(false);
-            this.pQuickActionBar.PerformLayout();
             this.tcTabs.ResumeLayout(false);
             this.tpLogin.ResumeLayout(false);
             this.tpLogin.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnStartCall)).EndInit();
             this.tpConnecting.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tpContacts.ResumeLayout(false);
@@ -635,14 +614,14 @@ namespace PintoNS
             this.tsMenuBar.PerformLayout();
             this.cmsTray.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.btnEndCall)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnStartCall)).EndInit();
+            this.BottomtoolStrip.ResumeLayout(false);
+            this.BottomtoolStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Panel pQuickActionBar;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabControl tcTabs;
@@ -655,7 +634,6 @@ namespace PintoNS
         private System.Windows.Forms.ToolStripDropDownButton tsddbStatusBarStatus;
         private System.Windows.Forms.ToolStripStatusLabel tsslStatusBarStatusText;
         private System.Windows.Forms.ToolStripDropDownButton tsddbMenuBarFile;
-        private System.Windows.Forms.ToolStripDropDownButton tsddbMenuBarTools;
         private System.Windows.Forms.ToolStripDropDownButton tsddbMenuBarHelp;
         private System.Windows.Forms.ToolStrip tsMenuBar;
         private System.Windows.Forms.TabPage tpContacts;
@@ -667,7 +645,6 @@ namespace PintoNS
         private System.Windows.Forms.Label lConnectingStatus;
         private System.Windows.Forms.DataGridViewImageColumn contactStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn contactName;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolStripMenuItem tsmiStatusBarStatusOnline;
         private System.Windows.Forms.ToolStripMenuItem tsmiStatusBarStatusAway;
         private System.Windows.Forms.ToolStripMenuItem tsmiStatusBarStatusBusy;
@@ -682,7 +659,6 @@ namespace PintoNS
         private System.Windows.Forms.NotifyIcon niTray;
         private System.Windows.Forms.ContextMenuStrip cmsTray;
         private System.Windows.Forms.ToolStripMenuItem tsmiTrayExit;
-        private System.Windows.Forms.ToolStripMenuItem tsmiMenuBarToolsOptions;
         private System.Windows.Forms.ToolStripMenuItem tsmiTrayChangeStatus;
         private System.Windows.Forms.ToolStripMenuItem tsmiTrayChangeStatusOnline;
         private System.Windows.Forms.ToolStripMenuItem tsmiTrayChangeStatusAway;
@@ -690,5 +666,7 @@ namespace PintoNS
         private System.Windows.Forms.ToolStripMenuItem tsmiTrayChangeStatusInvisible;
         private System.Windows.Forms.ToolStripMenuItem tsmiMenuBarFileExit;
         private System.Windows.Forms.ToolStripButton tsmiMenuBarAbout;
+        private System.Windows.Forms.ToolStrip BottomtoolStrip;
+        private System.Windows.Forms.ToolStripButton tsmiMenuBarOptions;
     }
 }

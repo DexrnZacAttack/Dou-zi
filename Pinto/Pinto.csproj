@@ -370,6 +370,7 @@
     <Content Include="Resources\Assets\WARNING.png" />
     <None Include="Resources\logobeans64.png" />
     <None Include="Resources\Logo.png" />
+    <None Include="Resources\Default.rdb.0015efc3_0117.png" />
     <Content Include="Resources\Logo\LOADING.gif" />
     <None Include="Resources\Logo\LOGO.ICO" />
     <Content Include="Resources\Logo\LOGO.png" />
@@ -380,6 +381,9 @@
     <None Include="Resources\Logo\LOGO_LARGE_WHITE.png" />
     <None Include="Resources\Logo\LOGO_NOTEXT.png" />
     <None Include="Resources\Logo\LOGO_WHITE_LARGE_TRANSPARENT.png" />
+    <None Include="Resources\Res.rdb.000affaf_b4.png" />
+    <None Include="Resources\Res.rdb.000afa4d_0268.png" />
+    <None Include="Resources\Res.rdb.00485ceb_dd.png" />
     <Content Include="Resources\Sounds\BUSY.WAV" />
     <Content Include="Resources\Sounds\CALL_ERROR1.WAV" />
     <Content Include="Resources\Sounds\CALL_ERROR2.WAV" />

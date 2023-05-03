@@ -43,17 +43,17 @@ namespace PintoNS.Forms
             this.btnColor = new System.Windows.Forms.Button();
             this.cdPicker = new System.Windows.Forms.ColorDialog();
             this.tcTabs = new System.Windows.Forms.TabControl();
-            this.tpContacts = new System.Windows.Forms.TabPage();
+            this.tpContactsMessageForm = new System.Windows.Forms.TabPage();
             this.dgvContacts = new System.Windows.Forms.DataGridView();
-            this.contactStatus = new System.Windows.Forms.DataGridViewImageColumn();
             this.tsddbMenuBarFile = new System.Windows.Forms.ToolStripDropDownButton();
             this.tsmiMenuBarFileClearSavedData = new System.Windows.Forms.ToolStripMenuItem();
-            this.contactName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtSearchBox = new PintoNS.Controls.TextBoxWithPlaceholderSupport();
             this.MSGFormAddContactButton = new System.Windows.Forms.Button();
+            this.contactStatus = new System.Windows.Forms.DataGridViewImageColumn();
+            this.contactName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ssStatusStrip.SuspendLayout();
             this.tcTabs.SuspendLayout();
-            this.tpContacts.SuspendLayout();
+            this.tpContactsMessageForm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvContacts)).BeginInit();
             this.SuspendLayout();
             // 
@@ -173,24 +173,24 @@ namespace PintoNS.Forms
             this.tcTabs.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tcTabs.Controls.Add(this.tpContacts);
+            this.tcTabs.Controls.Add(this.tpContactsMessageForm);
             this.tcTabs.Location = new System.Drawing.Point(12, 28);
             this.tcTabs.Name = "tcTabs";
             this.tcTabs.SelectedIndex = 0;
             this.tcTabs.Size = new System.Drawing.Size(130, 431);
             this.tcTabs.TabIndex = 7;
             // 
-            // tpContacts
+            // tpContactsMessageForm
             // 
-            this.tpContacts.BackColor = System.Drawing.SystemColors.Window;
-            this.tpContacts.Controls.Add(this.dgvContacts);
-            this.tpContacts.ImageKey = "CONTACT.png";
-            this.tpContacts.Location = new System.Drawing.Point(4, 22);
-            this.tpContacts.Name = "tpContacts";
-            this.tpContacts.Padding = new System.Windows.Forms.Padding(3);
-            this.tpContacts.Size = new System.Drawing.Size(122, 405);
-            this.tpContacts.TabIndex = 1;
-            this.tpContacts.Text = "Contacts";
+            this.tpContactsMessageForm.BackColor = System.Drawing.SystemColors.Window;
+            this.tpContactsMessageForm.Controls.Add(this.dgvContacts);
+            this.tpContactsMessageForm.ImageKey = "CONTACT.png";
+            this.tpContactsMessageForm.Location = new System.Drawing.Point(4, 22);
+            this.tpContactsMessageForm.Name = "tpContactsMessageForm";
+            this.tpContactsMessageForm.Padding = new System.Windows.Forms.Padding(3);
+            this.tpContactsMessageForm.Size = new System.Drawing.Size(122, 405);
+            this.tpContactsMessageForm.TabIndex = 1;
+            this.tpContactsMessageForm.Text = "Contacts";
             // 
             // dgvContacts
             // 
@@ -219,22 +219,15 @@ namespace PintoNS.Forms
             this.dgvContacts.Size = new System.Drawing.Size(116, 399);
             this.dgvContacts.TabIndex = 0;
             // 
-            // contactStatus
+            // tsddbMenuBarFile
             // 
-            this.contactStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.contactStatus.FillWeight = 24F;
-            this.contactStatus.HeaderText = "Contact Status";
-            this.contactStatus.Name = "contactStatus";
-            this.contactStatus.ReadOnly = true;
-            this.contactStatus.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.contactStatus.Width = 24;
+            this.tsddbMenuBarFile.Name = "tsddbMenuBarFile";
+            this.tsddbMenuBarFile.Size = new System.Drawing.Size(23, 23);
             // 
-            // contactName
+            // tsmiMenuBarFileClearSavedData
             // 
-            this.contactName.FillWeight = 84F;
-            this.contactName.HeaderText = "Contact Name";
-            this.contactName.Name = "contactName";
-            this.contactName.ReadOnly = true;
+            this.tsmiMenuBarFileClearSavedData.Name = "tsmiMenuBarFileClearSavedData";
+            this.tsmiMenuBarFileClearSavedData.Size = new System.Drawing.Size(32, 19);
             // 
             // txtSearchBox
             // 
@@ -265,6 +258,23 @@ namespace PintoNS.Forms
             this.MSGFormAddContactButton.UseVisualStyleBackColor = true;
             this.MSGFormAddContactButton.Click += new System.EventHandler(this.tsmiMenuBarFileAddContact_Click);
             // 
+            // contactStatus
+            // 
+            this.contactStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.contactStatus.FillWeight = 24F;
+            this.contactStatus.HeaderText = "Contact Status";
+            this.contactStatus.Name = "contactStatus";
+            this.contactStatus.ReadOnly = true;
+            this.contactStatus.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.contactStatus.Width = 24;
+            // 
+            // contactName
+            // 
+            this.contactName.FillWeight = 84F;
+            this.contactName.HeaderText = "Contact Name";
+            this.contactName.Name = "contactName";
+            this.contactName.ReadOnly = true;
+            // 
             // MessageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -287,7 +297,7 @@ namespace PintoNS.Forms
             this.ssStatusStrip.ResumeLayout(false);
             this.ssStatusStrip.PerformLayout();
             this.tcTabs.ResumeLayout(false);
-            this.tpContacts.ResumeLayout(false);
+            this.tpContactsMessageForm.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvContacts)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -306,13 +316,13 @@ namespace PintoNS.Forms
         private System.Windows.Forms.Button btnColor;
         private System.Windows.Forms.ColorDialog cdPicker;
         private System.Windows.Forms.TabControl tcTabs;
-        private System.Windows.Forms.TabPage tpContacts;
+        private System.Windows.Forms.TabPage tpContactsMessageForm;
         public System.Windows.Forms.DataGridView dgvContacts;
-        private System.Windows.Forms.DataGridViewImageColumn contactStatus;
         private ToolStripDropDownButton tsddbMenuBarFile;
         private ToolStripMenuItem tsmiMenuBarFileClearSavedData;
-        private System.Windows.Forms.DataGridViewTextBoxColumn contactName;
         private Controls.TextBoxWithPlaceholderSupport txtSearchBox;
         private System.Windows.Forms.Button MSGFormAddContactButton;
+        private DataGridViewImageColumn contactStatus;
+        private DataGridViewTextBoxColumn contactName;
     }
 }

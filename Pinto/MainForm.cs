@@ -356,6 +356,16 @@ namespace PintoNS
             Close();
         }
 
+        private void tsddbMenuBarTools_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripSeparator1_Click(object sender, EventArgs e)
+        {
+
+        }
+
         /*  public async Task CheckForUpdate()
           {
               if (!await PintoUpdater.IsLatest())
