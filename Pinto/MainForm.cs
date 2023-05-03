@@ -356,24 +356,25 @@ namespace PintoNS
             Close();
         }
 
-      /*  public async Task CheckForUpdate()
-        {
-            if (!await PintoUpdater.IsLatest())
-            {
-                MsgBox.ShowPromptNotification(this,
-                    "An update is available, do you want to download it?",
-                    "Update Available",
-                    MsgBoxIconType.QUESTION,
-                    true, async (MsgBoxButtonType btn) =>
-                    {
-                        if (btn == MsgBoxButtonType.YES)
-                        {
-                            byte[] file = await PintoUpdater.GetUpdateFile();
-                            if (file == null) return;
-                            File.WriteAllBytes(Path.Combine(DataFolder, "PintoSetup.msi"), file);
-                        }
-                    });
-             }
-        }
-   */ }
+        /*  public async Task CheckForUpdate()
+          {
+              if (!await PintoUpdater.IsLatest())
+              {
+                  MsgBox.ShowPromptNotification(this,
+                      "An update is available, do you want to download it?",
+                      "Update Available",
+                      MsgBoxIconType.QUESTION,
+                      true, async (MsgBoxButtonType btn) =>
+                      {
+                          if (btn == MsgBoxButtonType.YES)
+                          {
+                              byte[] file = await PintoUpdater.GetUpdateFile();
+                              if (file == null) return;
+                              File.WriteAllBytes(Path.Combine(DataFolder, "PintoSetup.msi"), file);
+                          }
+                      });
+               }
+          }
+     */
+    }
 }

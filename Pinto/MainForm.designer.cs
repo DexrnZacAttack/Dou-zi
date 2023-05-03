@@ -59,6 +59,7 @@ namespace PintoNS
             this.tsmiStatusBarStatusInvisible = new System.Windows.Forms.ToolStripMenuItem();
             this.tsslStatusBarStatusText = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsMenuBar = new System.Windows.Forms.ToolStrip();
+            this.tsmiMenuBarAbout = new System.Windows.Forms.ToolStripButton();
             this.tsddbMenuBarFile = new System.Windows.Forms.ToolStripDropDownButton();
             this.tsmiMenuBarFileAddContact = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiMenuBarFileRemoveContact = new System.Windows.Forms.ToolStripMenuItem();
@@ -68,7 +69,6 @@ namespace PintoNS
             this.tsmiMenuBarToolsOptions = new System.Windows.Forms.ToolStripMenuItem();
             this.tsddbMenuBarHelp = new System.Windows.Forms.ToolStripDropDownButton();
             this.tsmiMenuBarHelpToggleConsole = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiMenuBarHelpAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.niTray = new System.Windows.Forms.NotifyIcon(this.components);
             this.cmsTray = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmiTrayChangeStatus = new System.Windows.Forms.ToolStripMenuItem();
@@ -98,19 +98,20 @@ namespace PintoNS
             // 
             // pQuickActionBar
             // 
-            this.pQuickActionBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pQuickActionBar.BackColor = System.Drawing.Color.Transparent;
             this.pQuickActionBar.Controls.Add(this.label1);
-            this.pQuickActionBar.Location = new System.Drawing.Point(0, 24);
+            this.pQuickActionBar.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pQuickActionBar.Location = new System.Drawing.Point(0, 419);
             this.pQuickActionBar.Name = "pQuickActionBar";
-            this.pQuickActionBar.Size = new System.Drawing.Size(269, 24);
+            this.pQuickActionBar.Size = new System.Drawing.Size(269, 27);
             this.pQuickActionBar.TabIndex = 1;
+            this.pQuickActionBar.Visible = false;
             // 
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(65, 7);
+            this.label1.Location = new System.Drawing.Point(65, 8);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(135, 13);
             this.label1.TabIndex = 1;
@@ -146,20 +147,20 @@ namespace PintoNS
             this.tcTabs.Controls.Add(this.tpContacts);
             this.tcTabs.Controls.Add(this.tpCall);
             this.tcTabs.ImageList = this.ilTabImages;
-            this.tcTabs.Location = new System.Drawing.Point(3, 72);
+            this.tcTabs.Location = new System.Drawing.Point(0, 96);
             this.tcTabs.Name = "tcTabs";
             this.tcTabs.SelectedIndex = 0;
-            this.tcTabs.Size = new System.Drawing.Size(266, 278);
+            this.tcTabs.Size = new System.Drawing.Size(269, 328);
             this.tcTabs.TabIndex = 2;
             // 
             // tpLogin
             // 
-            this.tpLogin.BackColor = System.Drawing.SystemColors.Window;
+            this.tpLogin.BackColor = System.Drawing.Color.Transparent;
             this.tpLogin.Controls.Add(this.llLogin);
             this.tpLogin.ImageKey = "HOUSE.png";
             this.tpLogin.Location = new System.Drawing.Point(4, 23);
             this.tpLogin.Name = "tpLogin";
-            this.tpLogin.Size = new System.Drawing.Size(258, 251);
+            this.tpLogin.Size = new System.Drawing.Size(261, 301);
             this.tpLogin.TabIndex = 0;
             this.tpLogin.Text = "Login";
             // 
@@ -183,7 +184,7 @@ namespace PintoNS
             this.tpConnecting.Location = new System.Drawing.Point(4, 23);
             this.tpConnecting.Name = "tpConnecting";
             this.tpConnecting.Padding = new System.Windows.Forms.Padding(3);
-            this.tpConnecting.Size = new System.Drawing.Size(258, 251);
+            this.tpConnecting.Size = new System.Drawing.Size(261, 303);
             this.tpConnecting.TabIndex = 2;
             this.tpConnecting.Text = "Connecting";
             // 
@@ -215,7 +216,7 @@ namespace PintoNS
             this.tpContacts.Location = new System.Drawing.Point(4, 23);
             this.tpContacts.Name = "tpContacts";
             this.tpContacts.Padding = new System.Windows.Forms.Padding(3);
-            this.tpContacts.Size = new System.Drawing.Size(258, 251);
+            this.tpContacts.Size = new System.Drawing.Size(261, 303);
             this.tpContacts.TabIndex = 1;
             this.tpContacts.Text = "Contacts";
             // 
@@ -243,7 +244,7 @@ namespace PintoNS
             this.dgvContacts.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgvContacts.RowHeadersVisible = false;
             this.dgvContacts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvContacts.Size = new System.Drawing.Size(252, 245);
+            this.dgvContacts.Size = new System.Drawing.Size(255, 297);
             this.dgvContacts.TabIndex = 0;
             this.dgvContacts.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvContacts_CellDoubleClick);
             this.dgvContacts.SelectionChanged += new System.EventHandler(this.dgvContacts_SelectionChanged);
@@ -274,7 +275,7 @@ namespace PintoNS
             this.tpCall.Location = new System.Drawing.Point(4, 23);
             this.tpCall.Name = "tpCall";
             this.tpCall.Padding = new System.Windows.Forms.Padding(3);
-            this.tpCall.Size = new System.Drawing.Size(258, 251);
+            this.tpCall.Size = new System.Drawing.Size(261, 303);
             this.tpCall.TabIndex = 3;
             this.tpCall.UseVisualStyleBackColor = true;
             // 
@@ -322,13 +323,15 @@ namespace PintoNS
             // 
             // ssStatusBar
             // 
-            this.ssStatusBar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ssStatusBar.AutoSize = false;
+            this.ssStatusBar.BackColor = System.Drawing.Color.Transparent;
+            this.ssStatusBar.Dock = System.Windows.Forms.DockStyle.None;
             this.ssStatusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsddbStatusBarStatus,
             this.tsslStatusBarStatusText});
             this.ssStatusBar.Location = new System.Drawing.Point(0, 25);
             this.ssStatusBar.Name = "ssStatusBar";
-            this.ssStatusBar.Size = new System.Drawing.Size(269, 22);
+            this.ssStatusBar.Size = new System.Drawing.Size(269, 42);
             this.ssStatusBar.TabIndex = 3;
             this.ssStatusBar.Text = "statusStrip1";
             // 
@@ -388,17 +391,31 @@ namespace PintoNS
             // 
             // tsMenuBar
             // 
+            this.tsMenuBar.AutoSize = false;
+            this.tsMenuBar.BackColor = System.Drawing.Color.Transparent;
             this.tsMenuBar.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.tsMenuBar.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.tsMenuBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiMenuBarAbout,
             this.tsddbMenuBarFile,
             this.tsddbMenuBarTools,
             this.tsddbMenuBarHelp});
             this.tsMenuBar.Location = new System.Drawing.Point(0, 0);
             this.tsMenuBar.Name = "tsMenuBar";
             this.tsMenuBar.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.tsMenuBar.Size = new System.Drawing.Size(269, 25);
+            this.tsMenuBar.Size = new System.Drawing.Size(269, 29);
             this.tsMenuBar.TabIndex = 0;
             this.tsMenuBar.Text = "toolStrip1";
+            // 
+            // tsmiMenuBarAbout
+            // 
+            this.tsmiMenuBarAbout.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsmiMenuBarAbout.Image = global::PintoNS.Logo.LOGO_WHITE_LARGE_TRANSPARENT;
+            this.tsmiMenuBarAbout.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsmiMenuBarAbout.Name = "tsmiMenuBarAbout";
+            this.tsmiMenuBarAbout.Size = new System.Drawing.Size(36, 36);
+            this.tsmiMenuBarAbout.Text = "toolStripButton1";
+            this.tsmiMenuBarAbout.Click += new System.EventHandler(this.tsmiMenuBarHelpAbout_Click);
             // 
             // tsddbMenuBarFile
             // 
@@ -412,7 +429,7 @@ namespace PintoNS
             this.tsddbMenuBarFile.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsddbMenuBarFile.Name = "tsddbMenuBarFile";
             this.tsddbMenuBarFile.ShowDropDownArrow = false;
-            this.tsddbMenuBarFile.Size = new System.Drawing.Size(29, 22);
+            this.tsddbMenuBarFile.Size = new System.Drawing.Size(29, 36);
             this.tsddbMenuBarFile.Text = "File";
             // 
             // tsmiMenuBarFileAddContact
@@ -452,7 +469,7 @@ namespace PintoNS
             this.tsddbMenuBarTools.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsddbMenuBarTools.Name = "tsddbMenuBarTools";
             this.tsddbMenuBarTools.ShowDropDownArrow = false;
-            this.tsddbMenuBarTools.Size = new System.Drawing.Size(38, 22);
+            this.tsddbMenuBarTools.Size = new System.Drawing.Size(38, 36);
             this.tsddbMenuBarTools.Text = "Tools";
             // 
             // tsmiMenuBarToolsOptions
@@ -466,13 +483,12 @@ namespace PintoNS
             // 
             this.tsddbMenuBarHelp.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.tsddbMenuBarHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiMenuBarHelpToggleConsole,
-            this.tsmiMenuBarHelpAbout});
+            this.tsmiMenuBarHelpToggleConsole});
             this.tsddbMenuBarHelp.Image = ((System.Drawing.Image)(resources.GetObject("tsddbMenuBarHelp.Image")));
             this.tsddbMenuBarHelp.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsddbMenuBarHelp.Name = "tsddbMenuBarHelp";
             this.tsddbMenuBarHelp.ShowDropDownArrow = false;
-            this.tsddbMenuBarHelp.Size = new System.Drawing.Size(36, 22);
+            this.tsddbMenuBarHelp.Size = new System.Drawing.Size(36, 26);
             this.tsddbMenuBarHelp.Text = "Help";
             // 
             // tsmiMenuBarHelpToggleConsole
@@ -481,13 +497,6 @@ namespace PintoNS
             this.tsmiMenuBarHelpToggleConsole.Size = new System.Drawing.Size(153, 22);
             this.tsmiMenuBarHelpToggleConsole.Text = "Toggle console";
             this.tsmiMenuBarHelpToggleConsole.Click += new System.EventHandler(this.tsmiMenuBarHelpToggleConsole_Click);
-            // 
-            // tsmiMenuBarHelpAbout
-            // 
-            this.tsmiMenuBarHelpAbout.Name = "tsmiMenuBarHelpAbout";
-            this.tsmiMenuBarHelpAbout.Size = new System.Drawing.Size(153, 22);
-            this.tsmiMenuBarHelpAbout.Text = "About";
-            this.tsmiMenuBarHelpAbout.Click += new System.EventHandler(this.tsmiMenuBarHelpAbout_Click);
             // 
             // niTray
             // 
@@ -581,7 +590,7 @@ namespace PintoNS
             this.txtSearchBox.BackColor = System.Drawing.Color.White;
             this.txtSearchBox.Enabled = false;
             this.txtSearchBox.ForeColor = System.Drawing.Color.DimGray;
-            this.txtSearchBox.Location = new System.Drawing.Point(3, 50);
+            this.txtSearchBox.Location = new System.Drawing.Point(3, 70);
             this.txtSearchBox.Name = "txtSearchBox";
             this.txtSearchBox.PlaceholderText = "Type the username you would like to search for";
             this.txtSearchBox.PlaceholderTextForeColor = System.Drawing.Color.DimGray;
@@ -594,11 +603,13 @@ namespace PintoNS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(269, 400);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.ClientSize = new System.Drawing.Size(269, 446);
+            this.Controls.Add(this.ssStatusBar);
             this.Controls.Add(this.btnEndCall);
             this.Controls.Add(this.btnStartCall);
             this.Controls.Add(this.txtSearchBox);
-            this.Controls.Add(this.ssStatusBar);
             this.Controls.Add(this.tcTabs);
             this.Controls.Add(this.pQuickActionBar);
             this.Controls.Add(this.tsMenuBar);
@@ -654,7 +665,6 @@ namespace PintoNS
         private System.Windows.Forms.TabPage tpConnecting;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lConnectingStatus;
-        private System.Windows.Forms.ToolStripMenuItem tsmiMenuBarHelpAbout;
         private System.Windows.Forms.DataGridViewImageColumn contactStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn contactName;
         private System.Windows.Forms.Label label1;
@@ -679,5 +689,6 @@ namespace PintoNS
         private System.Windows.Forms.ToolStripMenuItem tsmiTrayChangeStatusBusy;
         private System.Windows.Forms.ToolStripMenuItem tsmiTrayChangeStatusInvisible;
         private System.Windows.Forms.ToolStripMenuItem tsmiMenuBarFileExit;
+        private System.Windows.Forms.ToolStripButton tsmiMenuBarAbout;
     }
 }

@@ -7,7 +7,7 @@
     <ProjectGuid>{3C666CE0-2F98-4C12-8B7D-AF1AFC5480B8}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>PintoNS</RootNamespace>
-    <AssemblyName>Pinto</AssemblyName>
+    <AssemblyName>DouZi</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -46,7 +46,7 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>LOGO.ICO</ApplicationIcon>
+    <ApplicationIcon>LOGO_LARGE.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Win32.Registry, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -328,6 +328,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="LOGO.ICO" />
+    <Content Include="LOGO_LARGE.ico" />
+    <Content Include="LOGO_LARGE_NOTEXT.ico" />
     <Content Include="Resources\Assets\ADDCONTACT_DISABLED.png" />
     <Content Include="Resources\Assets\ADDCONTACT_ENABLED.png" />
     <Content Include="Resources\Assets\CONTACT.png" />
@@ -373,6 +375,11 @@
     <Content Include="Resources\Logo\LOGO.png" />
     <Content Include="Resources\Logo\LOGO_BACKGROUND.png" />
     <Content Include="Resources\Logo\LOGO_LARGE.png" />
+    <None Include="Resources\Logo\LOGO_WHITE.png" />
+    <None Include="Resources\Logo\LOGO_LARGE_NOTEXT.png" />
+    <None Include="Resources\Logo\LOGO_LARGE_WHITE.png" />
+    <None Include="Resources\Logo\LOGO_NOTEXT.png" />
+    <None Include="Resources\Logo\LOGO_WHITE_LARGE_TRANSPARENT.png" />
     <Content Include="Resources\Sounds\BUSY.WAV" />
     <Content Include="Resources\Sounds\CALL_ERROR1.WAV" />
     <Content Include="Resources\Sounds\CALL_ERROR2.WAV" />
