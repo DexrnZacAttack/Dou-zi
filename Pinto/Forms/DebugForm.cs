@@ -55,5 +55,10 @@ namespace PintoNS.Forms
             Program.VERSION = (VersionReportedToServerTextBox.Text);
             CurrentVersionText.Text = $"Current Client Version: {Program.VERSION}";
         }
+
+        private void VersionReportedToServerTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

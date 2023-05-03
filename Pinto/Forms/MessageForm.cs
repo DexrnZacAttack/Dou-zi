@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.IO;
 
 namespace PintoNS.Forms
 {
@@ -22,37 +23,72 @@ namespace PintoNS.Forms
         public Contact Receiver;
         private bool isTypingLastStatus;
         public bool HasBeenInactive;
+        public InWindowPopupController InWindowPopupController;
 
         public MessageForm(MainForm mainForm, Contact receiver)
         {
             InitializeComponent();
             this.mainForm = mainForm;
+            InWindowPopupController = new InWindowPopupController(this, 25);
             Receiver = receiver;
             Text = $"Pinto! - Instant Messaging - Chatting with {Receiver.Name}";
             UpdateColorPicker();
-            mainForm.ContactsMgr.OnChange += ContactsMgr_OnChange;
-            ContactsMgr_OnChange(this, EventArgs.Empty);
+            LoadChat();
         }
 
-        private void ContactsMgr_OnChange(object sender, EventArgs e)
+        private void LoadChat()
         {
-            if (IsDisposed || mainForm == null) return;
-            dgvContacts.Rows.Clear();
-
-            //to copy the rows you need to have created the columns:
-            foreach (DataGridViewColumn c in mainForm.dgvContacts.Columns)
+            Program.Console.WriteMessage("[General] Loading chat...");
+            try
             {
-                dgvContacts.Columns.Add(c.Clone() as DataGridViewColumn);
+                string filePath = Path.Combine(mainForm.DataFolder, "chats", $"{Receiver.Name}.txt");
+                if (!File.Exists(filePath)) return;
+                rtxtMessages.Rtf = File.ReadAllText(filePath);
             }
-
-            //then you can copy the rows values one by one (working on the selectedrows collection)
-            foreach (DataGridViewRow r in mainForm.dgvContacts.Rows)
+            catch (Exception ex)
             {
-                int index = dgvContacts.Rows.Add(r.Clone() as DataGridViewRow);
-                foreach (DataGridViewCell o in r.Cells)
-                {
-                    dgvContacts.Rows[index].Cells[o.ColumnIndex].Value = o.Value;
-                }
+                Program.Console.WriteMessage($"[General]" +
+                    $" Unable to load the chat: {ex}");
+                MsgBox.ShowNotification(this,
+                    "Unable to load the chat!",
+                    "Error", MsgBoxIconType.ERROR);
+            }
+        }
+
+        private void SaveChat()
+        {
+            Program.Console.WriteMessage("[General] Saving chat...");
+            try
+            {
+                string filePath = Path.Combine(mainForm.DataFolder, "chats", $"{Receiver.Name}.txt");
+                File.WriteAllText(filePath, rtxtMessages.Rtf);
+            }
+            catch (Exception ex)
+            {
+                Program.Console.WriteMessage($"[General]" +
+                    $" Unable to save the chat: {ex}");
+                MsgBox.ShowNotification(this,
+                    "Unable to save the chat",
+                    "Error", MsgBoxIconType.ERROR);
+            }
+        }
+
+        private void DeleteChat()
+        {
+            Program.Console.WriteMessage("[General] Deleting chat...");
+            try
+            {
+                string filePath = Path.Combine(mainForm.DataFolder, "chats", $"{Receiver.Name}.txt");
+                if (!File.Exists(filePath)) return;
+                File.Delete(filePath);
+            }
+            catch (Exception ex)
+            {
+                Program.Console.WriteMessage($"[General]" +
+                    $" Unable to delete the chat: {ex}");
+                MsgBox.ShowNotification(this,
+                    "Unable to delete the chat",
+                    "Error", MsgBoxIconType.ERROR);
             }
         }
 
@@ -65,12 +101,13 @@ namespace PintoNS.Forms
                 rtxtMessages.SelectionColor = color;
                 rtxtMessages.AppendText(msg + (newLine ? Environment.NewLine : ""));
                 rtxtMessages.SelectionColor = rtxtMessages.ForeColor;
+                SaveChat();
             }));
         }
 
-        public void WriteRTF(string msg) 
+        public void WriteRTF(string msg)
         {
-            Invoke(new Action(() => 
+            Invoke(new Action(() =>
             {
                 rtxtMessages.SelectionStart = rtxtMessages.TextLength;
                 rtxtMessages.SelectionLength = 0;
@@ -79,10 +116,11 @@ namespace PintoNS.Forms
                 {
                     rtxtMessages.SelectedRtf = msg;
                 }
-                catch 
+                catch
                 { 
                     WriteMessage("** IMPROPERLY FORMATED MESSAGE **", Color.Red); 
                 }
+                SaveChat();
             }));
         }
 
@@ -96,27 +134,23 @@ namespace PintoNS.Forms
 
         private void rtxtInput_KeyDown(object sender, KeyEventArgs e)
         {
-            if (!System.Windows.Input.Keyboard.Modifiers
-                    .HasFlag(System.Windows.Input.ModifierKeys.Control) && 
-                    e.KeyCode == Keys.Enter)
+            if (!Keyboard.Modifiers.HasFlag(System.Windows
+               .Input.ModifierKeys.Control) && e.KeyCode == Keys.Enter)
             {
                 btnSend.PerformClick();
                 e.Handled = true;
                 e.SuppressKeyPress = true;
             }
         }
-
         private void rtxtMessages_TextChanged(object sender, EventArgs e)
         {
             rtxtMessages.SelectionStart = rtxtMessages.Text.Length;
             rtxtMessages.ScrollToCaret();
         }
-
         private void rtxtInput_TextChanged(object sender, EventArgs e)
         {
             if (mainForm.NetManager == null) return;
             string text = rtxtInput.Text;
-
             if (!string.IsNullOrWhiteSpace(text) && !isTypingLastStatus)
             {
                 isTypingLastStatus = true;
@@ -128,48 +162,39 @@ namespace PintoNS.Forms
                 //mainForm.NetManager.NetHandler.SendTypingPacket(Receiver.Name, false);
             }
         }
-
         private void btnSend_Click(object sender, EventArgs e)
         {
             string input = rtxtInput.Rtf;
             string inputStripped = rtxtInput.Text;
-
             if (string.IsNullOrWhiteSpace(inputStripped))
             {
-                MsgBox.ShowNotification(this, "The specified message is invalid!", "Error", 
+                MsgBox.ShowNotification(this, "The specified message is invalid!", "Error",
                     MsgBoxIconType.ERROR);
                 return;
             }
-
             rtxtInput.Clear();
-            if (mainForm.NetManager != null) 
+            if (mainForm.NetManager != null)
             {
                 mainForm.NetManager.NetHandler.SendMessagePacket(Receiver.Name, input);
             }
         }
-
         private void MessageForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (mainForm.MessageForms != null)
                 mainForm.MessageForms.Remove(this);
-            mainForm.ContactsMgr.OnChange -= ContactsMgr_OnChange;
         }
-
         private void tsmiMenuBarHelpAbout_Click(object sender, EventArgs e)
         {
             new AboutForm().ShowDialog(this);
         }
-
         private void MessageForm_Activated(object sender, EventArgs e)
         {
             HasBeenInactive = false;
         }
-
         private void rtxtMessages_LinkClicked(object sender, LinkClickedEventArgs e)
         {
             Process.Start(e.LinkText);
         }
-
         private void btnTalk_Click(object sender, EventArgs e)
         {
             MsgBox.ShowNotification(this,
@@ -177,7 +202,6 @@ namespace PintoNS.Forms
                 "Option Unavailable",
                 MsgBoxIconType.WARNING);
         }
-
         private void btnBlock_Click(object sender, EventArgs e)
         {
             MsgBox.ShowNotification(this,
@@ -185,17 +209,21 @@ namespace PintoNS.Forms
                 "Option Unavailable",
                 MsgBoxIconType.WARNING);
         }
-
         private void btnColor_Click(object sender, EventArgs e)
         {
             cdPicker.ShowDialog();
             rtxtInput.SelectionColor = cdPicker.Color;
             UpdateColorPicker();
         }
-
         private void rtxtInput_SelectionChanged(object sender, EventArgs e)
         {
             UpdateColorPicker();
+        }
+
+        private void tsmiMenuBarFileClearSavedData_Click(object sender, EventArgs e)
+        {
+            rtxtMessages.Rtf = null;
+            DeleteChat();
         }
 
         private void tsmiMenuBarFileAddContact_Click(object sender, EventArgs e)

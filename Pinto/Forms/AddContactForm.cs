@@ -47,5 +47,10 @@ namespace PintoNS.Forms
                 e.SuppressKeyPress = true;
             }
         }
+
+        private void txtContactName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

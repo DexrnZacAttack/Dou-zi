@@ -1,4 +1,6 @@
-﻿namespace PintoNS.Forms
+﻿using System.Windows.Forms;
+
+namespace PintoNS.Forms
 {
     partial class MessageForm
     {
@@ -44,6 +46,8 @@
             this.tpContacts = new System.Windows.Forms.TabPage();
             this.dgvContacts = new System.Windows.Forms.DataGridView();
             this.contactStatus = new System.Windows.Forms.DataGridViewImageColumn();
+            this.tsddbMenuBarFile = new System.Windows.Forms.ToolStripDropDownButton();
+            this.tsmiMenuBarFileClearSavedData = new System.Windows.Forms.ToolStripMenuItem();
             this.contactName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtSearchBox = new PintoNS.Controls.TextBoxWithPlaceholderSupport();
             this.MSGFormAddContactButton = new System.Windows.Forms.Button();
@@ -305,6 +309,8 @@
         private System.Windows.Forms.TabPage tpContacts;
         public System.Windows.Forms.DataGridView dgvContacts;
         private System.Windows.Forms.DataGridViewImageColumn contactStatus;
+        private ToolStripDropDownButton tsddbMenuBarFile;
+        private ToolStripMenuItem tsmiMenuBarFileClearSavedData;
         private System.Windows.Forms.DataGridViewTextBoxColumn contactName;
         private Controls.TextBoxWithPlaceholderSupport txtSearchBox;
         private System.Windows.Forms.Button MSGFormAddContactButton;

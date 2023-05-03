@@ -3,8 +3,6 @@ using PintoNS.Networking;
 using PintoNS;
 using System;
 using System.Collections.Generic;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -20,6 +18,8 @@ using System.Net.Sockets;
 using System.Net;
 using System.Threading;
 using System.IO;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace PintoNS
 {
@@ -34,14 +34,7 @@ namespace PintoNS
         public NetworkManager NetManager;
         public User CurrentUser = new User();
         public List<MessageForm> MessageForms;
-        /*
-        public AudioRecorderPlayer AudioRecPlyr;
-        public bool InCall;
-        public string CallTarget;
-        public UdpClient CallClient;
-        public IPEndPoint CallTargetIP;
-        public Thread CallReceiveThread;*/
-        
+
         public MainForm()
         {
             InitializeComponent();
@@ -49,7 +42,7 @@ namespace PintoNS
             PopupController = new PopupController();
         }
 
-        internal void OnLogin() 
+        internal void OnLogin()
         {
             tcTabs.TabPages.Clear();
             tcTabs.TabPages.Add(tpContacts);
@@ -63,12 +56,12 @@ namespace PintoNS
             tsmiMenuBarFileAddContact.Enabled = true;
             tsmiMenuBarFileRemoveContact.Enabled = true;
             tsmiMenuBarFileLogOut.Enabled = true;
-            Text = $"豆子 - {CurrentUser.Name}";
+            Text = $"Pinto! - {CurrentUser.Name}";
 
             new SoundPlayer(Sounds.LOGIN).Play();
         }
 
-        internal void OnStatusChange(UserStatus status) 
+        internal void OnStatusChange(UserStatus status)
         {
             tsddbStatusBarStatus.Enabled = status != UserStatus.OFFLINE;
             tsddbStatusBarStatus.Image = User.StatusToBitmap(status);
@@ -83,7 +76,7 @@ namespace PintoNS
             tcTabs.TabPages.Add(tpLogin);
             OnStatusChange(UserStatus.OFFLINE);
 
-            if (MessageForms != null && MessageForms.Count > 0) 
+            if (MessageForms != null && MessageForms.Count > 0)
             {
                 foreach (MessageForm msgForm in MessageForms.ToArray())
                 {
@@ -104,8 +97,7 @@ namespace PintoNS
             tsmiMenuBarFileAddContact.Enabled = false;
             tsmiMenuBarFileRemoveContact.Enabled = false;
             tsmiMenuBarFileLogOut.Enabled = false;
-            Text = "豆子!";
-            //InCall = false;
+            Text = "Pinto!";
 
             if (!noSound)
                 new SoundPlayer(Sounds.LOGOUT).Play();
@@ -115,14 +107,12 @@ namespace PintoNS
         {
             niTray.Visible = true;
             niTray.Icon = User.StatusToIcon(CurrentUser.Status);
-            niTray.Text = $"豆子! - " + 
-                (CurrentUser.Status != UserStatus.OFFLINE ? 
+            niTray.Text = $"Pinto! - " +
+                (CurrentUser.Status != UserStatus.OFFLINE ?
                 $"{CurrentUser.Name} - {User.StatusToText(CurrentUser.Status)}" : "Not logged in");
         }
 
-
-
-        public async Task Connect(string ip, int port, string username, string password) 
+        public async Task Connect(string ip, int port, string username, string password)
         {
             tcTabs.TabPages.Clear();
             tcTabs.TabPages.Add(tpConnecting);
@@ -139,7 +129,7 @@ namespace PintoNS
                 MsgBox.ShowNotification(this, $"Unable to connect to {ip}:{port}:" +
                     $" {connectResult.Item2.Message}", "Connection Error", MsgBoxIconType.ERROR);
             }
-            else 
+            else
             {
                 CurrentUser.Name = username;
                 lConnectingStatus.Text = "Authenticating...";
@@ -172,11 +162,11 @@ namespace PintoNS
             }
         }
 
-        public void Disconnect() 
+        public void Disconnect()
         {
             Program.Console.WriteMessage("[Networking] Disconnecting...");
             bool wasLoggedIn = false;
-            if (NetManager != null) 
+            if (NetManager != null)
             {
                 wasLoggedIn = NetManager.NetHandler.LoggedIn;
                 if (NetManager.IsActive)
@@ -185,12 +175,12 @@ namespace PintoNS
             OnLogout(!wasLoggedIn);
             NetManager = null;
         }
-        
-        public MessageForm GetMessageFormFromReceiverName(string name) 
+
+        public MessageForm GetMessageFormFromReceiverName(string name)
         {
             Program.Console.WriteMessage($"Getting MessageForm for {name}...");
 
-            foreach (MessageForm msgForm in MessageForms.ToArray()) 
+            foreach (MessageForm msgForm in MessageForms.ToArray())
             {
                 if (msgForm.Receiver.Name == name)
                     return msgForm;
@@ -204,34 +194,22 @@ namespace PintoNS
             return messageForm;
         }
 
-        /*
-        public void EndCall()
-        {
-            if (!InCall) return;
-            Program.Console.WriteMessage("[General] Ending call...");
-            NetManager.NetHandler.SendCallEndPacket();
-            OnCallStop();
-        }*/
-
-        private void MainForm_Load(object sender, EventArgs e)
+        private async void MainForm_Load(object sender, EventArgs e)
         {
             Program.Console.WriteMessage("Performing first time initialization...");
+
             OnLogout(true);
-            if (!Directory.Exists(DataFolder)) 
-            {
+            if (!Directory.Exists(DataFolder))
                 Directory.CreateDirectory(DataFolder);
-            }
+            if (!Directory.Exists(Path.Combine(DataFolder, "chats")))
+                Directory.CreateDirectory(Path.Combine(DataFolder, "chats"));
+
+            //await CheckForUpdate();
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             Program.Console.WriteMessage("Quitting...");
-            /*
-            if (InCall)
-            {
-                OnCallStop();
-                NetManager.NetHandler.SendCallEndPacket();
-            }*/
             Disconnect();
         }
 
@@ -240,7 +218,7 @@ namespace PintoNS
             string contactName = ContactsMgr.GetContactNameFromRow(e.RowIndex);
             Contact contact = ContactsMgr.GetContact(contactName);
 
-            if (contactName != null && contact != null) 
+            if (contactName != null && contact != null)
             {
                 MessageForm messageForm = GetMessageFormFromReceiverName(contactName);
                 messageForm.WindowState = FormWindowState.Normal;
@@ -291,12 +269,12 @@ namespace PintoNS
             if (NetManager == null) return;
             Program.Console.WriteMessage("[General] Changing status...");
             MsgBox.ShowPromptNotification(this, "If you choose to change your status to invisible," +
-                " your contacts will not be able to send you messages. Are you sure you want to continue?", "Status change confirmation", 
-                MsgBoxIconType.WARNING, false, (MsgBoxButtonType button) => 
-            {
-                if (button == MsgBoxButtonType.YES)
-                    NetManager.ChangeStatus(UserStatus.INVISIBLE);
-            });
+                " your contacts will not be able to send you messages. Are you sure you want to continue?", "Status change confirmation",
+                MsgBoxIconType.WARNING, false, (MsgBoxButtonType button) =>
+                {
+                    if (button == MsgBoxButtonType.YES)
+                        NetManager.ChangeStatus(UserStatus.INVISIBLE);
+                });
         }
 
         private void tsmiMenuBarFileAddContact_Click(object sender, EventArgs e)
@@ -337,27 +315,10 @@ namespace PintoNS
 
         private void btnStartCall_Click(object sender, EventArgs e)
         {
-            /*
-            if (InCall) return;
-
-            string contactName = ContactsMgr.GetContactNameFromRow(dgvContacts.SelectedRows[0].Index);
-            Contact contact = ContactsMgr.GetContact(contactName);
-
-            CallTarget = contactName;
-            Program.Console.WriteMessage("[General] Starting call...");
-            OnCallStart();
-
-            new SoundPlayer(Sounds.CALL_INIT).Play();
-            NetManager.NetHandler.SendCallStartPacket(contactName);
-            if (CallClient != null && CallClient.Client != null && CallClient.Client.LocalEndPoint != null)
-                NetManager.NetHandler.SendCallPartyInfoPacket(((IPEndPoint)CallClient.Client.LocalEndPoint).Port);
-            else
-                Program.Console.WriteMessage("[Networking] Unable to send the UDP client port!");*/
         }
 
         private void btnEndCall_Click(object sender, EventArgs e)
         {
-            //EndCall();
         }
 
         private void tsmiMenuBarHelpToggleConsole_Click(object sender, EventArgs e)
@@ -368,18 +329,13 @@ namespace PintoNS
                 Program.Console.Show();
         }
 
-        private void tsmiTrayExit_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
         private void MainForm_Resize(object sender, EventArgs e)
         {
-            if (WindowState == FormWindowState.Minimized) 
+            if (WindowState == FormWindowState.Minimized)
             {
                 Hide();
-                niTray.ShowBalloonTip(0, "Minimization Notice", "豆子 has been minimized to the system tray!" +
-                    " You can restore 豆子 by clicking on the system tray icon!", ToolTipIcon.Info);
+                niTray.ShowBalloonTip(0, "Minimization Notice", "Pinto! has been minimized to the system tray!" +
+                    " You can restore Pinto! by clicking on the system tray icon!", ToolTipIcon.Info);
             }
         }
 
@@ -395,9 +351,29 @@ namespace PintoNS
             optionsForm.ShowDialog(this);
         }
 
-        private void tpLogin_Click(object sender, EventArgs e)
+        private void tsmiMenuBarFileExit_Click(object sender, EventArgs e)
         {
-
+            Close();
         }
-    }
+
+      /*  public async Task CheckForUpdate()
+        {
+            if (!await PintoUpdater.IsLatest())
+            {
+                MsgBox.ShowPromptNotification(this,
+                    "An update is available, do you want to download it?",
+                    "Update Available",
+                    MsgBoxIconType.QUESTION,
+                    true, async (MsgBoxButtonType btn) =>
+                    {
+                        if (btn == MsgBoxButtonType.YES)
+                        {
+                            byte[] file = await PintoUpdater.GetUpdateFile();
+                            if (file == null) return;
+                            File.WriteAllBytes(Path.Combine(DataFolder, "PintoSetup.msi"), file);
+                        }
+                    });
+             }
+        }
+   */ }
 }

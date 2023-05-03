@@ -65,7 +65,7 @@ namespace PintoNS.Forms
                 data.Add("ip", txtIP.Text);
                 data.Add("port", (int)nudPort.Value);
 
-                File.WriteAllText(filePath, data.ToString(Newtonsoft.Json.Formatting.Indented));
+                File.WriteAllText(filePath, data.ToString(Formatting.Indented));
             }
             catch (Exception ex)
             {

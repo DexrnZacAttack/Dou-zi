@@ -63,6 +63,7 @@ namespace PintoNS
             this.tsmiMenuBarFileAddContact = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiMenuBarFileRemoveContact = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiMenuBarFileLogOut = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiMenuBarFileExit = new System.Windows.Forms.ToolStripMenuItem();
             this.tsddbMenuBarTools = new System.Windows.Forms.ToolStripDropDownButton();
             this.tsmiMenuBarToolsOptions = new System.Windows.Forms.ToolStripMenuItem();
             this.tsddbMenuBarHelp = new System.Windows.Forms.ToolStripDropDownButton();
@@ -161,7 +162,6 @@ namespace PintoNS
             this.tpLogin.Size = new System.Drawing.Size(258, 251);
             this.tpLogin.TabIndex = 0;
             this.tpLogin.Text = "Login";
-            this.tpLogin.Click += new System.EventHandler(this.tpLogin_Click);
             // 
             // llLogin
             // 
@@ -406,7 +406,8 @@ namespace PintoNS
             this.tsddbMenuBarFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiMenuBarFileAddContact,
             this.tsmiMenuBarFileRemoveContact,
-            this.tsmiMenuBarFileLogOut});
+            this.tsmiMenuBarFileLogOut,
+            this.tsmiMenuBarFileExit});
             this.tsddbMenuBarFile.Image = ((System.Drawing.Image)(resources.GetObject("tsddbMenuBarFile.Image")));
             this.tsddbMenuBarFile.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsddbMenuBarFile.Name = "tsddbMenuBarFile";
@@ -434,6 +435,13 @@ namespace PintoNS
             this.tsmiMenuBarFileLogOut.Size = new System.Drawing.Size(160, 22);
             this.tsmiMenuBarFileLogOut.Text = "Log out";
             this.tsmiMenuBarFileLogOut.Click += new System.EventHandler(this.tsmiMenuBarFileLogOut_Click);
+            // 
+            // tsmiMenuBarFileExit
+            // 
+            this.tsmiMenuBarFileExit.Name = "tsmiMenuBarFileExit";
+            this.tsmiMenuBarFileExit.Size = new System.Drawing.Size(160, 22);
+            this.tsmiMenuBarFileExit.Text = "Exit";
+            this.tsmiMenuBarFileExit.Click += new System.EventHandler(this.tsmiMenuBarFileExit_Click);
             // 
             // tsddbMenuBarTools
             // 
@@ -544,33 +552,25 @@ namespace PintoNS
             this.tsmiTrayExit.Name = "tsmiTrayExit";
             this.tsmiTrayExit.Size = new System.Drawing.Size(150, 22);
             this.tsmiTrayExit.Text = "Exit";
-            this.tsmiTrayExit.Click += new System.EventHandler(this.tsmiTrayExit_Click);
+            this.tsmiTrayExit.Click += new System.EventHandler(this.tsmiMenuBarFileExit_Click);
             // 
             // btnEndCall
             // 
-            this.btnEndCall.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnEndCall.Enabled = false;
-            this.btnEndCall.Image = global::PintoNS.Assets.ENDCALL_DISABLED;
-            this.btnEndCall.Location = new System.Drawing.Point(168, 356);
+            this.btnEndCall.Location = new System.Drawing.Point(15, 352);
             this.btnEndCall.Name = "btnEndCall";
-            this.btnEndCall.Size = new System.Drawing.Size(32, 32);
-            this.btnEndCall.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.btnEndCall.TabIndex = 6;
+            this.btnEndCall.Size = new System.Drawing.Size(100, 50);
+            this.btnEndCall.TabIndex = 1;
             this.btnEndCall.TabStop = false;
-            this.btnEndCall.Click += new System.EventHandler(this.btnEndCall_Click);
+            this.btnEndCall.Visible = false;
             // 
             // btnStartCall
             // 
-            this.btnStartCall.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnStartCall.Enabled = false;
-            this.btnStartCall.Image = global::PintoNS.Assets.STARTCALL_DISABLED;
-            this.btnStartCall.Location = new System.Drawing.Point(68, 356);
+            this.btnStartCall.Location = new System.Drawing.Point(139, 356);
             this.btnStartCall.Name = "btnStartCall";
-            this.btnStartCall.Size = new System.Drawing.Size(32, 32);
-            this.btnStartCall.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.btnStartCall.TabIndex = 5;
+            this.btnStartCall.Size = new System.Drawing.Size(100, 50);
+            this.btnStartCall.TabIndex = 2;
             this.btnStartCall.TabStop = false;
-            this.btnStartCall.Click += new System.EventHandler(this.btnStartCall_Click);
+            this.btnStartCall.Visible = false;
             // 
             // txtSearchBox
             // 
@@ -678,5 +678,6 @@ namespace PintoNS
         private System.Windows.Forms.ToolStripMenuItem tsmiTrayChangeStatusAway;
         private System.Windows.Forms.ToolStripMenuItem tsmiTrayChangeStatusBusy;
         private System.Windows.Forms.ToolStripMenuItem tsmiTrayChangeStatusInvisible;
+        private System.Windows.Forms.ToolStripMenuItem tsmiMenuBarFileExit;
     }
 }

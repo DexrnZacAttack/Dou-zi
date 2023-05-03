@@ -12,8 +12,8 @@ namespace PintoNS
     public static class Program
     {
         public static ConsoleForm Console;
-        public static string VERSION = "a1.1";
-        public const string DOUZIVERSION = "a1.0 Milestone 2 (豆子/DouZi)";
+        public static string VERSION = "a1.2-hotfix_1";
+        public const string DOUZIVERSION = "a1.1 (豆子/DouZi)";
         public static byte PROTOCOL_VERSION = 13;
 
         [STAThread]

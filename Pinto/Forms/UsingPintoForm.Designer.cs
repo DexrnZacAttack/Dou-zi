@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UsingPintoForm));
             this.tpRegister = new System.Windows.Forms.TabPage();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnRegisterBack = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
@@ -43,6 +44,7 @@
             this.btnRegister = new System.Windows.Forms.Button();
             this.tpMain = new System.Windows.Forms.TabPage();
             this.LinkToDebugUI = new System.Windows.Forms.LinkLabel();
+            this.pbAd = new System.Windows.Forms.PictureBox();
             this.btnRegisterPage = new System.Windows.Forms.LinkLabel();
             this.btnCancel = new System.Windows.Forms.Button();
             this.llForgotPassword = new System.Windows.Forms.LinkLabel();
@@ -58,17 +60,15 @@
             this.btnConnect = new System.Windows.Forms.Button();
             this.cbSavePassword = new System.Windows.Forms.CheckBox();
             this.tcSections = new System.Windows.Forms.TabControl();
-            this.pbAd = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tpRegister.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudRegisterPort)).BeginInit();
             this.tpMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbAd)).BeginInit();
             this.pLoginControls.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudPort)).BeginInit();
             this.tcSections.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbAd)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // tpRegister
@@ -84,6 +84,18 @@
             this.tpRegister.TabIndex = 1;
             this.tpRegister.Text = "Register";
             this.tpRegister.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(-4, -22);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(418, 136);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 16;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // btnRegisterBack
             // 
@@ -233,6 +245,18 @@
             this.LinkToDebugUI.Text = "Debug";
             this.LinkToDebugUI.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
+            // pbAd
+            // 
+            this.pbAd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pbAd.Image = ((System.Drawing.Image)(resources.GetObject("pbAd.Image")));
+            this.pbAd.Location = new System.Drawing.Point(-16, -22);
+            this.pbAd.Name = "pbAd";
+            this.pbAd.Size = new System.Drawing.Size(448, 136);
+            this.pbAd.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbAd.TabIndex = 12;
+            this.pbAd.TabStop = false;
+            this.pbAd.Click += new System.EventHandler(this.pbAd_Click);
+            // 
             // btnRegisterPage
             // 
             this.btnRegisterPage.AutoSize = true;
@@ -368,7 +392,6 @@
             // 
             // btnConnect
             // 
-            this.btnConnect.BackgroundImage = global::PintoNS.Assets.QQBUTTON;
             this.btnConnect.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnConnect.Location = new System.Drawing.Point(66, 221);
             this.btnConnect.Name = "btnConnect";
@@ -403,30 +426,6 @@
             this.tcSections.TabIndex = 14;
             this.tcSections.SelectedIndexChanged += new System.EventHandler(this.tcSections_SelectedIndexChanged);
             // 
-            // pbAd
-            // 
-            this.pbAd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pbAd.Image = ((System.Drawing.Image)(resources.GetObject("pbAd.Image")));
-            this.pbAd.Location = new System.Drawing.Point(-16, -22);
-            this.pbAd.Name = "pbAd";
-            this.pbAd.Size = new System.Drawing.Size(448, 136);
-            this.pbAd.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbAd.TabIndex = 12;
-            this.pbAd.TabStop = false;
-            this.pbAd.Click += new System.EventHandler(this.pbAd_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(-4, -22);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(418, 136);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 16;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
             // UsingPintoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -442,17 +441,17 @@
             this.Text = "豆子 - Login";
             this.Load += new System.EventHandler(this.UsingPintoForm_Load);
             this.tpRegister.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudRegisterPort)).EndInit();
             this.tpMain.ResumeLayout(false);
             this.tpMain.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbAd)).EndInit();
             this.pLoginControls.ResumeLayout(false);
             this.pLoginControls.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudPort)).EndInit();
             this.tcSections.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbAd)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

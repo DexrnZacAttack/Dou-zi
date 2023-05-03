@@ -92,7 +92,8 @@
             this.VersionReportedToServerTextBox.Name = "VersionReportedToServerTextBox";
             this.VersionReportedToServerTextBox.Size = new System.Drawing.Size(100, 20);
             this.VersionReportedToServerTextBox.TabIndex = 5;
-            this.VersionReportedToServerTextBox.Text = "a1.1";
+            this.VersionReportedToServerTextBox.Text = "a1.2-hotfix_1";
+            this.VersionReportedToServerTextBox.TextChanged += new System.EventHandler(this.VersionReportedToServerTextBox_TextChanged);
             // 
             // CurrentVersionText
             // 
