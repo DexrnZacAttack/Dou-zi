@@ -33,6 +33,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnRegisterBack = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtRegisterIP = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -48,6 +49,7 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.llForgotPassword = new System.Windows.Forms.LinkLabel();
             this.pLoginControls = new System.Windows.Forms.Panel();
+            this.txtIP = new System.Windows.Forms.ComboBox();
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.MaskedTextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -58,8 +60,6 @@
             this.btnConnect = new System.Windows.Forms.Button();
             this.cbSavePassword = new System.Windows.Forms.CheckBox();
             this.tcSections = new System.Windows.Forms.TabControl();
-            this.txtIP = new System.Windows.Forms.ComboBox();
-            this.txtRegisterIP = new System.Windows.Forms.ComboBox();
             this.tpRegister.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -122,6 +122,23 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(348, 65);
             this.panel1.TabIndex = 15;
+            // 
+            // txtRegisterIP
+            // 
+            this.txtRegisterIP.AutoCompleteCustomSource.AddRange(new string[] {
+            "ponso00.com",
+            "MYPinto.ddns.net"});
+            this.txtRegisterIP.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtRegisterIP.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtRegisterIP.FormattingEnabled = true;
+            this.txtRegisterIP.Items.AddRange(new object[] {
+            "ponso00.com",
+            "MYPinto.ddns.net"});
+            this.txtRegisterIP.Location = new System.Drawing.Point(234, 8);
+            this.txtRegisterIP.Name = "txtRegisterIP";
+            this.txtRegisterIP.Size = new System.Drawing.Size(106, 21);
+            this.txtRegisterIP.TabIndex = 16;
+            this.txtRegisterIP.Text = "ponso00.com";
             // 
             // label6
             // 
@@ -299,6 +316,23 @@
             this.pLoginControls.Size = new System.Drawing.Size(348, 70);
             this.pLoginControls.TabIndex = 10;
             // 
+            // txtIP
+            // 
+            this.txtIP.AutoCompleteCustomSource.AddRange(new string[] {
+            "ponso00.com",
+            "MYPinto.ddns.net"});
+            this.txtIP.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtIP.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtIP.FormattingEnabled = true;
+            this.txtIP.Items.AddRange(new object[] {
+            "ponso00.com",
+            "MYPinto.ddns.net"});
+            this.txtIP.Location = new System.Drawing.Point(234, 8);
+            this.txtIP.Name = "txtIP";
+            this.txtIP.Size = new System.Drawing.Size(106, 21);
+            this.txtIP.TabIndex = 15;
+            this.txtIP.Text = "ponso00.com";
+            // 
             // txtUsername
             // 
             this.txtUsername.Location = new System.Drawing.Point(83, 8);
@@ -408,40 +442,6 @@
             this.tcSections.Size = new System.Drawing.Size(420, 301);
             this.tcSections.TabIndex = 14;
             this.tcSections.SelectedIndexChanged += new System.EventHandler(this.tcSections_SelectedIndexChanged);
-            // 
-            // txtIP
-            // 
-            this.txtIP.AutoCompleteCustomSource.AddRange(new string[] {
-            "ponso00.com",
-            "MYPinto.ddns.net"});
-            this.txtIP.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.txtIP.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtIP.FormattingEnabled = true;
-            this.txtIP.Items.AddRange(new object[] {
-            "ponso00.com",
-            "MYPinto.ddns.net"});
-            this.txtIP.Location = new System.Drawing.Point(234, 8);
-            this.txtIP.Name = "txtIP";
-            this.txtIP.Size = new System.Drawing.Size(106, 21);
-            this.txtIP.TabIndex = 15;
-            this.txtIP.Text = "ponso00.com";
-            // 
-            // txtRegisterIP
-            // 
-            this.txtRegisterIP.AutoCompleteCustomSource.AddRange(new string[] {
-            "ponso00.com",
-            "MYPinto.ddns.net"});
-            this.txtRegisterIP.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.txtRegisterIP.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtRegisterIP.FormattingEnabled = true;
-            this.txtRegisterIP.Items.AddRange(new object[] {
-            "ponso00.com",
-            "MYPinto.ddns.net"});
-            this.txtRegisterIP.Location = new System.Drawing.Point(234, 8);
-            this.txtRegisterIP.Name = "txtRegisterIP";
-            this.txtRegisterIP.Size = new System.Drawing.Size(106, 21);
-            this.txtRegisterIP.TabIndex = 16;
-            this.txtRegisterIP.Text = "ponso00.com";
             // 
             // UsingPintoForm
             // 

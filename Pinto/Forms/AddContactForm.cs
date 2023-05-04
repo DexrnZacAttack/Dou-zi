@@ -52,5 +52,10 @@ namespace PintoNS.Forms
         {
 
         }
+
+        private void txtContactName_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

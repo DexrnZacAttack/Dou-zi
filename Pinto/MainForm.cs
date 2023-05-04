@@ -371,6 +371,11 @@ namespace PintoNS
 
         }
 
+        private void dgvContacts_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
         /*  public async Task CheckForUpdate()
           {
               if (!await PintoUpdater.IsLatest())

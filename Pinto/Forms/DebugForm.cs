@@ -16,6 +16,7 @@ namespace PintoNS.Forms
         {
             InitializeComponent();
             CurrentProtocolText.Text = $"Current Protocol Version: {Program.PROTOCOL_VERSION}";
+            CurrentVersionText.Text = $"Current Client Version: {Program.VERSION}";
         }
 
         private void DebugProtocolTextbox_TextChanged(object sender, EventArgs e)
@@ -57,6 +58,16 @@ namespace PintoNS.Forms
         }
 
         private void VersionReportedToServerTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CurrentProtocolText_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CurrentVersionText_Click(object sender, EventArgs e)
         {
 
         }

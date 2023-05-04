@@ -1,4 +1,5 @@
 ﻿using PintoNS;
+using PintoNS.Forms;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,12 +15,20 @@ namespace PintoNS.General
         private MainForm mainForm;
         private DataGridView dgvContacts;
         private List<Contact> contacts = new List<Contact>();
+        private MessageForm messageForm;
+
         public event EventHandler OnChange = new EventHandler((object sender, EventArgs e) => { });
 
         public ContactsManager(MainForm mainForm) 
         {
             this.mainForm = mainForm;
             dgvContacts = mainForm.dgvContacts;
+        }
+
+        public ContactsManager(MessageForm messageForm)
+        {
+            this.messageForm = messageForm;
+            dgvContacts = messageForm.dgvContacts;
         }
 
         private DataGridViewRow GetContactListEntry(string name) 

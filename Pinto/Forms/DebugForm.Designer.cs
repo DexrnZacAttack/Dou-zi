@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DebugForm));
             this.DebugProtocolTextbox = new System.Windows.Forms.TextBox();
             this.ProtocolText = new System.Windows.Forms.Label();
             this.SetProtocolButton = new System.Windows.Forms.Button();
@@ -45,17 +46,18 @@
             this.DebugProtocolTextbox.Name = "DebugProtocolTextbox";
             this.DebugProtocolTextbox.Size = new System.Drawing.Size(100, 20);
             this.DebugProtocolTextbox.TabIndex = 0;
-            this.DebugProtocolTextbox.Text = "13";
+            this.DebugProtocolTextbox.Text = "14";
             this.DebugProtocolTextbox.TextChanged += new System.EventHandler(this.DebugProtocolTextbox_TextChanged);
             // 
             // ProtocolText
             // 
             this.ProtocolText.AutoSize = true;
+            this.ProtocolText.BackColor = System.Drawing.Color.Transparent;
             this.ProtocolText.Location = new System.Drawing.Point(94, 9);
             this.ProtocolText.Name = "ProtocolText";
-            this.ProtocolText.Size = new System.Drawing.Size(49, 13);
+            this.ProtocolText.Size = new System.Drawing.Size(46, 13);
             this.ProtocolText.TabIndex = 1;
-            this.ProtocolText.Text = "Protocol:";
+            this.ProtocolText.Text = "Protocol";
             this.ProtocolText.Click += new System.EventHandler(this.label1_Click);
             // 
             // SetProtocolButton
@@ -80,11 +82,13 @@
             // CurrentProtocolText
             // 
             this.CurrentProtocolText.AutoSize = true;
+            this.CurrentProtocolText.BackColor = System.Drawing.Color.Transparent;
             this.CurrentProtocolText.Location = new System.Drawing.Point(7, 79);
             this.CurrentProtocolText.Name = "CurrentProtocolText";
             this.CurrentProtocolText.Size = new System.Drawing.Size(35, 13);
             this.CurrentProtocolText.TabIndex = 4;
             this.CurrentProtocolText.Text = "label1";
+            this.CurrentProtocolText.Click += new System.EventHandler(this.CurrentProtocolText_Click);
             // 
             // VersionReportedToServerTextBox
             // 
@@ -92,17 +96,19 @@
             this.VersionReportedToServerTextBox.Name = "VersionReportedToServerTextBox";
             this.VersionReportedToServerTextBox.Size = new System.Drawing.Size(100, 20);
             this.VersionReportedToServerTextBox.TabIndex = 5;
-            this.VersionReportedToServerTextBox.Text = "a1.2-hotfix_1";
+            this.VersionReportedToServerTextBox.Text = "a1.3";
             this.VersionReportedToServerTextBox.TextChanged += new System.EventHandler(this.VersionReportedToServerTextBox_TextChanged);
             // 
             // CurrentVersionText
             // 
             this.CurrentVersionText.AutoSize = true;
+            this.CurrentVersionText.BackColor = System.Drawing.Color.Transparent;
             this.CurrentVersionText.Location = new System.Drawing.Point(7, 96);
             this.CurrentVersionText.Name = "CurrentVersionText";
             this.CurrentVersionText.Size = new System.Drawing.Size(35, 13);
             this.CurrentVersionText.TabIndex = 6;
             this.CurrentVersionText.Text = "label1";
+            this.CurrentVersionText.Click += new System.EventHandler(this.CurrentVersionText_Click);
             // 
             // SetVersionReportedToServerButton
             // 
@@ -117,6 +123,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Location = new System.Drawing.Point(198, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(159, 13);
@@ -128,6 +135,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::PintoNS.Assets.LOGIN_BACKGROUND;
             this.ClientSize = new System.Drawing.Size(371, 118);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.SetVersionReportedToServerButton);
@@ -138,8 +146,9 @@
             this.Controls.Add(this.SetProtocolButton);
             this.Controls.Add(this.ProtocolText);
             this.Controls.Add(this.DebugProtocolTextbox);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "DebugForm";
-            this.Text = "Form1";
+            this.Text = "豆子 - Debug";
             this.Load += new System.EventHandler(this.DebugForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -45,12 +45,12 @@ namespace PintoNS.Forms
             this.tcTabs = new System.Windows.Forms.TabControl();
             this.tpContactsMessageForm = new System.Windows.Forms.TabPage();
             this.dgvContacts = new System.Windows.Forms.DataGridView();
-            this.tsddbMenuBarFile = new System.Windows.Forms.ToolStripDropDownButton();
-            this.tsmiMenuBarFileClearSavedData = new System.Windows.Forms.ToolStripMenuItem();
-            this.txtSearchBox = new PintoNS.Controls.TextBoxWithPlaceholderSupport();
-            this.MSGFormAddContactButton = new System.Windows.Forms.Button();
             this.contactStatus = new System.Windows.Forms.DataGridViewImageColumn();
             this.contactName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tsddbMenuBarFile = new System.Windows.Forms.ToolStripDropDownButton();
+            this.tsmiMenuBarFileClearSavedData = new System.Windows.Forms.ToolStripMenuItem();
+            this.MSGFormAddContactButton = new System.Windows.Forms.Button();
+            this.txtSearchBox = new PintoNS.Controls.TextBoxWithPlaceholderSupport();
             this.ssStatusStrip.SuspendLayout();
             this.tcTabs.SuspendLayout();
             this.tpContactsMessageForm.SuspendLayout();
@@ -218,42 +218,7 @@ namespace PintoNS.Forms
             this.dgvContacts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvContacts.Size = new System.Drawing.Size(116, 399);
             this.dgvContacts.TabIndex = 0;
-            // 
-            // tsddbMenuBarFile
-            // 
-            this.tsddbMenuBarFile.Name = "tsddbMenuBarFile";
-            this.tsddbMenuBarFile.Size = new System.Drawing.Size(23, 23);
-            // 
-            // tsmiMenuBarFileClearSavedData
-            // 
-            this.tsmiMenuBarFileClearSavedData.Name = "tsmiMenuBarFileClearSavedData";
-            this.tsmiMenuBarFileClearSavedData.Size = new System.Drawing.Size(32, 19);
-            // 
-            // txtSearchBox
-            // 
-            this.txtSearchBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
-            this.txtSearchBox.BackColor = System.Drawing.Color.White;
-            this.txtSearchBox.Enabled = false;
-            this.txtSearchBox.ForeColor = System.Drawing.Color.DimGray;
-            this.txtSearchBox.Location = new System.Drawing.Point(12, 2);
-            this.txtSearchBox.Multiline = true;
-            this.txtSearchBox.Name = "txtSearchBox";
-            this.txtSearchBox.PlaceholderText = "Search";
-            this.txtSearchBox.PlaceholderTextForeColor = System.Drawing.Color.DimGray;
-            this.txtSearchBox.Size = new System.Drawing.Size(89, 21);
-            this.txtSearchBox.TabIndex = 8;
-            this.txtSearchBox.Text = " Search";
-            this.txtSearchBox.TextForeColor = System.Drawing.Color.Black;
-            // 
-            // MSGFormAddContactButton
-            // 
-            this.MSGFormAddContactButton.Image = global::PintoNS.Assets.ADDCONTACT_ENABLED;
-            this.MSGFormAddContactButton.Location = new System.Drawing.Point(101, 1);
-            this.MSGFormAddContactButton.Name = "MSGFormAddContactButton";
-            this.MSGFormAddContactButton.Size = new System.Drawing.Size(34, 23);
-            this.MSGFormAddContactButton.TabIndex = 9;
-            this.MSGFormAddContactButton.UseVisualStyleBackColor = true;
-            this.MSGFormAddContactButton.Click += new System.EventHandler(this.tsmiMenuBarFileAddContact_Click);
+            this.dgvContacts.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvContacts_CellContentClick);
             // 
             // contactStatus
             // 
@@ -271,6 +236,42 @@ namespace PintoNS.Forms
             this.contactName.HeaderText = "Contact Name";
             this.contactName.Name = "contactName";
             this.contactName.ReadOnly = true;
+            // 
+            // tsddbMenuBarFile
+            // 
+            this.tsddbMenuBarFile.Name = "tsddbMenuBarFile";
+            this.tsddbMenuBarFile.Size = new System.Drawing.Size(23, 23);
+            // 
+            // tsmiMenuBarFileClearSavedData
+            // 
+            this.tsmiMenuBarFileClearSavedData.Name = "tsmiMenuBarFileClearSavedData";
+            this.tsmiMenuBarFileClearSavedData.Size = new System.Drawing.Size(32, 19);
+            // 
+            // MSGFormAddContactButton
+            // 
+            this.MSGFormAddContactButton.Image = global::PintoNS.Assets.ADDCONTACT_ENABLED;
+            this.MSGFormAddContactButton.Location = new System.Drawing.Point(101, 1);
+            this.MSGFormAddContactButton.Name = "MSGFormAddContactButton";
+            this.MSGFormAddContactButton.Size = new System.Drawing.Size(34, 23);
+            this.MSGFormAddContactButton.TabIndex = 9;
+            this.MSGFormAddContactButton.UseVisualStyleBackColor = true;
+            this.MSGFormAddContactButton.Click += new System.EventHandler(this.tsmiMenuBarFileAddContact_Click);
+            // 
+            // txtSearchBox
+            // 
+            this.txtSearchBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
+            this.txtSearchBox.BackColor = System.Drawing.Color.White;
+            this.txtSearchBox.Enabled = false;
+            this.txtSearchBox.ForeColor = System.Drawing.Color.DimGray;
+            this.txtSearchBox.Location = new System.Drawing.Point(12, 2);
+            this.txtSearchBox.Multiline = true;
+            this.txtSearchBox.Name = "txtSearchBox";
+            this.txtSearchBox.PlaceholderText = "Search";
+            this.txtSearchBox.PlaceholderTextForeColor = System.Drawing.Color.DimGray;
+            this.txtSearchBox.Size = new System.Drawing.Size(89, 21);
+            this.txtSearchBox.TabIndex = 8;
+            this.txtSearchBox.Text = " Search";
+            this.txtSearchBox.TextForeColor = System.Drawing.Color.Black;
             // 
             // MessageForm
             // 

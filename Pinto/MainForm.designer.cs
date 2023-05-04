@@ -68,7 +68,6 @@ namespace PintoNS
             this.tsmiTrayChangeStatusInvisible = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiTrayExit = new System.Windows.Forms.ToolStripMenuItem();
             this.btnEndCall = new System.Windows.Forms.PictureBox();
-            this.txtSearchBox = new PintoNS.Controls.TextBoxWithPlaceholderSupport();
             this.BottomtoolStrip = new System.Windows.Forms.ToolStrip();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.tsmiMenuBarHelpToggleConsole = new System.Windows.Forms.ToolStripMenuItem();
@@ -82,6 +81,7 @@ namespace PintoNS
             this.toolStripDropDownButton2 = new System.Windows.Forms.ToolStripDropDownButton();
             this.tsmiMenuBarFileAddContact = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiMenuBarFileRemoveContact = new System.Windows.Forms.ToolStripMenuItem();
+            this.txtSearchBox = new PintoNS.Controls.TextBoxWithPlaceholderSupport();
             this.tcTabs.SuspendLayout();
             this.tpLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnStartCall)).BeginInit();
@@ -237,6 +237,7 @@ namespace PintoNS
             this.dgvContacts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvContacts.Size = new System.Drawing.Size(255, 284);
             this.dgvContacts.TabIndex = 0;
+            this.dgvContacts.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvContacts_CellContentClick);
             this.dgvContacts.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvContacts_CellDoubleClick);
             this.dgvContacts.SelectionChanged += new System.EventHandler(this.dgvContacts_SelectionChanged);
             // 
@@ -482,24 +483,6 @@ namespace PintoNS
             this.btnEndCall.TabStop = false;
             this.btnEndCall.Visible = false;
             // 
-            // txtSearchBox
-            // 
-            this.txtSearchBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSearchBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
-            this.txtSearchBox.BackColor = System.Drawing.Color.White;
-            this.txtSearchBox.Enabled = false;
-            this.txtSearchBox.ForeColor = System.Drawing.Color.DimGray;
-            this.txtSearchBox.Location = new System.Drawing.Point(3, 70);
-            this.txtSearchBox.Name = "txtSearchBox";
-            this.txtSearchBox.PlaceholderText = "Type the username you would like to search for";
-            this.txtSearchBox.PlaceholderTextForeColor = System.Drawing.Color.DimGray;
-            this.txtSearchBox.Size = new System.Drawing.Size(262, 20);
-            this.txtSearchBox.TabIndex = 4;
-            this.txtSearchBox.Text = "Type the username you would like to search for";
-            this.txtSearchBox.TextForeColor = System.Drawing.Color.Black;
-            // 
             // BottomtoolStrip
             // 
             this.BottomtoolStrip.AutoSize = false;
@@ -543,7 +526,7 @@ namespace PintoNS
             // 
             this.tsmiMenuBarHelpToggleConsole.AutoToolTip = true;
             this.tsmiMenuBarHelpToggleConsole.Name = "tsmiMenuBarHelpToggleConsole";
-            this.tsmiMenuBarHelpToggleConsole.Size = new System.Drawing.Size(180, 22);
+            this.tsmiMenuBarHelpToggleConsole.Size = new System.Drawing.Size(153, 22);
             this.tsmiMenuBarHelpToggleConsole.Text = "Toggle console";
             this.tsmiMenuBarHelpToggleConsole.Click += new System.EventHandler(this.tsmiMenuBarHelpToggleConsole_Click);
             // 
@@ -553,45 +536,45 @@ namespace PintoNS
             this.douZiToolStripMenuItem,
             this.beansToolStripMenuItem});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(153, 22);
             this.toolStripMenuItem1.Text = "Theme";
             // 
             // douZiToolStripMenuItem
             // 
             this.douZiToolStripMenuItem.Name = "douZiToolStripMenuItem";
-            this.douZiToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.douZiToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
             this.douZiToolStripMenuItem.Text = "DouZi";
             // 
             // beansToolStripMenuItem
             // 
             this.beansToolStripMenuItem.Name = "beansToolStripMenuItem";
-            this.beansToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.beansToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
             this.beansToolStripMenuItem.Text = "Beans";
             this.beansToolStripMenuItem.Click += new System.EventHandler(this.beansToolStripMenuItem_Click);
             // 
             // optionsToolStripMenuItem
             // 
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.optionsToolStripMenuItem.Text = "Options";
             this.optionsToolStripMenuItem.Click += new System.EventHandler(this.tsmiMenuBarToolsOptions_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(150, 6);
             // 
             // tsmiMenuBarFileLogOut
             // 
             this.tsmiMenuBarFileLogOut.Name = "tsmiMenuBarFileLogOut";
-            this.tsmiMenuBarFileLogOut.Size = new System.Drawing.Size(180, 22);
+            this.tsmiMenuBarFileLogOut.Size = new System.Drawing.Size(153, 22);
             this.tsmiMenuBarFileLogOut.Text = "Log Out";
             this.tsmiMenuBarFileLogOut.Click += new System.EventHandler(this.tsmiMenuBarFileLogOut_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.tsmiMenuBarFileExit_Click);
             // 
@@ -622,6 +605,24 @@ namespace PintoNS
             this.tsmiMenuBarFileRemoveContact.Size = new System.Drawing.Size(153, 22);
             this.tsmiMenuBarFileRemoveContact.Text = "Remove Friend";
             this.tsmiMenuBarFileRemoveContact.Click += new System.EventHandler(this.tsmiMenuBarFileRemoveContact_Click);
+            // 
+            // txtSearchBox
+            // 
+            this.txtSearchBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSearchBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
+            this.txtSearchBox.BackColor = System.Drawing.Color.White;
+            this.txtSearchBox.Enabled = false;
+            this.txtSearchBox.ForeColor = System.Drawing.Color.DimGray;
+            this.txtSearchBox.Location = new System.Drawing.Point(3, 70);
+            this.txtSearchBox.Name = "txtSearchBox";
+            this.txtSearchBox.PlaceholderText = "Type the username you would like to search for";
+            this.txtSearchBox.PlaceholderTextForeColor = System.Drawing.Color.DimGray;
+            this.txtSearchBox.Size = new System.Drawing.Size(262, 20);
+            this.txtSearchBox.TabIndex = 4;
+            this.txtSearchBox.Text = "Type the username you would like to search for";
+            this.txtSearchBox.TextForeColor = System.Drawing.Color.Black;
             // 
             // MainForm
             // 

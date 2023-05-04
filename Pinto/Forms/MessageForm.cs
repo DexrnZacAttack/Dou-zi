@@ -1,6 +1,10 @@
 ﻿using PintoNS.Forms.Notification;
 using PintoNS.General;
+using static PintoNS.General.ContactsManager;
+using static PintoNS.General.Contact;
+using static PintoNS.General.User;
 using PintoNS;
+using static PintoNS.MainForm;
 using PintoNS.Networking;
 using System;
 using System.Collections.Generic;
@@ -21,12 +25,39 @@ namespace PintoNS.Forms
         private MainForm mainForm;
         public NetworkManager NetManager;
         public Contact Receiver;
+        public List<MessageForm> MessageForms;
+        public ContactsManager ContactsMgr;
         private bool isTypingLastStatus;
         public bool HasBeenInactive;
         public InWindowPopupController InWindowPopupController;
+        private MessageForm messageForm;
+        private Contact contact;
+
+        public event EventHandler OnChange = new EventHandler((object sender, EventArgs e) => { });
+
+        public MessageForm GetMessageFormFromReceiverName(string name)
+        {
+            Program.Console.WriteMessage($"Getting MessageForm for {name}...");
+
+            foreach (MessageForm msgForm in MessageForms.ToArray())
+            {
+                if (msgForm.Receiver.Name == name)
+                    return msgForm;
+            }
+
+            Program.Console.WriteMessage($"Creating MessageForm for {name}...");
+            MessageForm messageForm = new MessageForm(this, ContactsMgr.GetContact(name));
+            MessageForms.Add(messageForm);
+            messageForm.Show();
+
+            return messageForm;
+        }
 
         public MessageForm(MainForm mainForm, Contact receiver)
         {
+            //dgvContacts.Rows.Clear();
+            ContactsMgr = new ContactsManager(this);
+            MessageForms = new List<MessageForm>();
             InitializeComponent();
             this.mainForm = mainForm;
             InWindowPopupController = new InWindowPopupController(this, 25);
@@ -34,6 +65,48 @@ namespace PintoNS.Forms
             Text = $"Pinto! - Instant Messaging - Chatting with {Receiver.Name}";
             UpdateColorPicker();
             LoadChat();
+        }
+
+                private DataGridViewRow GetContactListEntry(string name) 
+        {
+            if (name == null) return null;
+
+            foreach (DataGridViewRow row in dgvContacts.Rows) 
+            {
+                if (((string)row.Cells[1].Value) == name) 
+                    return row;
+            }
+
+            return null;
+        }
+
+        private void AddContactListEntry(Contact contact)
+        {
+            if (GetContactListEntry(contact.Name) == null)
+            {
+                dgvContacts.Rows.Add(User.StatusToBitmap(contact.Status), contact.Name);
+                OnChange.Invoke(this, EventArgs.Empty);
+            }
+        }
+
+        private void dgvContacts_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string contactName = ContactsMgr.GetContactNameFromRow(e.RowIndex);
+            Contact contact = ContactsMgr.GetContact(contactName);
+
+            if (contactName != null && contact != null)
+            {
+                MessageForm messageForm = GetMessageFormFromReceiverName(contactName);
+                messageForm.WindowState = FormWindowState.Normal;
+                messageForm.BringToFront();
+                messageForm.Focus();
+            }
+        }
+
+        public MessageForm(MessageForm messageForm, Contact contact)
+        {
+            this.messageForm = messageForm;
+            this.contact = contact;
         }
 
         private void LoadChat()
@@ -91,6 +164,9 @@ namespace PintoNS.Forms
                     "Error", MsgBoxIconType.ERROR);
             }
         }
+
+
+
 
         public void WriteMessage(string msg, Color color, bool newLine = true)
         {
@@ -233,5 +309,12 @@ namespace PintoNS.Forms
                 "Option Unavailable",
                 MsgBoxIconType.WARNING);
         }
+
+        private void dgvContacts_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+
     }
 }

@@ -41,6 +41,7 @@
             this.txtContactName.Name = "txtContactName";
             this.txtContactName.Size = new System.Drawing.Size(206, 20);
             this.txtContactName.TabIndex = 0;
+            this.txtContactName.TextChanged += new System.EventHandler(this.txtContactName_TextChanged_1);
             this.txtContactName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtContactName_KeyDown);
             // 
             // btnAdd
@@ -77,7 +78,7 @@
             this.MinimizeBox = false;
             this.Name = "AddContactForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Pinto! - Add contact";
+            this.Text = " 豆子 - Add contact";
             this.ResumeLayout(false);
             this.PerformLayout();
 
