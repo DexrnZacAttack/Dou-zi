@@ -103,6 +103,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Assets.resx</DependentUpon>
     </Compile>
+    <Compile Include="BEANS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BEANS.resx</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Header.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -250,6 +255,10 @@
       <LastGenOutput>Assets.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="BEANS.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>BEANS.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -371,6 +380,7 @@
     <None Include="Resources\logobeans64.png" />
     <None Include="Resources\Logo.png" />
     <None Include="Resources\Default.rdb.0015efc3_0117.png" />
+    <None Include="Resources\BACKGROUND.JPG" />
     <Content Include="Resources\Logo\LOADING.gif" />
     <None Include="Resources\Logo\LOGO.ICO" />
     <Content Include="Resources\Logo\LOGO.png" />
@@ -386,6 +396,16 @@
     <None Include="Resources\Res.rdb.00485ceb_dd.png" />
     <None Include="Resources\Logo\LOGO_LARGE_WHITE_TEXT.png" />
     <None Include="Resources\Logo\LOGO_WHITE_LARGE_TRANSPARENT_TEXT.png" />
+    <None Include="Resources\Logo_Beans\LOGO_BACKGROUND_ALT.png" />
+    <None Include="Resources\Logo_Beans\LOGO_BEANS.ICO" />
+    <None Include="Resources\Logo_Beans\LOGO_BEANS.png" />
+    <None Include="Resources\Logo_Beans\LOGO_LARGE_BEANS.png" />
+    <None Include="Resources\Logo_Beans\LOADING.gif" />
+    <None Include="Resources\Logo_Beans\LOADING_FAST.gif" />
+    <None Include="Resources\Logo_Beans\LOADING_NOTEXT.gif" />
+    <None Include="Resources\Logo_Beans\LOADING_NOTEXT_FAST.gif" />
+    <None Include="Resources\Logo_Beans\LOADING_NOTEXT_FASTER.gif" />
+    <None Include="Resources\Logo_Beans\LOADING_SLOW.gif" />
     <Content Include="Resources\Sounds\BUSY.WAV" />
     <Content Include="Resources\Sounds\CALL_ERROR1.WAV" />
     <Content Include="Resources\Sounds\CALL_ERROR2.WAV" />

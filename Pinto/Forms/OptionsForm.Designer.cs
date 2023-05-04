@@ -51,6 +51,7 @@ namespace PintoNS.Forms
             treeNode2});
             this.tvSections.Size = new System.Drawing.Size(135, 385);
             this.tvSections.TabIndex = 4;
+            this.tvSections.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvSections_AfterSelect);
             // 
             // label1
             // 

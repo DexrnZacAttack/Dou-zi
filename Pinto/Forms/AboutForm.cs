@@ -20,9 +20,9 @@ namespace PintoNS.Forms
 
         private void AboutForm_Load(object sender, EventArgs e)
         {
-            lVersion.Text = $"Client Version {Program.DOUZIVERSION}";
-            lProtocolVersion.Text = $"Protocol Version {Program.PROTOCOL_VERSION}";
-            lVersionReportedtoServer.Text = $"Version reported to server: {Program.VERSION}";
+            lVersion.Text = $"Client Version: {Program.DOUZIVERSION}";
+            lProtocolVersion.Text = $"Protocol Version: {Program.PROTOCOL_VERSION}";
+            lVersionReportedtoServer.Text = $"Pinto! Version: {Program.VERSION}";
         }
 
         private void label1_Click(object sender, EventArgs e)

@@ -72,6 +72,9 @@ namespace PintoNS
             this.BottomtoolStrip = new System.Windows.Forms.ToolStrip();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.tsmiMenuBarHelpToggleConsole = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.douZiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.beansToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmiMenuBarFileLogOut = new System.Windows.Forms.ToolStripMenuItem();
@@ -156,7 +159,7 @@ namespace PintoNS
             // 
             // btnStartCall
             // 
-            this.btnStartCall.Location = new System.Drawing.Point(130, 183);
+            this.btnStartCall.Location = new System.Drawing.Point(153, 233);
             this.btnStartCall.Name = "btnStartCall";
             this.btnStartCall.Size = new System.Drawing.Size(100, 50);
             this.btnStartCall.TabIndex = 2;
@@ -373,6 +376,7 @@ namespace PintoNS
             // 
             // tsslStatusBarStatusText
             // 
+            this.tsslStatusBarStatusText.ForeColor = System.Drawing.Color.White;
             this.tsslStatusBarStatusText.Name = "tsslStatusBarStatusText";
             this.tsslStatusBarStatusText.Size = new System.Drawing.Size(80, 37);
             this.tsslStatusBarStatusText.Text = "Not logged in";
@@ -519,6 +523,7 @@ namespace PintoNS
             this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiMenuBarHelpToggleConsole,
+            this.toolStripMenuItem1,
             this.optionsToolStripMenuItem,
             this.toolStripSeparator1,
             this.tsmiMenuBarFileLogOut,
@@ -541,6 +546,28 @@ namespace PintoNS
             this.tsmiMenuBarHelpToggleConsole.Size = new System.Drawing.Size(180, 22);
             this.tsmiMenuBarHelpToggleConsole.Text = "Toggle console";
             this.tsmiMenuBarHelpToggleConsole.Click += new System.EventHandler(this.tsmiMenuBarHelpToggleConsole_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.douZiToolStripMenuItem,
+            this.beansToolStripMenuItem});
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem1.Text = "Theme";
+            // 
+            // douZiToolStripMenuItem
+            // 
+            this.douZiToolStripMenuItem.Name = "douZiToolStripMenuItem";
+            this.douZiToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.douZiToolStripMenuItem.Text = "DouZi";
+            // 
+            // beansToolStripMenuItem
+            // 
+            this.beansToolStripMenuItem.Name = "beansToolStripMenuItem";
+            this.beansToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.beansToolStripMenuItem.Text = "Beans";
+            this.beansToolStripMenuItem.Click += new System.EventHandler(this.beansToolStripMenuItem_Click);
             // 
             // optionsToolStripMenuItem
             // 
@@ -685,5 +712,8 @@ namespace PintoNS
         private System.Windows.Forms.ToolStripMenuItem tsmiMenuBarFileAddContact;
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
         private System.Windows.Forms.ToolStripMenuItem tsmiMenuBarHelpToggleConsole;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem douZiToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem beansToolStripMenuItem;
     }
 }

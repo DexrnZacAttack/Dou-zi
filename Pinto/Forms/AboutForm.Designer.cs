@@ -86,7 +86,7 @@
             // 
             this.lProtocolVersion.AutoSize = true;
             this.lProtocolVersion.BackColor = System.Drawing.Color.Transparent;
-            this.lProtocolVersion.Location = new System.Drawing.Point(4, 187);
+            this.lProtocolVersion.Location = new System.Drawing.Point(4, 200);
             this.lProtocolVersion.Name = "lProtocolVersion";
             this.lProtocolVersion.Size = new System.Drawing.Size(84, 13);
             this.lProtocolVersion.TabIndex = 5;
@@ -97,7 +97,7 @@
             // 
             this.lVersionReportedtoServer.AutoSize = true;
             this.lVersionReportedtoServer.BackColor = System.Drawing.Color.Transparent;
-            this.lVersionReportedtoServer.Location = new System.Drawing.Point(5, 200);
+            this.lVersionReportedtoServer.Location = new System.Drawing.Point(4, 187);
             this.lVersionReportedtoServer.Name = "lVersionReportedtoServer";
             this.lVersionReportedtoServer.Size = new System.Drawing.Size(128, 13);
             this.lVersionReportedtoServer.TabIndex = 6;

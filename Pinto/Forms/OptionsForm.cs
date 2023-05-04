@@ -16,5 +16,10 @@ namespace PintoNS.Forms
         {
             InitializeComponent();
         }
+
+        private void tvSections_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+
+        }
     }
 }

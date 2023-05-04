@@ -56,7 +56,7 @@ namespace PintoNS
             tsmiMenuBarFileAddContact.Enabled = true;
             tsmiMenuBarFileRemoveContact.Enabled = true;
             tsmiMenuBarFileLogOut.Enabled = true;
-            Text = $"Pinto! - {CurrentUser.Name}";
+            Text = $"豆子 - {CurrentUser.Name}";
 
             new SoundPlayer(Sounds.LOGIN).Play();
         }
@@ -107,7 +107,7 @@ namespace PintoNS
         {
             niTray.Visible = true;
             niTray.Icon = User.StatusToIcon(CurrentUser.Status);
-            niTray.Text = $"Pinto! - " +
+            niTray.Text = $"豆子 - " +
                 (CurrentUser.Status != UserStatus.OFFLINE ?
                 $"{CurrentUser.Name} - {User.StatusToText(CurrentUser.Status)}" : "Not logged in");
         }
@@ -334,8 +334,8 @@ namespace PintoNS
             if (WindowState == FormWindowState.Minimized)
             {
                 Hide();
-                niTray.ShowBalloonTip(0, "Minimization Notice", "Pinto! has been minimized to the system tray!" +
-                    " You can restore Pinto! by clicking on the system tray icon!", ToolTipIcon.Info);
+                niTray.ShowBalloonTip(0, "Minimization Notice", "豆子 has been minimized to the system tray!" +
+                    " You can restore 豆子 by clicking on the system tray icon!", ToolTipIcon.Info);
             }
         }
 
@@ -362,6 +362,11 @@ namespace PintoNS
         }
 
         private void toolStripSeparator1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void beansToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
