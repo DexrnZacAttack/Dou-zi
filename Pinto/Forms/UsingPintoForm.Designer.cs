@@ -35,7 +35,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.txtRegisterIP = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.nudRegisterPort = new System.Windows.Forms.NumericUpDown();
             this.txtRegisterPassword = new System.Windows.Forms.TextBox();
@@ -53,13 +52,14 @@
             this.txtPassword = new System.Windows.Forms.MaskedTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtIP = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.nudPort = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.btnConnect = new System.Windows.Forms.Button();
             this.cbSavePassword = new System.Windows.Forms.CheckBox();
             this.tcSections = new System.Windows.Forms.TabControl();
+            this.txtIP = new System.Windows.Forms.ComboBox();
+            this.txtRegisterIP = new System.Windows.Forms.ComboBox();
             this.tpRegister.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -110,9 +110,9 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.txtRegisterIP);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.txtRegisterIP);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.nudRegisterPort);
             this.panel1.Controls.Add(this.txtRegisterPassword);
@@ -140,14 +140,6 @@
             this.label7.Size = new System.Drawing.Size(56, 13);
             this.label7.TabIndex = 9;
             this.label7.Text = "Password:";
-            // 
-            // txtRegisterIP
-            // 
-            this.txtRegisterIP.Location = new System.Drawing.Point(234, 8);
-            this.txtRegisterIP.Name = "txtRegisterIP";
-            this.txtRegisterIP.Size = new System.Drawing.Size(106, 20);
-            this.txtRegisterIP.TabIndex = 2;
-            this.txtRegisterIP.Text = "ponso00.com";
             // 
             // label8
             // 
@@ -294,11 +286,11 @@
             // pLoginControls
             // 
             this.pLoginControls.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pLoginControls.Controls.Add(this.txtIP);
             this.pLoginControls.Controls.Add(this.txtUsername);
             this.pLoginControls.Controls.Add(this.txtPassword);
             this.pLoginControls.Controls.Add(this.label1);
             this.pLoginControls.Controls.Add(this.label4);
-            this.pLoginControls.Controls.Add(this.txtIP);
             this.pLoginControls.Controls.Add(this.label3);
             this.pLoginControls.Controls.Add(this.nudPort);
             this.pLoginControls.Controls.Add(this.label2);
@@ -340,15 +332,6 @@
             this.label4.Size = new System.Drawing.Size(56, 13);
             this.label4.TabIndex = 9;
             this.label4.Text = "Password:";
-            // 
-            // txtIP
-            // 
-            this.txtIP.Location = new System.Drawing.Point(234, 11);
-            this.txtIP.Name = "txtIP";
-            this.txtIP.Size = new System.Drawing.Size(106, 20);
-            this.txtIP.TabIndex = 2;
-            this.txtIP.Text = "ponso00.com";
-            this.txtIP.TextChanged += new System.EventHandler(this.txtIP_TextChanged);
             // 
             // label3
             // 
@@ -426,6 +409,40 @@
             this.tcSections.TabIndex = 14;
             this.tcSections.SelectedIndexChanged += new System.EventHandler(this.tcSections_SelectedIndexChanged);
             // 
+            // txtIP
+            // 
+            this.txtIP.AutoCompleteCustomSource.AddRange(new string[] {
+            "ponso00.com",
+            "MYPinto.ddns.net"});
+            this.txtIP.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtIP.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtIP.FormattingEnabled = true;
+            this.txtIP.Items.AddRange(new object[] {
+            "ponso00.com",
+            "MYPinto.ddns.net"});
+            this.txtIP.Location = new System.Drawing.Point(234, 8);
+            this.txtIP.Name = "txtIP";
+            this.txtIP.Size = new System.Drawing.Size(106, 21);
+            this.txtIP.TabIndex = 15;
+            this.txtIP.Text = "ponso00.com";
+            // 
+            // txtRegisterIP
+            // 
+            this.txtRegisterIP.AutoCompleteCustomSource.AddRange(new string[] {
+            "ponso00.com",
+            "MYPinto.ddns.net"});
+            this.txtRegisterIP.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtRegisterIP.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtRegisterIP.FormattingEnabled = true;
+            this.txtRegisterIP.Items.AddRange(new object[] {
+            "ponso00.com",
+            "MYPinto.ddns.net"});
+            this.txtRegisterIP.Location = new System.Drawing.Point(234, 8);
+            this.txtRegisterIP.Name = "txtRegisterIP";
+            this.txtRegisterIP.Size = new System.Drawing.Size(106, 21);
+            this.txtRegisterIP.TabIndex = 16;
+            this.txtRegisterIP.Text = "ponso00.com";
+            // 
             // UsingPintoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -464,7 +481,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtRegisterIP;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.NumericUpDown nudRegisterPort;
         private System.Windows.Forms.TextBox txtRegisterPassword;
@@ -481,7 +497,6 @@
         private System.Windows.Forms.MaskedTextBox txtPassword;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtIP;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.NumericUpDown nudPort;
         private System.Windows.Forms.Label label2;
@@ -489,5 +504,7 @@
         private System.Windows.Forms.CheckBox cbSavePassword;
         private System.Windows.Forms.TabControl tcSections;
         private System.Windows.Forms.LinkLabel LinkToDebugUI;
+        private System.Windows.Forms.ComboBox txtIP;
+        private System.Windows.Forms.ComboBox txtRegisterIP;
     }
 }
