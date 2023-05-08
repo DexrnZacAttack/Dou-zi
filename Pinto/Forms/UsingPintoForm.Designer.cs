@@ -326,6 +326,7 @@
             this.txtIP.FormattingEnabled = true;
             this.txtIP.Items.AddRange(new object[] {
             "ponso00.com",
+            "luckys-lab.ga",
             "MYPinto.ddns.net"});
             this.txtIP.Location = new System.Drawing.Point(234, 8);
             this.txtIP.Name = "txtIP";
