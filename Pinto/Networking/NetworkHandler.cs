@@ -29,18 +29,20 @@ namespace PintoNS.Networking
             this.networkClient = networkClient;
         }
 
-        public void HandlePacket(IPacket packet) 
+        public void HandlePacket(IPacket packet)
         {
             if (packet.GetID() != 255)
+            {
                 Program.Console.WriteMessage($"[Networking] Received packet {packet.GetType().Name.ToUpper()}" +
                     $" ({packet.GetID()})");
+            }
             packet.Handle(this);
         }
-        
-        public void HandleLoginPacket(PacketLogin packet) 
+
+        public void HandleLoginPacket(PacketLogin packet)
         {
             LoggedIn = true;
-            mainForm.Invoke(new Action(() => 
+            mainForm.Invoke(new Action(() =>
             {
                 mainForm.OnLogin();
             }));
@@ -53,17 +55,17 @@ namespace PintoNS.Networking
             mainForm.NetManager.NetClient.Disconnect($"Kicked by the server -> {packet.Reason}");
             mainForm.Invoke(new Action(() =>
             {
-                MsgBox.ShowNotification(mainForm, packet.Reason, "Kicked by the server", 
+                MsgBox.ShowNotification(mainForm, packet.Reason, "Kicked by the server",
                     MsgBoxIconType.WARNING, true);
             }));
         }
 
-        public void HandleMessagePacket(PacketMessage packet) 
+        public void HandleMessagePacket(PacketMessage packet)
         {
             mainForm.Invoke(new Action(() =>
             {
                 MessageForm messageForm = mainForm.GetMessageFormFromReceiverName(packet.ContactName);
-                if (messageForm == null) 
+                if (messageForm == null)
                 {
                     Program.Console.WriteMessage($"[Networking]" +
                         $" Unable to get a message form for {packet.ContactName}!");
@@ -72,15 +74,16 @@ namespace PintoNS.Networking
 
                 if (packet.Sender.Trim().Length > 0)
                     messageForm.WriteMessage($"{packet.Sender}: ", Color.Black, false);
+                /*
                 if (packet.Message.StartsWith(@"{\rtf"))
                     messageForm.WriteRTF(packet.Message);
-                else
-                    messageForm.WriteMessage(packet.Message, Color.Black);
+                else*/
+                messageForm.WriteMessage(packet.Message, Color.Black);
 
                 if (Form.ActiveForm != messageForm && !messageForm.HasBeenInactive)
                 {
                     messageForm.HasBeenInactive = true;
-                    mainForm.PopupController.CreatePopup($"Received a new message from {packet.ContactName}!", 
+                    mainForm.PopupController.CreatePopup($"Received a new message from {packet.ContactName}!",
                         "New message");
                     new SoundPlayer() { Stream = Sounds.IM }.Play();
                 }
@@ -112,6 +115,7 @@ namespace PintoNS.Networking
                 mainForm.ContactsMgr.RemoveContact(mainForm.ContactsMgr.GetContact(packet.ContactName));
             }));
         }
+
         public void HandleStatusPacket(PacketStatus packet)
         {
             Program.Console.WriteMessage(
@@ -125,12 +129,14 @@ namespace PintoNS.Networking
                 else
                 {
                     Contact contact = mainForm.ContactsMgr.GetContact(packet.ContactName);
+
                     if (contact == null)
                     {
                         Program.Console.WriteMessage($"[General] Received invalid status change" +
                             $", \"{packet.ContactName}\" is not a valid contact!");
                         return;
                     }
+
                     if (packet.Status == UserStatus.OFFLINE && contact.Status != UserStatus.OFFLINE)
                     {
                         mainForm.PopupController.CreatePopup($"{packet.ContactName} is now offline",
@@ -143,10 +149,12 @@ namespace PintoNS.Networking
                             "Status change");
                         new SoundPlayer() { Stream = Sounds.ONLINE }.Play();
                     }
+
                     mainForm.ContactsMgr.UpdateContact(new Contact() { Name = packet.ContactName, Status = packet.Status });
                 }
             }));
         }
+
         public void HandleContactRequestPacket(PacketContactRequest packet)
         {
             Program.Console.WriteMessage($"[Networking] Received contact request from {packet.ContactName}");
@@ -161,6 +169,7 @@ namespace PintoNS.Networking
                     });
             }));
         }
+
         public void HandleClearContactsPacket()
         {
             Program.Console.WriteMessage($"[Contacts] Clearing contact list...");
@@ -171,84 +180,41 @@ namespace PintoNS.Networking
             }));
         }
 
-        /*
-        public void HandleCallRequestPacket(PacketCallRequest packet)
-        {            Program.Console.WriteMessage($"[Networking] Received call request from {packet.ContactName}");
-            mainForm.Invoke(new Action(() =>
-            {
-                NotificationUtil.ShowPromptNotification(mainForm,
-                    $"{packet.ContactName} wants to start a call. Proceed?", "Call request",
-                    NotificationIconType.QUESTION, true,
-                    (NotificationButtonType button) =>
-                    {
-                        SendCallRequestPacket(packet.ContactName, button == NotificationButtonType.YES);
-
-                        if (button == NotificationButtonType.YES)
-                        {
-                            mainForm.CallTarget = packet.ContactName;
-                            mainForm.OnCallStart();
-                            if (mainForm.CallClient != null &&
-                                mainForm.CallClient.Client != null &&
-                                mainForm.CallClient.Client.LocalEndPoint != null)
-                                SendCallPartyInfoPacket(((IPEndPoint)mainForm.CallClient.Client.LocalEndPoint).Port);
-                            else
-                                Program.Console.WriteMessage("[Networking] Unable to send the UDP client port!");
-                        }
-                    });
-            }));
-        }
-
-        public void HandleCallPartyInfoPacket(PacketCallPartyInfo packet)
-        {
-            Program.Console.WriteMessage($"[Networking] Received other call party info:" +
-                $" {packet.IPAddress}:{packet.Port}");
-            mainForm.CallTargetIP = new IPEndPoint(IPAddress.Parse(packet.IPAddress), 2704);
-        }
-
-        public void HandleCallEndPacket()
-        {
-            Program.Console.WriteMessage("[Networking] Ending call...");
-            mainForm.Invoke(new Action(() =>
-            {
-                mainForm.OnCallStop();
-            }));
-        }*/
-
-        public void SendLoginPacket(byte protocolVersion, string clientVersion, 
-            string name, string sessionID) 
-        {
-            networkClient.AddToSendQueue(new PacketLogin(protocolVersion, clientVersion, name, sessionID));
-        }
-
-        public void SendRegisterPacket(byte protocolVersion, string clientVersion, 
+        public void SendLoginPacket(byte protocolVersion, string clientVersion,
             string name, string sessionID)
         {
-            networkClient.AddToSendQueue(new PacketRegister(protocolVersion, clientVersion, name, sessionID));
+            networkClient.SendPacket(new PacketLogin(protocolVersion, clientVersion, name, sessionID));
+        }
+
+        public void SendRegisterPacket(byte protocolVersion, string clientVersion,
+            string name, string sessionID)
+        {
+            networkClient.SendPacket(new PacketRegister(protocolVersion, clientVersion, name, sessionID));
         }
 
         public void SendMessagePacket(string contactName, string message)
         {
-            networkClient.AddToSendQueue(new PacketMessage(contactName, message));
+            networkClient.SendPacket(new PacketMessage(contactName, message));
         }
 
         public void SendStatusPacket(UserStatus status)
         {
-            networkClient.AddToSendQueue(new PacketStatus("", status));
+            networkClient.SendPacket(new PacketStatus("", status));
         }
 
         public void SendContactRequestPacket(string name, bool approved)
         {
-            networkClient.AddToSendQueue(new PacketContactRequest($"{name}:{(approved ? "yes" : "no")}"));
+            networkClient.SendPacket(new PacketContactRequest($"{name}:{(approved ? "yes" : "no")}"));
         }
 
         public void SendAddContactPacket(string name)
         {
-            networkClient.AddToSendQueue(new PacketAddContact(name, UserStatus.OFFLINE));
+            networkClient.SendPacket(new PacketAddContact(name, UserStatus.OFFLINE));
         }
 
         public void SendRemoveContactPacket(string name)
         {
-            networkClient.AddToSendQueue(new PacketRemoveContact(name));
+            networkClient.SendPacket(new PacketRemoveContact(name));
         }
     }
 }

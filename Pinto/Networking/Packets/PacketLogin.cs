@@ -17,7 +17,7 @@ namespace PintoNS.Networking
 
         public PacketLogin() { }
 
-        public PacketLogin(byte protocolVersion, string clientVersion, 
+        public PacketLogin(byte protocolVersion, string clientVersion,
             string name, string passwordHash)
         {
             ProtocolVersion = protocolVersion;
@@ -50,6 +50,13 @@ namespace PintoNS.Networking
         public int GetID()
         {
             return 0;
+        }
+
+        public int GetSize()
+        {
+            return 1 + BinaryWriterReaderExtensions.GetPintoStringSize(ClientVersion) +
+                BinaryWriterReaderExtensions.GetPintoStringSize(Name) +
+                BinaryWriterReaderExtensions.GetPintoStringSize(PasswordHash);
         }
     }
 }

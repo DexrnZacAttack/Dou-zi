@@ -1,4 +1,5 @@
 ﻿using System.Windows.Forms;
+using System.Drawing;
 
 namespace PintoNS.Forms
 {
@@ -35,9 +36,7 @@ namespace PintoNS.Forms
             this.btnSend = new System.Windows.Forms.Button();
             this.rtxtInput = new System.Windows.Forms.RichTextBox();
             this.rtxtMessages = new System.Windows.Forms.RichTextBox();
-            this.btnTalk = new System.Windows.Forms.Button();
             this.ilButtons = new System.Windows.Forms.ImageList(this.components);
-            this.btnBlock = new System.Windows.Forms.Button();
             this.ssStatusStrip = new System.Windows.Forms.StatusStrip();
             this.tsslStatusBarTypingList = new System.Windows.Forms.ToolStripStatusLabel();
             this.btnColor = new System.Windows.Forms.Button();
@@ -49,8 +48,11 @@ namespace PintoNS.Forms
             this.contactName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tsddbMenuBarFile = new System.Windows.Forms.ToolStripDropDownButton();
             this.tsmiMenuBarFileClearSavedData = new System.Windows.Forms.ToolStripMenuItem();
-            this.MSGFormAddContactButton = new System.Windows.Forms.Button();
             this.txtSearchBox = new PintoNS.Controls.TextBoxWithPlaceholderSupport();
+            this.EmojiBtn = new System.Windows.Forms.Button();
+            this.MSGFormAddContactButton = new System.Windows.Forms.Button();
+            this.btnBlock = new System.Windows.Forms.Button();
+            this.btnTalk = new System.Windows.Forms.Button();
             this.ssStatusStrip.SuspendLayout();
             this.tcTabs.SuspendLayout();
             this.tpContactsMessageForm.SuspendLayout();
@@ -60,12 +62,15 @@ namespace PintoNS.Forms
             // btnSend
             // 
             this.btnSend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSend.Location = new System.Drawing.Point(475, 444);
+            this.btnSend.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(158)))), ((int)(((byte)(244)))));
+            this.btnSend.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSend.ForeColor = System.Drawing.Color.White;
+            this.btnSend.Location = new System.Drawing.Point(468, 444);
             this.btnSend.Name = "btnSend";
-            this.btnSend.Size = new System.Drawing.Size(69, 20);
+            this.btnSend.Size = new System.Drawing.Size(76, 23);
             this.btnSend.TabIndex = 1;
             this.btnSend.Text = "&Send";
-            this.btnSend.UseVisualStyleBackColor = true;
+            this.btnSend.UseVisualStyleBackColor = false;
             this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
             // 
             // rtxtInput
@@ -92,29 +97,11 @@ namespace PintoNS.Forms
             this.rtxtMessages.Location = new System.Drawing.Point(148, 75);
             this.rtxtMessages.Name = "rtxtMessages";
             this.rtxtMessages.ReadOnly = true;
-            this.rtxtMessages.Size = new System.Drawing.Size(396, 322);
+            this.rtxtMessages.Size = new System.Drawing.Size(396, 306);
             this.rtxtMessages.TabIndex = 2;
             this.rtxtMessages.Text = "";
             this.rtxtMessages.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.rtxtMessages_LinkClicked);
             this.rtxtMessages.TextChanged += new System.EventHandler(this.rtxtMessages_TextChanged);
-            // 
-            // btnTalk
-            // 
-            this.btnTalk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnTalk.BackColor = System.Drawing.SystemColors.Control;
-            this.btnTalk.FlatAppearance.BorderSize = 0;
-            this.btnTalk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTalk.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnTalk.ImageKey = "TALK";
-            this.btnTalk.ImageList = this.ilButtons;
-            this.btnTalk.Location = new System.Drawing.Point(475, 28);
-            this.btnTalk.Name = "btnTalk";
-            this.btnTalk.Size = new System.Drawing.Size(68, 41);
-            this.btnTalk.TabIndex = 3;
-            this.btnTalk.Text = "Talk";
-            this.btnTalk.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnTalk.UseVisualStyleBackColor = false;
-            this.btnTalk.Click += new System.EventHandler(this.btnTalk_Click);
             // 
             // ilButtons
             // 
@@ -122,23 +109,6 @@ namespace PintoNS.Forms
             this.ilButtons.TransparentColor = System.Drawing.Color.Transparent;
             this.ilButtons.Images.SetKeyName(0, "BLOCK");
             this.ilButtons.Images.SetKeyName(1, "TALK");
-            // 
-            // btnBlock
-            // 
-            this.btnBlock.BackColor = System.Drawing.SystemColors.Control;
-            this.btnBlock.FlatAppearance.BorderSize = 0;
-            this.btnBlock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBlock.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBlock.ImageKey = "BLOCK";
-            this.btnBlock.ImageList = this.ilButtons;
-            this.btnBlock.Location = new System.Drawing.Point(148, 28);
-            this.btnBlock.Name = "btnBlock";
-            this.btnBlock.Size = new System.Drawing.Size(73, 41);
-            this.btnBlock.TabIndex = 4;
-            this.btnBlock.Text = "Block";
-            this.btnBlock.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnBlock.UseVisualStyleBackColor = false;
-            this.btnBlock.Click += new System.EventHandler(this.btnBlock_Click);
             // 
             // ssStatusStrip
             // 
@@ -160,13 +130,14 @@ namespace PintoNS.Forms
             this.btnColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnColor.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnColor.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnColor.Location = new System.Drawing.Point(411, 444);
+            this.btnColor.Location = new System.Drawing.Point(475, 473);
             this.btnColor.Name = "btnColor";
             this.btnColor.Size = new System.Drawing.Size(58, 20);
             this.btnColor.TabIndex = 6;
             this.btnColor.Text = "Color";
             this.btnColor.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnColor.UseVisualStyleBackColor = true;
+            this.btnColor.Visible = false;
             this.btnColor.Click += new System.EventHandler(this.btnColor_Click);
             // 
             // tcTabs
@@ -218,7 +189,6 @@ namespace PintoNS.Forms
             this.dgvContacts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvContacts.Size = new System.Drawing.Size(116, 399);
             this.dgvContacts.TabIndex = 0;
-            this.dgvContacts.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvContacts_CellContentClick);
             // 
             // contactStatus
             // 
@@ -247,16 +217,6 @@ namespace PintoNS.Forms
             this.tsmiMenuBarFileClearSavedData.Name = "tsmiMenuBarFileClearSavedData";
             this.tsmiMenuBarFileClearSavedData.Size = new System.Drawing.Size(32, 19);
             // 
-            // MSGFormAddContactButton
-            // 
-            this.MSGFormAddContactButton.Image = global::PintoNS.Assets.ADDCONTACT_ENABLED;
-            this.MSGFormAddContactButton.Location = new System.Drawing.Point(101, 1);
-            this.MSGFormAddContactButton.Name = "MSGFormAddContactButton";
-            this.MSGFormAddContactButton.Size = new System.Drawing.Size(34, 23);
-            this.MSGFormAddContactButton.TabIndex = 9;
-            this.MSGFormAddContactButton.UseVisualStyleBackColor = true;
-            this.MSGFormAddContactButton.Click += new System.EventHandler(this.tsmiMenuBarFileAddContact_Click);
-            // 
             // txtSearchBox
             // 
             this.txtSearchBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystem;
@@ -273,11 +233,70 @@ namespace PintoNS.Forms
             this.txtSearchBox.Text = " Search";
             this.txtSearchBox.TextForeColor = System.Drawing.Color.Black;
             // 
+            // EmojiBtn
+            // 
+            this.EmojiBtn.BackColor = System.Drawing.Color.Transparent;
+            this.EmojiBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.EmojiBtn.ForeColor = System.Drawing.Color.Transparent;
+            this.EmojiBtn.Image = global::PintoNS.Assets.EMOJI_SMALL;
+            this.EmojiBtn.Location = new System.Drawing.Point(148, 380);
+            this.EmojiBtn.Name = "EmojiBtn";
+            this.EmojiBtn.Size = new System.Drawing.Size(30, 23);
+            this.EmojiBtn.TabIndex = 10;
+            this.EmojiBtn.UseVisualStyleBackColor = false;
+            this.EmojiBtn.Click += new System.EventHandler(this.EmojiBtn_Click);
+            // 
+            // MSGFormAddContactButton
+            // 
+            this.MSGFormAddContactButton.Image = global::PintoNS.Assets.ADDCONTACT_ENABLED;
+            this.MSGFormAddContactButton.Location = new System.Drawing.Point(101, 1);
+            this.MSGFormAddContactButton.Name = "MSGFormAddContactButton";
+            this.MSGFormAddContactButton.Size = new System.Drawing.Size(34, 23);
+            this.MSGFormAddContactButton.TabIndex = 9;
+            this.MSGFormAddContactButton.UseVisualStyleBackColor = true;
+            // 
+            // btnBlock
+            // 
+            this.btnBlock.BackColor = System.Drawing.Color.Transparent;
+            this.btnBlock.FlatAppearance.BorderSize = 0;
+            this.btnBlock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBlock.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBlock.ImageKey = "BLOCK";
+            this.btnBlock.ImageList = this.ilButtons;
+            this.btnBlock.Location = new System.Drawing.Point(148, 28);
+            this.btnBlock.Name = "btnBlock";
+            this.btnBlock.Size = new System.Drawing.Size(73, 41);
+            this.btnBlock.TabIndex = 4;
+            this.btnBlock.Text = "Block";
+            this.btnBlock.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnBlock.UseVisualStyleBackColor = false;
+            this.btnBlock.Click += new System.EventHandler(this.btnBlock_Click);
+            // 
+            // btnTalk
+            // 
+            this.btnTalk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnTalk.BackColor = System.Drawing.Color.Transparent;
+            this.btnTalk.FlatAppearance.BorderSize = 0;
+            this.btnTalk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTalk.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTalk.ImageKey = "TALK";
+            this.btnTalk.ImageList = this.ilButtons;
+            this.btnTalk.Location = new System.Drawing.Point(475, 28);
+            this.btnTalk.Name = "btnTalk";
+            this.btnTalk.Size = new System.Drawing.Size(68, 41);
+            this.btnTalk.TabIndex = 3;
+            this.btnTalk.Text = "Talk";
+            this.btnTalk.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnTalk.UseVisualStyleBackColor = false;
+            this.btnTalk.Click += new System.EventHandler(this.btnTalk_Click);
+            // 
             // MessageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(555, 493);
+            this.Controls.Add(this.EmojiBtn);
             this.Controls.Add(this.MSGFormAddContactButton);
             this.Controls.Add(this.txtSearchBox);
             this.Controls.Add(this.btnColor);
@@ -322,5 +341,6 @@ namespace PintoNS.Forms
         private System.Windows.Forms.Button MSGFormAddContactButton;
         private DataGridViewImageColumn contactStatus;
         private DataGridViewTextBoxColumn contactName;
+        private Button EmojiBtn;
     }
 }

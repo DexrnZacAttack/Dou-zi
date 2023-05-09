@@ -24,13 +24,13 @@ namespace PintoNS.Networking
         public void Read(BinaryReader reader)
         {
             ContactName = reader.ReadPintoString(BinaryWriterReaderExtensions.USERNAME_MAX);
-            Status = (UserStatus) reader.ReadBEInt();
+            Status = (UserStatus)reader.ReadBEInt();
         }
 
         public void Write(BinaryWriter writer)
         {
             writer.WritePintoString(ContactName, BinaryWriterReaderExtensions.USERNAME_MAX);
-            writer.WriteBE((int) Status);
+            writer.WriteBE((int)Status);
         }
 
         public void Handle(NetworkHandler netHandler)
@@ -41,6 +41,11 @@ namespace PintoNS.Networking
         public int GetID()
         {
             return 8;
+        }
+
+        public int GetSize()
+        {
+            return BinaryWriterReaderExtensions.GetPintoStringSize(ContactName) + 4;
         }
     }
 }

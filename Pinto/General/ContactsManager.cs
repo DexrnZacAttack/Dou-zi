@@ -28,7 +28,6 @@ namespace PintoNS.General
         public ContactsManager(MessageForm messageForm)
         {
             this.messageForm = messageForm;
-            dgvContacts = messageForm.dgvContacts;
         }
 
         private DataGridViewRow GetContactListEntry(string name) 

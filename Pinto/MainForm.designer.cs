@@ -51,11 +51,6 @@ namespace PintoNS
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.ilTabImages = new System.Windows.Forms.ImageList(this.components);
             this.ssStatusBar = new System.Windows.Forms.StatusStrip();
-            this.tsddbStatusBarStatus = new System.Windows.Forms.ToolStripDropDownButton();
-            this.tsmiStatusBarStatusOnline = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiStatusBarStatusAway = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiStatusBarStatusBusy = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiStatusBarStatusInvisible = new System.Windows.Forms.ToolStripMenuItem();
             this.tsslStatusBarStatusText = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsMenuBar = new System.Windows.Forms.ToolStrip();
             this.tsmiMenuBarAbout = new System.Windows.Forms.ToolStripButton();
@@ -82,6 +77,11 @@ namespace PintoNS
             this.tsmiMenuBarFileAddContact = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiMenuBarFileRemoveContact = new System.Windows.Forms.ToolStripMenuItem();
             this.txtSearchBox = new PintoNS.Controls.TextBoxWithPlaceholderSupport();
+            this.tsmiStatusBarStatusOnline = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiStatusBarStatusAway = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiStatusBarStatusBusy = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiStatusBarStatusInvisible = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsddbStatusBarStatus = new System.Windows.Forms.ToolStripDropDownButton();
             this.tcTabs.SuspendLayout();
             this.tpLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnStartCall)).BeginInit();
@@ -327,54 +327,6 @@ namespace PintoNS
             this.ssStatusBar.TabIndex = 3;
             this.ssStatusBar.Text = "statusStrip1";
             // 
-            // tsddbStatusBarStatus
-            // 
-            this.tsddbStatusBarStatus.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsddbStatusBarStatus.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiStatusBarStatusOnline,
-            this.tsmiStatusBarStatusAway,
-            this.tsmiStatusBarStatusBusy,
-            this.tsmiStatusBarStatusInvisible});
-            this.tsddbStatusBarStatus.Enabled = false;
-            this.tsddbStatusBarStatus.Image = global::PintoNS.Statuses.OFFLINE;
-            this.tsddbStatusBarStatus.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsddbStatusBarStatus.Name = "tsddbStatusBarStatus";
-            this.tsddbStatusBarStatus.ShowDropDownArrow = false;
-            this.tsddbStatusBarStatus.Size = new System.Drawing.Size(20, 40);
-            this.tsddbStatusBarStatus.Text = "Status";
-            // 
-            // tsmiStatusBarStatusOnline
-            // 
-            this.tsmiStatusBarStatusOnline.Image = global::PintoNS.Statuses.ONLINE;
-            this.tsmiStatusBarStatusOnline.Name = "tsmiStatusBarStatusOnline";
-            this.tsmiStatusBarStatusOnline.Size = new System.Drawing.Size(117, 22);
-            this.tsmiStatusBarStatusOnline.Text = "Online";
-            this.tsmiStatusBarStatusOnline.Click += new System.EventHandler(this.tsmiStatusBarStatusOnline_Click);
-            // 
-            // tsmiStatusBarStatusAway
-            // 
-            this.tsmiStatusBarStatusAway.Image = global::PintoNS.Statuses.AWAY;
-            this.tsmiStatusBarStatusAway.Name = "tsmiStatusBarStatusAway";
-            this.tsmiStatusBarStatusAway.Size = new System.Drawing.Size(117, 22);
-            this.tsmiStatusBarStatusAway.Text = "Away";
-            this.tsmiStatusBarStatusAway.Click += new System.EventHandler(this.tsmiStatusBarStatusAway_Click);
-            // 
-            // tsmiStatusBarStatusBusy
-            // 
-            this.tsmiStatusBarStatusBusy.Image = global::PintoNS.Statuses.BUSY;
-            this.tsmiStatusBarStatusBusy.Name = "tsmiStatusBarStatusBusy";
-            this.tsmiStatusBarStatusBusy.Size = new System.Drawing.Size(117, 22);
-            this.tsmiStatusBarStatusBusy.Text = "Busy";
-            this.tsmiStatusBarStatusBusy.Click += new System.EventHandler(this.tsmiStatusBarStatusBusy_Click);
-            // 
-            // tsmiStatusBarStatusInvisible
-            // 
-            this.tsmiStatusBarStatusInvisible.Image = global::PintoNS.Statuses.INVISIBLE;
-            this.tsmiStatusBarStatusInvisible.Name = "tsmiStatusBarStatusInvisible";
-            this.tsmiStatusBarStatusInvisible.Size = new System.Drawing.Size(117, 22);
-            this.tsmiStatusBarStatusInvisible.Text = "Invisible";
-            this.tsmiStatusBarStatusInvisible.Click += new System.EventHandler(this.tsmiStatusBarStatusInvisible_Click);
-            // 
             // tsslStatusBarStatusText
             // 
             this.tsslStatusBarStatusText.ForeColor = System.Drawing.Color.White;
@@ -526,7 +478,7 @@ namespace PintoNS
             // 
             this.tsmiMenuBarHelpToggleConsole.AutoToolTip = true;
             this.tsmiMenuBarHelpToggleConsole.Name = "tsmiMenuBarHelpToggleConsole";
-            this.tsmiMenuBarHelpToggleConsole.Size = new System.Drawing.Size(153, 22);
+            this.tsmiMenuBarHelpToggleConsole.Size = new System.Drawing.Size(180, 22);
             this.tsmiMenuBarHelpToggleConsole.Text = "Toggle console";
             this.tsmiMenuBarHelpToggleConsole.Click += new System.EventHandler(this.tsmiMenuBarHelpToggleConsole_Click);
             // 
@@ -536,7 +488,7 @@ namespace PintoNS
             this.douZiToolStripMenuItem,
             this.beansToolStripMenuItem});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(153, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem1.Text = "Theme";
             // 
             // douZiToolStripMenuItem
@@ -555,26 +507,26 @@ namespace PintoNS
             // optionsToolStripMenuItem
             // 
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.optionsToolStripMenuItem.Text = "Options";
             this.optionsToolStripMenuItem.Click += new System.EventHandler(this.tsmiMenuBarToolsOptions_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(150, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // tsmiMenuBarFileLogOut
             // 
             this.tsmiMenuBarFileLogOut.Name = "tsmiMenuBarFileLogOut";
-            this.tsmiMenuBarFileLogOut.Size = new System.Drawing.Size(153, 22);
+            this.tsmiMenuBarFileLogOut.Size = new System.Drawing.Size(180, 22);
             this.tsmiMenuBarFileLogOut.Text = "Log Out";
             this.tsmiMenuBarFileLogOut.Click += new System.EventHandler(this.tsmiMenuBarFileLogOut_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.tsmiMenuBarFileExit_Click);
             // 
@@ -621,8 +573,56 @@ namespace PintoNS
             this.txtSearchBox.PlaceholderTextForeColor = System.Drawing.Color.DimGray;
             this.txtSearchBox.Size = new System.Drawing.Size(262, 20);
             this.txtSearchBox.TabIndex = 4;
-            this.txtSearchBox.Text = "Type the username you would like to search for";
+            this.txtSearchBox.Text = "Search";
             this.txtSearchBox.TextForeColor = System.Drawing.Color.Black;
+            // 
+            // tsmiStatusBarStatusOnline
+            // 
+            this.tsmiStatusBarStatusOnline.Image = global::PintoNS.Statuses.ONLINE;
+            this.tsmiStatusBarStatusOnline.Name = "tsmiStatusBarStatusOnline";
+            this.tsmiStatusBarStatusOnline.Size = new System.Drawing.Size(180, 22);
+            this.tsmiStatusBarStatusOnline.Text = "Online";
+            this.tsmiStatusBarStatusOnline.Click += new System.EventHandler(this.tsmiStatusBarStatusOnline_Click);
+            // 
+            // tsmiStatusBarStatusAway
+            // 
+            this.tsmiStatusBarStatusAway.Image = global::PintoNS.Statuses.AWAY;
+            this.tsmiStatusBarStatusAway.Name = "tsmiStatusBarStatusAway";
+            this.tsmiStatusBarStatusAway.Size = new System.Drawing.Size(180, 22);
+            this.tsmiStatusBarStatusAway.Text = "Away";
+            this.tsmiStatusBarStatusAway.Click += new System.EventHandler(this.tsmiStatusBarStatusAway_Click);
+            // 
+            // tsmiStatusBarStatusBusy
+            // 
+            this.tsmiStatusBarStatusBusy.Image = global::PintoNS.Statuses.BUSY;
+            this.tsmiStatusBarStatusBusy.Name = "tsmiStatusBarStatusBusy";
+            this.tsmiStatusBarStatusBusy.Size = new System.Drawing.Size(180, 22);
+            this.tsmiStatusBarStatusBusy.Text = "Busy";
+            this.tsmiStatusBarStatusBusy.Click += new System.EventHandler(this.tsmiStatusBarStatusBusy_Click);
+            // 
+            // tsmiStatusBarStatusInvisible
+            // 
+            this.tsmiStatusBarStatusInvisible.Image = global::PintoNS.Statuses.INVISIBLE;
+            this.tsmiStatusBarStatusInvisible.Name = "tsmiStatusBarStatusInvisible";
+            this.tsmiStatusBarStatusInvisible.Size = new System.Drawing.Size(180, 22);
+            this.tsmiStatusBarStatusInvisible.Text = "Invisible";
+            this.tsmiStatusBarStatusInvisible.Click += new System.EventHandler(this.tsmiStatusBarStatusInvisible_Click);
+            // 
+            // tsddbStatusBarStatus
+            // 
+            this.tsddbStatusBarStatus.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsddbStatusBarStatus.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiStatusBarStatusOnline,
+            this.tsmiStatusBarStatusAway,
+            this.tsmiStatusBarStatusBusy,
+            this.tsmiStatusBarStatusInvisible});
+            this.tsddbStatusBarStatus.Enabled = false;
+            this.tsddbStatusBarStatus.Image = global::PintoNS.Statuses.OFFLINE;
+            this.tsddbStatusBarStatus.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsddbStatusBarStatus.Name = "tsddbStatusBarStatus";
+            this.tsddbStatusBarStatus.ShowDropDownArrow = false;
+            this.tsddbStatusBarStatus.Size = new System.Drawing.Size(20, 40);
+            this.tsddbStatusBarStatus.Text = "Status";
             // 
             // MainForm
             // 
@@ -675,7 +675,6 @@ namespace PintoNS
         private Controls.TextBoxWithPlaceholderSupport txtSearchBox;
         private System.Windows.Forms.PictureBox btnStartCall;
         private System.Windows.Forms.PictureBox btnEndCall;
-        private System.Windows.Forms.ToolStripDropDownButton tsddbStatusBarStatus;
         private System.Windows.Forms.ToolStripStatusLabel tsslStatusBarStatusText;
         private System.Windows.Forms.ToolStrip tsMenuBar;
         private System.Windows.Forms.TabPage tpContacts;
@@ -686,10 +685,6 @@ namespace PintoNS
         private System.Windows.Forms.Label lConnectingStatus;
         private System.Windows.Forms.DataGridViewImageColumn contactStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn contactName;
-        private System.Windows.Forms.ToolStripMenuItem tsmiStatusBarStatusOnline;
-        private System.Windows.Forms.ToolStripMenuItem tsmiStatusBarStatusAway;
-        private System.Windows.Forms.ToolStripMenuItem tsmiStatusBarStatusBusy;
-        private System.Windows.Forms.ToolStripMenuItem tsmiStatusBarStatusInvisible;
         private System.Windows.Forms.TabPage tpCall;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label lCallTarget;
@@ -716,5 +711,10 @@ namespace PintoNS
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem douZiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem beansToolStripMenuItem;
+        private System.Windows.Forms.ToolStripDropDownButton tsddbStatusBarStatus;
+        private System.Windows.Forms.ToolStripMenuItem tsmiStatusBarStatusOnline;
+        private System.Windows.Forms.ToolStripMenuItem tsmiStatusBarStatusAway;
+        private System.Windows.Forms.ToolStripMenuItem tsmiStatusBarStatusBusy;
+        private System.Windows.Forms.ToolStripMenuItem tsmiStatusBarStatusInvisible;
     }
 }

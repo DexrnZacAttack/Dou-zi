@@ -93,6 +93,26 @@ namespace PintoNS {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap EMOJI {
+            get {
+                object obj = ResourceManager.GetObject("EMOJI", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap EMOJI_SMALL {
+            get {
+                object obj = ResourceManager.GetObject("EMOJI_SMALL", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ENDCALL_DISABLED {
             get {
                 object obj = ResourceManager.GetObject("ENDCALL_DISABLED", resourceCulture);
