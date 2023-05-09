@@ -2,6 +2,7 @@
     "latest": "a1.2M1.1.1",
     "update_url": "https://github.com/DexrnZacAttack/douzi/releases/latest/download/DouZiSetup.msi",
     "supported": [
-        "a1.2M1.1.1"
+        "a1.2M1.1.1",
+        "a1.2M1.1"
     ]
 }
