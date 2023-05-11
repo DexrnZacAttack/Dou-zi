@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using System.IO;
 using Windows.UI.ViewManagement.Core;
+using PintoNS.Networking;
 
 namespace PintoNS.Forms
 {
@@ -20,6 +21,7 @@ namespace PintoNS.Forms
     {
         private MainForm mainForm;
         public Contact Receiver;
+        public NetworkManager NetManager;
         private bool isTypingLastStatus;
         public bool HasBeenInactive;
         public InWindowPopupController InWindowPopupController;
@@ -30,7 +32,7 @@ namespace PintoNS.Forms
             this.mainForm = mainForm;
             InWindowPopupController = new InWindowPopupController(this, 25);
             Receiver = receiver;
-            Text = $"Pinto! - Instant Messaging - Chatting with {Receiver.Name}";
+            Text = $"豆子 - Instant Messaging - Chatting with {Receiver.Name}";
             UpdateColorPicker();
             LoadChat();
         }
@@ -241,6 +243,14 @@ namespace PintoNS.Forms
         {
             rtxtInput.Focus();
             CoreInputView.GetForCurrentView().TryShow(CoreInputViewKind.Emoji);
+        }
+
+        private void tsmiMenuBarFileAddContact_Click(object sender, EventArgs e)
+        {
+            MsgBox.ShowNotification(this,
+                "This option is unavailable in this version!",
+                "Option Unavailable",
+                MsgBoxIconType.WARNING);
         }
     }
 }

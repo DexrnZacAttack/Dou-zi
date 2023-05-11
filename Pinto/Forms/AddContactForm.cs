@@ -24,6 +24,7 @@ namespace PintoNS.Forms
 
         public AddContactForm(MessageForm messageForm)
         {
+            InitializeComponent();
             this.messageForm = messageForm;
         }
 
@@ -54,6 +55,11 @@ namespace PintoNS.Forms
         }
 
         private void txtContactName_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AddContactForm_Load(object sender, EventArgs e)
         {
 
         }

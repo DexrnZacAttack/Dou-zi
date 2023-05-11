@@ -13,7 +13,7 @@ namespace PintoNS.General
 {
     public static class Updater
     {
-        /*  public const string UPDATE_URL = "https://github.com/PintoIM/Pinto/raw/main/version.json";
+          public const string UPDATE_URL = "https://github.com/DexrnZacAttack/douzi/raw/main/version.json";
 
           public static async Task<JObject> GetVersionInformation()
           {
@@ -24,7 +24,7 @@ namespace PintoNS.General
 
                   string responseRaw = await httpClient.GetStringAsync(UPDATE_URL);
                   JObject response = JsonConvert.DeserializeObject<JObject>(responseRaw);
-                  MessageBox.Show(response.ToString());
+                  //MessageBox.Show(response.ToString());
                   return response;
               }
               catch (Exception ex)
@@ -40,7 +40,7 @@ namespace PintoNS.General
               try
               {
                   JObject information = await GetVersionInformation();
-                  return Program.VERSION.Equals(information["latest"].Value<string>(),
+                  return Program.DOUZIVERSIONNUM.Equals(information["latest"].Value<string>(),
                       StringComparison.InvariantCultureIgnoreCase);
               }
               catch (Exception ex)
@@ -81,6 +81,6 @@ namespace PintoNS.General
                return null;
               }
           }
-         */
+         
     }
 }

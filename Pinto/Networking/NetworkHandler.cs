@@ -80,8 +80,10 @@ namespace PintoNS.Networking
                 else*/
                 messageForm.WriteMessage(packet.Message, Color.Black);
 
-                if (Form.ActiveForm != messageForm && !messageForm.HasBeenInactive)
-                {
+                if (Form.ActiveForm != messageForm && 
+                !messageForm.HasBeenInactive &&
+                mainForm.CurrentUser.Status != UserStatus.BUSY)
+            {
                     messageForm.HasBeenInactive = true;
                     mainForm.PopupController.CreatePopup($"Received a new message from {packet.ContactName}!",
                         "New message");

@@ -20,6 +20,7 @@ using System.Threading;
 using System.IO;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Diagnostics;
 
 namespace PintoNS
 {
@@ -97,7 +98,7 @@ namespace PintoNS
             tsmiMenuBarFileAddContact.Enabled = false;
             tsmiMenuBarFileRemoveContact.Enabled = false;
             tsmiMenuBarFileLogOut.Enabled = false;
-            Text = "Pinto!";
+            Text = "豆子";
 
             if (!noSound)
                 new SoundPlayer(Sounds.LOGOUT).Play();
@@ -176,7 +177,7 @@ namespace PintoNS
             NetManager = null;
         }
 
-        public MessageForm GetMessageFormFromReceiverName(string name)
+        public MessageForm GetMessageFormFromReceiverName(string name, bool doNotCreate = false)
         {
             Program.Console.WriteMessage($"Getting MessageForm for {name}...");
 
@@ -186,10 +187,16 @@ namespace PintoNS
                     return msgForm;
             }
 
-            Program.Console.WriteMessage($"Creating MessageForm for {name}...");
-            MessageForm messageForm = new MessageForm(this, ContactsMgr.GetContact(name));
-            MessageForms.Add(messageForm);
-            messageForm.Show();
+            MessageForm messageForm = null;
+
+            if (!doNotCreate)
+            {
+                Program.Console.WriteMessage($"Creating MessageForm for {name}...");
+                messageForm = new MessageForm(this, ContactsMgr.GetContact(name));
+                MessageForms.Add(messageForm);
+                messageForm.Show();
+            }
+
 
             return messageForm;
         }
@@ -204,7 +211,7 @@ namespace PintoNS
             if (!Directory.Exists(Path.Combine(DataFolder, "chats")))
                 Directory.CreateDirectory(Path.Combine(DataFolder, "chats"));
 
-            //await CheckForUpdate();
+            await CheckForUpdates();
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -261,6 +268,8 @@ namespace PintoNS
         {
             if (NetManager == null) return;
             Program.Console.WriteMessage("[General] Changing status...");
+            InWindowPopupController.CreatePopup("You are now busy" +
+    ", this means that you will not receive any non-important popups");
             NetManager.ChangeStatus(UserStatus.BUSY);
         }
 
@@ -376,25 +385,54 @@ namespace PintoNS
 
         }
 
-        /*  public async Task CheckForUpdate()
-          {
-              if (!await PintoUpdater.IsLatest())
-              {
-                  MsgBox.ShowPromptNotification(this,
-                      "An update is available, do you want to download it?",
-                      "Update Available",
-                      MsgBoxIconType.QUESTION,
-                      true, async (MsgBoxButtonType btn) =>
-                      {
-                          if (btn == MsgBoxButtonType.YES)
-                          {
-                              byte[] file = await PintoUpdater.GetUpdateFile();
-                              if (file == null) return;
-                              File.WriteAllBytes(Path.Combine(DataFolder, "PintoSetup.msi"), file);
-                          }
-                      });
-               }
-          }
-     */
+        private void tpLogin_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        public async Task CheckForUpdates()
+        {
+            if (!await Updater.IsLatest())
+            {
+                MsgBox.ShowPromptNotification(this,
+                    "An update is available, do you want to download it and install it?",
+                    "Update Available",
+                    MsgBoxIconType.QUESTION,
+                    true, async (MsgBoxButtonType btn) =>
+                    {
+                        if (btn == MsgBoxButtonType.YES)
+                        {
+                            string path = Path.Combine(DataFolder, "PintoSetup.msi");
+                            if (File.Exists(path))
+                                File.Delete(path);
+
+                            byte[] file = await Updater.GetUpdateFile();
+                            if (file == null) return;
+                            File.WriteAllBytes(path, file);
+                            Program.Console.WriteMessage($"[Updater] Saved update file at {path}");
+
+                            Program.Console.WriteMessage($"[Updater] Running msi installer at {path}...");
+                            Process process = new Process();
+                            process.StartInfo.FileName = "msiexec.exe";
+                            process.StartInfo.Arguments = " /i PintoSetup.msi /passive";
+                            process.StartInfo.WorkingDirectory = DataFolder;
+                            process.Start();
+
+                            Program.Console.WriteMessage($"[Updater] Exitting...");
+                            Close();
+                        }
+                    });
+            }
+        }
+
+        private async void tsmiMenuBarHelpCheckForUpdates_Click(object sender, EventArgs e)
+        {
+            await CheckForUpdates();
+        }
+
+        private async void checkForUpdatesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            await CheckForUpdates();
+        }
     }
 }

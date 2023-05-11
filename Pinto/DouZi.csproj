@@ -367,6 +367,10 @@
     <None Include="Resources\Logo.png" />
     <None Include="Resources\Default.rdb.0015efc3_0117.png" />
     <None Include="Resources\BACKGROUND.JPG" />
+    <None Include="Resources\LoginAnim.mp4" />
+    <None Include="Resources\BrowserPreview_tmp.gif" />
+    <None Include="Resources\BrowserPreview_tmp %281%29.gif" />
+    <None Include="Resources\img_0.gif" />
     <Content Include="Resources\Logo\LOADING.gif" />
     <None Include="Resources\Logo\LOGO.ICO" />
     <Content Include="Resources\Logo\LOGO.png" />
@@ -392,6 +396,7 @@
     <None Include="Resources\Logo_Beans\LOADING_NOTEXT_FAST.gif" />
     <None Include="Resources\Logo_Beans\LOADING_NOTEXT_FASTER.gif" />
     <None Include="Resources\Logo_Beans\LOADING_SLOW.gif" />
+    <None Include="Resources\Res.rdb.000d7209_019a.png" />
     <Content Include="Resources\Sounds\BUSY.WAV" />
     <Content Include="Resources\Sounds\CALL_ERROR1.WAV" />
     <Content Include="Resources\Sounds\CALL_ERROR2.WAV" />
@@ -448,6 +453,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="HtmlAgilityPack">
+      <Version>1.11.46</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.Windows.SDK.Contracts">
       <Version>10.0.19041.1</Version>
     </PackageReference>

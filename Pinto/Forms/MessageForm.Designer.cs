@@ -248,12 +248,15 @@ namespace PintoNS.Forms
             // 
             // MSGFormAddContactButton
             // 
+            this.MSGFormAddContactButton.BackColor = System.Drawing.Color.Transparent;
+            this.MSGFormAddContactButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MSGFormAddContactButton.Image = global::PintoNS.Assets.ADDCONTACT_ENABLED;
             this.MSGFormAddContactButton.Location = new System.Drawing.Point(101, 1);
             this.MSGFormAddContactButton.Name = "MSGFormAddContactButton";
             this.MSGFormAddContactButton.Size = new System.Drawing.Size(34, 23);
             this.MSGFormAddContactButton.TabIndex = 9;
-            this.MSGFormAddContactButton.UseVisualStyleBackColor = true;
+            this.MSGFormAddContactButton.UseVisualStyleBackColor = false;
+            this.MSGFormAddContactButton.Click += new System.EventHandler(this.tsmiMenuBarFileAddContact_Click);
             // 
             // btnBlock
             // 
