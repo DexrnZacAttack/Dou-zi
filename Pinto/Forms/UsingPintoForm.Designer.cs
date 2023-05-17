@@ -1,4 +1,7 @@
-﻿namespace PintoNS.Forms
+﻿using System.Drawing;
+using System.Windows.Forms;
+
+namespace PintoNS.Forms
 {
     partial class UsingPintoForm
     {
@@ -60,6 +63,11 @@
             this.btnConnect = new System.Windows.Forms.Button();
             this.cbSavePassword = new System.Windows.Forms.CheckBox();
             this.tcSections = new System.Windows.Forms.TabControl();
+            this.ConnectingPage = new System.Windows.Forms.TabPage();
+            this.label5 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.tsMenuBar = new System.Windows.Forms.ToolStrip();
+            this.tsmiMenuBarAbout = new System.Windows.Forms.ToolStripButton();
             this.tpRegister.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -69,6 +77,9 @@
             this.pLoginControls.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudPort)).BeginInit();
             this.tcSections.SuspendLayout();
+            this.ConnectingPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.tsMenuBar.SuspendLayout();
             this.SuspendLayout();
             // 
             // tpRegister
@@ -80,7 +91,7 @@
             this.tpRegister.Location = new System.Drawing.Point(4, 22);
             this.tpRegister.Name = "tpRegister";
             this.tpRegister.Padding = new System.Windows.Forms.Padding(3);
-            this.tpRegister.Size = new System.Drawing.Size(412, 275);
+            this.tpRegister.Size = new System.Drawing.Size(418, 263);
             this.tpRegister.TabIndex = 1;
             this.tpRegister.Text = "Register";
             this.tpRegister.UseVisualStyleBackColor = true;
@@ -227,6 +238,7 @@
             // 
             // tpMain
             // 
+            this.tpMain.Controls.Add(this.tsMenuBar);
             this.tpMain.Controls.Add(this.LinkToDebugUI);
             this.tpMain.Controls.Add(this.pbAd);
             this.tpMain.Controls.Add(this.btnRegisterPage);
@@ -238,7 +250,7 @@
             this.tpMain.Location = new System.Drawing.Point(4, 22);
             this.tpMain.Name = "tpMain";
             this.tpMain.Padding = new System.Windows.Forms.Padding(3);
-            this.tpMain.Size = new System.Drawing.Size(412, 275);
+            this.tpMain.Size = new System.Drawing.Size(418, 263);
             this.tpMain.TabIndex = 0;
             this.tpMain.Text = "Main";
             this.tpMain.UseVisualStyleBackColor = true;
@@ -246,7 +258,7 @@
             // LinkToDebugUI
             // 
             this.LinkToDebugUI.AutoSize = true;
-            this.LinkToDebugUI.Location = new System.Drawing.Point(365, 255);
+            this.LinkToDebugUI.Location = new System.Drawing.Point(376, 245);
             this.LinkToDebugUI.Name = "LinkToDebugUI";
             this.LinkToDebugUI.Size = new System.Drawing.Size(39, 13);
             this.LinkToDebugUI.TabIndex = 15;
@@ -260,7 +272,7 @@
             this.pbAd.Image = global::PintoNS.Assets.LOGINANIM;
             this.pbAd.Location = new System.Drawing.Point(-16, -22);
             this.pbAd.Name = "pbAd";
-            this.pbAd.Size = new System.Drawing.Size(448, 136);
+            this.pbAd.Size = new System.Drawing.Size(448, 118);
             this.pbAd.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbAd.TabIndex = 12;
             this.pbAd.TabStop = false;
@@ -270,7 +282,7 @@
             // 
             this.btnRegisterPage.AutoSize = true;
             this.btnRegisterPage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegisterPage.Location = new System.Drawing.Point(322, 191);
+            this.btnRegisterPage.Location = new System.Drawing.Point(3, 242);
             this.btnRegisterPage.Name = "btnRegisterPage";
             this.btnRegisterPage.Size = new System.Drawing.Size(58, 16);
             this.btnRegisterPage.TabIndex = 14;
@@ -281,7 +293,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(168, 252);
+            this.btnCancel.Location = new System.Drawing.Point(164, 235);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(67, 23);
             this.btnCancel.TabIndex = 0;
@@ -293,7 +305,7 @@
             // 
             this.llForgotPassword.AutoSize = true;
             this.llForgotPassword.Enabled = false;
-            this.llForgotPassword.Location = new System.Drawing.Point(6, 255);
+            this.llForgotPassword.Location = new System.Drawing.Point(255, 175);
             this.llForgotPassword.Name = "llForgotPassword";
             this.llForgotPassword.Size = new System.Drawing.Size(114, 13);
             this.llForgotPassword.TabIndex = 10;
@@ -310,7 +322,7 @@
             this.pLoginControls.Controls.Add(this.label3);
             this.pLoginControls.Controls.Add(this.nudPort);
             this.pLoginControls.Controls.Add(this.label2);
-            this.pLoginControls.Location = new System.Drawing.Point(32, 120);
+            this.pLoginControls.Location = new System.Drawing.Point(29, 102);
             this.pLoginControls.Name = "pLoginControls";
             this.pLoginControls.Size = new System.Drawing.Size(348, 70);
             this.pLoginControls.TabIndex = 10;
@@ -410,9 +422,9 @@
             // btnConnect
             // 
             this.btnConnect.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnConnect.Location = new System.Drawing.Point(66, 221);
+            this.btnConnect.Location = new System.Drawing.Point(64, 198);
             this.btnConnect.Name = "btnConnect";
-            this.btnConnect.Size = new System.Drawing.Size(273, 23);
+            this.btnConnect.Size = new System.Drawing.Size(273, 33);
             this.btnConnect.TabIndex = 1;
             this.btnConnect.Text = "Connect";
             this.btnConnect.UseVisualStyleBackColor = true;
@@ -423,11 +435,11 @@
             this.cbSavePassword.AutoSize = true;
             this.cbSavePassword.Checked = true;
             this.cbSavePassword.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbSavePassword.Location = new System.Drawing.Point(39, 192);
+            this.cbSavePassword.Location = new System.Drawing.Point(29, 175);
             this.cbSavePassword.Name = "cbSavePassword";
-            this.cbSavePassword.Size = new System.Drawing.Size(196, 17);
+            this.cbSavePassword.Size = new System.Drawing.Size(100, 17);
             this.cbSavePassword.TabIndex = 11;
-            this.cbSavePassword.Text = "Store my password on this computer";
+            this.cbSavePassword.Text = "Save Password";
             this.cbSavePassword.UseVisualStyleBackColor = true;
             this.cbSavePassword.CheckedChanged += new System.EventHandler(this.cbSavePassword_CheckedChanged);
             // 
@@ -435,20 +447,87 @@
             // 
             this.tcSections.Controls.Add(this.tpMain);
             this.tcSections.Controls.Add(this.tpRegister);
+            this.tcSections.Controls.Add(this.ConnectingPage);
             this.tcSections.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tcSections.Location = new System.Drawing.Point(0, 0);
             this.tcSections.Name = "tcSections";
             this.tcSections.SelectedIndex = 0;
-            this.tcSections.Size = new System.Drawing.Size(420, 301);
+            this.tcSections.Size = new System.Drawing.Size(426, 289);
             this.tcSections.TabIndex = 14;
             this.tcSections.SelectedIndexChanged += new System.EventHandler(this.tcSections_SelectedIndexChanged);
+            // 
+            // ConnectingPage
+            // 
+            this.ConnectingPage.BackgroundImage = global::PintoNS.Assets.LOGINANIM;
+            this.ConnectingPage.Controls.Add(this.label5);
+            this.ConnectingPage.Controls.Add(this.pictureBox2);
+            this.ConnectingPage.Location = new System.Drawing.Point(4, 22);
+            this.ConnectingPage.Name = "ConnectingPage";
+            this.ConnectingPage.Padding = new System.Windows.Forms.Padding(3);
+            this.ConnectingPage.Size = new System.Drawing.Size(418, 263);
+            this.ConnectingPage.TabIndex = 2;
+            this.ConnectingPage.Text = "Connecting...";
+            this.ConnectingPage.UseVisualStyleBackColor = true;
+            this.ConnectingPage.Click += new System.EventHandler(this.ConnectingPage_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(144, 3);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(102, 20);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Connecting...";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox2.Image = global::PintoNS.Logo.LOADING;
+            this.pictureBox2.Location = new System.Drawing.Point(128, 81);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(128, 128);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 0;
+            this.pictureBox2.TabStop = false;
+            // 
+            // tsMenuBar
+            // 
+            this.tsMenuBar.AutoSize = false;
+            this.tsMenuBar.BackColor = System.Drawing.Color.Transparent;
+            this.tsMenuBar.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.tsMenuBar.ImageScalingSize = new System.Drawing.Size(48, 48);
+            this.tsMenuBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiMenuBarAbout});
+            this.tsMenuBar.Location = new System.Drawing.Point(3, 3);
+            this.tsMenuBar.Name = "tsMenuBar";
+            this.tsMenuBar.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.tsMenuBar.Size = new System.Drawing.Size(412, 28);
+            this.tsMenuBar.TabIndex = 16;
+            this.tsMenuBar.Text = "toolStrip1";
+            // 
+            // tsmiMenuBarAbout
+            // 
+            this.tsmiMenuBarAbout.AutoSize = false;
+            this.tsmiMenuBarAbout.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsmiMenuBarAbout.Image = global::PintoNS.Logo.LOGO_WHITE_LARGE_TRANSPARENT_TEXT;
+            this.tsmiMenuBarAbout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tsmiMenuBarAbout.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsmiMenuBarAbout.Name = "tsmiMenuBarAbout";
+            this.tsmiMenuBarAbout.Size = new System.Drawing.Size(64, 32);
+            this.tsmiMenuBarAbout.Text = "toolStripButton1";
             // 
             // UsingPintoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(420, 301);
+            this.ClientSize = new System.Drawing.Size(426, 289);
             this.Controls.Add(this.tcSections);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -469,11 +548,17 @@
             this.pLoginControls.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudPort)).EndInit();
             this.tcSections.ResumeLayout(false);
+            this.ConnectingPage.ResumeLayout(false);
+            this.ConnectingPage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.tsMenuBar.ResumeLayout(false);
+            this.tsMenuBar.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
 
         private System.Windows.Forms.TabPage tpRegister;
         private System.Windows.Forms.PictureBox pictureBox1;
@@ -506,5 +591,10 @@
         private System.Windows.Forms.LinkLabel LinkToDebugUI;
         private System.Windows.Forms.ComboBox txtIP;
         private System.Windows.Forms.ComboBox txtRegisterIP;
+        private System.Windows.Forms.TabPage ConnectingPage;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label label5;
+        private ToolStrip tsMenuBar;
+        private ToolStripButton tsmiMenuBarAbout;
     }
 }

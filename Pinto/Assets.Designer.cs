@@ -83,6 +83,16 @@ namespace PintoNS {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap COLOR_PALETTE {
+            get {
+                object obj = ResourceManager.GetObject("COLOR_PALETTE", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap CONTACT {
             get {
                 object obj = ResourceManager.GetObject("CONTACT", resourceCulture);

@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Security.Cryptography;
 using PintoNS.General;
+using PintoNS.Forms;
 
 namespace PintoNS.Networking
 {
@@ -20,6 +21,7 @@ namespace PintoNS.Networking
         public NetworkClient NetClient;
         public NetworkHandler NetHandler;
         public bool IsActive;
+        private UsingPintoForm usingPintoForm;
 
         public NetworkManager(MainForm mainForm)
         {
@@ -37,6 +39,11 @@ namespace PintoNS.Networking
             {
                 NetClient_Disconnected(reason);
             };
+        }
+
+        public NetworkManager(UsingPintoForm usingPintoForm)
+        {
+            this.usingPintoForm = usingPintoForm;
         }
 
         public async Task<(bool, Exception)> Connect(string ip, int port)
@@ -64,7 +71,7 @@ namespace PintoNS.Networking
                 .UTF8
                 .GetBytes(password)))
                 .Replace("-", "")
-                .ToLower();
+                .ToUpper();
             NetHandler.SendLoginPacket(Program.PROTOCOL_VERSION,
                 Program.VERSION, username, passwordHash);
         }
@@ -78,7 +85,7 @@ namespace PintoNS.Networking
                 .UTF8
                 .GetBytes(password)))
                 .Replace("-", "")
-                .ToLower();
+                .ToUpper();
             NetHandler.SendRegisterPacket(Program.PROTOCOL_VERSION,
                 Program.VERSION, username, passwordHash);
         }

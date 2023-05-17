@@ -17,14 +17,14 @@ namespace PintoNS.General
         private List<PopupForm> popups = new List<PopupForm>();
         private List<PopupForm> queuedPopups = new List<PopupForm>();
 
-        private int GetBaseX() 
+        private int GetBaseX()
         {
-            return (int) SystemParameters.WorkArea.Width - 200;
+            return (int)SystemParameters.WorkArea.Width - 200;
         }
 
-        private int GetBaseY() 
+        private int GetBaseY()
         {
-            return (int) SystemParameters.WorkArea.Height - 177;
+            return (int)SystemParameters.WorkArea.Height - 177;
         }
 
         private int GetYPosForNew()
@@ -39,7 +39,7 @@ namespace PintoNS.General
             return y;
         }
 
-        public void UpdatePopupPositions() 
+        public void UpdatePopupPositions()
         {
             int y = GetBaseY();
 
@@ -65,7 +65,7 @@ namespace PintoNS.General
             }
         }
 
-        public void CreatePopup(string body, string title)
+        public void CreatePopup(string body, string title, int autoCloseTicks = 5)
         {
             int y = GetYPosForNew();
 
@@ -77,6 +77,11 @@ namespace PintoNS.General
             {
                 ClosePopup(popup);
             };
+            if (autoCloseTicks > 0)
+            {
+                popup.MaxAutoCloseTicks = autoCloseTicks;
+                popup.tAutoClose.Start();
+            }
 
             if (y < 0)
             {

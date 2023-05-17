@@ -66,6 +66,9 @@
     <ApplicationIcon>LOGO_LARGE.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.mshtml, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
@@ -325,6 +328,7 @@
     <Content Include="LOGO_LARGE_NOTEXT.ico" />
     <Content Include="Resources\Assets\ADDCONTACT_DISABLED.png" />
     <Content Include="Resources\Assets\ADDCONTACT_ENABLED.png" />
+    <None Include="Resources\Assets\COLOR_PALETTE.png" />
     <Content Include="Resources\Assets\CONTACT.png" />
     <None Include="Resources\Assets\EMOJI.png" />
     <None Include="Resources\Assets\EMOJI_SMALL.png" />
@@ -458,6 +462,9 @@
     </PackageReference>
     <PackageReference Include="HtmlAgilityPack">
       <Version>1.11.46</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.PowerShell.Commands.Utility">
+      <Version>6.0.4</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Windows.SDK.Contracts">
       <Version>10.0.19041.1</Version>

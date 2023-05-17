@@ -1,5 +1,9 @@
 ﻿using PintoNS.Forms.Notification;
 using PintoNS;
+using PintoNS.General;
+using PintoNS.Controls;
+using PintoNS.Properties;
+using PintoNS.Networking;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,6 +23,19 @@ namespace PintoNS.Forms
     public partial class UsingPintoForm : Form
     {
         private MainForm mainForm;
+
+        protected override void WndProc(ref Message m)
+        {
+            switch (m.Msg)
+            {
+                case 0x84:
+                    base.WndProc(ref m);
+                    if ((int)m.Result == 0x1)
+                        m.Result = (IntPtr)0x2;
+                    return;
+            }
+            base.WndProc(ref m);
+        }
 
         public UsingPintoForm(MainForm mainForm)
         {
@@ -117,8 +134,11 @@ namespace PintoNS.Forms
 
             if (cbSavePassword.Checked)
                 SaveLogin();
-            Close();
-            await mainForm.Connect(ip, port, username, password);
+            tcSections.SelectedTab = ConnectingPage;
+            if (await mainForm.Connect(ip, port, username, password))
+                Close();
+            else
+                tcSections.SelectedTab = tpMain;
         }
 
 
@@ -136,6 +156,7 @@ namespace PintoNS.Forms
             btnRegisterPage.Click += BtnRegisterPage_Click;
             this.Controls.Add(btnRegisterPage);
         }
+
 
         private void BtnRegisterPage_Click(object sender, EventArgs e)
         {
@@ -158,7 +179,7 @@ namespace PintoNS.Forms
                 return;
             }
 
-            Close();
+            tcSections.SelectedTab = ConnectingPage;
             await mainForm.ConnectRegister(ip, port, username, password);
         }
 
@@ -224,5 +245,19 @@ namespace PintoNS.Forms
             new DebugForm().ShowDialog();
         }
 
+        private void ConnectingPage_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

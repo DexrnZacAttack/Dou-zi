@@ -24,6 +24,7 @@ using System.Diagnostics;
 
 namespace PintoNS
 {
+
     public partial class MainForm : Form
     {
         public readonly string DataFolder = Path.Combine(Environment.GetFolderPath(
@@ -113,7 +114,7 @@ namespace PintoNS
                 $"{CurrentUser.Name} - {User.StatusToText(CurrentUser.Status)}" : "Not logged in");
         }
 
-        public async Task Connect(string ip, int port, string username, string password)
+        public async Task<bool> Connect(string ip, int port, string username, string password)
         {
             tcTabs.TabPages.Clear();
             tcTabs.TabPages.Add(tpConnecting);
@@ -129,12 +130,14 @@ namespace PintoNS
                 Program.Console.WriteMessage($"[Networking] Unable to connect to {ip}:{port}: {connectResult.Item2}");
                 MsgBox.ShowNotification(this, $"Unable to connect to {ip}:{port}:" +
                     $" {connectResult.Item2.Message}", "Connection Error", MsgBoxIconType.ERROR);
+                return false;
             }
             else
             {
                 CurrentUser.Name = username;
                 lConnectingStatus.Text = "Authenticating...";
                 NetManager.Login(username, password);
+                return true;
             }
         }
 
@@ -433,6 +436,16 @@ namespace PintoNS
         private async void checkForUpdatesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             await CheckForUpdates();
+        }
+
+        private void tpConnecting_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

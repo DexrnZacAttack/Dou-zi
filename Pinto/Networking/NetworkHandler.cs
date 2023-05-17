@@ -72,18 +72,17 @@ namespace PintoNS.Networking
                     return;
                 }
 
-                if (packet.Sender.Trim().Length > 0)
-                    messageForm.WriteMessage($"{packet.Sender}: ", Color.Black, false);
-                /*
-                if (packet.Message.StartsWith(@"{\rtf"))
-                    messageForm.WriteRTF(packet.Message);
-                else*/
-                messageForm.WriteMessage(packet.Message, Color.Black);
+                messageForm.WriteMessage($"{(packet.Sender.Trim().Length > 0 ? $"{packet.Sender}: " : "")}{packet.Message}", Color.Black);
 
-                if (Form.ActiveForm != messageForm && 
-                !messageForm.HasBeenInactive &&
-                mainForm.CurrentUser.Status != UserStatus.BUSY)
-            {
+                if (packet.Message.Split('\n').Length > 1)
+                    messageForm.InWindowPopupController.CreatePopup(
+                        "You have received a message that has multiple lines," +
+                        " be aware of any impersonation attempts!");
+
+                if (Form.ActiveForm != messageForm &&
+                    !messageForm.HasBeenInactive &&
+                    mainForm.CurrentUser.Status != UserStatus.BUSY)
+                {
                     messageForm.HasBeenInactive = true;
                     mainForm.PopupController.CreatePopup($"Received a new message from {packet.ContactName}!",
                         "New message");
@@ -139,20 +138,40 @@ namespace PintoNS.Networking
                         return;
                     }
 
-                    if (packet.Status == UserStatus.OFFLINE && contact.Status != UserStatus.OFFLINE)
+                    if (mainForm.CurrentUser.Status != UserStatus.BUSY)
                     {
-                        mainForm.PopupController.CreatePopup($"{packet.ContactName} is now offline",
-                            "Status change");
-                        new SoundPlayer() { Stream = Sounds.OFFLINE }.Play();
-                    }
-                    else if (packet.Status != UserStatus.OFFLINE && contact.Status == UserStatus.OFFLINE)
-                    {
-                        mainForm.PopupController.CreatePopup($"{packet.ContactName} is now online",
-                            "Status change");
-                        new SoundPlayer() { Stream = Sounds.ONLINE }.Play();
+                        if (packet.Status == UserStatus.OFFLINE &&
+                            contact.Status != UserStatus.OFFLINE)
+                        {
+                            mainForm.PopupController.CreatePopup($"{packet.ContactName} is now offline",
+                                "Status change");
+                            new SoundPlayer() { Stream = Sounds.OFFLINE }.Play();
+                        }
+                        else if (packet.Status != UserStatus.OFFLINE &&
+                            contact.Status == UserStatus.OFFLINE)
+                        {
+                            mainForm.PopupController.CreatePopup($"{packet.ContactName} is now online",
+                                "Status change");
+                            new SoundPlayer() { Stream = Sounds.ONLINE }.Play();
+                        }
                     }
 
-                    mainForm.ContactsMgr.UpdateContact(new Contact() { Name = packet.ContactName, Status = packet.Status });
+                    if (packet.Status == UserStatus.BUSY &&
+                        contact.Status != UserStatus.BUSY)
+                    {
+                        MessageForm msgForm = mainForm
+                            .GetMessageFormFromReceiverName(packet.ContactName, true);
+                        if (msgForm != null)
+                            msgForm.InWindowPopupController.CreatePopup(
+                                $"{packet.ContactName} is now busy" +
+                                $" and may not see your messages");
+                    }
+
+                    mainForm.ContactsMgr.UpdateContact(new Contact()
+                    {
+                        Name = packet.ContactName,
+                        Status = packet.Status
+                    });
                 }
             }));
         }

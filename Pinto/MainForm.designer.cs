@@ -1,4 +1,5 @@
 ﻿using PintoNS.Controls;
+using System.Drawing;
 
 namespace PintoNS
 {
@@ -74,6 +75,7 @@ namespace PintoNS
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.douZiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.beansToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkForUpdatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmiMenuBarFileLogOut = new System.Windows.Forms.ToolStripMenuItem();
@@ -82,7 +84,6 @@ namespace PintoNS
             this.tsmiMenuBarFileAddContact = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiMenuBarFileRemoveContact = new System.Windows.Forms.ToolStripMenuItem();
             this.txtSearchBox = new PintoNS.Controls.TextBoxWithPlaceholderSupport();
-            this.checkForUpdatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tcTabs.SuspendLayout();
             this.tpLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnStartCall)).BeginInit();
@@ -171,6 +172,7 @@ namespace PintoNS
             // tpConnecting
             // 
             this.tpConnecting.BackColor = System.Drawing.SystemColors.Window;
+            this.tpConnecting.BackgroundImage = global::PintoNS.Assets.LOGINANIM;
             this.tpConnecting.Controls.Add(this.lConnectingStatus);
             this.tpConnecting.Controls.Add(this.pictureBox1);
             this.tpConnecting.ImageKey = "LOCK_ENABLED.png";
@@ -180,10 +182,12 @@ namespace PintoNS
             this.tpConnecting.Size = new System.Drawing.Size(261, 290);
             this.tpConnecting.TabIndex = 2;
             this.tpConnecting.Text = "Connecting";
+            this.tpConnecting.Click += new System.EventHandler(this.tpConnecting_Click);
             // 
             // lConnectingStatus
             // 
             this.lConnectingStatus.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lConnectingStatus.BackColor = System.Drawing.Color.Transparent;
             this.lConnectingStatus.Location = new System.Drawing.Point(68, 46);
             this.lConnectingStatus.Name = "lConnectingStatus";
             this.lConnectingStatus.Size = new System.Drawing.Size(128, 16);
@@ -195,11 +199,13 @@ namespace PintoNS
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox1.Image = global::PintoNS.Logo.LOADING;
             this.pictureBox1.Location = new System.Drawing.Point(68, 65);
+            this.pictureBox1.BackColor = Color.Transparent;
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(128, 128);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // tpContacts
             // 
@@ -529,7 +535,7 @@ namespace PintoNS
             // 
             this.tsmiMenuBarHelpToggleConsole.AutoToolTip = true;
             this.tsmiMenuBarHelpToggleConsole.Name = "tsmiMenuBarHelpToggleConsole";
-            this.tsmiMenuBarHelpToggleConsole.Size = new System.Drawing.Size(180, 22);
+            this.tsmiMenuBarHelpToggleConsole.Size = new System.Drawing.Size(170, 22);
             this.tsmiMenuBarHelpToggleConsole.Text = "Toggle console";
             this.tsmiMenuBarHelpToggleConsole.Click += new System.EventHandler(this.tsmiMenuBarHelpToggleConsole_Click);
             // 
@@ -539,7 +545,7 @@ namespace PintoNS
             this.douZiToolStripMenuItem,
             this.beansToolStripMenuItem});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(170, 22);
             this.toolStripMenuItem1.Text = "Theme";
             // 
             // douZiToolStripMenuItem
@@ -555,29 +561,36 @@ namespace PintoNS
             this.beansToolStripMenuItem.Text = "Beans";
             this.beansToolStripMenuItem.Click += new System.EventHandler(this.beansToolStripMenuItem_Click);
             // 
+            // checkForUpdatesToolStripMenuItem
+            // 
+            this.checkForUpdatesToolStripMenuItem.Name = "checkForUpdatesToolStripMenuItem";
+            this.checkForUpdatesToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.checkForUpdatesToolStripMenuItem.Text = "Check for updates";
+            this.checkForUpdatesToolStripMenuItem.Click += new System.EventHandler(this.checkForUpdatesToolStripMenuItem_Click);
+            // 
             // optionsToolStripMenuItem
             // 
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.optionsToolStripMenuItem.Text = "Options";
             this.optionsToolStripMenuItem.Click += new System.EventHandler(this.tsmiMenuBarToolsOptions_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(167, 6);
             // 
             // tsmiMenuBarFileLogOut
             // 
             this.tsmiMenuBarFileLogOut.Name = "tsmiMenuBarFileLogOut";
-            this.tsmiMenuBarFileLogOut.Size = new System.Drawing.Size(180, 22);
+            this.tsmiMenuBarFileLogOut.Size = new System.Drawing.Size(170, 22);
             this.tsmiMenuBarFileLogOut.Text = "Log Out";
             this.tsmiMenuBarFileLogOut.Click += new System.EventHandler(this.tsmiMenuBarFileLogOut_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.tsmiMenuBarFileExit_Click);
             // 
@@ -627,13 +640,6 @@ namespace PintoNS
             this.txtSearchBox.Text = "Search";
             this.txtSearchBox.TextForeColor = System.Drawing.Color.Black;
             // 
-            // checkForUpdatesToolStripMenuItem
-            // 
-            this.checkForUpdatesToolStripMenuItem.Name = "checkForUpdatesToolStripMenuItem";
-            this.checkForUpdatesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.checkForUpdatesToolStripMenuItem.Text = "Check for updates";
-            this.checkForUpdatesToolStripMenuItem.Click += new System.EventHandler(this.checkForUpdatesToolStripMenuItem_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -676,6 +682,8 @@ namespace PintoNS
         }
 
         #endregion
+
+
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabControl tcTabs;

@@ -12,8 +12,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.IO;
-using Windows.UI.ViewManagement.Core;
-using PintoNS.Networking;
+using System.Text.RegularExpressions;
+using System.Threading;
+using mshtml;
 
 namespace PintoNS.Forms
 {
@@ -21,7 +22,6 @@ namespace PintoNS.Forms
     {
         private MainForm mainForm;
         public Contact Receiver;
-        public NetworkManager NetManager;
         private bool isTypingLastStatus;
         public bool HasBeenInactive;
         public InWindowPopupController InWindowPopupController;
@@ -32,8 +32,12 @@ namespace PintoNS.Forms
             this.mainForm = mainForm;
             InWindowPopupController = new InWindowPopupController(this, 25);
             Receiver = receiver;
-            Text = $"豆子 - Instant Messaging - Chatting with {Receiver.Name}";
-            UpdateColorPicker();
+            Text = $"Pinto! - Instant Messaging - Chatting with {Receiver.Name}";
+
+            if (!Directory.Exists(Path.Combine(mainForm.DataFolder,
+                "chats", mainForm.NetManager.NetClient.IP)))
+                Directory.CreateDirectory(Path.Combine(mainForm.DataFolder,
+                    "chats", mainForm.NetManager.NetClient.IP));
             LoadChat();
         }
 
@@ -42,7 +46,8 @@ namespace PintoNS.Forms
             Program.Console.WriteMessage("[General] Loading chat...");
             try
             {
-                string filePath = Path.Combine(mainForm.DataFolder, "chats", $"{Receiver.Name}.txt");
+                string filePath = Path.Combine(mainForm.DataFolder, "chats",
+                    mainForm.NetManager.NetClient.IP, $"{Receiver.Name}.rtf");
                 if (!File.Exists(filePath)) return;
                 rtxtMessages.Rtf = File.ReadAllText(filePath);
             }
@@ -61,7 +66,8 @@ namespace PintoNS.Forms
             Program.Console.WriteMessage("[General] Saving chat...");
             try
             {
-                string filePath = Path.Combine(mainForm.DataFolder, "chats", $"{Receiver.Name}.txt");
+                string filePath = Path.Combine(mainForm.DataFolder, "chats",
+                    mainForm.NetManager.NetClient.IP, $"{Receiver.Name}.rtf");
                 File.WriteAllText(filePath, rtxtMessages.Rtf);
             }
             catch (Exception ex)
@@ -79,7 +85,8 @@ namespace PintoNS.Forms
             Program.Console.WriteMessage("[General] Deleting chat...");
             try
             {
-                string filePath = Path.Combine(mainForm.DataFolder, "chats", $"{Receiver.Name}.txt");
+                string filePath = Path.Combine(mainForm.DataFolder, "chats",
+                    mainForm.NetManager.NetClient.IP, $"{Receiver.Name}.rtf");
                 if (!File.Exists(filePath)) return;
                 File.Delete(filePath);
             }
@@ -93,51 +100,67 @@ namespace PintoNS.Forms
             }
         }
 
-        public void WriteMessage(string msg, Color color, bool newLine = true)
+        private void WriteMessageRaw(string msg, Color color)
         {
             Invoke(new Action(() =>
             {
-                rtxtMessages.SelectionStart = rtxtMessages.TextLength;
-                rtxtMessages.SelectionLength = 0;
+                rtxtMessages.SelectionStart = rtxtMessages.Text.Length;
                 rtxtMessages.SelectionColor = color;
-                rtxtMessages.AppendText(msg + (newLine ? Environment.NewLine : ""));
+                rtxtMessages.SelectedText = msg;
                 rtxtMessages.SelectionColor = rtxtMessages.ForeColor;
+
+                // Save the chat
                 SaveChat();
             }));
         }
 
-        /*
-        public void WriteRTF(string msg) 
+        public void WriteMessage(string msg, Color color, bool newLine = true)
         {
-            Invoke(new Action(() => 
-            {
-                rtxtMessages.SelectionStart = rtxtMessages.TextLength;
-                rtxtMessages.SelectionLength = 0;
-                rtxtMessages.SelectionColor = Color.Black;
-                try
-                {
-                    rtxtMessages.SelectedRtf = msg;
-                }
-                catch 
-                { 
-                    WriteMessage("** IMPROPERLY FORMATED MESSAGE **", Color.Red); 
-                }
-                SaveChat();
-            }));
-        }*/
+            string buffer = "";
+            Color currentColor = color;
 
-        public void UpdateColorPicker()
-        {
-            Bitmap b = new Bitmap(16, 16);
-            Graphics g = Graphics.FromImage(b);
-            g.FillRectangle(new SolidBrush(rtxtInput.SelectionColor), 0, 0, 16, 16);
-            btnColor.Image = b;
+            for (int i = 0; i < msg.Length; ++i)
+            {
+                switch (msg[i])
+                {
+                    case '#':
+                        if (i + 2 < msg.Length &&
+                            msg[i + 1] == '#' &&
+                            msg[i + 2] == '#' &&
+                            i + 2 + 6 < msg.Length)
+                        {
+                            WriteMessageRaw(buffer, currentColor);
+
+                            buffer = "";
+                            try
+                            {
+                                currentColor = ColorTranslator.FromHtml(msg.Substring(i + 2, 7));
+                            }
+                            catch
+                            {
+                                currentColor = Color.Black;
+                            }
+
+                            // 0 (#) + 2 (##) + 6 (RRGGBB)
+                            i += 8;
+                        }
+                        else
+                            buffer += msg[i];
+
+                        break;
+                    default:
+                        buffer += msg[i];
+                        break;
+                }
+            }
+
+            WriteMessageRaw(buffer + (newLine ? Environment.NewLine : ""), currentColor);
         }
 
         private void rtxtInput_KeyDown(object sender, KeyEventArgs e)
         {
-            if (!Keyboard.Modifiers.HasFlag(System.Windows
-                .Input.ModifierKeys.Control) && e.KeyCode == Keys.Enter)
+            if (!e.Modifiers.HasFlag(Keys.Control) &&
+                e.KeyCode == Keys.Enter)
             {
                 btnSend.PerformClick();
                 e.Handled = true;
@@ -145,20 +168,15 @@ namespace PintoNS.Forms
             }
         }
 
-        private void rtxtMessages_TextChanged(object sender, EventArgs e)
-        {
-            rtxtMessages.SelectionStart = rtxtMessages.Text.Length;
-            rtxtMessages.ScrollToCaret();
-        }
-
         private void rtxtInput_TextChanged(object sender, EventArgs e)
         {
             // Strip RTF
-            int caretPosition = rtxtInput.SelectionStart;
             string text = rtxtInput.Text;
+            int caretPosition = rtxtInput.SelectionStart;
             rtxtInput.Clear();
             rtxtInput.Text = text;
             rtxtInput.SelectionStart = caretPosition;
+            rtxtInput.SelectionLength = 0;
 
             if (mainForm.NetManager == null) return;
 
@@ -200,37 +218,20 @@ namespace PintoNS.Forms
             HasBeenInactive = false;
         }
 
-        private void rtxtMessages_LinkClicked(object sender, LinkClickedEventArgs e)
-        {
-            Process.Start(e.LinkText);
-        }
-
         private void btnTalk_Click(object sender, EventArgs e)
         {
-            MsgBox.ShowNotification(this,
-                "This option is unavailable in this version!",
-                "Option Unavailable",
-                MsgBoxIconType.WARNING);
         }
 
         private void btnBlock_Click(object sender, EventArgs e)
         {
-            MsgBox.ShowNotification(this,
-                "This option is unavailable in this version!",
-                "Option Unavailable",
-                MsgBoxIconType.WARNING);
         }
 
         private void btnColor_Click(object sender, EventArgs e)
         {
-            cdPicker.ShowDialog();
-            rtxtInput.SelectionColor = cdPicker.Color;
-            UpdateColorPicker();
-        }
-
-        private void rtxtInput_SelectionChanged(object sender, EventArgs e)
-        {
-            UpdateColorPicker();
+            if (cdPicker.ShowDialog() != DialogResult.OK) return;
+            Color color = cdPicker.Color;
+            rtxtInput.SelectionLength = 0;
+            rtxtInput.AppendText($"###{color.R:X2}{color.G:X2}{color.B:X2}");
         }
 
         private void tsmiMenuBarFileClearSavedData_Click(object sender, EventArgs e)
@@ -239,18 +240,64 @@ namespace PintoNS.Forms
             DeleteChat();
         }
 
-        private async void EmojiBtn_Click(object sender, EventArgs e)
+        private void MessageForm_Load(object sender, EventArgs e)
         {
-            rtxtInput.Focus();
-            CoreInputView.GetForCurrentView().TryShow(CoreInputViewKind.Emoji);
+            if (Receiver.Status == UserStatus.BUSY)
+                InWindowPopupController.CreatePopup($"{Receiver.Name} is busy" +
+                    $" and may not see your messages");
         }
 
-        private void tsmiMenuBarFileAddContact_Click(object sender, EventArgs e)
+        private void rtxtMessages_TextChanged(object sender, EventArgs e)
         {
-            MsgBox.ShowNotification(this,
-                "This option is unavailable in this version!",
-                "Option Unavailable",
-                MsgBoxIconType.WARNING);
+            rtxtMessages.SelectionStart = rtxtMessages.Text.Length;
+            rtxtMessages.ScrollToCaret();
+        }
+
+        private void rtxtMessages_LinkClicked(object sender, LinkClickedEventArgs e)
+        {
+            Process.Start(e.LinkText);
+        }
+
+        private void tsmiMessagesCopy_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(rtxtMessages.SelectedText);
+        }
+
+        private void tsmiInputCopy_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(rtxtInput.SelectedText);
+        }
+
+        private void tsmiInputPaste_Click(object sender, EventArgs e)
+        {
+            rtxtInput.SelectionLength = 0;
+            rtxtInput.SelectedText = Clipboard.GetText();
+        }
+
+        private void tsmiMenuFileZoomIn_Click(object sender, EventArgs e)
+        {
+            if (rtxtMessages.ZoomFactor + 0.1f > 5.0f) return;
+            rtxtMessages.ZoomFactor += 0.1f;
+        }
+
+        private void tsmiMenuFileZoomOut_Click(object sender, EventArgs e)
+        {
+            if (rtxtMessages.ZoomFactor - 0.1f < 0.1f) return;
+            rtxtMessages.ZoomFactor -= 0.1f;
+        }
+
+        private void tsmiMenuFileZoomReset_Click(object sender, EventArgs e)
+        {
+            // While loop here to bypass a bug when scrolling in with the mouse
+            while (rtxtMessages.ZoomFactor != 1.0f)
+                rtxtMessages.ZoomFactor = 1.0f;
+        }
+
+        private void rtxtInput_ContentsResized(object sender, ContentsResizedEventArgs e)
+        {
+            // While loop here to bypass a bug when scrolling in with the mouse
+            while (rtxtInput.ZoomFactor != 1.0f)
+                rtxtInput.ZoomFactor = 1.0f;
         }
     }
 }

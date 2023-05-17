@@ -12,9 +12,9 @@ namespace PintoNS
     public static class Program
     {
         public static ConsoleForm Console;
-        public static string VERSION = "a1.4.1";
-        public const string DOUZIVERSIONNUM = "a1.2M1.1.1";
-        public const string DOUZIVERSION = "a1.2M1.1.1 (豆子/DouZi)";
+        public static string VERSION = "a1.5";
+        public const string DOUZIVERSIONNUM = "a1.2M1.1.2";
+        public const string DOUZIVERSION = "a1.2M1.1.2 (豆子/DouZi)";
         public static byte PROTOCOL_VERSION = 15;
 
         [STAThread]
@@ -28,6 +28,7 @@ namespace PintoNS
             Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
             Application.ThreadException += Application_ThreadException;
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+
 
             // Start Pinto!
             Console = new ConsoleForm();
