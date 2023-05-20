@@ -17,6 +17,7 @@ using System.Windows.Forms;
 using System.IO;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
+using System.Windows;
 
 namespace PintoNS.Forms
 {
@@ -40,6 +41,23 @@ namespace PintoNS.Forms
         public UsingPintoForm(MainForm mainForm)
         {
             InitializeComponent();
+
+            if (Properties.Settings.Default.BEANSENABLED == false)
+            {
+                // no beans?
+            }
+            else
+            {
+                // beans mode activated
+
+                pictureBox2.Image = Logo_Beans.LOADING;
+                pictureBox1.Image = Logo_Beans.LOGINANIM;
+                pbAd.Image = Logo_Beans.LOGIN_BACKGROUND;
+                tpRegister.BackgroundImage = Logo_Beans.BEANS;
+                tpMain.BackgroundImage = Logo_Beans.BEANS;
+                ConnectingPage.BackgroundImage = Logo_Beans.LOGINANIM;
+            }
+
             this.mainForm = mainForm;
         }
 
@@ -145,14 +163,14 @@ namespace PintoNS.Forms
         private void UsingPintoForm_Load(object sender, EventArgs e)
         {
             tcSections.Appearance = TabAppearance.FlatButtons;
-            tcSections.ItemSize = new Size(0, 1);
+            tcSections.ItemSize = new System.Drawing.Size(0, 1);
             tcSections.SizeMode = TabSizeMode.Fixed;
             LoadLogin();
             // Add a button to navigate to the registration page
             Button btnRegisterPage = new Button();
             btnRegisterPage.Text = "Register";
-            btnRegisterPage.Size = new Size(75, 23);
-            btnRegisterPage.Location = new Point(12, 12);
+            btnRegisterPage.Size = new System.Drawing.Size(75, 23);
+            btnRegisterPage.Location = new System.Drawing.Point(12, 12);
             btnRegisterPage.Click += BtnRegisterPage_Click;
             this.Controls.Add(btnRegisterPage);
         }
@@ -258,6 +276,32 @@ namespace PintoNS.Forms
         private void label5_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void llServers_Click(object sender, EventArgs e)
+        {
+            ServerListForm serverListForm = new ServerListForm();
+            serverListForm.ServerUse += (object sender2, ServerUseEventArgs e2) =>
+            {
+                txtIP.Text = e2.IP;
+                nudPort.Value = e2.Port;
+            };
+            serverListForm.ShowDialog();
+        }
+
+        private void CloseButton_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

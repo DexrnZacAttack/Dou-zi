@@ -83,6 +83,26 @@ namespace PintoNS {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap BACKGROUND {
+            get {
+                object obj = ResourceManager.GetObject("BACKGROUND", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap CLOSE {
+            get {
+                object obj = ResourceManager.GetObject("CLOSE", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap COLOR_PALETTE {
             get {
                 object obj = ResourceManager.GetObject("COLOR_PALETTE", resourceCulture);
@@ -326,6 +346,16 @@ namespace PintoNS {
         internal static System.Drawing.Bitmap MICROPHONE_MUTED {
             get {
                 object obj = ResourceManager.GetObject("MICROPHONE_MUTED", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MINIMIZE {
+            get {
+                object obj = ResourceManager.GetObject("MINIMIZE", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

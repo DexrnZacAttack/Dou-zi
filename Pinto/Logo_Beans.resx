@@ -121,6 +121,9 @@
   <data name="BACKGROUND" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\BACKGROUND.JPG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="BEANS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Logo_Beans\BEANS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="LOADING" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Logo_Beans\LOADING.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -138,6 +141,12 @@
   </data>
   <data name="LOADING_SLOW" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Logo_Beans\LOADING_SLOW.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LOGINANIM" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Logo_Beans\LOGINANIM.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LOGIN_BACKGROUND" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Logo_Beans\LOGINBACKGROUND.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="LOGO" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Logo_Beans\LOGO_BEANS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

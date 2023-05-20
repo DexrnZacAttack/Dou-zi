@@ -17,6 +17,17 @@ namespace PintoNS.Forms
         public AboutForm()
         {
             InitializeComponent();
+            if (Properties.Settings.Default.BEANSENABLED == false)
+            {
+                // no beans?
+            }
+            else
+            {
+                // beans mode activated
+
+                this.pictureBox1.Image = Logo_Beans.LOGO;
+                this.BackgroundImage = Logo_Beans.LOGO_BACKGROUND_ALT;
+            }
         }
 
         private void AboutForm_Load(object sender, EventArgs e)

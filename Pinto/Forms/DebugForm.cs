@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PintoNS.Forms.Notification;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,6 +18,10 @@ namespace PintoNS.Forms
             InitializeComponent();
             CurrentProtocolText.Text = $"Current Protocol Version: {Program.PROTOCOL_VERSION}";
             CurrentVersionText.Text = $"Current Client Version: {Program.VERSION}";
+            VersionReportedToServerTextBox.Text = $"{Program.VERSION}";
+            DebugProtocolTextbox.Text = $"{Program.PROTOCOL_VERSION}";
+            ServerListURLTextBox.Text = $"{ServerListForm.SERVERS_URL}";
+            SVLUrlText.Text = $"Current Server List URL: {ServerListForm.SERVERS_URL}";
         }
 
         private void DebugProtocolTextbox_TextChanged(object sender, EventArgs e)
@@ -31,7 +36,19 @@ namespace PintoNS.Forms
 
         private void SetProtocolButton_Click(object sender, EventArgs e)
         {
-            Program.PROTOCOL_VERSION = byte.Parse(DebugProtocolTextbox.Text);
+            byte protocolVersion;
+            if (!byte.TryParse(DebugProtocolTextbox.Text, out protocolVersion))
+            {
+                MsgBox.ShowNotification(this,
+                    "Must be byte.",
+                    "Error", MsgBoxIconType.ERROR);
+            }
+            else
+            {
+                Program.PROTOCOL_VERSION = protocolVersion;
+            }
+
+
             CurrentProtocolText.Text = $"Current Protocol Version: {Program.PROTOCOL_VERSION}";
             CurrentVersionText.Text = $"Current Client Version: {Program.VERSION}";
         }
@@ -70,6 +87,29 @@ namespace PintoNS.Forms
         private void CurrentVersionText_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void SetServerListURLButton_Click(object sender, EventArgs e)
+        {
+            ServerListForm.SERVERS_URL = (ServerListURLTextBox.Text);
+            SVLUrlText.Text = $"Current Server List URL: {ServerListForm.SERVERS_URL}";
+        }
+
+        private void ServerListURLTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabPage2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ServerListForm.SERVERS_URL = "http://api.fieme.net:8880/pinto-server-list/servers.php";
+            ServerListURLTextBox.Text = $"{ServerListForm.SERVERS_URL}";
+            SVLUrlText.Text = $"Current Server List URL: {ServerListForm.SERVERS_URL}";
         }
     }
 }

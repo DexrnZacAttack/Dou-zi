@@ -21,6 +21,7 @@ using System.IO;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Diagnostics;
+using PintoNS.Properties;
 
 namespace PintoNS
 {
@@ -42,7 +43,29 @@ namespace PintoNS
             InitializeComponent();
             InWindowPopupController = new InWindowPopupController(this, 70);
             PopupController = new PopupController();
+
+
+            if (Properties.Settings.Default.BEANSENABLED == false)
+            {
+                // no beans?
+            }
+            else
+            {
+                // beans mode activated
+
+                pictureBox1.Image = Logo_Beans.LOADING;
+                tpConnecting.BackgroundImage = Logo_Beans.LOGINANIM;
+                tpContacts.BackgroundImage = Logo_Beans.LOGINANIM;
+                tpLogin.BackgroundImage = Logo_Beans.LOGINANIM;
+                this.BackgroundImage = Logo_Beans.BEANS;
+            }
+
+
+
+
+
         }
+
 
         internal void OnLogin()
         {
@@ -204,7 +227,8 @@ namespace PintoNS
             return messageForm;
         }
 
-        private async void MainForm_Load(object sender, EventArgs e)
+
+private async void MainForm_Load(object sender, EventArgs e)
         {
             Program.Console.WriteMessage("Performing first time initialization...");
 
@@ -308,7 +332,7 @@ namespace PintoNS
             NetManager.NetHandler.SendRemoveContactPacket(contactName);
         }
 
-        private void dgvContacts_SelectionChanged(object sender, EventArgs e)
+        public void dgvContacts_SelectionChanged(object sender, EventArgs e)
         {
             /*
             if (InCall) return;
@@ -378,11 +402,6 @@ namespace PintoNS
 
         }
 
-        private void beansToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void dgvContacts_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -443,9 +462,43 @@ namespace PintoNS
 
         }
 
+        private void pictureBox1_DoubleClick(object sender, EventArgs e)
+        {
+            openDebugMenuToolStripMenuItem.Visible = true;
+            MsgBox.ShowNotification(this,
+                "Debug button on MainForm enabled, this is a placeholder while I wait for settings to be implemented by vlOd.",
+                "Debug Mode", MsgBoxIconType.INFORMATION);
+        }
+
+        private void toolStripDropDownButton1_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void openDebugMenuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new DebugForm().ShowDialog();
+        }
+
+        private void beansToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.BEANSENABLED = Boolean.Parse("true");
+            Properties.Settings.Default.Save();
+            Application.Restart();
+            Close();
+        }
+
+        private void douZiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.BEANSENABLED = Boolean.Parse("false");
+            Properties.Settings.Default.Save();
+            Application.Restart();
+            Close();
         }
     }
 }

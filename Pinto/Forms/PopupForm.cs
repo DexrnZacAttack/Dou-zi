@@ -21,6 +21,16 @@ namespace PintoNS.Forms
         public PopupForm()
         {
             InitializeComponent();
+            if (Properties.Settings.Default.BEANSENABLED == false)
+            {
+                // no beans?
+            }
+            else
+            {
+                // beans mode activated
+
+                this.BackgroundImage = Logo_Beans.LOGIN_BACKGROUND;
+            }
         }
 
         private void tAnim_Tick(object sender, EventArgs e)
@@ -66,6 +76,11 @@ namespace PintoNS.Forms
                 btnClose.PerformClick();
 
             autoCloseTicks++;
+        }
+
+        private void lBody_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

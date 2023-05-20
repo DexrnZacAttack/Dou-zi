@@ -10,43 +10,36 @@ using System.Windows.Forms;
 
 namespace PintoNS.General
 {
-    public class ContactsManager
+    public class ContactsManagerMF
     {
-        private MainForm mainForm;
         private DataGridView dgvContacts;
         private List<Contact> contacts = new List<Contact>();
         private MessageForm messageForm;
 
         public event EventHandler OnChange = new EventHandler((object sender, EventArgs e) => { });
 
-        public ContactsManager(MainForm mainForm) 
-        {
-            this.mainForm = mainForm;
-            dgvContacts = mainForm.dgvContacts;
-        }
-
-        public ContactsManager(MessageForm messageForm)
+        public ContactsManagerMF(MessageForm messageForm)
         {
             this.messageForm = messageForm;
             dgvContacts = messageForm.dgvContacts;
         }
 
-        private DataGridViewRow GetContactListEntry(string name) 
+        private DataGridViewRow GetContactListEntry(string name)
         {
             if (name == null) return null;
 
-            foreach (DataGridViewRow row in dgvContacts.Rows) 
+            foreach (DataGridViewRow row in dgvContacts.Rows)
             {
-                if (((string)row.Cells[1].Value) == name) 
+                if (((string)row.Cells[1].Value) == name)
                     return row;
             }
 
             return null;
         }
 
-        private void AddContactListEntry(Contact contact) 
+        private void AddContactListEntry(Contact contact)
         {
-            if (GetContactListEntry(contact.Name) == null) 
+            if (GetContactListEntry(contact.Name) == null)
             {
                 dgvContacts.Rows.Add(User.StatusToBitmap(contact.Status), contact.Name);
                 OnChange.Invoke(this, EventArgs.Empty);
@@ -56,14 +49,14 @@ namespace PintoNS.General
         private void RemoveContactListEntry(Contact contact)
         {
             DataGridViewRow row;
-            if ((row = GetContactListEntry(contact.Name)) != null) 
+            if ((row = GetContactListEntry(contact.Name)) != null)
             {
                 dgvContacts.Rows.Remove(row);
                 OnChange.Invoke(this, EventArgs.Empty);
             }
         }
 
-        private void UpdateContactListEntry(Contact contact) 
+        private void UpdateContactListEntry(Contact contact)
         {
             DataGridViewRow row;
             if ((row = GetContactListEntry(contact.Name)) != null)
@@ -74,7 +67,7 @@ namespace PintoNS.General
             }
         }
 
-        public string GetContactNameFromRow(int rowIndex) 
+        public string GetContactNameFromRow(int rowIndex)
         {
             foreach (DataGridViewRow row in dgvContacts.Rows)
             {
@@ -85,11 +78,11 @@ namespace PintoNS.General
             return null;
         }
 
-        public Contact GetContact(string name) 
+        public Contact GetContact(string name)
         {
             if (name == null) return null;
 
-            foreach (Contact contact in contacts.ToArray()) 
+            foreach (Contact contact in contacts.ToArray())
             {
                 if (contact.Name == name)
                     return contact;
@@ -100,7 +93,7 @@ namespace PintoNS.General
 
         public void AddContact(Contact contact)
         {
-            if (GetContact(contact.Name) == null) 
+            if (GetContact(contact.Name) == null)
             {
                 AddContactListEntry(contact);
                 contacts.Add(contact);
@@ -118,7 +111,7 @@ namespace PintoNS.General
             }
         }
 
-        public void UpdateContact(Contact contact) 
+        public void UpdateContact(Contact contact)
         {
             if (GetContact(contact.Name) != null)
             {

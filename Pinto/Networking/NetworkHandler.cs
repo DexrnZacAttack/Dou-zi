@@ -191,6 +191,14 @@ namespace PintoNS.Networking
             }));
         }
 
+        public void HandlePopupPacket(PacketPopup packetPopup)
+        {
+            mainForm.Invoke(new Action(() =>
+            {
+                mainForm.PopupController.CreatePopup(packetPopup.Body, packetPopup.Title);
+            }));
+        }
+
         public void HandleClearContactsPacket()
         {
             Program.Console.WriteMessage($"[Contacts] Clearing contact list...");

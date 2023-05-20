@@ -22,13 +22,16 @@ namespace PintoNS.Forms
     {
         private MainForm mainForm;
         public Contact Receiver;
+        public ContactsManagerMF ContactsMgr;
+        public List<MessageForm> MessageForms;
         private bool isTypingLastStatus;
         public bool HasBeenInactive;
         public InWindowPopupController InWindowPopupController;
+        private MessageForm messageForm;
+        private Contact contact;
 
         public MessageForm(MainForm mainForm, Contact receiver)
         {
-            InitializeComponent();
             this.mainForm = mainForm;
             InWindowPopupController = new InWindowPopupController(this, 25);
             Receiver = receiver;
@@ -41,8 +44,19 @@ namespace PintoNS.Forms
             LoadChat();
         }
 
+        public MessageForm(MessageForm messageForm, Contact contact)
+        {
+            this.messageForm = messageForm;
+            this.contact = contact;
+        }
+
         private void LoadChat()
         {
+            InitializeComponent();
+            dgvContacts.Rows.Clear();
+            MessageForms = new List<MessageForm>();
+            ContactsMgr = new ContactsManagerMF(this);
+
             Program.Console.WriteMessage("[General] Loading chat...");
             try
             {
@@ -100,6 +114,29 @@ namespace PintoNS.Forms
             }
         }
 
+        public MessageForm GetMessageFormFromReceiverName(string name, bool doNotCreate = false)
+        {
+            Program.Console.WriteMessage($"Getting MessageForm for {name}...");
+
+            foreach (MessageForm msgForm in MessageForms.ToArray())
+            {
+                if (msgForm.Receiver.Name == name)
+                    return msgForm;
+            }
+
+            MessageForm messageForm = null;
+
+            if (!doNotCreate)
+            {
+                Program.Console.WriteMessage($"Creating MessageForm for {name}...");
+                messageForm = new MessageForm(this, ContactsMgr.GetContact(name));
+                MessageForms.Add(messageForm);
+                messageForm.Show();
+            }
+
+
+            return messageForm;
+        }
         private void WriteMessageRaw(string msg, Color color)
         {
             Invoke(new Action(() =>
@@ -114,6 +151,23 @@ namespace PintoNS.Forms
             }));
         }
 
+
+        public void dgvContacts_SelectionChanged(object sender, EventArgs e)
+        {
+            /*
+            if (InCall) return;
+
+            if (dgvContacts.SelectedRows.Count > 0)
+            {
+                btnStartCall.Enabled = true;
+                btnStartCall.Image = Assets.STARTCALL_ENABLED;
+            }
+            else
+            {
+                btnStartCall.Enabled = false;
+                btnStartCall.Image = Assets.STARTCALL_DISABLED;
+            }*/
+        }
         public void WriteMessage(string msg, Color color, bool newLine = true)
         {
             string buffer = "";
@@ -298,6 +352,35 @@ namespace PintoNS.Forms
             // While loop here to bypass a bug when scrolling in with the mouse
             while (rtxtInput.ZoomFactor != 1.0f)
                 rtxtInput.ZoomFactor = 1.0f;
+        }
+
+        private void dgvContacts_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string contactName = ContactsMgr.GetContactNameFromRow(e.RowIndex);
+            Contact contact = ContactsMgr.GetContact(contactName);
+
+            if (contactName != null && contact != null)
+            {
+                MessageForm messageForm = GetMessageFormFromReceiverName(contactName);
+                messageForm.WindowState = FormWindowState.Normal;
+                messageForm.BringToFront();
+                messageForm.Focus();
+            }
+        }
+
+        private void dgvContacts_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void tpLogin_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvContacts_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

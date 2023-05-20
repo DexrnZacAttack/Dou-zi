@@ -22,14 +22,14 @@ namespace PintoNS {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class BEANS {
+    internal class Logo_Beans {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal BEANS() {
+        internal Logo_Beans() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace PintoNS {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PintoNS.BEANS", typeof(BEANS).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PintoNS.Logo_Beans", typeof(Logo_Beans).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -66,6 +66,16 @@ namespace PintoNS {
         internal static System.Drawing.Bitmap BACKGROUND {
             get {
                 object obj = ResourceManager.GetObject("BACKGROUND", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BEANS {
+            get {
+                object obj = ResourceManager.GetObject("BEANS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -126,6 +136,26 @@ namespace PintoNS {
         internal static System.Drawing.Bitmap LOADING_SLOW {
             get {
                 object obj = ResourceManager.GetObject("LOADING_SLOW", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap LOGIN_BACKGROUND {
+            get {
+                object obj = ResourceManager.GetObject("LOGIN_BACKGROUND", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap LOGINANIM {
+            get {
+                object obj = ResourceManager.GetObject("LOGINANIM", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

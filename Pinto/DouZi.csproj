@@ -73,6 +73,7 @@
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http.WebRequest" />
     <Reference Include="System.Numerics" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -91,10 +92,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Assets.resx</DependentUpon>
     </Compile>
-    <Compile Include="BEANS.Designer.cs">
+    <Compile Include="General\BEANS.cs" />
+    <Compile Include="Logo_Beans.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BEANS.resx</DependentUpon>
+      <DependentUpon>Logo_Beans.resx</DependentUpon>
     </Compile>
     <Compile Include="Controls\Header.cs">
       <SubType>UserControl</SubType>
@@ -157,6 +159,12 @@
       <DependentUpon>PopupForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\MsgBox\MsgBoxIconType.cs" />
+    <Compile Include="Forms\ServerListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ServerListForm.designer.cs">
+      <DependentUpon>ServerListForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ViewAllPopupContentForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -165,7 +173,9 @@
     </Compile>
     <Compile Include="General\Contact.cs" />
     <Compile Include="General\AudioRecorderPlayer.cs" />
+    <Compile Include="General\ContactsManagerMF.cs" />
     <Compile Include="General\Keyboard.cs" />
+    <Compile Include="Networking\Packets\PacketCallEnd.cs" />
     <Compile Include="General\PopupController.cs" />
     <Compile Include="General\InWindowPopupController.cs" />
     <Compile Include="General\Updater.cs" />
@@ -212,6 +222,12 @@
     <Compile Include="Networking\BinaryWriterReaderExtensions.cs" />
     <Compile Include="Networking\NetworkClient.cs" />
     <Compile Include="Networking\Packets\IPacket.cs" />
+    <Compile Include="Networking\Packets\PacketCallInfo.cs" />
+    <Compile Include="Networking\Packets\PacketCallInit.cs" />
+    <Compile Include="Networking\Packets\PacketCallRequest.cs" />
+    <Compile Include="Networking\Packets\PacketCallResponse.cs" />
+    <Compile Include="Networking\Packets\PacketCallStart.cs" />
+    <Compile Include="Networking\Packets\PacketPopup.cs" />
     <Compile Include="Networking\Packets\PacketShrimp.cs" />
     <Compile Include="Networking\Packets\PacketClearContacts.cs" />
     <Compile Include="Networking\Packets\PacketContactRequest.cs" />
@@ -243,9 +259,9 @@
       <LastGenOutput>Assets.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="BEANS.resx">
+    <EmbeddedResource Include="Logo_Beans.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>BEANS.Designer.cs</LastGenOutput>
+      <LastGenOutput>Logo_Beans.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
@@ -264,6 +280,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\PopupForm.resx">
       <DependentUpon>PopupForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ServerListForm.resx">
+      <DependentUpon>ServerListForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\UsingPintoForm.resx">
       <DependentUpon>UsingPintoForm.cs</DependentUpon>
@@ -329,6 +348,8 @@
     <Content Include="Resources\Assets\ADDCONTACT_DISABLED.png" />
     <Content Include="Resources\Assets\ADDCONTACT_ENABLED.png" />
     <None Include="Resources\Assets\COLOR_PALETTE.png" />
+    <None Include="Resources\Assets\BACKGROUND.png" />
+    <None Include="Resources\Assets\CLOSE.png" />
     <Content Include="Resources\Assets\CONTACT.png" />
     <None Include="Resources\Assets\EMOJI.png" />
     <None Include="Resources\Assets\EMOJI_SMALL.png" />
@@ -349,6 +370,7 @@
     <Content Include="Resources\Assets\MICROPHONE_DISABLED.png" />
     <Content Include="Resources\Assets\MICROPHONE_ENABLED.png" />
     <Content Include="Resources\Assets\MICROPHONE_MUTED.png" />
+    <None Include="Resources\Assets\MINIMIZE.png" />
     <Content Include="Resources\Assets\MISSEDCALLS.png" />
     <Content Include="Resources\Assets\PAUSECALL_DISABLED.png" />
     <Content Include="Resources\Assets\PAUSECALL_ENABLED.png" />
@@ -401,6 +423,9 @@
     <None Include="Resources\Logo_Beans\LOADING_NOTEXT_FASTER.gif" />
     <None Include="Resources\Logo_Beans\LOADING_SLOW.gif" />
     <None Include="Resources\Res.rdb.000d7209_019a.png" />
+    <None Include="Resources\Logo_Beans\LOGINBACKGROUND.png" />
+    <None Include="Resources\Logo_Beans\LOGINANIM.gif" />
+    <None Include="Resources\Logo_Beans\BEANS.png" />
     <Content Include="Resources\Sounds\BUSY.WAV" />
     <Content Include="Resources\Sounds\CALL_ERROR1.WAV" />
     <Content Include="Resources\Sounds\CALL_ERROR2.WAV" />
@@ -457,17 +482,8 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="DiscordRichPresence">
-      <Version>1.1.3.18</Version>
-    </PackageReference>
     <PackageReference Include="HtmlAgilityPack">
       <Version>1.11.46</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.PowerShell.Commands.Utility">
-      <Version>6.0.4</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.Windows.SDK.Contracts">
-      <Version>10.0.19041.1</Version>
     </PackageReference>
     <PackageReference Include="NAudio">
       <Version>2.1.0</Version>

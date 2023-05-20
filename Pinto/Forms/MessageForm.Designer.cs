@@ -38,6 +38,10 @@
             this.ilButtons = new System.Windows.Forms.ImageList(this.components);
             this.tsMenuBar = new System.Windows.Forms.ToolStrip();
             this.tsddbMenuBarFile = new System.Windows.Forms.ToolStripDropDownButton();
+            this.tsmiMenuFileZoomIn = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiMenuFileZoomOut = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiMenuFileZoomReset = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmiMenuBarFileClearSavedData = new System.Windows.Forms.ToolStripMenuItem();
             this.tsddbMenuBarHelp = new System.Windows.Forms.ToolStripDropDownButton();
             this.tsmiMenuBarHelpAbout = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,22 +54,26 @@
             this.rtxtMessages = new System.Windows.Forms.RichTextBox();
             this.cmsMessages = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmiMessagesCopy = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsmiMenuFileZoomIn = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiMenuFileZoomOut = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiMenuFileZoomReset = new System.Windows.Forms.ToolStripMenuItem();
+            this.tcTabs = new System.Windows.Forms.TabControl();
+            this.tpContacts = new System.Windows.Forms.TabPage();
+            this.dgvContacts = new System.Windows.Forms.DataGridView();
+            this.contactStatus = new System.Windows.Forms.DataGridViewImageColumn();
+            this.contactName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmsInput.SuspendLayout();
             this.tsMenuBar.SuspendLayout();
             this.ssStatusStrip.SuspendLayout();
             this.cmsMessages.SuspendLayout();
+            this.tcTabs.SuspendLayout();
+            this.tpContacts.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvContacts)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSend
             // 
             this.btnSend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSend.Location = new System.Drawing.Point(362, 283);
+            this.btnSend.Location = new System.Drawing.Point(700, 756);
             this.btnSend.Name = "btnSend";
-            this.btnSend.Size = new System.Drawing.Size(60, 56);
+            this.btnSend.Size = new System.Drawing.Size(60, 26);
             this.btnSend.TabIndex = 1;
             this.btnSend.Text = "&Send";
             this.btnSend.UseVisualStyleBackColor = true;
@@ -73,14 +81,14 @@
             // 
             // rtxtInput
             // 
-            this.rtxtInput.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+            this.rtxtInput.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtxtInput.ContextMenuStrip = this.cmsInput;
             this.rtxtInput.HideSelection = false;
-            this.rtxtInput.Location = new System.Drawing.Point(12, 283);
+            this.rtxtInput.Location = new System.Drawing.Point(154, 697);
             this.rtxtInput.MaxLength = 512;
             this.rtxtInput.Name = "rtxtInput";
-            this.rtxtInput.Size = new System.Drawing.Size(344, 56);
+            this.rtxtInput.Size = new System.Drawing.Size(605, 56);
             this.rtxtInput.TabIndex = 0;
             this.rtxtInput.Text = "";
             this.rtxtInput.ContentsResized += new System.Windows.Forms.ContentsResizedEventHandler(this.rtxtInput_ContentsResized);
@@ -127,7 +135,7 @@
             this.tsMenuBar.Location = new System.Drawing.Point(0, 0);
             this.tsMenuBar.Name = "tsMenuBar";
             this.tsMenuBar.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.tsMenuBar.Size = new System.Drawing.Size(433, 25);
+            this.tsMenuBar.Size = new System.Drawing.Size(771, 25);
             this.tsMenuBar.TabIndex = 0;
             this.tsMenuBar.Text = "toolStrip1";
             // 
@@ -140,7 +148,6 @@
             this.tsmiMenuFileZoomReset,
             this.toolStripSeparator1,
             this.tsmiMenuBarFileClearSavedData});
-            this.tsddbMenuBarFile.Image = ((System.Drawing.Image)(resources.GetObject("tsddbMenuBarFile.Image")));
             this.tsddbMenuBarFile.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsddbMenuBarFile.Name = "tsddbMenuBarFile";
             this.tsddbMenuBarFile.ShowDropDownArrow = false;
@@ -148,10 +155,38 @@
             this.tsddbMenuBarFile.Text = "File";
             this.tsddbMenuBarFile.ToolTipText = "File";
             // 
+            // tsmiMenuFileZoomIn
+            // 
+            this.tsmiMenuFileZoomIn.Name = "tsmiMenuFileZoomIn";
+            this.tsmiMenuFileZoomIn.ShortcutKeyDisplayString = "Ctrl + Scroll Up";
+            this.tsmiMenuFileZoomIn.Size = new System.Drawing.Size(232, 22);
+            this.tsmiMenuFileZoomIn.Text = "Zoom In";
+            this.tsmiMenuFileZoomIn.Click += new System.EventHandler(this.tsmiMenuFileZoomIn_Click);
+            // 
+            // tsmiMenuFileZoomOut
+            // 
+            this.tsmiMenuFileZoomOut.Name = "tsmiMenuFileZoomOut";
+            this.tsmiMenuFileZoomOut.ShortcutKeyDisplayString = "Ctrl + Scroll Down";
+            this.tsmiMenuFileZoomOut.Size = new System.Drawing.Size(232, 22);
+            this.tsmiMenuFileZoomOut.Text = "Zoom Out";
+            this.tsmiMenuFileZoomOut.Click += new System.EventHandler(this.tsmiMenuFileZoomOut_Click);
+            // 
+            // tsmiMenuFileZoomReset
+            // 
+            this.tsmiMenuFileZoomReset.Name = "tsmiMenuFileZoomReset";
+            this.tsmiMenuFileZoomReset.Size = new System.Drawing.Size(232, 22);
+            this.tsmiMenuFileZoomReset.Text = "Zoom Reset";
+            this.tsmiMenuFileZoomReset.Click += new System.EventHandler(this.tsmiMenuFileZoomReset_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(229, 6);
+            // 
             // tsmiMenuBarFileClearSavedData
             // 
             this.tsmiMenuBarFileClearSavedData.Name = "tsmiMenuBarFileClearSavedData";
-            this.tsmiMenuBarFileClearSavedData.Size = new System.Drawing.Size(180, 22);
+            this.tsmiMenuBarFileClearSavedData.Size = new System.Drawing.Size(232, 22);
             this.tsmiMenuBarFileClearSavedData.Text = "Clear Saved Data";
             this.tsmiMenuBarFileClearSavedData.Click += new System.EventHandler(this.tsmiMenuBarFileClearSavedData_Click);
             // 
@@ -160,7 +195,6 @@
             this.tsddbMenuBarHelp.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.tsddbMenuBarHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiMenuBarHelpAbout});
-            this.tsddbMenuBarHelp.Image = ((System.Drawing.Image)(resources.GetObject("tsddbMenuBarHelp.Image")));
             this.tsddbMenuBarHelp.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsddbMenuBarHelp.Name = "tsddbMenuBarHelp";
             this.tsddbMenuBarHelp.ShowDropDownArrow = false;
@@ -179,9 +213,9 @@
             // 
             this.ssStatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsslStatusBarTypingList});
-            this.ssStatusStrip.Location = new System.Drawing.Point(0, 351);
+            this.ssStatusStrip.Location = new System.Drawing.Point(0, 785);
             this.ssStatusStrip.Name = "ssStatusStrip";
-            this.ssStatusStrip.Size = new System.Drawing.Size(433, 22);
+            this.ssStatusStrip.Size = new System.Drawing.Size(771, 22);
             this.ssStatusStrip.TabIndex = 5;
             this.ssStatusStrip.Text = "statusStrip1";
             // 
@@ -197,7 +231,7 @@
             this.btnColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnColor.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnColor.Image = global::PintoNS.Assets.COLOR_PALETTE;
-            this.btnColor.Location = new System.Drawing.Point(12, 263);
+            this.btnColor.Location = new System.Drawing.Point(154, 670);
             this.btnColor.Name = "btnColor";
             this.btnColor.Size = new System.Drawing.Size(18, 18);
             this.btnColor.TabIndex = 6;
@@ -213,7 +247,7 @@
             this.btnBlock.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnBlock.ImageKey = "BLOCK";
             this.btnBlock.ImageList = this.ilButtons;
-            this.btnBlock.Location = new System.Drawing.Point(86, 28);
+            this.btnBlock.Location = new System.Drawing.Point(154, 22);
             this.btnBlock.Name = "btnBlock";
             this.btnBlock.Size = new System.Drawing.Size(68, 41);
             this.btnBlock.TabIndex = 4;
@@ -231,7 +265,7 @@
             this.btnTalk.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnTalk.ImageKey = "TALK";
             this.btnTalk.ImageList = this.ilButtons;
-            this.btnTalk.Location = new System.Drawing.Point(12, 28);
+            this.btnTalk.Location = new System.Drawing.Point(691, 22);
             this.btnTalk.Name = "btnTalk";
             this.btnTalk.Size = new System.Drawing.Size(68, 41);
             this.btnTalk.TabIndex = 3;
@@ -242,16 +276,16 @@
             // 
             // rtxtMessages
             // 
-            this.rtxtMessages.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.rtxtMessages.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtxtMessages.BackColor = System.Drawing.SystemColors.Window;
             this.rtxtMessages.ContextMenuStrip = this.cmsMessages;
             this.rtxtMessages.HideSelection = false;
-            this.rtxtMessages.Location = new System.Drawing.Point(12, 69);
+            this.rtxtMessages.Location = new System.Drawing.Point(154, 69);
             this.rtxtMessages.Name = "rtxtMessages";
             this.rtxtMessages.ReadOnly = true;
-            this.rtxtMessages.Size = new System.Drawing.Size(410, 193);
+            this.rtxtMessages.Size = new System.Drawing.Size(606, 595);
             this.rtxtMessages.TabIndex = 7;
             this.rtxtMessages.Text = "";
             this.rtxtMessages.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.rtxtMessages_LinkClicked);
@@ -272,39 +306,83 @@
             this.tsmiMessagesCopy.Text = "Copy";
             this.tsmiMessagesCopy.Click += new System.EventHandler(this.tsmiMessagesCopy_Click);
             // 
-            // toolStripSeparator1
+            // tcTabs
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.tcTabs.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tcTabs.Controls.Add(this.tpContacts);
+            this.tcTabs.Location = new System.Drawing.Point(0, 28);
+            this.tcTabs.Name = "tcTabs";
+            this.tcTabs.SelectedIndex = 0;
+            this.tcTabs.Size = new System.Drawing.Size(148, 725);
+            this.tcTabs.TabIndex = 9;
             // 
-            // tsmiMenuFileZoomIn
+            // tpContacts
             // 
-            this.tsmiMenuFileZoomIn.Name = "tsmiMenuFileZoomIn";
-            this.tsmiMenuFileZoomIn.ShortcutKeyDisplayString = "Ctrl + Scroll Up";
-            this.tsmiMenuFileZoomIn.Size = new System.Drawing.Size(206, 22);
-            this.tsmiMenuFileZoomIn.Text = "Zoom In";
-            this.tsmiMenuFileZoomIn.Click += new System.EventHandler(this.tsmiMenuFileZoomIn_Click);
+            this.tpContacts.BackColor = System.Drawing.SystemColors.Window;
+            this.tpContacts.Controls.Add(this.dgvContacts);
+            this.tpContacts.ImageKey = "CONTACT.png";
+            this.tpContacts.Location = new System.Drawing.Point(4, 23);
+            this.tpContacts.Name = "tpContacts";
+            this.tpContacts.Padding = new System.Windows.Forms.Padding(3);
+            this.tpContacts.Size = new System.Drawing.Size(261, 290);
+            this.tpContacts.TabIndex = 1;
+            this.tpContacts.Text = "Contacts";
             // 
-            // tsmiMenuFileZoomOut
+            // dgvContacts
             // 
-            this.tsmiMenuFileZoomOut.Name = "tsmiMenuFileZoomOut";
-            this.tsmiMenuFileZoomOut.ShortcutKeyDisplayString = "Ctrl + Scroll Down";
-            this.tsmiMenuFileZoomOut.Size = new System.Drawing.Size(232, 22);
-            this.tsmiMenuFileZoomOut.Text = "Zoom Out";
-            this.tsmiMenuFileZoomOut.Click += new System.EventHandler(this.tsmiMenuFileZoomOut_Click);
+            this.dgvContacts.AllowUserToAddRows = false;
+            this.dgvContacts.AllowUserToDeleteRows = false;
+            this.dgvContacts.AllowUserToResizeColumns = false;
+            this.dgvContacts.AllowUserToResizeRows = false;
+            this.dgvContacts.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvContacts.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.dgvContacts.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvContacts.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dgvContacts.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvContacts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvContacts.ColumnHeadersVisible = false;
+            this.dgvContacts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.contactStatus,
+            this.contactName});
+            this.dgvContacts.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvContacts.Location = new System.Drawing.Point(3, 3);
+            this.dgvContacts.MultiSelect = false;
+            this.dgvContacts.Name = "dgvContacts";
+            this.dgvContacts.ReadOnly = true;
+            this.dgvContacts.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvContacts.RowHeadersVisible = false;
+            this.dgvContacts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvContacts.Size = new System.Drawing.Size(255, 284);
+            this.dgvContacts.TabIndex = 0;
+            this.dgvContacts.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvContacts_CellContentClick);
+            this.dgvContacts.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvContacts_CellDoubleClick);
+            this.dgvContacts.SelectionChanged += new System.EventHandler(this.dgvContacts_SelectionChanged);
             // 
-            // tsmiMenuFileZoomReset
+            // contactStatus
             // 
-            this.tsmiMenuFileZoomReset.Name = "tsmiMenuFileZoomReset";
-            this.tsmiMenuFileZoomReset.Size = new System.Drawing.Size(180, 22);
-            this.tsmiMenuFileZoomReset.Text = "Zoom Reset";
-            this.tsmiMenuFileZoomReset.Click += new System.EventHandler(this.tsmiMenuFileZoomReset_Click);
+            this.contactStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.contactStatus.FillWeight = 24F;
+            this.contactStatus.HeaderText = "Contact Status";
+            this.contactStatus.Name = "contactStatus";
+            this.contactStatus.ReadOnly = true;
+            this.contactStatus.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.contactStatus.Width = 24;
+            // 
+            // contactName
+            // 
+            this.contactName.FillWeight = 84F;
+            this.contactName.HeaderText = "Contact Name";
+            this.contactName.Name = "contactName";
+            this.contactName.ReadOnly = true;
             // 
             // MessageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(433, 373);
+            this.ClientSize = new System.Drawing.Size(771, 807);
+            this.Controls.Add(this.tcTabs);
             this.Controls.Add(this.rtxtMessages);
             this.Controls.Add(this.btnColor);
             this.Controls.Add(this.ssStatusStrip);
@@ -326,6 +404,9 @@
             this.ssStatusStrip.ResumeLayout(false);
             this.ssStatusStrip.PerformLayout();
             this.cmsMessages.ResumeLayout(false);
+            this.tcTabs.ResumeLayout(false);
+            this.tpContacts.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvContacts)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -356,5 +437,10 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiMenuFileZoomIn;
         private System.Windows.Forms.ToolStripMenuItem tsmiMenuFileZoomOut;
         private System.Windows.Forms.ToolStripMenuItem tsmiMenuFileZoomReset;
+        private System.Windows.Forms.TabControl tcTabs;
+        private System.Windows.Forms.TabPage tpContacts;
+        public System.Windows.Forms.DataGridView dgvContacts;
+        private System.Windows.Forms.DataGridViewImageColumn contactStatus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn contactName;
     }
 }
