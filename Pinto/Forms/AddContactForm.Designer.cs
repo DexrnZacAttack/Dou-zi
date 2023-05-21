@@ -29,20 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddContactForm));
-            this.txtContactName = new System.Windows.Forms.TextBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.txtContactName = new PintoNS.Controls.TextBoxWithPlaceholderSupport();
             this.SuspendLayout();
-            // 
-            // txtContactName
-            // 
-            this.txtContactName.Location = new System.Drawing.Point(12, 25);
-            this.txtContactName.MaxLength = 16;
-            this.txtContactName.Name = "txtContactName";
-            this.txtContactName.Size = new System.Drawing.Size(206, 20);
-            this.txtContactName.TabIndex = 0;
-            this.txtContactName.TextChanged += new System.EventHandler(this.txtContactName_TextChanged_1);
-            this.txtContactName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtContactName_KeyDown);
             // 
             // btnAdd
             // 
@@ -63,21 +53,33 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Username:";
             // 
+            // txtContactName
+            // 
+            this.txtContactName.ForeColor = System.Drawing.Color.DimGray;
+            this.txtContactName.Location = new System.Drawing.Point(11, 26);
+            this.txtContactName.Name = "txtContactName";
+            this.txtContactName.PlaceholderText = "Type your friend\'s name here!";
+            this.txtContactName.PlaceholderTextForeColor = System.Drawing.Color.DimGray;
+            this.txtContactName.Size = new System.Drawing.Size(207, 20);
+            this.txtContactName.TabIndex = 3;
+            this.txtContactName.TextForeColor = System.Drawing.Color.Black;
+            this.txtContactName.TextChanged += new System.EventHandler(this.txtContactName_TextChanged_1);
+            // 
             // AddContactForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(230, 83);
+            this.Controls.Add(this.txtContactName);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.txtContactName);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.ShowInTaskbar = false;
             this.Name = "AddContactForm";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = " 豆子 - Add contact";
             this.Load += new System.EventHandler(this.AddContactForm_Load);
@@ -87,9 +89,8 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox txtContactName;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Label label1;
+        private Controls.TextBoxWithPlaceholderSupport txtContactName;
     }
 }
