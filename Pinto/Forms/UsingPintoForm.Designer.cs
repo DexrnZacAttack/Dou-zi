@@ -67,7 +67,6 @@ namespace PintoNS.Forms
             this.pbAd = new System.Windows.Forms.PictureBox();
             this.tcSections = new System.Windows.Forms.TabControl();
             this.ConnectingPage = new System.Windows.Forms.TabPage();
-            this.label5 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.tpRegister.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -507,7 +506,6 @@ namespace PintoNS.Forms
             // 
             this.ConnectingPage.BackgroundImage = global::PintoNS.Assets.LOGINANIM;
             this.ConnectingPage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ConnectingPage.Controls.Add(this.label5);
             this.ConnectingPage.Controls.Add(this.pictureBox2);
             this.ConnectingPage.Location = new System.Drawing.Point(4, 22);
             this.ConnectingPage.Name = "ConnectingPage";
@@ -518,18 +516,6 @@ namespace PintoNS.Forms
             this.ConnectingPage.UseVisualStyleBackColor = true;
             this.ConnectingPage.Click += new System.EventHandler(this.ConnectingPage_Click);
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(161, 42);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(102, 20);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "Connecting...";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
-            // 
             // pictureBox2
             // 
             this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -537,7 +523,7 @@ namespace PintoNS.Forms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox2.Image = global::PintoNS.Logo.LOADING;
-            this.pictureBox2.Location = new System.Drawing.Point(148, 79);
+            this.pictureBox2.Location = new System.Drawing.Point(147, 60);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(128, 128);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -575,7 +561,6 @@ namespace PintoNS.Forms
             ((System.ComponentModel.ISupportInitialize)(this.pbAd)).EndInit();
             this.tcSections.ResumeLayout(false);
             this.ConnectingPage.ResumeLayout(false);
-            this.ConnectingPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
@@ -617,7 +602,6 @@ namespace PintoNS.Forms
         private System.Windows.Forms.ComboBox txtRegisterIP;
         private System.Windows.Forms.TabPage ConnectingPage;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Label label5;
         private PictureBox pictureBox3;
         private Button llServers;
         private Button CloseButton;

@@ -52,9 +52,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(163, 9);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(211, 13);
+            this.label2.Size = new System.Drawing.Size(193, 13);
             this.label2.TabIndex = 1;
-            this.label2.Text = "This may be due to my (Dexrn\'s) shit coding";
+            this.label2.Text = "This may be due to DouZi\'s shit coding.";
             // 
             // label3
             // 
