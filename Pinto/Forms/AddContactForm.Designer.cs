@@ -62,6 +62,7 @@
             this.txtContactName.PlaceholderTextForeColor = System.Drawing.Color.DimGray;
             this.txtContactName.Size = new System.Drawing.Size(207, 20);
             this.txtContactName.TabIndex = 3;
+            this.txtContactName.Text = "Type your friend\'s name here!";
             this.txtContactName.TextForeColor = System.Drawing.Color.Black;
             this.txtContactName.TextChanged += new System.EventHandler(this.txtContactName_TextChanged_1);
             // 

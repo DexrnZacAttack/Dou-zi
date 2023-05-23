@@ -52,6 +52,7 @@
             // 
             this.txtInput.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtInput.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtInput.Location = new System.Drawing.Point(10, 292);
             this.txtInput.Name = "txtInput";
             this.txtInput.Size = new System.Drawing.Size(366, 20);

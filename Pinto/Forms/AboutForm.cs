@@ -68,5 +68,10 @@ namespace PintoNS.Forms
             ProcessStartInfo sInfo = new ProcessStartInfo("https://github.com/DexrnZacAttack/DouZi");
             Process.Start(sInfo);
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
