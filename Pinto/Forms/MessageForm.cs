@@ -1,94 +1,98 @@
-﻿using PintoNS.Forms.Notification;
-using PintoNS.General;
-using PintoNS;
+﻿using PintoNS.Contacts;
+using PintoNS.UI;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
-using System.Text.RegularExpressions;
-using System.Threading;
-using mshtml;
+using System.Windows.Forms;
 
 namespace PintoNS.Forms
 {
     public partial class MessageForm : Form
     {
+        public static Color MsgSelfSenderColor = Color.Blue;
+        public static Color MsgOtherSenderColor = Color.Red;
+        public static Color MsgErrorColor = Color.DarkRed;
+        public static Color MsgSeparatorColor = Color.Black;
+        public static Color MsgContentColor = Color.Black;
+        public static Color MsgInfoColor = Color.DarkGreen;
+        public static Color MsgTimeColor = Color.Gray;
         private MainForm mainForm;
         public Contact Receiver;
-        public ContactsManagerMF ContactsMgr;
-        public List<MessageForm> MessageForms;
         private bool isTypingLastStatus;
         public bool HasBeenInactive;
         public InWindowPopupController InWindowPopupController;
-        private MessageForm messageForm;
-        private Contact contact;
+        private int rateLimitTicks;
 
         public MessageForm(MainForm mainForm, Contact receiver)
         {
+            InitializeComponent();
+            tsslStatusStripTyping.Text = "";
+            Icon = Program.GetFormIcon();
+            Text = $"Pinto! - Instant Messaging - Chatting with {receiver.Name}";
             this.mainForm = mainForm;
-            InWindowPopupController = new InWindowPopupController(this, 25);
             Receiver = receiver;
-            Text = $"Pinto! - Instant Messaging - Chatting with {Receiver.Name}";
+            InWindowPopupController = new InWindowPopupController(this, 25);
 
-            if (!Directory.Exists(Path.Combine(mainForm.DataFolder,
-                "chats", mainForm.NetManager.NetClient.IP)))
-                Directory.CreateDirectory(Path.Combine(mainForm.DataFolder,
-                    "chats", mainForm.NetManager.NetClient.IP));
+            if (mainForm.NetHandler.ServerID == null)
+            {
+                MsgBox.Show(this,
+                    "The server has not yet sent it's server ID," +
+                    " this chat will not be saved till the server does so", "Server Warning",
+                    MsgBoxIconType.WARNING, true);
+                return;
+            }
+
+            if (!Directory.Exists(Path.Combine(Program.DataFolder,
+                "chats", mainForm.LocalUser.Name, mainForm.NetHandler.ServerID)))
+                Directory.CreateDirectory(Path.Combine(Program.DataFolder,
+                    "chats", mainForm.LocalUser.Name, mainForm.NetHandler.ServerID));
+
             LoadChat();
-        }
-
-        public MessageForm(MessageForm messageForm, Contact contact)
-        {
-            this.messageForm = messageForm;
-            this.contact = contact;
         }
 
         private void LoadChat()
         {
-            InitializeComponent();
-            dgvContacts.Rows.Clear();
-            MessageForms = new List<MessageForm>();
-            ContactsMgr = new ContactsManagerMF(this);
-
-            Program.Console.WriteMessage("[General] Loading chat...");
+            Program.Console.WriteMessage("Loading chat...", DouZiResources.ConsoleTypes.GENERAL);
             try
             {
-                string filePath = Path.Combine(mainForm.DataFolder, "chats",
-                    mainForm.NetManager.NetClient.IP, $"{Receiver.Name}.rtf");
-                if (!File.Exists(filePath)) return;
-                rtxtMessages.Rtf = File.ReadAllText(filePath);
+                string filePath = Path.Combine(Program.DataFolder, "chats", mainForm.LocalUser.Name,
+                    mainForm.NetHandler.ServerID, $"{Receiver.Name.Replace(":", "%3A")}.rtf");
             }
             catch (Exception ex)
             {
-                Program.Console.WriteMessage($"[General]" +
-                    $" Unable to load the chat: {ex}");
-                MsgBox.ShowNotification(this,
+                Program.Console.WriteMessage(
+                    $" Unable to load the chat: {ex}", DouZiResources.ConsoleTypes.GENERAL);
+                MsgBox.Show(this,
                     "Unable to load the chat!",
                     "Error", MsgBoxIconType.ERROR);
             }
         }
+        protected override void WndProc(ref Message message)
+        {
+                if (!Program.RunningUnderMono)
+                    if (message.Msg == PInvoke.WM_SYSCOMMAND &&
+                        (int)message.WParam == PInvoke.SC_RESTORE)
+                        Invalidate();
+
+                base.WndProc(ref message);
+        }
 
         private void SaveChat()
         {
-            Program.Console.WriteMessage("[General] Saving chat...");
+            Program.Console.WriteMessage("Saving chat...", DouZiResources.ConsoleTypes.GENERAL);
             try
             {
-                string filePath = Path.Combine(mainForm.DataFolder, "chats",
-                    mainForm.NetManager.NetClient.IP, $"{Receiver.Name}.rtf");
+                string filePath = Path.Combine(Program.DataFolder, "chats", mainForm.LocalUser.Name,
+                    mainForm.NetHandler.ServerID, $"{Receiver.Name.Replace(":", "%3A")}.rtf");
                 File.WriteAllText(filePath, rtxtMessages.Rtf);
             }
             catch (Exception ex)
             {
-                Program.Console.WriteMessage($"[General]" +
-                    $" Unable to save the chat: {ex}");
-                MsgBox.ShowNotification(this,
+                Program.Console.WriteMessage(
+                    $" Unable to save the chat: {ex}", DouZiResources.ConsoleTypes.GENERAL);
+                MsgBox.Show(this,
                     "Unable to save the chat",
                     "Error", MsgBoxIconType.ERROR);
             }
@@ -96,111 +100,105 @@ namespace PintoNS.Forms
 
         private void DeleteChat()
         {
-            Program.Console.WriteMessage("[General] Deleting chat...");
+            Program.Console.WriteMessage("Deleting chat...", DouZiResources.ConsoleTypes.GENERAL);
             try
             {
-                string filePath = Path.Combine(mainForm.DataFolder, "chats",
-                    mainForm.NetManager.NetClient.IP, $"{Receiver.Name}.rtf");
+                string filePath = Path.Combine(Program.DataFolder, "chats", mainForm.LocalUser.Name,
+                    mainForm.NetHandler.ServerID, $"{Receiver.Name.Replace(":", "%3A")}.rtf");
                 if (!File.Exists(filePath)) return;
                 File.Delete(filePath);
             }
             catch (Exception ex)
             {
-                Program.Console.WriteMessage($"[General]" +
-                    $" Unable to delete the chat: {ex}");
-                MsgBox.ShowNotification(this,
+                Program.Console.WriteMessage(
+                    $" Unable to delete the chat: {ex}", DouZiResources.ConsoleTypes.GENERAL);
+                MsgBox.Show(this,
                     "Unable to delete the chat",
                     "Error", MsgBoxIconType.ERROR);
             }
         }
 
-        public MessageForm GetMessageFormFromReceiverName(string name, bool doNotCreate = false)
+        private FontStyle GetFontStyles(bool bold, bool italic, bool strikeout, bool underLine)
         {
-            Program.Console.WriteMessage($"Getting MessageForm for {name}...");
-
-            foreach (MessageForm msgForm in MessageForms.ToArray())
-            {
-                if (msgForm.Receiver.Name == name)
-                    return msgForm;
-            }
-
-            MessageForm messageForm = null;
-
-            if (!doNotCreate)
-            {
-                Program.Console.WriteMessage($"Creating MessageForm for {name}...");
-                messageForm = new MessageForm(this, ContactsMgr.GetContact(name));
-                MessageForms.Add(messageForm);
-                messageForm.Show();
-            }
-
-
-            return messageForm;
+            FontStyle style = FontStyle.Regular;
+            if (bold) style |= FontStyle.Bold;
+            if (italic) style |= FontStyle.Italic;
+            if (strikeout) style |= FontStyle.Strikeout;
+            if (underLine) style |= FontStyle.Underline;
+            return style;
         }
-        private void WriteMessageRaw(string msg, Color color)
+
+        private void WriteMessageRaw(string msg, Color color, bool bold = false, bool italic = false,
+            bool strikeout = false, bool underLine = false)
         {
             Invoke(new Action(() =>
             {
-                rtxtMessages.SelectionStart = rtxtMessages.Text.Length;
-                rtxtMessages.SelectionColor = color;
-                rtxtMessages.SelectedText = msg;
-                rtxtMessages.SelectionColor = rtxtMessages.ForeColor;
+                int selectionStartOriginal = rtxtMessages.SelectionStart;
+                int selectionEndOriginal = rtxtMessages.SelectionLength;
 
-                // Save the chat
-                SaveChat();
+                if (string.IsNullOrWhiteSpace(msg.Trim()))
+                {
+                    rtxtMessages.AppendText(msg);
+                }
+                else
+                {
+                    rtxtMessages.SelectionStart = rtxtMessages.Text.Length;
+                    rtxtMessages.SelectionFont = new Font(rtxtMessages.Font,
+                        GetFontStyles(bold, italic, strikeout, underLine));
+                    rtxtMessages.SelectionColor = color;
+                    rtxtMessages.SelectedText = msg;
+
+                    // Reset the richtextbox
+                    rtxtMessages.SelectionFont = rtxtMessages.Font;
+                    rtxtMessages.SelectionColor = rtxtMessages.ForeColor;
+                }
             }));
         }
 
-
-        public void dgvContacts_SelectionChanged(object sender, EventArgs e)
-        {
-            /*
-            if (InCall) return;
-
-            if (dgvContacts.SelectedRows.Count > 0)
-            {
-                btnStartCall.Enabled = true;
-                btnStartCall.Image = Assets.STARTCALL_ENABLED;
-            }
-            else
-            {
-                btnStartCall.Enabled = false;
-                btnStartCall.Image = Assets.STARTCALL_DISABLED;
-            }*/
-        }
         public void WriteMessage(string msg, Color color, bool newLine = true)
         {
             string buffer = "";
             Color currentColor = color;
+            bool bold = false;
+            bool italic = false;
+            bool strikeout = false;
+            bool underline = false;
 
             for (int i = 0; i < msg.Length; ++i)
             {
                 switch (msg[i])
                 {
-                    case '#':
-                        if (i + 2 < msg.Length &&
-                            msg[i + 1] == '#' &&
-                            msg[i + 2] == '#' &&
-                            i + 2 + 6 < msg.Length)
+                    case (char)0xA7:
+                        WriteMessageRaw(buffer, currentColor, bold, italic, strikeout, underline);
+
+                        buffer = "";
+                        try
                         {
-                            WriteMessageRaw(buffer, currentColor);
-
-                            buffer = "";
-                            try
+                            string code = msg.Substring(i + 1, 6).Replace("####", "");
+                            if (code.Length == 2)
                             {
-                                currentColor = ColorTranslator.FromHtml(msg.Substring(i + 2, 7));
-                            }
-                            catch
-                            {
-                                currentColor = Color.Black;
-                            }
+                                char featureType = code[0];
+                                bool featureEnabled = code[1] == 'Y';
 
-                            // 0 (#) + 2 (##) + 6 (RRGGBB)
-                            i += 8;
+                                if (featureType == 'B')
+                                    bold = featureEnabled;
+                                else if (featureType == 'I')
+                                    italic = featureEnabled;
+                                else if (featureType == 'S')
+                                    strikeout = featureEnabled;
+                                else if (featureType == 'U')
+                                    underline = featureEnabled;
+                            }
+                            else
+                                currentColor = ColorTranslator.FromHtml("#" + code);
                         }
-                        else
-                            buffer += msg[i];
+                        catch
+                        {
+                            currentColor = Color.Black;
+                        }
 
+                        // 0 (0xA7) + 6 (RRGGBB)
+                        i += 6;
                         break;
                     default:
                         buffer += msg[i];
@@ -208,7 +206,8 @@ namespace PintoNS.Forms
                 }
             }
 
-            WriteMessageRaw(buffer + (newLine ? Environment.NewLine : ""), currentColor);
+            WriteMessageRaw(buffer + (newLine ? Environment.NewLine : ""), currentColor,
+                bold, italic, strikeout, underline);
         }
 
         private void rtxtInput_KeyDown(object sender, KeyEventArgs e)
@@ -227,17 +226,30 @@ namespace PintoNS.Forms
             // Strip RTF
             string text = rtxtInput.Text;
             int caretPosition = rtxtInput.SelectionStart;
-            rtxtInput.Clear();
             rtxtInput.Text = text;
             rtxtInput.SelectionStart = caretPosition;
             rtxtInput.SelectionLength = 0;
 
-            if (mainForm.NetManager == null) return;
+            if (text.Trim().Length < 1)
+                btnSend.Enabled = false;
+            else
+                btnSend.Enabled = true;
 
-            if (!string.IsNullOrWhiteSpace(text) && !isTypingLastStatus)
-                isTypingLastStatus = true;
-            else if (string.IsNullOrWhiteSpace(text) && isTypingLastStatus)
-                isTypingLastStatus = false;
+            if (mainForm.NetHandler == null) return;
+
+            if (!Settings.NoTypingIndicator)
+            {
+                if (!string.IsNullOrWhiteSpace(text) && !isTypingLastStatus)
+                {
+                    isTypingLastStatus = true;
+                    mainForm.NetHandler.ChangeTypingState(Receiver.Name, true);
+                }
+                else if (string.IsNullOrWhiteSpace(text) && isTypingLastStatus)
+                {
+                    isTypingLastStatus = false;
+                    mainForm.NetHandler.ChangeTypingState(Receiver.Name, false);
+                }
+            }
         }
 
         private void btnSend_Click(object sender, EventArgs e)
@@ -246,34 +258,40 @@ namespace PintoNS.Forms
 
             if (string.IsNullOrWhiteSpace(input))
             {
-                MsgBox.ShowNotification(this, "The specified message is invalid!", "Error",
-                    MsgBoxIconType.ERROR);
+                return;
+            }
+
+            if (rateLimitTicks > 0)
+            {
+                InWindowPopupController.ClearPopups();
+                InWindowPopupController.CreatePopup(
+                    "Slow down!\nWait 1.2 seconds before sending another message!", false, 2f);
                 return;
             }
 
             rtxtInput.Clear();
-            if (mainForm.NetManager != null)
-                mainForm.NetManager.NetHandler.SendMessagePacket(Receiver.Name, input);
+            if (mainForm.NetHandler != null)
+                mainForm.NetHandler.MessageContact(Receiver.Name, input);
+            rateLimitTicks = 12;
         }
 
         private void MessageForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (mainForm.MessageForms != null)
                 mainForm.MessageForms.Remove(this);
+            mainForm.NetHandler.ChangeTypingState(Receiver.Name, false);
+            InWindowPopupController.Dispose();
+            SaveChat();
         }
 
-        private void tsmiMenuBarHelpAbout_Click(object sender, EventArgs e)
-        {
-            new AboutForm().ShowDialog(this);
-        }
+        private void tsmiMenuBarHelpAbout_Click(object sender, EventArgs e) => new AboutForm().ShowDialog(this);
 
-        private void MessageForm_Activated(object sender, EventArgs e)
-        {
-            HasBeenInactive = false;
-        }
+        private void MessageForm_Activated(object sender, EventArgs e) => HasBeenInactive = false;
 
         private void btnTalk_Click(object sender, EventArgs e)
         {
+            //if (mainForm.NetHandler == null || mainForm.NetHandler.InCall) return;
+            //mainForm.NetHandler.StartCall(Receiver.Name);
         }
 
         private void btnBlock_Click(object sender, EventArgs e)
@@ -285,7 +303,7 @@ namespace PintoNS.Forms
             if (cdPicker.ShowDialog() != DialogResult.OK) return;
             Color color = cdPicker.Color;
             rtxtInput.SelectionLength = 0;
-            rtxtInput.AppendText($"###{color.R:X2}{color.G:X2}{color.B:X2}");
+            rtxtInput.AppendText(string.Format($"{{0}}{color.R:X2}{color.G:X2}{color.B:X2}", (char)0xA7));
         }
 
         private void tsmiMenuBarFileClearSavedData_Click(object sender, EventArgs e)
@@ -296,29 +314,22 @@ namespace PintoNS.Forms
 
         private void MessageForm_Load(object sender, EventArgs e)
         {
-            if (Receiver.Status == UserStatus.BUSY)
-                InWindowPopupController.CreatePopup($"{Receiver.Name} is busy" +
-                    $" and may not see your messages");
+            if (Receiver.Status == UserStatus.BUSY || Receiver.Status == UserStatus.AWAY)
+                InWindowPopupController.CreatePopup($"{Receiver.Name} is {Receiver.Status.ToString().ToLower()}" +
+                    $" and may not see your messages", true);
         }
 
-        private void rtxtMessages_TextChanged(object sender, EventArgs e)
-        {
-            rtxtMessages.SelectionStart = rtxtMessages.Text.Length;
-            rtxtMessages.ScrollToCaret();
-        }
-
-        private void rtxtMessages_LinkClicked(object sender, LinkClickedEventArgs e)
-        {
-            Process.Start(e.LinkText);
-        }
+        private void rtxtMessages_LinkClicked(object sender, LinkClickedEventArgs e) => Process.Start(e.LinkText);
 
         private void tsmiMessagesCopy_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(rtxtMessages.SelectedText)) return;
             Clipboard.SetText(rtxtMessages.SelectedText);
         }
 
         private void tsmiInputCopy_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(rtxtInput.SelectedText)) return;
             Clipboard.SetText(rtxtInput.SelectedText);
         }
 
@@ -354,33 +365,34 @@ namespace PintoNS.Forms
                 rtxtInput.ZoomFactor = 1.0f;
         }
 
-        private void dgvContacts_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void tRateLimit_Tick(object sender, EventArgs e)
         {
-            string contactName = ContactsMgr.GetContactNameFromRow(e.RowIndex);
-            Contact contact = ContactsMgr.GetContact(contactName);
-
-            if (contactName != null && contact != null)
+            if (rateLimitTicks > 0)
             {
-                MessageForm messageForm = GetMessageFormFromReceiverName(contactName);
-                messageForm.WindowState = FormWindowState.Normal;
-                messageForm.BringToFront();
-                messageForm.Focus();
+                rateLimitTicks--;
+                tspbMenuBarRateLimit.PerformStep();
+                if (rateLimitTicks < 1) tspbMenuBarRateLimit.Value = 0;
             }
         }
 
-        private void dgvContacts_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void rtxtMessages_TextChanged(object sender, EventArgs e)
         {
-
+            rtxtMessages.SelectionStart = rtxtMessages.TextLength;
+            rtxtMessages.ScrollToCaret();
         }
 
-        private void tpLogin_Click(object sender, EventArgs e)
+        public void SetReceiverTypingState(bool state)
         {
-
+            tsslStatusStripTyping.Text = state ? $"{Receiver.Name} is typing..." : "";
         }
 
-        private void dgvContacts_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        private void btnMoreFontOptions_Click(object sender, EventArgs e)
         {
-
+            MoreFontOptionsForm moreFontOptionsForm = new MoreFontOptionsForm(rtxtInput);
+            moreFontOptionsForm.Show(this);
+            moreFontOptionsForm.CenterToParent();
+            moreFontOptionsForm.BringToFront();
+            moreFontOptionsForm.Focus();
         }
     }
 }

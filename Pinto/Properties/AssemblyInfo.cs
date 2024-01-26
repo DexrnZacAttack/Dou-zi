@@ -1,15 +1,14 @@
 ﻿using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("DouZi (A fork of PintoIM)")]
-[assembly: AssemblyDescription("Pinto! with modifications and a QQ like interface.")]
+[assembly: AssemblyTitle("Pinto")]
+[assembly: AssemblyDescription("A modernish IM client inspired by Skype 0.97")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("DexrnZacAttack")]
-[assembly: AssemblyProduct("DouZi")]
+[assembly: AssemblyCompany("PintoIM")]
+[assembly: AssemblyProduct("Pinto")]
 [assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -32,5 +31,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("0.0.1.6")]
-[assembly: AssemblyFileVersion("0.0.1.6")]
+[assembly: AssemblyVersion("0.0.1.2")]
+[assembly: AssemblyFileVersion("0.0.1.2")]

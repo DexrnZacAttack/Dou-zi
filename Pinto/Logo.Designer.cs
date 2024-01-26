@@ -22,7 +22,7 @@ namespace PintoNS {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Logo {
+    public class Logo {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace PintoNS {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PintoNS.Logo", typeof(Logo).Assembly);
@@ -51,7 +51,7 @@ namespace PintoNS {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,17 @@ namespace PintoNS {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap LOADING {
+        public static System.Drawing.Bitmap Banner {
+            get {
+                object obj = ResourceManager.GetObject("Banner", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap LOADING {
             get {
                 object obj = ResourceManager.GetObject("LOADING", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -73,7 +83,7 @@ namespace PintoNS {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap LOGO {
+        public static System.Drawing.Bitmap LOGO {
             get {
                 object obj = ResourceManager.GetObject("LOGO", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -83,7 +93,7 @@ namespace PintoNS {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap LOGO_BACKGROUND {
+        public static System.Drawing.Bitmap LOGO_BACKGROUND {
             get {
                 object obj = ResourceManager.GetObject("LOGO_BACKGROUND", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -91,92 +101,22 @@ namespace PintoNS {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap LOGO_LARGE {
-            get {
-                object obj = ResourceManager.GetObject("LOGO_LARGE", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap LOGO_LARGE_NOTEXT {
-            get {
-                object obj = ResourceManager.GetObject("LOGO_LARGE_NOTEXT", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap LOGO_LARGE_WHITE {
-            get {
-                object obj = ResourceManager.GetObject("LOGO_LARGE_WHITE", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap LOGO_LARGE_WHITE_TEXT {
-            get {
-                object obj = ResourceManager.GetObject("LOGO_LARGE_WHITE_TEXT", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap LOGO_NOTEXT {
-            get {
-                object obj = ResourceManager.GetObject("LOGO_NOTEXT", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap LOGO_WHITE {
-            get {
-                object obj = ResourceManager.GetObject("LOGO_WHITE", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap LOGO_WHITE_LARGE_TRANSPARENT {
-            get {
-                object obj = ResourceManager.GetObject("LOGO_WHITE_LARGE_TRANSPARENT", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap LOGO_WHITE_LARGE_TRANSPARENT_TEXT {
-            get {
-                object obj = ResourceManager.GetObject("LOGO_WHITE_LARGE_TRANSPARENT_TEXT", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Icon WIN_LOGO {
+        public static System.Drawing.Icon LOGO_ICO {
             get {
-                object obj = ResourceManager.GetObject("WIN_LOGO", resourceCulture);
+                object obj = ResourceManager.GetObject("LOGO_ICO", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap LOGO_RED {
+            get {
+                object obj = ResourceManager.GetObject("LOGO_RED", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

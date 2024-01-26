@@ -1,4 +1,6 @@
-﻿namespace PintoNS.Forms
+﻿using PintoNS.UI.Controls;
+
+namespace PintoNS.Forms
 {
     partial class MessageForm
     {
@@ -31,11 +33,9 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MessageForm));
             this.btnSend = new System.Windows.Forms.Button();
-            this.rtxtInput = new System.Windows.Forms.RichTextBox();
             this.cmsInput = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmiInputCopy = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiInputPaste = new System.Windows.Forms.ToolStripMenuItem();
-            this.ilButtons = new System.Windows.Forms.ImageList(this.components);
             this.tsMenuBar = new System.Windows.Forms.ToolStrip();
             this.tsddbMenuBarFile = new System.Windows.Forms.ToolStripDropDownButton();
             this.tsmiMenuFileZoomIn = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,56 +45,39 @@
             this.tsmiMenuBarFileClearSavedData = new System.Windows.Forms.ToolStripMenuItem();
             this.tsddbMenuBarHelp = new System.Windows.Forms.ToolStripDropDownButton();
             this.tsmiMenuBarHelpAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.tslMenuBarMessageTimeout = new System.Windows.Forms.ToolStripLabel();
+            this.tspbMenuBarRateLimit = new System.Windows.Forms.ToolStripProgressBar();
             this.ssStatusStrip = new System.Windows.Forms.StatusStrip();
-            this.tsslStatusBarTypingList = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tsslStatusStripTyping = new System.Windows.Forms.ToolStripStatusLabel();
             this.cdPicker = new System.Windows.Forms.ColorDialog();
             this.btnColor = new System.Windows.Forms.Button();
             this.btnBlock = new System.Windows.Forms.Button();
+            this.ilButtons = new System.Windows.Forms.ImageList(this.components);
             this.btnTalk = new System.Windows.Forms.Button();
-            this.rtxtMessages = new System.Windows.Forms.RichTextBox();
+            this.rtxtMessages = new ExRichTextBox();
             this.cmsMessages = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmiMessagesCopy = new System.Windows.Forms.ToolStripMenuItem();
-            this.tcTabs = new System.Windows.Forms.TabControl();
-            this.tpContacts = new System.Windows.Forms.TabPage();
-            this.dgvContacts = new System.Windows.Forms.DataGridView();
-            this.contactStatus = new System.Windows.Forms.DataGridViewImageColumn();
-            this.contactName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tRateLimit = new System.Windows.Forms.Timer(this.components);
+            this.rtxtInput = new ExRichTextBox();
+            this.btnMoreFontOptions = new System.Windows.Forms.Button();
             this.cmsInput.SuspendLayout();
             this.tsMenuBar.SuspendLayout();
             this.ssStatusStrip.SuspendLayout();
             this.cmsMessages.SuspendLayout();
-            this.tcTabs.SuspendLayout();
-            this.tpContacts.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvContacts)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSend
             // 
             this.btnSend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSend.Location = new System.Drawing.Point(700, 756);
+            this.btnSend.Enabled = false;
+            this.btnSend.Location = new System.Drawing.Point(362, 283);
             this.btnSend.Name = "btnSend";
-            this.btnSend.Size = new System.Drawing.Size(60, 26);
+            this.btnSend.Size = new System.Drawing.Size(60, 56);
             this.btnSend.TabIndex = 1;
             this.btnSend.Text = "&Send";
             this.btnSend.UseVisualStyleBackColor = true;
             this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
-            // 
-            // rtxtInput
-            // 
-            this.rtxtInput.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.rtxtInput.ContextMenuStrip = this.cmsInput;
-            this.rtxtInput.HideSelection = false;
-            this.rtxtInput.Location = new System.Drawing.Point(154, 697);
-            this.rtxtInput.MaxLength = 512;
-            this.rtxtInput.Name = "rtxtInput";
-            this.rtxtInput.Size = new System.Drawing.Size(605, 56);
-            this.rtxtInput.TabIndex = 0;
-            this.rtxtInput.Text = "";
-            this.rtxtInput.ContentsResized += new System.Windows.Forms.ContentsResizedEventHandler(this.rtxtInput_ContentsResized);
-            this.rtxtInput.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.rtxtMessages_LinkClicked);
-            this.rtxtInput.TextChanged += new System.EventHandler(this.rtxtInput_TextChanged);
-            this.rtxtInput.KeyDown += new System.Windows.Forms.KeyEventHandler(this.rtxtInput_KeyDown);
             // 
             // cmsInput
             // 
@@ -119,23 +102,19 @@
             this.tsmiInputPaste.Text = "Paste";
             this.tsmiInputPaste.Click += new System.EventHandler(this.tsmiInputPaste_Click);
             // 
-            // ilButtons
-            // 
-            this.ilButtons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ilButtons.ImageStream")));
-            this.ilButtons.TransparentColor = System.Drawing.Color.Transparent;
-            this.ilButtons.Images.SetKeyName(0, "BLOCK");
-            this.ilButtons.Images.SetKeyName(1, "TALK");
-            // 
             // tsMenuBar
             // 
             this.tsMenuBar.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.tsMenuBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsddbMenuBarFile,
-            this.tsddbMenuBarHelp});
+            this.tsddbMenuBarHelp,
+            this.toolStripSeparator2,
+            this.tslMenuBarMessageTimeout,
+            this.tspbMenuBarRateLimit});
             this.tsMenuBar.Location = new System.Drawing.Point(0, 0);
             this.tsMenuBar.Name = "tsMenuBar";
             this.tsMenuBar.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.tsMenuBar.Size = new System.Drawing.Size(771, 25);
+            this.tsMenuBar.Size = new System.Drawing.Size(433, 25);
             this.tsMenuBar.TabIndex = 0;
             this.tsMenuBar.Text = "toolStrip1";
             // 
@@ -209,20 +188,39 @@
             this.tsmiMenuBarHelpAbout.Text = "About";
             this.tsmiMenuBarHelpAbout.Click += new System.EventHandler(this.tsmiMenuBarHelpAbout_Click);
             // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // tslMenuBarMessageTimeout
+            // 
+            this.tslMenuBarMessageTimeout.Name = "tslMenuBarMessageTimeout";
+            this.tslMenuBarMessageTimeout.Size = new System.Drawing.Size(103, 22);
+            this.tslMenuBarMessageTimeout.Text = "Message Timeout:";
+            // 
+            // tspbMenuBarRateLimit
+            // 
+            this.tspbMenuBarRateLimit.Maximum = 6;
+            this.tspbMenuBarRateLimit.Name = "tspbMenuBarRateLimit";
+            this.tspbMenuBarRateLimit.Size = new System.Drawing.Size(100, 22);
+            this.tspbMenuBarRateLimit.Step = 1;
+            // 
             // ssStatusStrip
             // 
             this.ssStatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsslStatusBarTypingList});
-            this.ssStatusStrip.Location = new System.Drawing.Point(0, 785);
+            this.tsslStatusStripTyping});
+            this.ssStatusStrip.Location = new System.Drawing.Point(0, 351);
             this.ssStatusStrip.Name = "ssStatusStrip";
-            this.ssStatusStrip.Size = new System.Drawing.Size(771, 22);
+            this.ssStatusStrip.Size = new System.Drawing.Size(433, 22);
             this.ssStatusStrip.TabIndex = 5;
             this.ssStatusStrip.Text = "statusStrip1";
             // 
-            // tsslStatusBarTypingList
+            // tsslStatusStripTyping
             // 
-            this.tsslStatusBarTypingList.Name = "tsslStatusBarTypingList";
-            this.tsslStatusBarTypingList.Size = new System.Drawing.Size(0, 17);
+            this.tsslStatusStripTyping.Name = "tsslStatusStripTyping";
+            this.tsslStatusStripTyping.Size = new System.Drawing.Size(61, 17);
+            this.tsslStatusStripTyping.Text = "is typing...";
             // 
             // btnColor
             // 
@@ -231,7 +229,7 @@
             this.btnColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnColor.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnColor.Image = global::PintoNS.Assets.COLOR_PALETTE;
-            this.btnColor.Location = new System.Drawing.Point(154, 670);
+            this.btnColor.Location = new System.Drawing.Point(12, 263);
             this.btnColor.Name = "btnColor";
             this.btnColor.Size = new System.Drawing.Size(18, 18);
             this.btnColor.TabIndex = 6;
@@ -240,14 +238,14 @@
             // 
             // btnBlock
             // 
-            this.btnBlock.BackColor = System.Drawing.SystemColors.Control;
+            this.btnBlock.BackColor = System.Drawing.Color.Transparent;
             this.btnBlock.Enabled = false;
             this.btnBlock.FlatAppearance.BorderSize = 0;
             this.btnBlock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBlock.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnBlock.ImageKey = "BLOCK";
             this.btnBlock.ImageList = this.ilButtons;
-            this.btnBlock.Location = new System.Drawing.Point(154, 22);
+            this.btnBlock.Location = new System.Drawing.Point(86, 28);
             this.btnBlock.Name = "btnBlock";
             this.btnBlock.Size = new System.Drawing.Size(68, 41);
             this.btnBlock.TabIndex = 4;
@@ -256,16 +254,23 @@
             this.btnBlock.UseVisualStyleBackColor = false;
             this.btnBlock.Click += new System.EventHandler(this.btnBlock_Click);
             // 
+            // ilButtons
+            // 
+            this.ilButtons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ilButtons.ImageStream")));
+            this.ilButtons.TransparentColor = System.Drawing.Color.Transparent;
+            this.ilButtons.Images.SetKeyName(0, "BLOCK");
+            this.ilButtons.Images.SetKeyName(1, "TALK");
+            // 
             // btnTalk
             // 
-            this.btnTalk.BackColor = System.Drawing.SystemColors.Control;
+            this.btnTalk.BackColor = System.Drawing.Color.Transparent;
             this.btnTalk.Enabled = false;
             this.btnTalk.FlatAppearance.BorderSize = 0;
             this.btnTalk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTalk.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnTalk.ImageKey = "TALK";
             this.btnTalk.ImageList = this.ilButtons;
-            this.btnTalk.Location = new System.Drawing.Point(691, 22);
+            this.btnTalk.Location = new System.Drawing.Point(12, 28);
             this.btnTalk.Name = "btnTalk";
             this.btnTalk.Size = new System.Drawing.Size(68, 41);
             this.btnTalk.TabIndex = 3;
@@ -276,16 +281,16 @@
             // 
             // rtxtMessages
             // 
-            this.rtxtMessages.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.rtxtMessages.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtxtMessages.BackColor = System.Drawing.SystemColors.Window;
             this.rtxtMessages.ContextMenuStrip = this.cmsMessages;
             this.rtxtMessages.HideSelection = false;
-            this.rtxtMessages.Location = new System.Drawing.Point(154, 69);
+            this.rtxtMessages.Location = new System.Drawing.Point(12, 69);
             this.rtxtMessages.Name = "rtxtMessages";
             this.rtxtMessages.ReadOnly = true;
-            this.rtxtMessages.Size = new System.Drawing.Size(606, 595);
+            this.rtxtMessages.Size = new System.Drawing.Size(410, 193);
             this.rtxtMessages.TabIndex = 7;
             this.rtxtMessages.Text = "";
             this.rtxtMessages.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.rtxtMessages_LinkClicked);
@@ -306,83 +311,48 @@
             this.tsmiMessagesCopy.Text = "Copy";
             this.tsmiMessagesCopy.Click += new System.EventHandler(this.tsmiMessagesCopy_Click);
             // 
-            // tcTabs
+            // tRateLimit
             // 
-            this.tcTabs.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.tRateLimit.Enabled = true;
+            this.tRateLimit.Tick += new System.EventHandler(this.tRateLimit_Tick);
+            // 
+            // rtxtInput
+            // 
+            this.rtxtInput.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tcTabs.Controls.Add(this.tpContacts);
-            this.tcTabs.Location = new System.Drawing.Point(0, 28);
-            this.tcTabs.Name = "tcTabs";
-            this.tcTabs.SelectedIndex = 0;
-            this.tcTabs.Size = new System.Drawing.Size(148, 725);
-            this.tcTabs.TabIndex = 9;
+            this.rtxtInput.ContextMenuStrip = this.cmsInput;
+            this.rtxtInput.HideSelection = false;
+            this.rtxtInput.Location = new System.Drawing.Point(12, 283);
+            this.rtxtInput.MaxLength = 512;
+            this.rtxtInput.Name = "rtxtInput";
+            this.rtxtInput.Size = new System.Drawing.Size(344, 56);
+            this.rtxtInput.TabIndex = 0;
+            this.rtxtInput.Text = "";
+            this.rtxtInput.ContentsResized += new System.Windows.Forms.ContentsResizedEventHandler(this.rtxtInput_ContentsResized);
+            this.rtxtInput.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.rtxtMessages_LinkClicked);
+            this.rtxtInput.TextChanged += new System.EventHandler(this.rtxtInput_TextChanged);
+            this.rtxtInput.KeyDown += new System.Windows.Forms.KeyEventHandler(this.rtxtInput_KeyDown);
             // 
-            // tpContacts
+            // btnMoreFontOptions
             // 
-            this.tpContacts.BackColor = System.Drawing.SystemColors.Window;
-            this.tpContacts.Controls.Add(this.dgvContacts);
-            this.tpContacts.ImageKey = "CONTACT.png";
-            this.tpContacts.Location = new System.Drawing.Point(4, 23);
-            this.tpContacts.Name = "tpContacts";
-            this.tpContacts.Padding = new System.Windows.Forms.Padding(3);
-            this.tpContacts.Size = new System.Drawing.Size(261, 290);
-            this.tpContacts.TabIndex = 1;
-            this.tpContacts.Text = "Contacts";
-            // 
-            // dgvContacts
-            // 
-            this.dgvContacts.AllowUserToAddRows = false;
-            this.dgvContacts.AllowUserToDeleteRows = false;
-            this.dgvContacts.AllowUserToResizeColumns = false;
-            this.dgvContacts.AllowUserToResizeRows = false;
-            this.dgvContacts.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvContacts.BackgroundColor = System.Drawing.SystemColors.Window;
-            this.dgvContacts.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvContacts.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dgvContacts.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dgvContacts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvContacts.ColumnHeadersVisible = false;
-            this.dgvContacts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.contactStatus,
-            this.contactName});
-            this.dgvContacts.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvContacts.Location = new System.Drawing.Point(3, 3);
-            this.dgvContacts.MultiSelect = false;
-            this.dgvContacts.Name = "dgvContacts";
-            this.dgvContacts.ReadOnly = true;
-            this.dgvContacts.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dgvContacts.RowHeadersVisible = false;
-            this.dgvContacts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvContacts.Size = new System.Drawing.Size(255, 284);
-            this.dgvContacts.TabIndex = 0;
-            this.dgvContacts.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvContacts_CellContentClick);
-            this.dgvContacts.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvContacts_CellDoubleClick);
-            this.dgvContacts.SelectionChanged += new System.EventHandler(this.dgvContacts_SelectionChanged);
-            // 
-            // contactStatus
-            // 
-            this.contactStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.contactStatus.FillWeight = 24F;
-            this.contactStatus.HeaderText = "Contact Status";
-            this.contactStatus.Name = "contactStatus";
-            this.contactStatus.ReadOnly = true;
-            this.contactStatus.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.contactStatus.Width = 24;
-            // 
-            // contactName
-            // 
-            this.contactName.FillWeight = 84F;
-            this.contactName.HeaderText = "Contact Name";
-            this.contactName.Name = "contactName";
-            this.contactName.ReadOnly = true;
+            this.btnMoreFontOptions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnMoreFontOptions.FlatAppearance.BorderSize = 0;
+            this.btnMoreFontOptions.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMoreFontOptions.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMoreFontOptions.Image = global::PintoNS.Assets.PLUS_ENABLED;
+            this.btnMoreFontOptions.Location = new System.Drawing.Point(36, 263);
+            this.btnMoreFontOptions.Name = "btnMoreFontOptions";
+            this.btnMoreFontOptions.Size = new System.Drawing.Size(18, 18);
+            this.btnMoreFontOptions.TabIndex = 8;
+            this.btnMoreFontOptions.UseVisualStyleBackColor = true;
+            this.btnMoreFontOptions.Click += new System.EventHandler(this.btnMoreFontOptions_Click);
             // 
             // MessageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(771, 807);
-            this.Controls.Add(this.tcTabs);
+            this.ClientSize = new System.Drawing.Size(433, 373);
+            this.Controls.Add(this.btnMoreFontOptions);
             this.Controls.Add(this.rtxtMessages);
             this.Controls.Add(this.btnColor);
             this.Controls.Add(this.ssStatusStrip);
@@ -391,8 +361,6 @@
             this.Controls.Add(this.rtxtInput);
             this.Controls.Add(this.btnSend);
             this.Controls.Add(this.tsMenuBar);
-            this.DoubleBuffered = true;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(187, 239);
             this.Name = "MessageForm";
             this.Activated += new System.EventHandler(this.MessageForm_Activated);
@@ -404,43 +372,40 @@
             this.ssStatusStrip.ResumeLayout(false);
             this.ssStatusStrip.PerformLayout();
             this.cmsMessages.ResumeLayout(false);
-            this.tcTabs.ResumeLayout(false);
-            this.tpContacts.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvContacts)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Button btnSend;
-        private System.Windows.Forms.RichTextBox rtxtInput;
-        private System.Windows.Forms.Button btnTalk;
-        private System.Windows.Forms.Button btnBlock;
-        private System.Windows.Forms.ImageList ilButtons;
-        private System.Windows.Forms.ToolStrip tsMenuBar;
-        private System.Windows.Forms.ToolStripDropDownButton tsddbMenuBarHelp;
-        private System.Windows.Forms.StatusStrip ssStatusStrip;
-        public System.Windows.Forms.ToolStripStatusLabel tsslStatusBarTypingList;
-        private System.Windows.Forms.ToolStripMenuItem tsmiMenuBarHelpAbout;
-        private System.Windows.Forms.Button btnColor;
-        private System.Windows.Forms.ColorDialog cdPicker;
-        private System.Windows.Forms.ToolStripDropDownButton tsddbMenuBarFile;
-        private System.Windows.Forms.ToolStripMenuItem tsmiMenuBarFileClearSavedData;
-        private System.Windows.Forms.RichTextBox rtxtMessages;
-        private System.Windows.Forms.ContextMenuStrip cmsMessages;
-        private System.Windows.Forms.ToolStripMenuItem tsmiMessagesCopy;
-        private System.Windows.Forms.ContextMenuStrip cmsInput;
-        private System.Windows.Forms.ToolStripMenuItem tsmiInputCopy;
-        private System.Windows.Forms.ToolStripMenuItem tsmiInputPaste;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem tsmiMenuFileZoomIn;
-        private System.Windows.Forms.ToolStripMenuItem tsmiMenuFileZoomOut;
-        private System.Windows.Forms.ToolStripMenuItem tsmiMenuFileZoomReset;
-        private System.Windows.Forms.TabControl tcTabs;
-        private System.Windows.Forms.TabPage tpContacts;
-        public System.Windows.Forms.DataGridView dgvContacts;
-        private System.Windows.Forms.DataGridViewImageColumn contactStatus;
-        private System.Windows.Forms.DataGridViewTextBoxColumn contactName;
+        public System.Windows.Forms.Button btnSend;
+        public ExRichTextBox rtxtInput;
+        public System.Windows.Forms.Button btnTalk;
+        public System.Windows.Forms.Button btnBlock;
+        public System.Windows.Forms.ToolStrip tsMenuBar;
+        public System.Windows.Forms.ToolStripDropDownButton tsddbMenuBarHelp;
+        public System.Windows.Forms.StatusStrip ssStatusStrip;
+        public System.Windows.Forms.ToolStripMenuItem tsmiMenuBarHelpAbout;
+        public System.Windows.Forms.Button btnColor;
+        public System.Windows.Forms.ColorDialog cdPicker;
+        public System.Windows.Forms.ToolStripDropDownButton tsddbMenuBarFile;
+        public System.Windows.Forms.ToolStripMenuItem tsmiMenuBarFileClearSavedData;
+        public ExRichTextBox rtxtMessages;
+        public System.Windows.Forms.ContextMenuStrip cmsMessages;
+        public System.Windows.Forms.ToolStripMenuItem tsmiMessagesCopy;
+        public System.Windows.Forms.ContextMenuStrip cmsInput;
+        public System.Windows.Forms.ToolStripMenuItem tsmiInputCopy;
+        public System.Windows.Forms.ToolStripMenuItem tsmiInputPaste;
+        public System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        public System.Windows.Forms.ToolStripMenuItem tsmiMenuFileZoomIn;
+        public System.Windows.Forms.ToolStripMenuItem tsmiMenuFileZoomOut;
+        public System.Windows.Forms.ToolStripMenuItem tsmiMenuFileZoomReset;
+        public System.Windows.Forms.Timer tRateLimit;
+        public System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        public System.Windows.Forms.ToolStripProgressBar tspbMenuBarRateLimit;
+        public System.Windows.Forms.ToolStripStatusLabel tsslStatusStripTyping;
+        public System.Windows.Forms.ToolStripLabel tslMenuBarMessageTimeout;
+        public System.Windows.Forms.ImageList ilButtons;
+        public System.Windows.Forms.Button btnMoreFontOptions;
     }
 }

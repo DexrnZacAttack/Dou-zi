@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConsoleForm));
             this.rtxtLog = new System.Windows.Forms.RichTextBox();
             this.txtInput = new System.Windows.Forms.TextBox();
             this.btnSend = new System.Windows.Forms.Button();
@@ -52,10 +51,9 @@
             // 
             this.txtInput.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtInput.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtInput.Location = new System.Drawing.Point(10, 292);
             this.txtInput.Name = "txtInput";
-            this.txtInput.Size = new System.Drawing.Size(366, 20);
+            this.txtInput.Size = new System.Drawing.Size(366, 22);
             this.txtInput.TabIndex = 4;
             this.txtInput.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtInput_KeyDown);
             // 
@@ -78,9 +76,9 @@
             this.Controls.Add(this.btnSend);
             this.Controls.Add(this.txtInput);
             this.Controls.Add(this.rtxtLog);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ConsoleForm";
-            this.Text = "豆子 - Console";
+            this.ShowIcon = false;
+            this.Text = "Pinto! - Console";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ConsoleForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -88,8 +86,8 @@
         }
 
         #endregion
-        private System.Windows.Forms.TextBox txtInput;
-        private System.Windows.Forms.Button btnSend;
-        private System.Windows.Forms.RichTextBox rtxtLog;
+        public System.Windows.Forms.TextBox txtInput;
+        public System.Windows.Forms.Button btnSend;
+        public System.Windows.Forms.RichTextBox rtxtLog;
     }
 }

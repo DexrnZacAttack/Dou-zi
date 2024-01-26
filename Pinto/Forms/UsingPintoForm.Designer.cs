@@ -1,7 +1,4 @@
-﻿using System.Drawing;
-using System.Windows.Forms;
-
-namespace PintoNS.Forms
+﻿namespace PintoNS.Forms
 {
     partial class UsingPintoForm
     {
@@ -31,89 +28,304 @@ namespace PintoNS.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UsingPintoForm));
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnConnect = new System.Windows.Forms.Button();
+            this.txtIP = new System.Windows.Forms.TextBox();
+            this.nudPort = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.pLoginControls = new System.Windows.Forms.Panel();
+            this.llServers = new System.Windows.Forms.LinkLabel();
+            this.txtUsername = new System.Windows.Forms.ComboBox();
+            this.rbLogin = new System.Windows.Forms.RadioButton();
+            this.rbCreate = new System.Windows.Forms.RadioButton();
+            this.cbSavePassword = new System.Windows.Forms.CheckBox();
+            this.llForgotPassword = new System.Windows.Forms.LinkLabel();
+            this.lStatus = new System.Windows.Forms.Label();
+            this.pbAd = new System.Windows.Forms.PictureBox();
+            this.tcSections = new System.Windows.Forms.TabControl();
+            this.tpMain = new System.Windows.Forms.TabPage();
             this.tpRegister = new System.Windows.Forms.TabPage();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.btnRegisterBack = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.txtRegisterIP = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.txtRegisterIP = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.nudRegisterPort = new System.Windows.Forms.NumericUpDown();
             this.txtRegisterPassword = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.txtRegisterUsername = new System.Windows.Forms.TextBox();
             this.btnRegister = new System.Windows.Forms.Button();
-            this.tpMain = new System.Windows.Forms.TabPage();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.CloseButton = new System.Windows.Forms.Button();
-            this.llServers = new System.Windows.Forms.Button();
-            this.LinkToDebugUI = new System.Windows.Forms.LinkLabel();
-            this.btnRegisterPage = new System.Windows.Forms.LinkLabel();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.llForgotPassword = new System.Windows.Forms.LinkLabel();
-            this.pLoginControls = new System.Windows.Forms.Panel();
-            this.txtIP = new System.Windows.Forms.ComboBox();
-            this.txtUsername = new System.Windows.Forms.TextBox();
-            this.txtPassword = new System.Windows.Forms.MaskedTextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.nudPort = new System.Windows.Forms.NumericUpDown();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnConnect = new System.Windows.Forms.Button();
-            this.cbSavePassword = new System.Windows.Forms.CheckBox();
-            this.pbAd = new System.Windows.Forms.PictureBox();
-            this.tcSections = new System.Windows.Forms.TabControl();
-            this.ConnectingPage = new System.Windows.Forms.TabPage();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.tpRegister.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudRegisterPort)).BeginInit();
-            this.tpMain.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            this.pLoginControls.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudPort)).BeginInit();
+            this.pLoginControls.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbAd)).BeginInit();
             this.tcSections.SuspendLayout();
-            this.ConnectingPage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.tpMain.SuspendLayout();
+            this.tpRegister.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudRegisterPort)).BeginInit();
             this.SuspendLayout();
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Location = new System.Drawing.Point(294, 396);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.TabIndex = 10;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // btnConnect
+            // 
+            this.btnConnect.Location = new System.Drawing.Point(213, 396);
+            this.btnConnect.Name = "btnConnect";
+            this.btnConnect.Size = new System.Drawing.Size(75, 23);
+            this.btnConnect.TabIndex = 9;
+            this.btnConnect.Text = "Connect";
+            this.btnConnect.UseVisualStyleBackColor = true;
+            this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
+            // 
+            // txtIP
+            // 
+            this.txtIP.Location = new System.Drawing.Point(234, 65);
+            this.txtIP.Name = "txtIP";
+            this.txtIP.Size = new System.Drawing.Size(106, 20);
+            this.txtIP.TabIndex = 4;
+            // 
+            // nudPort
+            // 
+            this.nudPort.Location = new System.Drawing.Point(243, 89);
+            this.nudPort.Maximum = new decimal(new int[] {
+            65535,
+            0,
+            0,
+            0});
+            this.nudPort.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudPort.Name = "nudPort";
+            this.nudPort.Size = new System.Drawing.Size(97, 20);
+            this.nudPort.TabIndex = 5;
+            this.nudPort.Value = new decimal(new int[] {
+            2407,
+            0,
+            0,
+            0});
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(208, 68);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(20, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "IP:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(208, 91);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(29, 13);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Port:";
+            // 
+            // txtPassword
+            // 
+            this.txtPassword.Location = new System.Drawing.Point(83, 89);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Size = new System.Drawing.Size(119, 20);
+            this.txtPassword.TabIndex = 3;
+            this.txtPassword.UseSystemPasswordChar = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(19, 65);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(58, 13);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Username:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(19, 92);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(56, 13);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Password:";
+            // 
+            // pLoginControls
+            // 
+            this.pLoginControls.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pLoginControls.Controls.Add(this.llServers);
+            this.pLoginControls.Controls.Add(this.txtUsername);
+            this.pLoginControls.Controls.Add(this.rbLogin);
+            this.pLoginControls.Controls.Add(this.rbCreate);
+            this.pLoginControls.Controls.Add(this.cbSavePassword);
+            this.pLoginControls.Controls.Add(this.llForgotPassword);
+            this.pLoginControls.Controls.Add(this.label1);
+            this.pLoginControls.Controls.Add(this.label4);
+            this.pLoginControls.Controls.Add(this.txtIP);
+            this.pLoginControls.Controls.Add(this.label3);
+            this.pLoginControls.Controls.Add(this.nudPort);
+            this.pLoginControls.Controls.Add(this.txtPassword);
+            this.pLoginControls.Controls.Add(this.label2);
+            this.pLoginControls.Location = new System.Drawing.Point(21, 47);
+            this.pLoginControls.Name = "pLoginControls";
+            this.pLoginControls.Size = new System.Drawing.Size(348, 184);
+            this.pLoginControls.TabIndex = 10;
+            // 
+            // llServers
+            // 
+            this.llServers.AutoSize = true;
+            this.llServers.Location = new System.Drawing.Point(224, 116);
+            this.llServers.Name = "llServers";
+            this.llServers.Size = new System.Drawing.Size(116, 13);
+            this.llServers.TabIndex = 7;
+            this.llServers.TabStop = true;
+            this.llServers.Text = "Looking for all servers?";
+            this.llServers.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llServers_LinkClicked);
+            // 
+            // txtUsername
+            // 
+            this.txtUsername.FormattingEnabled = true;
+            this.txtUsername.Location = new System.Drawing.Point(83, 62);
+            this.txtUsername.Name = "txtUsername";
+            this.txtUsername.Size = new System.Drawing.Size(119, 21);
+            this.txtUsername.TabIndex = 2;
+            // 
+            // rbLogin
+            // 
+            this.rbLogin.AutoSize = true;
+            this.rbLogin.Checked = true;
+            this.rbLogin.Location = new System.Drawing.Point(23, 34);
+            this.rbLogin.Name = "rbLogin";
+            this.rbLogin.Size = new System.Drawing.Size(170, 17);
+            this.rbLogin.TabIndex = 1;
+            this.rbLogin.TabStop = true;
+            this.rbLogin.Text = "I already have a Pinto account";
+            this.rbLogin.UseVisualStyleBackColor = true;
+            // 
+            // rbCreate
+            // 
+            this.rbCreate.AutoSize = true;
+            this.rbCreate.Location = new System.Drawing.Point(22, 11);
+            this.rbCreate.Name = "rbCreate";
+            this.rbCreate.Size = new System.Drawing.Size(224, 17);
+            this.rbCreate.TabIndex = 0;
+            this.rbCreate.Text = "I would like to create a new Pinto account";
+            this.rbCreate.UseVisualStyleBackColor = true;
+            this.rbCreate.CheckedChanged += new System.EventHandler(this.rbCreate_CheckedChanged);
+            // 
+            // cbSavePassword
+            // 
+            this.cbSavePassword.AutoSize = true;
+            this.cbSavePassword.Checked = true;
+            this.cbSavePassword.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbSavePassword.Location = new System.Drawing.Point(23, 141);
+            this.cbSavePassword.Name = "cbSavePassword";
+            this.cbSavePassword.Size = new System.Drawing.Size(196, 17);
+            this.cbSavePassword.TabIndex = 8;
+            this.cbSavePassword.Text = "Store my password on this computer";
+            this.cbSavePassword.UseVisualStyleBackColor = true;
+            this.cbSavePassword.CheckedChanged += new System.EventHandler(this.cbSavePassword_CheckedChanged);
+            // 
+            // llForgotPassword
+            // 
+            this.llForgotPassword.AutoSize = true;
+            this.llForgotPassword.Enabled = false;
+            this.llForgotPassword.Location = new System.Drawing.Point(20, 116);
+            this.llForgotPassword.Name = "llForgotPassword";
+            this.llForgotPassword.Size = new System.Drawing.Size(114, 13);
+            this.llForgotPassword.TabIndex = 6;
+            this.llForgotPassword.TabStop = true;
+            this.llForgotPassword.Text = "Forgot your password?";
+            // 
+            // lStatus
+            // 
+            this.lStatus.AutoSize = true;
+            this.lStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lStatus.Location = new System.Drawing.Point(17, 3);
+            this.lStatus.Name = "lStatus";
+            this.lStatus.Size = new System.Drawing.Size(101, 20);
+            this.lStatus.TabIndex = 0;
+            this.lStatus.Text = "Using Pinto";
+            // 
+            // pbAd
+            // 
+            this.pbAd.Image = global::PintoNS.Logo.Banner;
+            this.pbAd.Location = new System.Drawing.Point(21, 244);
+            this.pbAd.Name = "pbAd";
+            this.pbAd.Size = new System.Drawing.Size(348, 136);
+            this.pbAd.TabIndex = 12;
+            this.pbAd.TabStop = false;
+            // 
+            // tcSections
+            // 
+            this.tcSections.Controls.Add(this.tpMain);
+            this.tcSections.Controls.Add(this.tpRegister);
+            this.tcSections.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tcSections.Location = new System.Drawing.Point(0, 0);
+            this.tcSections.Name = "tcSections";
+            this.tcSections.SelectedIndex = 0;
+            this.tcSections.Size = new System.Drawing.Size(398, 446);
+            this.tcSections.TabIndex = 14;
+            // 
+            // tpMain
+            // 
+            this.tpMain.Controls.Add(this.pbAd);
+            this.tpMain.Controls.Add(this.lStatus);
+            this.tpMain.Controls.Add(this.btnCancel);
+            this.tpMain.Controls.Add(this.pLoginControls);
+            this.tpMain.Controls.Add(this.btnConnect);
+            this.tpMain.Location = new System.Drawing.Point(4, 22);
+            this.tpMain.Name = "tpMain";
+            this.tpMain.Padding = new System.Windows.Forms.Padding(3);
+            this.tpMain.Size = new System.Drawing.Size(390, 420);
+            this.tpMain.TabIndex = 0;
+            this.tpMain.Text = "Main";
+            this.tpMain.UseVisualStyleBackColor = true;
             // 
             // tpRegister
             // 
-            this.tpRegister.Controls.Add(this.pictureBox1);
+            this.tpRegister.Controls.Add(this.label5);
             this.tpRegister.Controls.Add(this.btnRegisterBack);
             this.tpRegister.Controls.Add(this.panel1);
             this.tpRegister.Controls.Add(this.btnRegister);
             this.tpRegister.Location = new System.Drawing.Point(4, 22);
             this.tpRegister.Name = "tpRegister";
             this.tpRegister.Padding = new System.Windows.Forms.Padding(3);
-            this.tpRegister.Size = new System.Drawing.Size(418, 263);
+            this.tpRegister.Size = new System.Drawing.Size(390, 420);
             this.tpRegister.TabIndex = 1;
             this.tpRegister.Text = "Register";
             this.tpRegister.UseVisualStyleBackColor = true;
             // 
-            // pictureBox1
+            // label5
             // 
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(-4, -22);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(418, 136);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 16;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(19, 2);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(148, 20);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Register on Pinto";
             // 
             // btnRegisterBack
             // 
-            this.btnRegisterBack.Location = new System.Drawing.Point(163, 220);
+            this.btnRegisterBack.Location = new System.Drawing.Point(297, 117);
             this.btnRegisterBack.Name = "btnRegisterBack";
             this.btnRegisterBack.Size = new System.Drawing.Size(75, 23);
-            this.btnRegisterBack.TabIndex = 13;
+            this.btnRegisterBack.TabIndex = 5;
             this.btnRegisterBack.Text = "Back";
             this.btnRegisterBack.UseVisualStyleBackColor = true;
             this.btnRegisterBack.Click += new System.EventHandler(this.btnRegisterBack_Click);
@@ -121,35 +333,18 @@ namespace PintoNS.Forms
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.txtRegisterIP);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label7);
+            this.panel1.Controls.Add(this.txtRegisterIP);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.nudRegisterPort);
             this.panel1.Controls.Add(this.txtRegisterPassword);
             this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.txtRegisterUsername);
-            this.panel1.Location = new System.Drawing.Point(30, 120);
+            this.panel1.Location = new System.Drawing.Point(23, 46);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(348, 65);
             this.panel1.TabIndex = 15;
-            // 
-            // txtRegisterIP
-            // 
-            this.txtRegisterIP.AutoCompleteCustomSource.AddRange(new string[] {
-            "ponso00.com",
-            "MYPinto.ddns.net"});
-            this.txtRegisterIP.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.txtRegisterIP.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtRegisterIP.FormattingEnabled = true;
-            this.txtRegisterIP.Items.AddRange(new object[] {
-            "ponso00.com",
-            "MYPinto.ddns.net"});
-            this.txtRegisterIP.Location = new System.Drawing.Point(234, 8);
-            this.txtRegisterIP.Name = "txtRegisterIP";
-            this.txtRegisterIP.Size = new System.Drawing.Size(106, 21);
-            this.txtRegisterIP.TabIndex = 16;
-            this.txtRegisterIP.Text = "ponso00.com";
             // 
             // label6
             // 
@@ -168,6 +363,13 @@ namespace PintoNS.Forms
             this.label7.Size = new System.Drawing.Size(56, 13);
             this.label7.TabIndex = 9;
             this.label7.Text = "Password:";
+            // 
+            // txtRegisterIP
+            // 
+            this.txtRegisterIP.Location = new System.Drawing.Point(234, 8);
+            this.txtRegisterIP.Name = "txtRegisterIP";
+            this.txtRegisterIP.Size = new System.Drawing.Size(106, 20);
+            this.txtRegisterIP.TabIndex = 2;
             // 
             // label8
             // 
@@ -205,14 +407,13 @@ namespace PintoNS.Forms
             this.txtRegisterPassword.Location = new System.Drawing.Point(83, 32);
             this.txtRegisterPassword.Name = "txtRegisterPassword";
             this.txtRegisterPassword.Size = new System.Drawing.Size(119, 20);
-            this.txtRegisterPassword.TabIndex = 7;
-            this.txtRegisterPassword.Text = "1234";
+            this.txtRegisterPassword.TabIndex = 1;
             this.txtRegisterPassword.UseSystemPasswordChar = true;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(208, 35);
+            this.label9.Location = new System.Drawing.Point(208, 34);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(29, 13);
             this.label9.TabIndex = 5;
@@ -223,387 +424,81 @@ namespace PintoNS.Forms
             this.txtRegisterUsername.Location = new System.Drawing.Point(83, 5);
             this.txtRegisterUsername.Name = "txtRegisterUsername";
             this.txtRegisterUsername.Size = new System.Drawing.Size(119, 20);
-            this.txtRegisterUsername.TabIndex = 6;
-            this.txtRegisterUsername.Text = "example";
+            this.txtRegisterUsername.TabIndex = 0;
             // 
             // btnRegister
             // 
-            this.btnRegister.Location = new System.Drawing.Point(96, 191);
+            this.btnRegister.Location = new System.Drawing.Point(216, 117);
             this.btnRegister.Name = "btnRegister";
-            this.btnRegister.Size = new System.Drawing.Size(215, 23);
-            this.btnRegister.TabIndex = 14;
+            this.btnRegister.Size = new System.Drawing.Size(75, 23);
+            this.btnRegister.TabIndex = 4;
             this.btnRegister.Text = "Register";
             this.btnRegister.UseVisualStyleBackColor = true;
             this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
-            // 
-            // tpMain
-            // 
-            this.tpMain.BackColor = System.Drawing.Color.White;
-            this.tpMain.Controls.Add(this.pictureBox3);
-            this.tpMain.Controls.Add(this.CloseButton);
-            this.tpMain.Controls.Add(this.llServers);
-            this.tpMain.Controls.Add(this.LinkToDebugUI);
-            this.tpMain.Controls.Add(this.btnRegisterPage);
-            this.tpMain.Controls.Add(this.btnCancel);
-            this.tpMain.Controls.Add(this.llForgotPassword);
-            this.tpMain.Controls.Add(this.pLoginControls);
-            this.tpMain.Controls.Add(this.btnConnect);
-            this.tpMain.Controls.Add(this.cbSavePassword);
-            this.tpMain.Controls.Add(this.pbAd);
-            this.tpMain.Location = new System.Drawing.Point(4, 22);
-            this.tpMain.Name = "tpMain";
-            this.tpMain.Padding = new System.Windows.Forms.Padding(3);
-            this.tpMain.Size = new System.Drawing.Size(418, 263);
-            this.tpMain.TabIndex = 0;
-            this.tpMain.Text = "Main";
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox3.Image = global::PintoNS.Logo.LOGO_LARGE_WHITE_TEXT;
-            this.pictureBox3.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(100, 50);
-            this.pictureBox3.TabIndex = 16;
-            this.pictureBox3.TabStop = false;
-            this.pictureBox3.Visible = false;
-            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
-            // 
-            // CloseButton
-            // 
-            this.CloseButton.BackColor = System.Drawing.Color.Transparent;
-            this.CloseButton.BackgroundImage = global::PintoNS.Assets.CLOSE;
-            this.CloseButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.CloseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CloseButton.ForeColor = System.Drawing.Color.Black;
-            this.CloseButton.Location = new System.Drawing.Point(397, 0);
-            this.CloseButton.Name = "CloseButton";
-            this.CloseButton.Size = new System.Drawing.Size(21, 23);
-            this.CloseButton.TabIndex = 17;
-            this.CloseButton.UseVisualStyleBackColor = false;
-            this.CloseButton.Visible = false;
-            this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
-            // 
-            // llServers
-            // 
-            this.llServers.AutoSize = true;
-            this.llServers.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.llServers.Location = new System.Drawing.Point(149, 171);
-            this.llServers.Name = "llServers";
-            this.llServers.Size = new System.Drawing.Size(116, 23);
-            this.llServers.TabIndex = 15;
-            this.llServers.Text = "Server List";
-            this.llServers.UseVisualStyleBackColor = false;
-            this.llServers.Click += new System.EventHandler(this.llServers_Click);
-            // 
-            // LinkToDebugUI
-            // 
-            this.LinkToDebugUI.AutoSize = true;
-            this.LinkToDebugUI.BackColor = System.Drawing.Color.Transparent;
-            this.LinkToDebugUI.Location = new System.Drawing.Point(376, 245);
-            this.LinkToDebugUI.Name = "LinkToDebugUI";
-            this.LinkToDebugUI.Size = new System.Drawing.Size(39, 13);
-            this.LinkToDebugUI.TabIndex = 15;
-            this.LinkToDebugUI.TabStop = true;
-            this.LinkToDebugUI.Text = "Debug";
-            this.LinkToDebugUI.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
-            // 
-            // btnRegisterPage
-            // 
-            this.btnRegisterPage.AutoSize = true;
-            this.btnRegisterPage.BackColor = System.Drawing.Color.Transparent;
-            this.btnRegisterPage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegisterPage.Location = new System.Drawing.Point(3, 242);
-            this.btnRegisterPage.Name = "btnRegisterPage";
-            this.btnRegisterPage.Size = new System.Drawing.Size(58, 16);
-            this.btnRegisterPage.TabIndex = 14;
-            this.btnRegisterPage.TabStop = true;
-            this.btnRegisterPage.Text = "Register";
-            this.btnRegisterPage.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.btnRegisterPage_LinkClicked);
-            this.btnRegisterPage.Click += new System.EventHandler(this.BtnRegisterPage_Click);
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Location = new System.Drawing.Point(174, 235);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(67, 23);
-            this.btnCancel.TabIndex = 0;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
-            // llForgotPassword
-            // 
-            this.llForgotPassword.AutoSize = true;
-            this.llForgotPassword.BackColor = System.Drawing.Color.Transparent;
-            this.llForgotPassword.Enabled = false;
-            this.llForgotPassword.Location = new System.Drawing.Point(272, 176);
-            this.llForgotPassword.Name = "llForgotPassword";
-            this.llForgotPassword.Size = new System.Drawing.Size(114, 13);
-            this.llForgotPassword.TabIndex = 10;
-            this.llForgotPassword.TabStop = true;
-            this.llForgotPassword.Text = "Forgot your password?";
-            // 
-            // pLoginControls
-            // 
-            this.pLoginControls.BackColor = System.Drawing.Color.Transparent;
-            this.pLoginControls.Controls.Add(this.txtIP);
-            this.pLoginControls.Controls.Add(this.txtUsername);
-            this.pLoginControls.Controls.Add(this.txtPassword);
-            this.pLoginControls.Controls.Add(this.label1);
-            this.pLoginControls.Controls.Add(this.label4);
-            this.pLoginControls.Controls.Add(this.label3);
-            this.pLoginControls.Controls.Add(this.nudPort);
-            this.pLoginControls.Controls.Add(this.label2);
-            this.pLoginControls.Location = new System.Drawing.Point(29, 102);
-            this.pLoginControls.Name = "pLoginControls";
-            this.pLoginControls.Size = new System.Drawing.Size(357, 70);
-            this.pLoginControls.TabIndex = 10;
-            // 
-            // txtIP
-            // 
-            this.txtIP.AutoCompleteCustomSource.AddRange(new string[] {
-            "ponso00.com",
-            "MYPinto.ddns.net"});
-            this.txtIP.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.txtIP.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtIP.FormattingEnabled = true;
-            this.txtIP.Items.AddRange(new object[] {
-            "ponso00.com",
-            "MYPinto.ddns.net"});
-            this.txtIP.Location = new System.Drawing.Point(234, 8);
-            this.txtIP.Name = "txtIP";
-            this.txtIP.Size = new System.Drawing.Size(106, 21);
-            this.txtIP.TabIndex = 15;
-            this.txtIP.Text = "ponso00.com";
-            // 
-            // txtUsername
-            // 
-            this.txtUsername.Location = new System.Drawing.Point(83, 8);
-            this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(119, 20);
-            this.txtUsername.TabIndex = 14;
-            this.txtUsername.TextChanged += new System.EventHandler(this.txtUsername_TextChanged);
-            // 
-            // txtPassword
-            // 
-            this.txtPassword.Location = new System.Drawing.Point(83, 37);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(119, 20);
-            this.txtPassword.TabIndex = 14;
-            this.txtPassword.UseSystemPasswordChar = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(208, 14);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(20, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "IP:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(19, 38);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(56, 13);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "Password:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(19, 11);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(58, 13);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Username:";
-            // 
-            // nudPort
-            // 
-            this.nudPort.Location = new System.Drawing.Point(243, 35);
-            this.nudPort.Maximum = new decimal(new int[] {
-            65535,
-            0,
-            0,
-            0});
-            this.nudPort.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nudPort.Name = "nudPort";
-            this.nudPort.Size = new System.Drawing.Size(97, 20);
-            this.nudPort.TabIndex = 3;
-            this.nudPort.Value = new decimal(new int[] {
-            2407,
-            0,
-            0,
-            0});
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(208, 37);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Port:";
-            // 
-            // btnConnect
-            // 
-            this.btnConnect.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnConnect.Location = new System.Drawing.Point(71, 198);
-            this.btnConnect.Name = "btnConnect";
-            this.btnConnect.Size = new System.Drawing.Size(273, 33);
-            this.btnConnect.TabIndex = 1;
-            this.btnConnect.Text = "Connect";
-            this.btnConnect.UseVisualStyleBackColor = true;
-            this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
-            // 
-            // cbSavePassword
-            // 
-            this.cbSavePassword.AutoSize = true;
-            this.cbSavePassword.BackColor = System.Drawing.Color.Transparent;
-            this.cbSavePassword.Checked = true;
-            this.cbSavePassword.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbSavePassword.Location = new System.Drawing.Point(29, 175);
-            this.cbSavePassword.Name = "cbSavePassword";
-            this.cbSavePassword.Size = new System.Drawing.Size(100, 17);
-            this.cbSavePassword.TabIndex = 11;
-            this.cbSavePassword.Text = "Save Password";
-            this.cbSavePassword.UseVisualStyleBackColor = false;
-            this.cbSavePassword.CheckedChanged += new System.EventHandler(this.cbSavePassword_CheckedChanged);
-            // 
-            // pbAd
-            // 
-            this.pbAd.BackColor = System.Drawing.Color.Transparent;
-            this.pbAd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pbAd.Image = global::PintoNS.Assets.LOGINANIM;
-            this.pbAd.Location = new System.Drawing.Point(-4, -22);
-            this.pbAd.Name = "pbAd";
-            this.pbAd.Size = new System.Drawing.Size(419, 118);
-            this.pbAd.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbAd.TabIndex = 12;
-            this.pbAd.TabStop = false;
-            this.pbAd.Click += new System.EventHandler(this.pbAd_Click);
-            // 
-            // tcSections
-            // 
-            this.tcSections.Controls.Add(this.tpMain);
-            this.tcSections.Controls.Add(this.tpRegister);
-            this.tcSections.Controls.Add(this.ConnectingPage);
-            this.tcSections.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tcSections.Location = new System.Drawing.Point(0, 0);
-            this.tcSections.Name = "tcSections";
-            this.tcSections.SelectedIndex = 0;
-            this.tcSections.Size = new System.Drawing.Size(426, 289);
-            this.tcSections.TabIndex = 14;
-            this.tcSections.SelectedIndexChanged += new System.EventHandler(this.tcSections_SelectedIndexChanged);
-            // 
-            // ConnectingPage
-            // 
-            this.ConnectingPage.BackgroundImage = global::PintoNS.Assets.LOGINANIM;
-            this.ConnectingPage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ConnectingPage.Controls.Add(this.pictureBox2);
-            this.ConnectingPage.Location = new System.Drawing.Point(4, 22);
-            this.ConnectingPage.Name = "ConnectingPage";
-            this.ConnectingPage.Padding = new System.Windows.Forms.Padding(3);
-            this.ConnectingPage.Size = new System.Drawing.Size(418, 263);
-            this.ConnectingPage.TabIndex = 2;
-            this.ConnectingPage.Text = "Connecting...";
-            this.ConnectingPage.UseVisualStyleBackColor = true;
-            this.ConnectingPage.Click += new System.EventHandler(this.ConnectingPage_Click);
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.Image = global::PintoNS.Logo.LOADING;
-            this.pictureBox2.Location = new System.Drawing.Point(147, 60);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(128, 128);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 0;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // UsingPintoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(426, 289);
+            this.ClientSize = new System.Drawing.Size(398, 446);
             this.Controls.Add(this.tcSections);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "UsingPintoForm";
-            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "豆子 - Login";
+            this.Text = "Pinto! - Using Pinto";
             this.Load += new System.EventHandler(this.UsingPintoForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.nudPort)).EndInit();
+            this.pLoginControls.ResumeLayout(false);
+            this.pLoginControls.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbAd)).EndInit();
+            this.tcSections.ResumeLayout(false);
+            this.tpMain.ResumeLayout(false);
+            this.tpMain.PerformLayout();
             this.tpRegister.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.tpRegister.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudRegisterPort)).EndInit();
-            this.tpMain.ResumeLayout(false);
-            this.tpMain.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            this.pLoginControls.ResumeLayout(false);
-            this.pLoginControls.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudPort)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbAd)).EndInit();
-            this.tcSections.ResumeLayout(false);
-            this.ConnectingPage.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-
-        private System.Windows.Forms.TabPage tpRegister;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button btnRegisterBack;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.NumericUpDown nudRegisterPort;
-        private System.Windows.Forms.TextBox txtRegisterPassword;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox txtRegisterUsername;
-        private System.Windows.Forms.Button btnRegister;
-        private System.Windows.Forms.TabPage tpMain;
-        private System.Windows.Forms.PictureBox pbAd;
-        private System.Windows.Forms.LinkLabel btnRegisterPage;
-        private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.LinkLabel llForgotPassword;
-        private System.Windows.Forms.Panel pLoginControls;
-        private System.Windows.Forms.TextBox txtUsername;
-        private System.Windows.Forms.MaskedTextBox txtPassword;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.NumericUpDown nudPort;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnConnect;
-        private System.Windows.Forms.CheckBox cbSavePassword;
-        private System.Windows.Forms.TabControl tcSections;
-        private System.Windows.Forms.LinkLabel LinkToDebugUI;
-        private System.Windows.Forms.ComboBox txtIP;
-        private System.Windows.Forms.ComboBox txtRegisterIP;
-        private System.Windows.Forms.TabPage ConnectingPage;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private PictureBox pictureBox3;
-        private Button llServers;
-        private Button CloseButton;
+        public System.Windows.Forms.Button btnCancel;
+        public System.Windows.Forms.Button btnConnect;
+        public System.Windows.Forms.TextBox txtIP;
+        public System.Windows.Forms.NumericUpDown nudPort;
+        public System.Windows.Forms.Label label1;
+        public System.Windows.Forms.Label label2;
+        public System.Windows.Forms.TextBox txtPassword;
+        public System.Windows.Forms.Label label3;
+        public System.Windows.Forms.Label label4;
+        public System.Windows.Forms.Panel pLoginControls;
+        public System.Windows.Forms.LinkLabel llForgotPassword;
+        public System.Windows.Forms.CheckBox cbSavePassword;
+        public System.Windows.Forms.RadioButton rbLogin;
+        public System.Windows.Forms.RadioButton rbCreate;
+        public System.Windows.Forms.Label lStatus;
+        public System.Windows.Forms.PictureBox pbAd;
+        public System.Windows.Forms.TabControl tcSections;
+        public System.Windows.Forms.TabPage tpMain;
+        public System.Windows.Forms.TabPage tpRegister;
+        public System.Windows.Forms.Label label5;
+        public System.Windows.Forms.Button btnRegisterBack;
+        public System.Windows.Forms.Panel panel1;
+        public System.Windows.Forms.Label label6;
+        public System.Windows.Forms.Label label7;
+        public System.Windows.Forms.TextBox txtRegisterIP;
+        public System.Windows.Forms.Label label8;
+        public System.Windows.Forms.NumericUpDown nudRegisterPort;
+        public System.Windows.Forms.TextBox txtRegisterPassword;
+        public System.Windows.Forms.Label label9;
+        public System.Windows.Forms.TextBox txtRegisterUsername;
+        public System.Windows.Forms.Button btnRegister;
+        public System.Windows.Forms.ComboBox txtUsername;
+        public System.Windows.Forms.LinkLabel llServers;
     }
 }

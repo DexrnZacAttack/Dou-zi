@@ -1,7 +1,7 @@
 {
-    "latest": "a1.2M2",
-    "update_url": "https://github.com/DexrnZacAttack/douzi/releases/latest/download/DouZiSetup.msi",
+    "latest": "b1.1",
+    "update_url": "https://github.com/PintoIM/Pinto/releases/latest/download/PintoSetup.exe",
     "supported": [
-        "a1.2M2"
+		"b1.1"
     ]
 }

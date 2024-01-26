@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.IO;
 
-namespace PintoNS.Networking
+namespace PintoNS.Networking.Packets
 {
     public class PacketLogin : IPacket
     {
@@ -30,7 +24,7 @@ namespace PintoNS.Networking
         {
             ProtocolVersion = reader.ReadByte();
             ClientVersion = reader.ReadPintoString(32);
-            Name = reader.ReadPintoString(BinaryWriterReaderExtensions.USERNAME_MAX);
+            Name = reader.ReadPintoString(NetBaseHandler.USERNAME_MAX);
             PasswordHash = reader.ReadPintoString(64);
         }
 
@@ -38,25 +32,18 @@ namespace PintoNS.Networking
         {
             writer.Write(ProtocolVersion);
             writer.WritePintoString(ClientVersion, 32);
-            writer.WritePintoString(Name, BinaryWriterReaderExtensions.USERNAME_MAX);
+            writer.WritePintoString(Name, NetBaseHandler.USERNAME_MAX);
             writer.WritePintoString(PasswordHash, 64);
         }
 
-        public void Handle(NetworkHandler netHandler)
+        public int GetPacketSize()
         {
-            netHandler.HandleLoginPacket(this);
+            return 1 + 32 + NetBaseHandler.USERNAME_MAX + 64;
         }
 
-        public int GetID()
+        public virtual int GetID()
         {
             return 0;
-        }
-
-        public int GetSize()
-        {
-            return 1 + BinaryWriterReaderExtensions.GetPintoStringSize(ClientVersion) +
-                BinaryWriterReaderExtensions.GetPintoStringSize(Name) +
-                BinaryWriterReaderExtensions.GetPintoStringSize(PasswordHash);
         }
     }
 }

@@ -60,7 +60,6 @@
             // lAutoClose
             // 
             this.lAutoClose.AutoSize = true;
-            this.lAutoClose.BackColor = System.Drawing.Color.Transparent;
             this.lAutoClose.Location = new System.Drawing.Point(151, 12);
             this.lAutoClose.Name = "lAutoClose";
             this.lAutoClose.Size = new System.Drawing.Size(13, 13);
@@ -74,7 +73,7 @@
             this.lSeeContent.BackColor = System.Drawing.Color.Transparent;
             this.lSeeContent.Location = new System.Drawing.Point(61, 155);
             this.lSeeContent.Name = "lSeeContent";
-            this.lSeeContent.Size = new System.Drawing.Size(78, 13);
+            this.lSeeContent.Size = new System.Drawing.Size(83, 13);
             this.lSeeContent.TabIndex = 3;
             this.lSeeContent.TabStop = true;
             this.lSeeContent.Text = "See all content";
@@ -83,7 +82,6 @@
             // 
             // btnClose
             // 
-            this.btnClose.BackColor = System.Drawing.Color.Transparent;
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Location = new System.Drawing.Point(166, 8);
@@ -91,7 +89,7 @@
             this.btnClose.Size = new System.Drawing.Size(20, 20);
             this.btnClose.TabIndex = 2;
             this.btnClose.Text = "X";
-            this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.UseVisualStyleBackColor = true;
             // 
             // lBody
             // 
@@ -102,11 +100,9 @@
             this.lBody.TabIndex = 1;
             this.lBody.Text = "Body";
             this.lBody.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lBody.Click += new System.EventHandler(this.lBody_Click);
             // 
             // lTitle
             // 
-            this.lTitle.BackColor = System.Drawing.Color.Transparent;
             this.lTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lTitle.Location = new System.Drawing.Point(10, 7);
             this.lTitle.Name = "lTitle";
@@ -150,14 +146,14 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel pNotification;
+        public System.Windows.Forms.Panel pNotification;
         public System.Windows.Forms.Label lTitle;
         public System.Windows.Forms.Label lBody;
         public System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.Timer tAnim;
-        private System.Windows.Forms.LinkLabel lSeeContent;
-        private System.Windows.Forms.Timer tSizeCheck;
-        private System.Windows.Forms.Label lAutoClose;
+        public System.Windows.Forms.Timer tAnim;
+        public System.Windows.Forms.LinkLabel lSeeContent;
+        public System.Windows.Forms.Timer tSizeCheck;
+        public System.Windows.Forms.Label lAutoClose;
         public System.Windows.Forms.Timer tAutoClose;
     }
 }

@@ -1,4 +1,5 @@
-﻿
+﻿using PintoNS.UI.Controls;
+
 namespace PintoNS.Forms
 {
     partial class ServerListForm
@@ -29,7 +30,6 @@ namespace PintoNS.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ServerListForm));
             this.btnUse = new System.Windows.Forms.Button();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.dgvServersOfficial = new System.Windows.Forms.DataGridView();
@@ -41,8 +41,8 @@ namespace PintoNS.Forms
             this.tags = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tcSections = new System.Windows.Forms.TabControl();
             this.tpLoading = new System.Windows.Forms.TabPage();
-            this.lLoading = new System.Windows.Forms.Label();
-            this.pbLoading = new System.Windows.Forms.PictureBox();
+            this.lrLoadingLoader = new PintoNS.UI.Controls.Loader();
+            this.lLoadingText = new System.Windows.Forms.Label();
             this.tpServers = new System.Windows.Forms.TabPage();
             this.tcServers = new System.Windows.Forms.TabControl();
             this.tpServersOfficial = new System.Windows.Forms.TabPage();
@@ -58,7 +58,6 @@ namespace PintoNS.Forms
             ((System.ComponentModel.ISupportInitialize)(this.dgvServersOfficial)).BeginInit();
             this.tcSections.SuspendLayout();
             this.tpLoading.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbLoading)).BeginInit();
             this.tpServers.SuspendLayout();
             this.tcServers.SuspendLayout();
             this.tpServersOfficial.SuspendLayout();
@@ -113,7 +112,6 @@ namespace PintoNS.Forms
             this.dgvServersOfficial.ShowEditingIcon = false;
             this.dgvServersOfficial.Size = new System.Drawing.Size(634, 343);
             this.dgvServersOfficial.TabIndex = 2;
-            this.dgvServersOfficial.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvServersOfficial_CellContentClick);
             this.dgvServersOfficial.SelectionChanged += new System.EventHandler(this.dgvServers_SelectionChanged);
             // 
             // name
@@ -167,36 +165,35 @@ namespace PintoNS.Forms
             // 
             // tpLoading
             // 
-            this.tpLoading.Controls.Add(this.lLoading);
-            this.tpLoading.Controls.Add(this.pbLoading);
+            this.tpLoading.Controls.Add(this.lrLoadingLoader);
+            this.tpLoading.Controls.Add(this.lLoadingText);
             this.tpLoading.Location = new System.Drawing.Point(4, 22);
             this.tpLoading.Name = "tpLoading";
             this.tpLoading.Size = new System.Drawing.Size(654, 381);
             this.tpLoading.TabIndex = 1;
             this.tpLoading.Text = "Loading";
             this.tpLoading.UseVisualStyleBackColor = true;
+            this.tpLoading.Click += new System.EventHandler(this.tpLoading_Click);
             // 
-            // lLoading
+            // lrLoadingLoader
             // 
-            this.lLoading.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lLoading.AutoSize = true;
-            this.lLoading.Location = new System.Drawing.Point(309, 260);
-            this.lLoading.Name = "lLoading";
-            this.lLoading.Size = new System.Drawing.Size(45, 13);
-            this.lLoading.TabIndex = 1;
-            this.lLoading.Text = "Loading";
+            this.lrLoadingLoader.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lrLoadingLoader.Location = new System.Drawing.Point(272, 142);
+            this.lrLoadingLoader.MaximumSize = new System.Drawing.Size(122, 107);
+            this.lrLoadingLoader.MinimumSize = new System.Drawing.Size(122, 107);
+            this.lrLoadingLoader.Name = "lrLoadingLoader";
+            this.lrLoadingLoader.Size = new System.Drawing.Size(122, 107);
+            this.lrLoadingLoader.TabIndex = 2;
             // 
-            // pbLoading
+            // lLoadingText
             // 
-            this.pbLoading.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pbLoading.Image = global::PintoNS.Logo.LOADING;
-            this.pbLoading.Location = new System.Drawing.Point(267, 107);
-            this.pbLoading.Name = "pbLoading";
-            this.pbLoading.Size = new System.Drawing.Size(128, 128);
-            this.pbLoading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbLoading.TabIndex = 0;
-            this.pbLoading.TabStop = false;
-            this.pbLoading.Click += new System.EventHandler(this.pbLoading_Click);
+            this.lLoadingText.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lLoadingText.AutoSize = true;
+            this.lLoadingText.Location = new System.Drawing.Point(311, 260);
+            this.lLoadingText.Name = "lLoadingText";
+            this.lLoadingText.Size = new System.Drawing.Size(45, 13);
+            this.lLoadingText.TabIndex = 1;
+            this.lLoadingText.Text = "Loading";
             // 
             // tpServers
             // 
@@ -326,7 +323,6 @@ namespace PintoNS.Forms
             this.Controls.Add(this.tcSections);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.btnUse);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(291, 323);
             this.Name = "ServerListForm";
             this.Text = "Pinto! - Server List";
@@ -335,7 +331,6 @@ namespace PintoNS.Forms
             this.tcSections.ResumeLayout(false);
             this.tpLoading.ResumeLayout(false);
             this.tpLoading.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbLoading)).EndInit();
             this.tpServers.ResumeLayout(false);
             this.tcServers.ResumeLayout(false);
             this.tpServersOfficial.ResumeLayout(false);
@@ -348,30 +343,30 @@ namespace PintoNS.Forms
 
         #endregion
 
-        private System.Windows.Forms.Button btnUse;
-        private System.Windows.Forms.Button btnRefresh;
-        private System.Windows.Forms.DataGridView dgvServersOfficial;
-        private System.Windows.Forms.TabControl tcSections;
-        private System.Windows.Forms.TabPage tpServers;
-        private System.Windows.Forms.TabPage tpLoading;
-        private System.Windows.Forms.PictureBox pbLoading;
-        private System.Windows.Forms.Label lLoading;
-        private System.Windows.Forms.Label lError;
-        private System.Windows.Forms.DataGridViewTextBoxColumn name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ip;
-        private System.Windows.Forms.DataGridViewTextBoxColumn port;
-        private System.Windows.Forms.DataGridViewTextBoxColumn users;
-        private System.Windows.Forms.DataGridViewTextBoxColumn max_users;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tags;
-        private System.Windows.Forms.TabControl tcServers;
-        private System.Windows.Forms.TabPage tpServersOfficial;
-        private System.Windows.Forms.TabPage tpServersUnofficial;
-        private System.Windows.Forms.DataGridView dgvServersUnofficial;
-        private System.Windows.Forms.DataGridViewTextBoxColumn name2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ip2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn port2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn users2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn max_users2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tags2;
+        public System.Windows.Forms.Button btnUse;
+        public System.Windows.Forms.Button btnRefresh;
+        public System.Windows.Forms.DataGridView dgvServersOfficial;
+        public System.Windows.Forms.TabControl tcSections;
+        public System.Windows.Forms.TabPage tpServers;
+        public System.Windows.Forms.TabPage tpLoading;
+        public System.Windows.Forms.Label lLoadingText;
+        public System.Windows.Forms.Label lError;
+        public System.Windows.Forms.DataGridViewTextBoxColumn name;
+        public System.Windows.Forms.DataGridViewTextBoxColumn ip;
+        public System.Windows.Forms.DataGridViewTextBoxColumn port;
+        public System.Windows.Forms.DataGridViewTextBoxColumn users;
+        public System.Windows.Forms.DataGridViewTextBoxColumn max_users;
+        public System.Windows.Forms.DataGridViewTextBoxColumn tags;
+        public System.Windows.Forms.TabControl tcServers;
+        public System.Windows.Forms.TabPage tpServersOfficial;
+        public System.Windows.Forms.TabPage tpServersUnofficial;
+        public System.Windows.Forms.DataGridView dgvServersUnofficial;
+        public System.Windows.Forms.DataGridViewTextBoxColumn name2;
+        public System.Windows.Forms.DataGridViewTextBoxColumn ip2;
+        public System.Windows.Forms.DataGridViewTextBoxColumn port2;
+        public System.Windows.Forms.DataGridViewTextBoxColumn users2;
+        public System.Windows.Forms.DataGridViewTextBoxColumn max_users2;
+        public System.Windows.Forms.DataGridViewTextBoxColumn tags2;
+        public Loader lrLoadingLoader;
     }
 }

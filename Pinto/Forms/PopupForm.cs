@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PintoNS.Forms
@@ -21,15 +15,13 @@ namespace PintoNS.Forms
         public PopupForm()
         {
             InitializeComponent();
-            if (Properties.Settings.Default.BEANSENABLED == false)
-            {
-                // no beans?
-            }
-            else
-            {
-                // beans mode activated
+        }
 
-                this.BackgroundImage = Logo_Beans.LOGIN_BACKGROUND;
+        protected override bool ShowWithoutActivation
+        {
+            get
+            {
+                return true;
             }
         }
 
@@ -76,11 +68,6 @@ namespace PintoNS.Forms
                 btnClose.PerformClick();
 
             autoCloseTicks++;
-        }
-
-        private void lBody_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

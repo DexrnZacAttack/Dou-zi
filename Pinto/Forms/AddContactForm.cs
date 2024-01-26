@@ -1,12 +1,5 @@
-﻿using PintoNS.Forms.Notification;
+﻿using PintoNS.UI;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PintoNS.Forms
@@ -14,29 +7,25 @@ namespace PintoNS.Forms
     public partial class AddContactForm : Form
     {
         private MainForm mainForm;
-        private MessageForm messageForm;
 
         public AddContactForm(MainForm mainForm)
         {
             InitializeComponent();
+            Icon = Program.GetFormIcon();
             this.mainForm = mainForm;
-        }
-
-        public AddContactForm(MessageForm messageForm)
-        {
-            InitializeComponent();
-            this.messageForm = messageForm;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtContactName.Text))
             {
-                MsgBox.ShowNotification(this, "Invalid username!", "Error", MsgBoxIconType.ERROR);
+                MsgBox.Show(this, "Invalid username!", "Error", MsgBoxIconType.ERROR);
                 return;
             }
+
             Close();
-            mainForm.NetManager.NetHandler.SendAddContactPacket(txtContactName.Text);
+            if (mainForm.NetHandler != null)
+                mainForm.NetHandler.AddContact(txtContactName.Text);
         }
 
         private void txtContactName_KeyDown(object sender, KeyEventArgs e)
@@ -47,21 +36,6 @@ namespace PintoNS.Forms
                 e.Handled = true;
                 e.SuppressKeyPress = true;
             }
-        }
-
-        private void txtContactName_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtContactName_TextChanged_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void AddContactForm_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

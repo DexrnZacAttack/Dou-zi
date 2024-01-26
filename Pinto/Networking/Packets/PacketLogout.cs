@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
 
-namespace PintoNS.Networking
+namespace PintoNS.Networking.Packets
 {
     public class PacketLogout : IPacket
     {
@@ -28,19 +23,14 @@ namespace PintoNS.Networking
             writer.WritePintoString(Reason, 256);
         }
 
-        public void Handle(NetworkHandler netHandler)
+        public int GetPacketSize()
         {
-            netHandler.HandleLogoutPacket(this);
+            return 256;
         }
 
         public int GetID()
         {
             return 2;
-        }
-
-        public int GetSize()
-        {
-            return BinaryWriterReaderExtensions.GetPintoStringSize(Reason);
         }
     }
 }

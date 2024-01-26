@@ -1,14 +1,10 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Net.Cache;
-using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -16,26 +12,17 @@ namespace PintoNS.Forms
 {
     public partial class ServerListForm : Form
     {
-        public static string SERVERS_URL = "http://api.fieme.net:8880/pinto-server-list/servers.php";
+        public const string SERVERS_URL = "http://ponso00.com:8880/pinto-server-list/servers.php";
         public event EventHandler<ServerUseEventArgs> ServerUse;
 
         public ServerListForm()
         {
             InitializeComponent();
+            Icon = Program.GetFormIcon();
         }
 
         private async void ServerListForm_Load(object sender, EventArgs e)
         {
-            if (Properties.Settings.Default.BEANSENABLED == false)
-            {
-                // no beans?
-            }
-            else
-            {
-                // beans mode activated
-
-                pbLoading.Image = Logo_Beans.LOADING;
-            }
             tcSections.Appearance = TabAppearance.FlatButtons;
             tcSections.ItemSize = new Size(0, 1);
             tcSections.SizeMode = TabSizeMode.Fixed;
@@ -54,13 +41,14 @@ namespace PintoNS.Forms
 
             try
             {
-                HttpClient httpClient = new HttpClient(new WebRequestHandler()
-                {
-                    CachePolicy = new HttpRequestCachePolicy(HttpRequestCacheLevel.NoCacheNoStore)
-                });
-                httpClient.DefaultRequestHeaders.Add("User-Agent", "PintoClient");
+                WebClient webClient = new WebClient();
+                webClient.CachePolicy = new RequestCachePolicy(RequestCacheLevel.NoCacheNoStore);
+                webClient.Headers["User-Agent"] = "PintoClient";
 
-                string responseRaw = await httpClient.GetStringAsync(SERVERS_URL);
+                Program.Console.WriteMessage($"Getting server list...", DouZiResources.ConsoleTypes.GENERAL);
+                string responseRaw = await webClient.DownloadStringTaskAsync(SERVERS_URL);
+
+                Program.Console.WriteMessage($"Got the server list, parsing the response...", DouZiResources.ConsoleTypes.GENERAL);
                 JArray response = JsonConvert.DeserializeObject<JArray>(responseRaw);
 
                 foreach (JObject server in response)
@@ -88,11 +76,14 @@ namespace PintoNS.Forms
                     if (tags.Split(',').Contains("official")) continue;
                     dgvServersUnofficial.Rows.Add(name, ip, port, users, maxUsers, tags);
                 }
+
+                Program.Console.WriteMessage($"Got {response.Count} servers", DouZiResources.ConsoleTypes.GENERAL);
             }
             catch (Exception ex)
             {
                 lError.Visible = true;
                 lError.Text = $"Error: {ex.Message}";
+                Program.Console.WriteMessage($"Unable to get the server list: {ex}", DouZiResources.ConsoleTypes.GENERAL);
             }
 
             btnRefresh.Enabled = true;
@@ -125,6 +116,11 @@ namespace PintoNS.Forms
             string ip = "";
             int port = 0;
 
+            if ((tcServers.SelectedTab == tpServersOfficial &&
+                dgvServersOfficial.SelectedRows.Count < 1) ||
+                (tcServers.SelectedTab == tpServersUnofficial &&
+                dgvServersUnofficial.SelectedRows.Count < 1)) return;
+
             if (tcServers.SelectedTab == tpServersOfficial)
             {
                 ip = (string)dgvServersOfficial.SelectedRows[0].Cells["ip"].Value;
@@ -141,12 +137,7 @@ namespace PintoNS.Forms
                 ServerUse.Invoke(this, new ServerUseEventArgs(ip, port));
         }
 
-        private void pbLoading_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dgvServersOfficial_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void tpLoading_Click(object sender, EventArgs e)
         {
 
         }

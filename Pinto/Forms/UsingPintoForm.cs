@@ -1,72 +1,43 @@
-﻿using PintoNS.Forms.Notification;
-using PintoNS;
-using PintoNS.General;
-using PintoNS.Controls;
-using PintoNS.Properties;
-using PintoNS.Networking;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.IO;
+﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using Newtonsoft.Json;
-using System.Windows;
+using PintoNS.UI;
+using System;
+using System.Drawing;
+using System.IO;
+using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace PintoNS.Forms
 {
     public partial class UsingPintoForm : Form
     {
+        public const string USERNAME_REGEX_CHECK = @"^(?=.{3,15}$)[a-zA-Z0-9._]+$";
         private MainForm mainForm;
-
-        protected override void WndProc(ref Message m)
-        {
-            switch (m.Msg)
-            {
-                case 0x84:
-                    base.WndProc(ref m);
-                    if ((int)m.Result == 0x1)
-                        m.Result = (IntPtr)0x2;
-                    return;
-            }
-            base.WndProc(ref m);
-        }
+        private bool hasLoggedIn;
 
         public UsingPintoForm(MainForm mainForm)
         {
             InitializeComponent();
-
-            if (Properties.Settings.Default.BEANSENABLED == false)
-            {
-                // no beans?
-            }
-            else
-            {
-                // beans mode activated
-
-                pictureBox2.Image = Logo_Beans.LOADING;
-                pictureBox1.Image = Logo_Beans.LOGINANIM;
-                pbAd.Image = Logo_Beans.LOGIN_BACKGROUND;
-                tpRegister.BackgroundImage = Logo_Beans.BEANS;
-                tpMain.BackgroundImage = Logo_Beans.BEANS;
-                ConnectingPage.BackgroundImage = Logo_Beans.LOGINANIM;
-            }
-
+            Icon = Program.GetFormIcon();
             this.mainForm = mainForm;
+        }
+
+        public static void SetHasLoggedIn(bool value)
+        {
+            Program.Console.WriteMessage($"Setting has logged in to {value}", DouZiResources.ConsoleTypes.GENERAL);
+            UsingPintoForm form = new UsingPintoForm(null);
+            form.LoadLogin();
+            form.hasLoggedIn = value;
+            form.SaveLogin();
+            form.Dispose();
         }
 
         private void LoadLogin()
         {
-            Program.Console.WriteMessage("[General] Loading saved login information...");
+            Program.Console.WriteMessage("Loading saved login information...", DouZiResources.ConsoleTypes.GENERAL);
             try
             {
-                string filePath = Path.Combine(mainForm.DataFolder, "login.json");
+                string filePath = Path.Combine(Program.DataFolder, "login.json");
                 if (!File.Exists(filePath)) return;
 
                 string fileData = File.ReadAllText(filePath);
@@ -76,12 +47,14 @@ namespace PintoNS.Forms
                 txtPassword.Text = data["password"].Value<string>();
                 txtIP.Text = data["ip"].Value<string>();
                 nudPort.Value = data["port"].Value<int>();
+                if (data.ContainsKey("hasLoggedIn"))
+                    hasLoggedIn = data["hasLoggedIn"].Value<bool>();
             }
             catch (Exception ex)
             {
-                Program.Console.WriteMessage($"[General]" +
-                    $" Unable to load the saved login information: {ex}");
-                MsgBox.ShowNotification(this,
+                Program.Console.WriteMessage(
+                    $"Unable to load the saved login information: {ex}", DouZiResources.ConsoleTypes.GENERAL);
+                MsgBox.Show(this,
                     "Unable to load the saved login information!",
                     "Error", MsgBoxIconType.ERROR);
             }
@@ -89,24 +62,26 @@ namespace PintoNS.Forms
 
         private void SaveLogin()
         {
-            Program.Console.WriteMessage("[General] Saving login information...");
+            Program.Console.WriteMessage("Saving login information...", DouZiResources.ConsoleTypes.GENERAL);
             try
             {
-                string filePath = Path.Combine(mainForm.DataFolder, "login.json");
-                JObject data = new JObject();
-
-                data.Add("username", txtUsername.Text);
-                data.Add("password", txtPassword.Text);
-                data.Add("ip", txtIP.Text);
-                data.Add("port", (int)nudPort.Value);
+                string filePath = Path.Combine(Program.DataFolder, "login.json");
+                JObject data = new JObject
+                {
+                    { "username", txtUsername.Text },
+                    { "password", txtPassword.Text },
+                    { "ip", txtIP.Text },
+                    { "port", (int)nudPort.Value },
+                    { "hasLoggedIn", hasLoggedIn }
+                };
 
                 File.WriteAllText(filePath, data.ToString(Formatting.Indented));
             }
             catch (Exception ex)
             {
-                Program.Console.WriteMessage($"[General]" +
-                    $" Unable to save the login information: {ex}");
-                MsgBox.ShowNotification(this,
+                Program.Console.WriteMessage(
+                    $"Unable to save the login information: {ex}", DouZiResources.ConsoleTypes.GENERAL);
+                MsgBox.Show(this,
                     "Unable to save the login information!",
                     "Error", MsgBoxIconType.ERROR);
             }
@@ -114,18 +89,18 @@ namespace PintoNS.Forms
 
         private void DeleteLogin()
         {
-            Program.Console.WriteMessage("[General] Deleting saved login information...");
+            Program.Console.WriteMessage("Deleting saved login information...", DouZiResources.ConsoleTypes.GENERAL);
             try
             {
-                string filePath = Path.Combine(mainForm.DataFolder, "login.json");
+                string filePath = Path.Combine(Program.DataFolder, "login.json");
                 if (File.Exists(filePath))
                     File.Delete(filePath);
             }
             catch (Exception ex)
             {
-                Program.Console.WriteMessage($"[General]" +
-                    $" Unable to delete the saved login information: {ex}");
-                MsgBox.ShowNotification(this,
+                Program.Console.WriteMessage(
+                    $"Unable to delete the saved login information: {ex}", DouZiResources.ConsoleTypes.GENERAL);
+                MsgBox.Show(this,
                     "Unable to delete the saved login information!",
                     "Error", MsgBoxIconType.ERROR);
             }
@@ -138,50 +113,77 @@ namespace PintoNS.Forms
 
         private async void btnConnect_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtUsername.Text) || string.IsNullOrWhiteSpace(txtPassword.Text))
+            if (rbCreate.Checked)
             {
-                MsgBox.ShowNotification(this, "Blank username or password!",
-                    "Error", MsgBoxIconType.ERROR);
-                return;
+                tcSections.SelectedTab = tpRegister;
+                txtRegisterIP.Text = txtIP.Text;
+                nudRegisterPort.Value = nudPort.Value;
             }
-
-            string ip = txtIP.Text.Trim();
-            int port = (int)nudPort.Value;
-            string username = txtUsername.Text.Trim();
-            string password = txtPassword.Text;
-
-            if (cbSavePassword.Checked)
-                SaveLogin();
-            tcSections.SelectedTab = ConnectingPage;
-            if (await mainForm.Connect(ip, port, username, password))
-                Close();
             else
-                tcSections.SelectedTab = tpMain;
+            {
+                string ip = txtIP.Text.Trim();
+                int port = (int)nudPort.Value;
+                string username = txtUsername.Text.Trim();
+                string password = txtPassword.Text;
+
+                if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
+                {
+                    MsgBox.Show(this, "Blank username or password!",
+                        "Error", MsgBoxIconType.ERROR);
+                    return;
+                }
+
+                if (!Regex.IsMatch(username, USERNAME_REGEX_CHECK))
+                {
+                    MsgBox.Show(this, "The specified username is invalid!" +
+                        " It must be 3-16 characters long," +
+                        " contain only alphanumeric characters," +
+                        " underscores and dots", "Error", MsgBoxIconType.ERROR);
+                    return;
+                }
+
+                if (cbSavePassword.Checked)
+                    SaveLogin();
+                Close();
+                await mainForm.Connect(ip, port, username, password, false);
+            }
         }
 
+        private void rbCreate_CheckedChanged(object sender, EventArgs e)
+        {
+            bool state = rbCreate.Checked;
+
+            txtUsername.Enabled = !state;
+            txtPassword.Enabled = !state;
+            txtIP.Enabled = !state;
+            nudPort.Enabled = !state;
+            llForgotPassword.Enabled = !state;
+
+            if (state)
+                btnConnect.Text = "Continue";
+            else
+                btnConnect.Text = "Connect";
+        }
 
         private void UsingPintoForm_Load(object sender, EventArgs e)
         {
             tcSections.Appearance = TabAppearance.FlatButtons;
-            tcSections.ItemSize = new System.Drawing.Size(0, 1);
+            tcSections.ItemSize = new Size(0, 1);
             tcSections.SizeMode = TabSizeMode.Fixed;
             LoadLogin();
-            // Add a button to navigate to the registration page
-            Button btnRegisterPage = new Button();
-            btnRegisterPage.Text = "Register";
-            btnRegisterPage.Size = new System.Drawing.Size(75, 23);
-            btnRegisterPage.Location = new System.Drawing.Point(12, 12);
-            btnRegisterPage.Click += BtnRegisterPage_Click;
-            this.Controls.Add(btnRegisterPage);
+
+            //string ip = txtIP.Text.Trim();
+            //int port = (int)nudPort.Value;
+            //string username = txtUsername.Text.Trim();
+            //string password = txtPassword.Text;
+
+            //if (cbSavePassword.Checked && hasLoggedIn && ip != null && port != 0 &&
+            //    username != null && password != null)
+            //{
+            //    Close();
+            //    mainForm.ConnectCached(ip, port, username, password);
+            //}
         }
-
-
-        private void BtnRegisterPage_Click(object sender, EventArgs e)
-        {
-            // Switch to the registration tab
-            tcSections.SelectedTab = tpRegister;
-        }
-
 
         private async void btnRegister_Click(object sender, EventArgs e)
         {
@@ -192,18 +194,38 @@ namespace PintoNS.Forms
 
             if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
             {
-                MsgBox.ShowNotification(this, "Blank username or password!",
+                MsgBox.Show(this, "Blank username or password!",
                     "Error", MsgBoxIconType.ERROR);
                 return;
             }
 
-            tcSections.SelectedTab = ConnectingPage;
-            await mainForm.ConnectRegister(ip, port, username, password);
+            if (!Regex.IsMatch(username, USERNAME_REGEX_CHECK))
+            {
+                MsgBox.Show(this, "The specified username is invalid!" +
+                    " It must be 3-16 characters long," +
+                    " contain only alphanumeric characters," +
+                    " underscores and dots", "Error", MsgBoxIconType.ERROR);
+                return;
+            }
+
+            if (cbSavePassword.Checked)
+            {
+                txtIP.Text = ip;
+                nudPort.Value = port;
+                txtUsername.Text = username;
+                txtPassword.Text = password;
+                SaveLogin();
+            }
+
+            Close();
+            await mainForm.Connect(ip, port, username, password, true);
         }
 
         private void btnRegisterBack_Click(object sender, EventArgs e)
         {
             tcSections.SelectedTab = tpMain;
+            txtIP.Text = txtRegisterIP.Text;
+            nudPort.Value = nudRegisterPort.Value;
         }
 
         private void cbSavePassword_CheckedChanged(object sender, EventArgs e)
@@ -212,83 +234,7 @@ namespace PintoNS.Forms
                 DeleteLogin();
         }
 
-        private void pbAd_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtPassword_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxWithPlaceholderSupport1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtUsername_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnRegisterPage_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtUsername_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnRegisterPage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            // Switch to the registration tab
-            tcSections.SelectedTab = tpRegister;
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tcSections_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            new DebugForm().ShowDialog();
-        }
-
-        private void ConnectingPage_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void llServers_Click(object sender, EventArgs e)
+        private void llServers_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             ServerListForm serverListForm = new ServerListForm();
             serverListForm.ServerUse += (object sender2, ServerUseEventArgs e2) =>
@@ -297,11 +243,6 @@ namespace PintoNS.Forms
                 nudPort.Value = e2.Port;
             };
             serverListForm.ShowDialog();
-        }
-
-        private void CloseButton_Click(object sender, EventArgs e)
-        {
-            Close();
         }
     }
 }

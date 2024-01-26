@@ -22,7 +22,7 @@ namespace PintoNS {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Assets {
+    public class Assets {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace PintoNS {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PintoNS.Assets", typeof(Assets).Assembly);
@@ -51,7 +51,7 @@ namespace PintoNS {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace PintoNS {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ADDCONTACT_DISABLED {
+        public static System.Drawing.Bitmap ADDCONTACT_DISABLED {
             get {
                 object obj = ResourceManager.GetObject("ADDCONTACT_DISABLED", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -73,7 +73,7 @@ namespace PintoNS {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ADDCONTACT_ENABLED {
+        public static System.Drawing.Bitmap ADDCONTACT_ENABLED {
             get {
                 object obj = ResourceManager.GetObject("ADDCONTACT_ENABLED", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -83,27 +83,7 @@ namespace PintoNS {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap BACKGROUND {
-            get {
-                object obj = ResourceManager.GetObject("BACKGROUND", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap CLOSE {
-            get {
-                object obj = ResourceManager.GetObject("CLOSE", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap COLOR_PALETTE {
+        public static System.Drawing.Bitmap COLOR_PALETTE {
             get {
                 object obj = ResourceManager.GetObject("COLOR_PALETTE", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -113,7 +93,7 @@ namespace PintoNS {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap CONTACT {
+        public static System.Drawing.Bitmap CONTACT {
             get {
                 object obj = ResourceManager.GetObject("CONTACT", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -123,9 +103,9 @@ namespace PintoNS {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap EMOJI {
+        public static System.Drawing.Bitmap CONTACT_BIG {
             get {
-                object obj = ResourceManager.GetObject("EMOJI", resourceCulture);
+                object obj = ResourceManager.GetObject("CONTACT_BIG", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,17 +113,7 @@ namespace PintoNS {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap EMOJI_SMALL {
-            get {
-                object obj = ResourceManager.GetObject("EMOJI_SMALL", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap ENDCALL_DISABLED {
+        public static System.Drawing.Bitmap ENDCALL_DISABLED {
             get {
                 object obj = ResourceManager.GetObject("ENDCALL_DISABLED", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -153,7 +123,7 @@ namespace PintoNS {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ENDCALL_ENABLED {
+        public static System.Drawing.Bitmap ENDCALL_ENABLED {
             get {
                 object obj = ResourceManager.GetObject("ENDCALL_ENABLED", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -163,9 +133,9 @@ namespace PintoNS {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap HAMBURGER {
+        public static System.Drawing.Bitmap GPLV3 {
             get {
-                object obj = ResourceManager.GetObject("HAMBURGER", resourceCulture);
+                object obj = ResourceManager.GetObject("GPLV3", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -173,27 +143,7 @@ namespace PintoNS {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap HAMBURGER_BLUE {
-            get {
-                object obj = ResourceManager.GetObject("HAMBURGER_BLUE", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap HAMBURGER_DOTS {
-            get {
-                object obj = ResourceManager.GetObject("HAMBURGER_DOTS", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap HISTORY_DISABLED {
+        public static System.Drawing.Bitmap HISTORY_DISABLED {
             get {
                 object obj = ResourceManager.GetObject("HISTORY_DISABLED", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -203,7 +153,7 @@ namespace PintoNS {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap HISTORY_ENABLED {
+        public static System.Drawing.Bitmap HISTORY_ENABLED {
             get {
                 object obj = ResourceManager.GetObject("HISTORY_ENABLED", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -213,7 +163,7 @@ namespace PintoNS {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap HOUSE {
+        public static System.Drawing.Bitmap HOUSE {
             get {
                 object obj = ResourceManager.GetObject("HOUSE", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -223,7 +173,7 @@ namespace PintoNS {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap HOUSE_LOCKED {
+        public static System.Drawing.Bitmap HOUSE_LOCKED {
             get {
                 object obj = ResourceManager.GetObject("HOUSE_LOCKED", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -233,7 +183,7 @@ namespace PintoNS {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap IM_DISABLED {
+        public static System.Drawing.Bitmap IM_DISABLED {
             get {
                 object obj = ResourceManager.GetObject("IM_DISABLED", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -243,7 +193,7 @@ namespace PintoNS {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap IM_ENABLED {
+        public static System.Drawing.Bitmap IM_ENABLED {
             get {
                 object obj = ResourceManager.GetObject("IM_ENABLED", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -253,7 +203,7 @@ namespace PintoNS {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap INFO_DISABLED {
+        public static System.Drawing.Bitmap INFO_DISABLED {
             get {
                 object obj = ResourceManager.GetObject("INFO_DISABLED", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -263,7 +213,7 @@ namespace PintoNS {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap INFO_ENABLED {
+        public static System.Drawing.Bitmap INFO_ENABLED {
             get {
                 object obj = ResourceManager.GetObject("INFO_ENABLED", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -273,7 +223,7 @@ namespace PintoNS {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap LOCK_DISABLED {
+        public static System.Drawing.Bitmap LOCK_DISABLED {
             get {
                 object obj = ResourceManager.GetObject("LOCK_DISABLED", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -283,7 +233,7 @@ namespace PintoNS {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap LOCK_ENABLED {
+        public static System.Drawing.Bitmap LOCK_ENABLED {
             get {
                 object obj = ResourceManager.GetObject("LOCK_ENABLED", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -293,37 +243,7 @@ namespace PintoNS {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap LOGIN_BACKGROUND {
-            get {
-                object obj = ResourceManager.GetObject("LOGIN_BACKGROUND", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap LOGIN_PLACEHOLDER {
-            get {
-                object obj = ResourceManager.GetObject("LOGIN_PLACEHOLDER", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap LOGINANIM {
-            get {
-                object obj = ResourceManager.GetObject("LOGINANIM", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap MICROPHONE_DISABLED {
+        public static System.Drawing.Bitmap MICROPHONE_DISABLED {
             get {
                 object obj = ResourceManager.GetObject("MICROPHONE_DISABLED", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -333,7 +253,7 @@ namespace PintoNS {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap MICROPHONE_ENABLED {
+        public static System.Drawing.Bitmap MICROPHONE_ENABLED {
             get {
                 object obj = ResourceManager.GetObject("MICROPHONE_ENABLED", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -343,7 +263,7 @@ namespace PintoNS {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap MICROPHONE_MUTED {
+        public static System.Drawing.Bitmap MICROPHONE_MUTED {
             get {
                 object obj = ResourceManager.GetObject("MICROPHONE_MUTED", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -353,17 +273,7 @@ namespace PintoNS {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap MINIMIZE {
-            get {
-                object obj = ResourceManager.GetObject("MINIMIZE", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap MISSEDCALLS {
+        public static System.Drawing.Bitmap MISSEDCALLS {
             get {
                 object obj = ResourceManager.GetObject("MISSEDCALLS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -373,7 +283,7 @@ namespace PintoNS {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap PAUSECALL_DISABLED {
+        public static System.Drawing.Bitmap PAUSECALL_DISABLED {
             get {
                 object obj = ResourceManager.GetObject("PAUSECALL_DISABLED", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -383,7 +293,7 @@ namespace PintoNS {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap PAUSECALL_ENABLED {
+        public static System.Drawing.Bitmap PAUSECALL_ENABLED {
             get {
                 object obj = ResourceManager.GetObject("PAUSECALL_ENABLED", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -393,7 +303,7 @@ namespace PintoNS {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap PLUS_DISABLED {
+        public static System.Drawing.Bitmap PLUS_DISABLED {
             get {
                 object obj = ResourceManager.GetObject("PLUS_DISABLED", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -403,7 +313,7 @@ namespace PintoNS {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap PLUS_ENABLED {
+        public static System.Drawing.Bitmap PLUS_ENABLED {
             get {
                 object obj = ResourceManager.GetObject("PLUS_ENABLED", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -413,17 +323,7 @@ namespace PintoNS {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap QQBUTTON {
-            get {
-                object obj = ResourceManager.GetObject("QQBUTTON", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap REMOVECONTACT_DISABLED {
+        public static System.Drawing.Bitmap REMOVECONTACT_DISABLED {
             get {
                 object obj = ResourceManager.GetObject("REMOVECONTACT_DISABLED", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -433,7 +333,7 @@ namespace PintoNS {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap REMOVECONTACT_ENABLED {
+        public static System.Drawing.Bitmap REMOVECONTACT_ENABLED {
             get {
                 object obj = ResourceManager.GetObject("REMOVECONTACT_ENABLED", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -443,7 +343,7 @@ namespace PintoNS {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap RESUMECALL {
+        public static System.Drawing.Bitmap RESUMECALL {
             get {
                 object obj = ResourceManager.GetObject("RESUMECALL", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -453,7 +353,7 @@ namespace PintoNS {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap SEARCH_DISABLED {
+        public static System.Drawing.Bitmap SEARCH_DISABLED {
             get {
                 object obj = ResourceManager.GetObject("SEARCH_DISABLED", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -463,7 +363,7 @@ namespace PintoNS {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap SEARCH_ENABLED {
+        public static System.Drawing.Bitmap SEARCH_ENABLED {
             get {
                 object obj = ResourceManager.GetObject("SEARCH_ENABLED", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -473,7 +373,7 @@ namespace PintoNS {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap SECONDARY_INFO {
+        public static System.Drawing.Bitmap SECONDARY_INFO {
             get {
                 object obj = ResourceManager.GetObject("SECONDARY_INFO", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -483,7 +383,7 @@ namespace PintoNS {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap STAR {
+        public static System.Drawing.Bitmap STAR {
             get {
                 object obj = ResourceManager.GetObject("STAR", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -493,7 +393,7 @@ namespace PintoNS {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap STARTCALL_DISABLED {
+        public static System.Drawing.Bitmap STARTCALL_DISABLED {
             get {
                 object obj = ResourceManager.GetObject("STARTCALL_DISABLED", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -503,7 +403,7 @@ namespace PintoNS {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap STARTCALL_ENABLED {
+        public static System.Drawing.Bitmap STARTCALL_ENABLED {
             get {
                 object obj = ResourceManager.GetObject("STARTCALL_ENABLED", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -513,7 +413,7 @@ namespace PintoNS {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap TRASHCAN_DISABLED {
+        public static System.Drawing.Bitmap TRASHCAN_DISABLED {
             get {
                 object obj = ResourceManager.GetObject("TRASHCAN_DISABLED", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -523,7 +423,7 @@ namespace PintoNS {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap TRASHCAN_ENABLED {
+        public static System.Drawing.Bitmap TRASHCAN_ENABLED {
             get {
                 object obj = ResourceManager.GetObject("TRASHCAN_ENABLED", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -533,7 +433,7 @@ namespace PintoNS {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap WARNING {
+        public static System.Drawing.Bitmap WARNING {
             get {
                 object obj = ResourceManager.GetObject("WARNING", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));

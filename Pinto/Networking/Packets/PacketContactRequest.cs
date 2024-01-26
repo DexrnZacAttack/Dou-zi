@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
 
-namespace PintoNS.Networking
+namespace PintoNS.Networking.Packets
 {
     public class PacketContactRequest : IPacket
     {
@@ -20,27 +15,22 @@ namespace PintoNS.Networking
 
         public void Read(BinaryReader reader)
         {
-            ContactName = reader.ReadPintoString(BinaryWriterReaderExtensions.USERNAME_MAX);
+            ContactName = reader.ReadPintoString(NetBaseHandler.USERNAME_MAX + 4);
         }
 
         public void Write(BinaryWriter writer)
         {
-            writer.WritePintoString(ContactName, BinaryWriterReaderExtensions.USERNAME_MAX);
+            writer.WritePintoString(ContactName, NetBaseHandler.USERNAME_MAX + 4);
         }
 
-        public void Handle(NetworkHandler netHandler)
+        public int GetPacketSize()
         {
-            netHandler.HandleContactRequestPacket(this);
+            return NetBaseHandler.USERNAME_MAX + 4;
         }
 
         public int GetID()
         {
             return 9;
-        }
-
-        public int GetSize()
-        {
-            return BinaryWriterReaderExtensions.GetPintoStringSize(ContactName);
         }
     }
 }

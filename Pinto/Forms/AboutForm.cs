@@ -1,9 +1,9 @@
-﻿using PintoNS.Networking;
+﻿using PintoNS.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.Design;
 using System.Data;
-using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -17,37 +17,32 @@ namespace PintoNS.Forms
         public AboutForm()
         {
             InitializeComponent();
-            if (Properties.Settings.Default.BEANSENABLED == false)
-            {
-                // no beans?
-            }
-            else
-            {
-                // beans mode activated
-
-                this.pictureBox1.Image = Logo_Beans.LOGO;
-                this.BackgroundImage = Logo_Beans.LOGO_BACKGROUND_ALT;
-            }
         }
 
         private void AboutForm_Load(object sender, EventArgs e)
         {
-            lVersion.Text = $"Client Version: {Program.DOUZIVERSION}";
-            lProtocolVersion.Text = $"Protocol Version: {Program.PROTOCOL_VERSION}";
-            lVersionReportedtoServer.Text = $"Pinto! Version: {Program.VERSION}";
+            if (Program.hasServerInfo == true)
+            {
+                label4.Text = $"Server ID: {Program.ServerID}";
+                label2.Text = $"Server Software: {Program.ServerSoftware}";
+            }
+            if (Program.hasSpoofedVersion == true)
+            {
+                lVersion.Text = $"Version {Program.VERSION_STRING} ({Program.VERSION_STRING_NOSPOOF})";
+            } else
+            {
+                lVersion.Text = $"Version {Program.VERSION_STRING}";
+            }
+            if (Program.hasSpoofedPVN == true)
+            {
+                label6.Text = $"Protocol Version {Program.PROTOCOL_VERSION_NOSPOOF} ({Program.PROTOCOL_VERSION_NOSPOOF})";
+            } else
+            {
+                label6.Text = $"Protocol Version {Program.PROTOCOL_VERSION}";
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lVersionReportToServer_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
         {
 
         }
@@ -57,19 +52,14 @@ namespace PintoNS.Forms
 
         }
 
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void pictureBox1_DoubleClick(object sender, EventArgs e)
         {
-            ProcessStartInfo sInfo = new ProcessStartInfo("https://github.com/PintoIM/Pinto");
-            Process.Start(sInfo);
+            pictureBox1.Image = Logo.LOGO_RED;
+            DbgForm form = new DbgForm();
+            form.ShowDialog();
         }
 
-        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            ProcessStartInfo sInfo = new ProcessStartInfo("https://github.com/DexrnZacAttack/DouZi");
-            Process.Start(sInfo);
-        }
-
-        private void label3_Click(object sender, EventArgs e)
+        private void lInfo_Click(object sender, EventArgs e)
         {
 
         }
