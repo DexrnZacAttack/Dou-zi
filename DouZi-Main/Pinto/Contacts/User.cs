@@ -14,14 +14,19 @@ namespace PintoNS.Contacts
             {
                 case UserStatus.ONLINE:
                     return Statuses.ONLINE;
+
                 case UserStatus.AWAY:
                     return Statuses.AWAY;
+
                 case UserStatus.BUSY:
                     return Statuses.BUSY;
+
                 case UserStatus.INVISIBLE:
                     return Statuses.INVISIBLE;
+
                 case UserStatus.CONNECTING:
                     return Statuses.CONNECTING;
+
                 default:
                     return Statuses.OFFLINE;
             }
@@ -33,14 +38,19 @@ namespace PintoNS.Contacts
             {
                 case UserStatus.ONLINE:
                     return Statuses.ONLINE1;
+
                 case UserStatus.AWAY:
                     return Statuses.AWAY1;
+
                 case UserStatus.BUSY:
                     return Statuses.BUSY1;
+
                 case UserStatus.INVISIBLE:
                     return Statuses.INVISIBLE1;
+
                 case UserStatus.CONNECTING:
                     return Statuses.CONNECTING1;
+
                 default:
                     return Statuses.OFFLINE1;
             }
@@ -52,14 +62,19 @@ namespace PintoNS.Contacts
             {
                 case UserStatus.ONLINE:
                     return "Online";
+
                 case UserStatus.AWAY:
                     return "Away";
+
                 case UserStatus.BUSY:
                     return "Busy";
+
                 case UserStatus.INVISIBLE:
                     return "Invisible";
+
                 case UserStatus.CONNECTING:
                     return "Connecting...";
+
                 default:
                     return "Offline";
             }

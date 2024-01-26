@@ -8,6 +8,7 @@ namespace PintoNS.Calls
         public bool IsRecording { get; private set; }
         private WaveIn waveIn;
         private int device;
+
         public int Device
         {
             get => device;
@@ -21,6 +22,7 @@ namespace PintoNS.Calls
                 }
             }
         }
+
         public event Action<byte[]> MicrophoneDataAvailable;
 
         public void Start()

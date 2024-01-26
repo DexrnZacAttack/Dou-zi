@@ -51,32 +51,38 @@ namespace PintoNS.Forms
                     switch (type)
                     {
                         default:
-                        case ConsoleTypes.GENERAL: 
+                        case ConsoleTypes.GENERAL:
                             rtxtLog.AppendText("[General]" + $" {msg}" + (newLine ? Environment.NewLine : ""));
                             break;
+
                         case ConsoleTypes.NETWORKING:
                             rtxtLog.AppendText("[Networking]" + $" {msg}" + (newLine ? Environment.NewLine : ""));
                             break;
+
                         case ConsoleTypes.SCRIPTING:
                             rtxtLog.AppendText("[Scripting]" + $" {msg}" + (newLine ? Environment.NewLine : ""));
                             break;
+
                         case ConsoleTypes.CONTACTS:
                             rtxtLog.AppendText("[Contacts]" + $" {msg}" + (newLine ? Environment.NewLine : ""));
                             break;
+
                         case ConsoleTypes.MESSAGING:
                             rtxtLog.AppendText("[Messaging] " + $" {msg}" + (newLine ? Environment.NewLine : ""));
                             break;
+
                         case ConsoleTypes.UPDATER:
                             rtxtLog.AppendText("[Updater]" + $" {msg}" + (newLine ? Environment.NewLine : ""));
                             break;
+
                         case ConsoleTypes.CALLMGR:
                             rtxtLog.AppendText("[CallManager]" + $" {msg}" + (newLine ? Environment.NewLine : ""));
                             break;
+
                         case ConsoleTypes.BROWSER:
                             rtxtLog.AppendText("[BrowserWindow]" + $" {msg}" + (newLine ? Environment.NewLine : ""));
                             break;
                     }
-
                 }));
             }));
         }

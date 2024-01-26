@@ -7,7 +7,8 @@ namespace PintoNS.Networking.Packets
         public string ServerID { get; protected set; }
         public string ServerSoftware { get; protected set; }
 
-        public PacketServerInfo() { }
+        public PacketServerInfo()
+        { }
 
         public PacketServerInfo(string serverID, string serverSoftware)
         {

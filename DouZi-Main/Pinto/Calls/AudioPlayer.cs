@@ -12,6 +12,7 @@ namespace PintoNS.Calls
         private WaveOut waveOut;
         private WaveFormat waveFormat = new WaveFormat(44100, 2);
         private int device;
+
         public int Device
         {
             get => device;

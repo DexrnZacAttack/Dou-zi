@@ -8,7 +8,8 @@ namespace PintoNS.Networking.Packets
         public string Sender { get; protected set; }
         public string Message { get; protected set; }
 
-        public PacketMessage() { }
+        public PacketMessage()
+        { }
 
         public PacketMessage(string contactName, string message)
         {

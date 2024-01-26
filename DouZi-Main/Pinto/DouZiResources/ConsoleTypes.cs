@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PintoNS.DouZiResources
+﻿namespace PintoNS.DouZiResources
 {
     // Dexrn: vlOd, why didn't you do this?
     public enum ConsoleTypes

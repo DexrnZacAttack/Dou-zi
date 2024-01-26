@@ -7,7 +7,8 @@ namespace PintoNS.Networking.Packets
         public string ContactName { get; protected set; }
         public bool State { get; protected set; }
 
-        public PacketTyping() { }
+        public PacketTyping()
+        { }
 
         public PacketTyping(string contactName, bool state)
         {

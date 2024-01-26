@@ -1,22 +1,14 @@
-﻿using Org.BouncyCastle.Bcpg;
-using PintoNS.Forms;
-using PintoNS.Networking;
+﻿using PintoNS.Forms;
 using PintoNS.Networking.Packets;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Media;
-using System.Net.Sockets;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace PintoNS.DouZiResources
 {
     public class MessageHandler
     {
-
         public void HandleMessage(PacketMessage packet, MainForm instance)
         {
             instance.Invoke(
@@ -56,7 +48,7 @@ namespace PintoNS.DouZiResources
                 }));
         }
 
-    public void writeExtraStuff(MessageForm messageForm, PacketMessage packet, MainForm instance)
+        public void writeExtraStuff(MessageForm messageForm, PacketMessage packet, MainForm instance)
         {
             messageForm.WriteMessage(
                 $"\n{packet.Sender}",
@@ -85,22 +77,27 @@ namespace PintoNS.DouZiResources
                         writeExtraStuff(messageForm, packet, instance);
                         messageForm.WriteMessage(message, MessageForm.MsgContentColor, false);
                         break;
+
                     case 1:
                         writeExtraStuff(messageForm, packet, instance);
                         messageForm.WriteMessage(message, MessageForm.MsgContentColor, false);
                         break;
+
                     case 2:
                         writeExtraStuff(messageForm, packet, instance);
                         messageForm.WriteMessage($"Sent Base64 Chunk {Program.chunksCount}", MessageForm.MsgInfoColor, false);
                         break;
+
                     case 3:
                         writeExtraStuff(messageForm, packet, instance);
                         messageForm.WriteMessage($"Sent Base64 Chunk {Program.chunksCount}, File name is \"{Program.fileName}\"", MessageForm.MsgInfoColor, false);
                         break;
+
                     case 4:
                         writeExtraStuff(messageForm, packet, instance);
                         messageForm.WriteMessage($"Sent file! File name is \"{Program.fileName}\"", MessageForm.MsgInfoColor, false);
                         break;
+
                     default:
                         writeExtraStuff(messageForm, packet, instance);
                         messageForm.WriteMessage(message, MessageForm.MsgContentColor, false);
@@ -122,7 +119,7 @@ namespace PintoNS.DouZiResources
                     else if (packet.Sender != instance.LocalUser.Name)
                         instance.PopupController.CreatePopup($"{packet.Message}", $"Received a " +
                             $"new message from {packet.ContactName}!");
-                        new SoundPlayer() { Stream = Sounds.IM }.Play();
+                    new SoundPlayer() { Stream = Sounds.IM }.Play();
                 }
             }
         }
@@ -149,7 +146,8 @@ namespace PintoNS.DouZiResources
                     Program.data = Convert.FromBase64String(packet.Message.TrimStart().Replace("Base64", ""));
                     Program.decodedString = System.Text.Encoding.UTF8.GetString(Program.data);
                     sendMessage(messageForm, Program.decodedString, instance, packet, 1);
-                } else
+                }
+                else
                 {
                     sendMessage(messageForm, packet.Message, instance, packet, 0);
                 }
@@ -166,7 +164,7 @@ namespace PintoNS.DouZiResources
         private void handleBase64Chunk(PacketMessage packet, MessageForm messageForm, MainForm instance)
         {
             Program.chunksCount++;
-            
+
             if (packet.Message.Contains("fileName="))
             {
                 string pattern = @"fileName=""([^""]*)""";
@@ -177,7 +175,8 @@ namespace PintoNS.DouZiResources
                     Program.fileName = StripFilePathCharacters(Program.fileNameUnstripped);
                     sendMessage(messageForm, null, instance, packet, 3);
                 }
-            } else
+            }
+            else
             {
                 sendMessage(messageForm, null, instance, packet, 2);
             }
@@ -221,7 +220,6 @@ namespace PintoNS.DouZiResources
             try
             {
                 sendMessage(messageForm, null, instance, packet, 2);
-
             }
             catch (Exception ex)
             {
@@ -252,11 +250,9 @@ namespace PintoNS.DouZiResources
                     + "\\Downloads\\Pinto!\\"
                     + Program.fileName;
 
-
                 File.WriteAllBytes(filePath, Program.data);
                 sendMessage(messageForm, null, instance, packet, 4);
-                Program.sendUWPNotification($"{packet.ContactName} sent you a file!", $"{Program.fileName}");
-
+                NotificationHandler.sendUWPNotification($"{packet.ContactName} sent you a file!", $"{Program.fileName}");
             }
             catch (Exception ex)
             {
@@ -269,13 +265,13 @@ namespace PintoNS.DouZiResources
                 );
                 Program.Console.WriteMessage(Program.entireBase64MSG, ConsoleTypes.MESSAGING);
             }
-        Program.entireBase64MSG = null;
-        Program.fileNameUnstripped = null;
-        Program.fileName = null;
-        Program.chunksCount = 0;
-        Program.data = null;
-        Program.decodedString = null;
-        Program.base64IsMultipleMessages = false;
-    }
+            Program.entireBase64MSG = null;
+            Program.fileNameUnstripped = null;
+            Program.fileName = null;
+            Program.chunksCount = 0;
+            Program.data = null;
+            Program.decodedString = null;
+            Program.base64IsMultipleMessages = false;
+        }
     }
 }

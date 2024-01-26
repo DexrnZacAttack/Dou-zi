@@ -1,4 +1,4 @@
-﻿using Org.BouncyCastle.Bcpg;
+﻿using PintoNS.DouZiResources;
 using PintoNS.Forms;
 using System;
 using System.Collections.Generic;
@@ -66,7 +66,6 @@ namespace PintoNS.UI
             {
                 int y = GetYPosForNew();
 
-                
                 popup.TargetY = y;
                 popup.lTitle.Text = title;
                 popup.lBody.Text = body;
@@ -92,9 +91,10 @@ namespace PintoNS.UI
                 popup.BringToFront();
 
                 popups.Add(popup);
-            } else
+            }
+            else
             {
-                Program.sendUWPNotification(body, title);
+                NotificationHandler.sendUWPNotification(body, title);
             }
         }
 

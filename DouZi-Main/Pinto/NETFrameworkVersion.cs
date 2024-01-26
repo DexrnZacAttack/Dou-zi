@@ -29,9 +29,9 @@ namespace PintoNS
             object value = key.GetValue("Release");
             if (value == null) return null;
 
-            // Checking the version using >= will enable forward compatibility,  
-            // however you should always compile your code on newer versions of 
-            // the framework to ensure your app works the same. 
+            // Checking the version using >= will enable forward compatibility,
+            // however you should always compile your code on newer versions of
+            // the framework to ensure your app works the same.
             int releaseKey = Convert.ToInt32(value);
             if (releaseKey >= 528040) return new Version(4, 8, 0);
             if (releaseKey >= 461808) return new Version(4, 7, 2);
@@ -44,8 +44,8 @@ namespace PintoNS
             if (releaseKey >= 378675) return new Version(4, 5, 1);
             if (releaseKey >= 378389) return new Version(4, 5);
 
-            // This line should never execute. A non-null release key should mean 
-            // that 4.5 or later is installed. 
+            // This line should never execute. A non-null release key should mean
+            // that 4.5 or later is installed.
             return new Version(4, 5);
         }
     }

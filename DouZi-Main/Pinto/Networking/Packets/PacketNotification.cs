@@ -9,7 +9,8 @@ namespace PintoNS.Networking.Packets
         public string Title { get; protected set; }
         public string Body { get; protected set; }
 
-        public PacketNotification() { }
+        public PacketNotification()
+        { }
 
         /// <summary>
         /// Types:<para />

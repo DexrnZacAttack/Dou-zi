@@ -6,7 +6,8 @@ namespace PintoNS.Networking.Packets
     {
         public string ContactName { get; protected set; }
 
-        public PacketRemoveContact() { }
+        public PacketRemoveContact()
+        { }
 
         public PacketRemoveContact(string contactName)
         {

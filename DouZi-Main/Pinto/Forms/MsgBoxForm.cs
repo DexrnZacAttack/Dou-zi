@@ -12,7 +12,6 @@ namespace PintoNS.Forms
         public MsgBoxForm()
         {
             InitializeComponent();
-
         }
 
         private void Notification_FormClosing(object sender, FormClosingEventArgs e)
@@ -48,12 +47,10 @@ namespace PintoNS.Forms
 
         private void lBody_Click(object sender, EventArgs e)
         {
-
         }
 
         private void pbIcon_Click(object sender, EventArgs e)
         {
-
         }
     }
 }

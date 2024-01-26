@@ -1,6 +1,5 @@
 ﻿using PintoNS.Forms;
 using System;
-using System.ComponentModel;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -29,7 +28,6 @@ namespace PintoNS.UI.Controls
                         LoadLibrary("MsftEdit.dll");
 
                         SendMessage(Handle, EM_SETOLECALLBACK, IntPtr.Zero, IntPtr.Zero);
-
                     }
                     catch (Exception ex)
                     {

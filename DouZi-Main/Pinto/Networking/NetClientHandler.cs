@@ -1,22 +1,13 @@
-﻿using PintoNS.Contacts;
-using PintoNS.Networking;
-using PintoNS.UI.Controls;
+﻿using Org.BouncyCastle.Crypto.Parameters;
+using Org.BouncyCastle.Security;
+using PintoNS.Contacts;
+using PintoNS.Networking.Packets;
 using System;
 using System.IO;
+using System.Net.Sockets;
+using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading;
-using PintoNS.Networking.Packets;
-using Mono.CSharp;
-using Org.BouncyCastle.Crypto.Parameters;
-using Org.BouncyCastle.Security;
-using System.Net.Sockets;
-using Org.BouncyCastle.Crypto.Tls;
-using System.Threading.Tasks;
-using NAudio.Gui;
-using System.Reflection;
-using PintoNS.Forms;
-using System.Windows.Forms;
 
 namespace PintoNS.Networking
 {
@@ -133,7 +124,6 @@ namespace PintoNS.Networking
             Username = username;
             SendPacket(new PacketLogin(Program.PROTOCOL_VERSION, Program.VERSION_STRING,
                 username, GetPasswordHash(password)));
-
         }
 
         public void Register(string username, string password)

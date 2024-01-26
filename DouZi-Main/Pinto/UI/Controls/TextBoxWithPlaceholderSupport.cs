@@ -12,9 +12,13 @@ namespace PintoNS.UI.Controls
         protected string placeholderText = "";
         protected Color textForeColor = Color.Black;
         protected Color placeholderTextForeColor = Color.DimGray;
-        public string PlaceholderText { get { return placeholderText; } set { placeholderText = value; } }
-        public Color TextForeColor { get { return textForeColor; } set { textForeColor = value; } }
-        public Color PlaceholderTextForeColor { get { return placeholderTextForeColor; } set { placeholderTextForeColor = value; } }
+        public string PlaceholderText
+        { get { return placeholderText; } set { placeholderText = value; } }
+        public Color TextForeColor
+        { get { return textForeColor; } set { textForeColor = value; } }
+        public Color PlaceholderTextForeColor
+        { get { return placeholderTextForeColor; } set { placeholderTextForeColor = value; } }
+
         [Browsable(true)]
         [EditorBrowsable(EditorBrowsableState.Always)]
         public event EventHandler TextChanged2;

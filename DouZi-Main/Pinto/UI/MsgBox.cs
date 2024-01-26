@@ -40,19 +40,23 @@ namespace PintoNS.UI
                     msgBox.pbIcon.Image = SystemIcons.Information.ToBitmap();
                     SystemSounds.Asterisk.Play();
                     break;
+
                 case MsgBoxIconType.QUESTION:
                     msgBox.pbIcon.Image = SystemIcons.Question.ToBitmap();
                     SystemSounds.Question.Play();
                     break;
+
                 case MsgBoxIconType.WARNING:
                     msgBox.pbIcon.Image = SystemIcons.Warning.ToBitmap();
                     SystemSounds.Exclamation.Play();
                     break;
+
                 case MsgBoxIconType.ERROR:
                     msgBox.pbIcon.Image = SystemIcons.Error.ToBitmap();
                     // Dexrn: HAND?????????
                     SystemSounds.Hand.Play();
                     break;
+
                 default:
                     msgBox.pbIcon.Image = null;
                     break;
@@ -73,6 +77,7 @@ namespace PintoNS.UI
                 msgBox.ShowDialog(parent);
             }
         }
+
         public static void playSound(string soundName)
         {
             SoundPlayer sound = new SoundPlayer(@soundName);

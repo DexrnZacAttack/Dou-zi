@@ -9,7 +9,8 @@ namespace PintoNS.Networking.Packets
         public UserStatus Status { get; protected set; }
         public string MOTD { get; protected set; }
 
-        public PacketAddContact() { }
+        public PacketAddContact()
+        { }
 
         public PacketAddContact(string contactName, UserStatus status, string motd)
         {

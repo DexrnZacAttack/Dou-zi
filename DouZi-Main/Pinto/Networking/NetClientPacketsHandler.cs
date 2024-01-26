@@ -1,18 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Media;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Windows.Forms;
-using System.Windows.Interop;
-using Org.BouncyCastle.Asn1.Pkcs;
-using PintoNS.Contacts;
+﻿using PintoNS.Contacts;
 using PintoNS.DouZiResources;
 using PintoNS.Forms;
 using PintoNS.Networking.Packets;
 using PintoNS.UI;
+using System;
+using System.Media;
 
 namespace PintoNS.Networking
 {
@@ -77,6 +69,7 @@ namespace PintoNS.Networking
             MessageHandler altMessageHandler = new MessageHandler();
             altMessageHandler.HandleMessage(packet, instance);
         }
+
         public void HandleNotificationPacket(PacketNotification packet)
         {
             instance.Invoke(
@@ -91,6 +84,7 @@ namespace PintoNS.Networking
                                 packet.AutoCloseDelay
                             );
                             break;
+
                         case 1:
                             instance.InWindowPopupController.CreatePopup(
                                 packet.Body,
@@ -98,6 +92,7 @@ namespace PintoNS.Networking
                                 packet.AutoCloseDelay
                             );
                             break;
+
                         case 2:
                             instance.PopupController.CreatePopup(
                                 packet.Body,
@@ -244,7 +239,7 @@ namespace PintoNS.Networking
             );
             if (Settings.doNotUseUWPNotifications == true || Program.IsNotWindows10)
             {
-                Program.sendUWPNotification(
+                NotificationHandler.sendUWPNotification(
                     $"{packet.ContactName} wants to add you to their contact list.",
                     "New contact request!"
                 );

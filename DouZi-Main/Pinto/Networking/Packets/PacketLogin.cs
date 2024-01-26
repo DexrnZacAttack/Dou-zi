@@ -9,7 +9,8 @@ namespace PintoNS.Networking.Packets
         public string Name { get; protected set; }
         public string PasswordHash { get; protected set; }
 
-        public PacketLogin() { }
+        public PacketLogin()
+        { }
 
         public PacketLogin(byte protocolVersion, string clientVersion,
             string name, string passwordHash)

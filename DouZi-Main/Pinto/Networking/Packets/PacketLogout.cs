@@ -6,7 +6,8 @@ namespace PintoNS.Networking.Packets
     {
         public string Reason { get; protected set; }
 
-        public PacketLogout() { }
+        public PacketLogout()
+        { }
 
         public PacketLogout(string reason)
         {

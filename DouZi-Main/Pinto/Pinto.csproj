@@ -135,6 +135,7 @@
     </Compile>
     <Compile Include="DouZiResources\ConsoleTypes.cs" />
     <Compile Include="DouZiResources\MessageHandler.cs" />
+    <Compile Include="DouZiResources\NotificationHandler.cs" />
     <Compile Include="Forms\AboutForm.cs">
       <SubType>Form</SubType>
     </Compile>

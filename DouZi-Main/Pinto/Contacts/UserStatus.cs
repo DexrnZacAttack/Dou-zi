@@ -7,6 +7,7 @@
         BUSY = 2,
         INVISIBLE = 3,
         OFFLINE = 4,
+
         // NEVER SEND THIS TO THE SERVER
         CONNECTING = 5
     }

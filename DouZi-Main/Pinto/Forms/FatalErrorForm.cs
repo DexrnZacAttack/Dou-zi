@@ -9,6 +9,7 @@ namespace PintoNS.Forms
         {
             SystemSounds.Hand.Play();
         }
+
         /*        public FatalErrorForm()
        {
            InitializeComponent();

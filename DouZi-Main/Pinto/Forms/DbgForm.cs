@@ -1,15 +1,6 @@
-﻿using NAudio.Gui;
-using PintoNS.UI;
+﻿using PintoNS.UI;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics.Eventing.Reader;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using static System.Net.Mime.MediaTypeNames;
 
 // Dexrn: We burning down the house with this code
 
@@ -17,24 +8,29 @@ namespace PintoNS.Forms
 {
     public partial class DbgForm : Form
     {
+        private string currentPVN = Program.PROTOCOL_VERSION.ToString();
+
         public DbgForm()
         {
             InitializeComponent();
+            currentPVN = Program.PROTOCOL_VERSION.ToString();
             // Dexrn: why do I leave the names to their defaults?
             label1.Text = Program.VERSION_STRING;
             label2.Text = Program.VERSION_STRING;
-            label3.Text = Program.VERSION_STRING;
+            // Dexrn: Why does making this reference anything related to the PROTOCOL_VERSION cause it to be unchangable
+            label3.Text = currentPVN;
         }
+
         private void label1_Click(object sender, EventArgs e)
         {
-
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            currentPVN = Program.PROTOCOL_VERSION.ToString();
             if (radioButton1.Checked)
             {
-                if (label3.Text != Program.VERSION_STRING_NOSPOOF)
+                if (Program.VERSION_STRING != Program.VERSION_STRING_NOSPOOF)
                 {
                     Program.hasSpoofedVersion = true;
                     Program.VERSION_STRING = label1.Text;
@@ -43,8 +39,8 @@ namespace PintoNS.Forms
                 else
                 {
                     Program.hasSpoofedVersion = false;
-                    
-                    Program.VERSION_STRING = Program.VERSION_STRING_NOSPOOF;
+
+                    Program.VERSION_STRING = label1.Text;
                     label2.Text = Program.VERSION_STRING;
                 }
             }
@@ -52,20 +48,18 @@ namespace PintoNS.Forms
             {
                 try
                 {
-                    if (label3.Text != Program.PROTOCOL_VERSION_NOSPOOF.ToString())
+                    if (Program.PROTOCOL_VERSION.ToString() != Program.PROTOCOL_VERSION_NOSPOOF.ToString())
                     {
                         Program.hasSpoofedPVN = true;
-                        
-                        int PVN = int.Parse(label1.Text);
-                        Program.PROTOCOL_VERSION = (byte)PVN;
-                        label3.Text = Program.PROTOCOL_VERSION.ToString();
+                        Program.PROTOCOL_VERSION = byte.Parse(label1.Text);
+                        label3.Text = currentPVN;
                     }
                     else
                     {
                         Program.hasSpoofedPVN = false;
-                        
-                        Program.PROTOCOL_VERSION = Program.PROTOCOL_VERSION_NOSPOOF;
-                        label3.Text = Program.PROTOCOL_VERSION.ToString();
+
+                        Program.PROTOCOL_VERSION = byte.Parse(label1.Text);
+                        label3.Text = currentPVN;
                     }
                 }
                 catch (FormatException ex)
@@ -76,13 +70,13 @@ namespace PintoNS.Forms
             }
         }
 
-
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox1.Checked)
             {
                 Program.ignoreNonAlphaChars = true;
-            } else
+            }
+            else
             {
                 Program.ignoreNonAlphaChars = false;
             }
@@ -90,7 +84,18 @@ namespace PintoNS.Forms
 
         private void DbgForm_Load(object sender, EventArgs e)
         {
+        }
 
+        private void rateLimitCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+                Program.ignoreRateLimit = true;
+            }
+            else
+            {
+                Program.ignoreRateLimit = false;
+            }
         }
     }
 }

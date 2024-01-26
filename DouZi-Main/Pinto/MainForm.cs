@@ -1,7 +1,10 @@
 ﻿using PintoNS.Calls;
 using PintoNS.Contacts;
+using PintoNS.DouZiResources;
 using PintoNS.Forms;
+using PintoNS.Networking;
 using PintoNS.Scripting;
+using PintoNS.UI;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -13,10 +16,6 @@ using System.Media;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using PintoNS.UI;
-using PintoNS.Networking;
-using System.ComponentModel;
-using Org.BouncyCastle.Bcpg;
 
 namespace PintoNS
 {
@@ -40,8 +39,6 @@ namespace PintoNS
             InWindowPopupController = new InWindowPopupController(this, 70);
             PopupController = new PopupController();
         }
-
-
 
         internal void OnLogin()
         {
@@ -239,12 +236,12 @@ namespace PintoNS
 
         public void SyncTray()
         {
-            Program.Console.WriteMessage("Synchronizing tray status...",            DouZiResources.ConsoleTypes.GENERAL);
+            Program.Console.WriteMessage("Synchronizing tray status...", DouZiResources.ConsoleTypes.GENERAL);
             bool isOnline = LocalUser.Status != UserStatus.OFFLINE && LocalUser.Status != UserStatus.CONNECTING;
             niTray.Visible = true;
             niTray.Icon = User.StatusToIcon(LocalUser.Status);
             niTray.Text = $"Pinto! Beta - " + (isOnline ? $"{LocalUser.Name} - " +
-                $"{User.StatusToText(LocalUser.Status)}" : 
+                $"{User.StatusToText(LocalUser.Status)}" :
                 LocalUser.Status == UserStatus.CONNECTING ? "Connecting..." : "Not logged in");
             tsmiTrayChangeStatus.Enabled = isOnline;
         }
@@ -284,7 +281,7 @@ namespace PintoNS
                 }));
             };
 
-            try 
+            try
             {
                 Program.Console.WriteMessage($"Connecting at {ip}:{port} as {username}...", DouZiResources.ConsoleTypes.NETWORKING);
                 NetHandler = await NetClientHandlerFactory.Create(this, ip, port, changeConnectionStatus);
@@ -302,14 +299,14 @@ namespace PintoNS
 
                 StartLoginPacketCheckThread(ip, port);
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 Disconnect();
                 lConnectingStatus.Text = "";
                 if (!(ex is PintoVerificationException))
                 {
                     Program.Console.WriteMessage($"Unable to connect to {ip}:{port}: {ex}", DouZiResources.ConsoleTypes.NETWORKING);
-                    MsgBox.Show(this, $"Unable to connect to {ip}:{port}: {ex.Message}", 
+                    MsgBox.Show(this, $"Unable to connect to {ip}:{port}: {ex.Message}",
                         "Connection Error", MsgBoxIconType.ERROR);
                 }
                 UsingPintoForm.SetHasLoggedIn(false);
@@ -373,10 +370,10 @@ namespace PintoNS
 
             if (!doNotCreate)
             {
-                    Program.Console.WriteMessage($"Creating MessageForm for {name}...", DouZiResources.ConsoleTypes.NETWORKING);
-                    messageForm = new MessageForm(this, ContactsMgr.GetContact(name));
-                    MessageForms.Add(messageForm);
-                    bool isBusy = LocalUser.Status == UserStatus.BUSY;
+                Program.Console.WriteMessage($"Creating MessageForm for {name}...", DouZiResources.ConsoleTypes.NETWORKING);
+                messageForm = new MessageForm(this, ContactsMgr.GetContact(name));
+                MessageForms.Add(messageForm);
+                bool isBusy = LocalUser.Status == UserStatus.BUSY;
 
                 if (ActiveForm == null || !(ActiveForm is MessageForm))
                     messageForm.Show();
@@ -419,9 +416,10 @@ namespace PintoNS
                         niTray.ShowBalloonTip(0, "Pinto!", "Pinto! is still running in the system tray," +
                             " you can change this behaviour in the settings of Pinto!, to exit," +
                             " go to the \"File\" menu or right click the system tray", ToolTipIcon.Info);
-                    } else
+                    }
+                    else
                     {
-                        Program.sendUWPNotification("Pinto! is still running in the system tray," +
+                        NotificationHandler.sendUWPNotification("Pinto! is still running in the system tray," +
                             " you can change this behaviour in the settings of Pinto!, to exit," +
                             " go to the \"File\" menu or right click the system tray");
                     }

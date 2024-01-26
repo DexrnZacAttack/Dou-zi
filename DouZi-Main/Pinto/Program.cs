@@ -1,4 +1,10 @@
-﻿using System;
+﻿using CSScriptLibrary;
+using Microsoft.Toolkit.Uwp.Notifications;
+using PintoNS.DouZiResources;
+using PintoNS.Forms;
+using PintoNS.Scripting;
+using PintoNS.UI;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
@@ -6,15 +12,6 @@ using System.Net;
 using System.Reflection;
 using System.Threading;
 using System.Windows.Forms;
-using CSScriptLibrary;
-using Microsoft.Toolkit.Uwp.Notifications;
-using Mono.CSharp;
-using Org.BouncyCastle.Bcpg;
-using PintoNS.DouZiResources;
-using PintoNS.Forms;
-using PintoNS.Scripting;
-using PintoNS.UI;
-using Windows.ApplicationModel.Activation;
 using Windows.UI.Notifications;
 
 namespace PintoNS
@@ -23,6 +20,7 @@ namespace PintoNS
     {
         // Constants
         public static ConsoleForm Console;
+
         public static bool doNotShowNotification = false;
         public static bool hasServerInfo = false;
         public static byte PROTOCOL_VERSION = 11;
@@ -31,42 +29,48 @@ namespace PintoNS
         // Dexrn ====================
         // Networking ---------------
         public static string entireBase64MSG = null;
+
         public static string fileNameUnstripped = null;
         public static string fileName = null;
         public static int chunksCount = 0;
         public static byte[] data = null;
         public static string decodedString = null;
         public static bool base64IsMultipleMessages = false;
+
         // Extra ---------------
         public static string VERSION_STRING_NOSPOOF = "b1.2";
+
         public static byte PROTOCOL_VERSION_NOSPOOF = 11;
         public static bool ignoreNonAlphaChars = false;
+        public static bool ignoreRateLimit = false;
         public static bool hasSpoofedVersion = false;
         public static bool hasSpoofedPVN = false;
         public static string ServerID = "";
         public static string ServerSoftware = "";
         // ==========================
 
-
         // Data paths
         public static readonly string DataFolder = Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
             "Pinto!"
         );
+
         public static readonly string SettingsFile = Path.Combine(DataFolder, "settings.json");
         public static readonly List<IPintoScript> Scripts = new List<IPintoScript>();
 
         // Main variables
         public static MainForm MainFrm;
+
         public static bool RunningOnLegacyPlatform;
         public static bool RunningUnderMono;
+
         public static bool IsNotWindows10
         {
             get { return Environment.OSVersion.Version < new Version(10, 0); }
         }
 
         [STAThread]
-        static void Main()
+        private static void Main()
         {
             bool createdNew;
             Mutex mutex = new Mutex(true, "PintoIM/Pinto", out createdNew);
@@ -271,78 +275,6 @@ namespace PintoNS
         )
         {
             return dict.TryGetValue(key, out var value) ? value : @default;
-        }
-
-        public static void sendUWPNotification(
-            string body,
-            string title = "Pinto!",
-            string icon = null,
-            bool isMessage = false
-        )
-        {
-            // Dexrn ------------------------
-            // There's probably a better way of doing this.
-            // I plan on using isMessage for showing an input box if it is true.
-            // although I'll have to figure out how to use it.
-            try
-            {
-                Microsoft.Toolkit.Uwp.Notifications.ToastActivationType activationType = 0;
-                string message = "";
-                var toastNotifier = ToastNotificationManagerCompat.CreateToastNotifier();
-                var history = ToastNotificationManagerCompat.History;
-
-                if (history != null)
-                {
-                    foreach (var notification in history.GetHistory())
-                    {
-                        history.Clear();
-                    }
-                }
-
-                var NotificationBuild = new ToastContentBuilder();
-                if (isMessage == true)
-                {
-                    NotificationBuild.AddInputTextBox("PintoReply", "", "Reply");
-                    NotificationBuild.AddButton("PintoReply", "Send", activationType, message);
-                    ToastNotificationManagerCompat.OnActivated += notificationButtonClicked;
-                }
-
-                switch (icon)
-                {
-                    case "Connected":
-                        break;
-                    default:
-                        break;
-                }
-
-                NotificationBuild.AddText($"{title}").AddText($"{body}");
-
-                var content = NotificationBuild.Content;
-                var xmlDoc = new Windows.Data.Xml.Dom.XmlDocument();
-                xmlDoc.LoadXml(content.GetContent());
-
-
-                var actualNotification = new ToastNotification(xmlDoc);
-                toastNotifier.Show(actualNotification);
-            }
-            catch
-            {
-                MainFrm.PopupController.CreatePopup(
-                    body,
-                    title
-                );
-            }
-        }
-
-        // Dexrn: WTF does "e" mean?
-        public static void notificationButtonClicked(ToastNotificationActivatedEventArgsCompat e)
-        {
-            if (e?.Argument == "PintoReply")
-            {
-                // Dexrn: after all those confusing hoops and shit this is finally what happens when you click the button.
-                string message = e.UserInput["PintoReply"].ToString();
-                Console.WriteMessage(message, 0);
-            }
         }
     }
 }

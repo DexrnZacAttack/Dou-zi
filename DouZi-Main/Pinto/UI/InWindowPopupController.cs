@@ -1,9 +1,7 @@
-﻿using Mono.CSharp;
-using PintoNS.UI.Controls;
+﻿using PintoNS.UI.Controls;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Windows.Controls.Primitives;
 using System.Windows.Forms;
 
 namespace PintoNS.UI

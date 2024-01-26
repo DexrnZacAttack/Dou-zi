@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.IO;
 using System.Reflection;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace PintoNS
 {
@@ -20,6 +20,7 @@ namespace PintoNS
     public static class Settings
     {
         #region General
+
         [OptionsDisplay(
             DisplayName = "Automatically check for updates on start-up",
             Category = "General",
@@ -81,8 +82,10 @@ namespace PintoNS
         )]
         public static bool doNotUseUWPNotifications = false;
 
-        #endregion
+        #endregion General
+
         #region Privacy
+
         [OptionsDisplay(
             DisplayName = "Do not show that I am typing to others",
             Category = "Privacy",
@@ -96,11 +99,15 @@ namespace PintoNS
             HelpInfo = "When this option is enabled, the message body in the notification will be replaced with \"New Message\""
         )]
         public static bool doNotShowMessageBodyPreview = false;
-        #endregion
+
+        #endregion Privacy
+
         #region Hidden
+
         [OptionsDisplay(Hidden = true)]
         public static bool DoNotShowSysTrayNotice = false;
-        #endregion
+
+        #endregion Hidden
 
         public static void Export(string file)
         {
@@ -117,17 +124,23 @@ namespace PintoNS
 
         public static void Import(string file)
         {
-            Type type = typeof(Settings);
-            if (!File.Exists(file))
-                Export(file);
-            JObject obj = JsonConvert.DeserializeObject<JObject>(File.ReadAllText(file));
-
-            foreach (JProperty property in obj.Children())
+            try
             {
-                FieldInfo field = type.GetField(property.Name);
-                if (field == null)
-                    continue;
-                field.SetValue(null, property.Value.ToObject(field.FieldType));
+                Type type = typeof(Settings);
+                if (!File.Exists(file))
+                    Export(file);
+                JObject obj = JsonConvert.DeserializeObject<JObject>(File.ReadAllText(file));
+
+                foreach (JProperty property in obj.Children())
+                {
+                    FieldInfo field = type.GetField(property.Name);
+                    if (field == null)
+                        continue;
+                    field.SetValue(null, property.Value.ToObject(field.FieldType));
+                }
+            }
+            catch (Exception ex) {
+            
             }
         }
     }

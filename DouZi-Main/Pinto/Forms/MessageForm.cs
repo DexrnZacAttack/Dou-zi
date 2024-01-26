@@ -1,7 +1,6 @@
 ﻿using PintoNS.Contacts;
 using PintoNS.UI;
 using System;
-using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
@@ -69,14 +68,15 @@ namespace PintoNS.Forms
                     "Error", MsgBoxIconType.ERROR);
             }
         }
+
         protected override void WndProc(ref Message message)
         {
-                if (!Program.RunningUnderMono)
-                    if (message.Msg == PInvoke.WM_SYSCOMMAND &&
-                        (int)message.WParam == PInvoke.SC_RESTORE)
-                        Invalidate();
+            if (!Program.RunningUnderMono)
+                if (message.Msg == PInvoke.WM_SYSCOMMAND &&
+                    (int)message.WParam == PInvoke.SC_RESTORE)
+                    Invalidate();
 
-                base.WndProc(ref message);
+            base.WndProc(ref message);
         }
 
         private void SaveChat()
@@ -200,6 +200,7 @@ namespace PintoNS.Forms
                         // 0 (0xA7) + 6 (RRGGBB)
                         i += 6;
                         break;
+
                     default:
                         buffer += msg[i];
                         break;
@@ -261,18 +262,24 @@ namespace PintoNS.Forms
                 return;
             }
 
-            if (rateLimitTicks > 0)
+            if (Program.ignoreRateLimit != true)
             {
-                InWindowPopupController.ClearPopups();
-                InWindowPopupController.CreatePopup(
-                    "Slow down!\nWait 1.2 seconds before sending another message!", false, 2f);
-                return;
+                if (rateLimitTicks > 0)
+                {
+                    InWindowPopupController.ClearPopups();
+                    InWindowPopupController.CreatePopup(
+                        "Slow down!\nWait 1.2 seconds before sending another message!", false, 2f);
+                    return;
+                }
             }
 
             rtxtInput.Clear();
             if (mainForm.NetHandler != null)
                 mainForm.NetHandler.MessageContact(Receiver.Name, input);
-            rateLimitTicks = 12;
+            if (Program.ignoreRateLimit != true)
+            {
+                rateLimitTicks = 12;
+            }
         }
 
         private void MessageForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -367,11 +374,14 @@ namespace PintoNS.Forms
 
         private void tRateLimit_Tick(object sender, EventArgs e)
         {
-            if (rateLimitTicks > 0)
+            if (Program.ignoreRateLimit != true)
             {
-                rateLimitTicks--;
-                tspbMenuBarRateLimit.PerformStep();
-                if (rateLimitTicks < 1) tspbMenuBarRateLimit.Value = 0;
+                if (rateLimitTicks > 0)
+                {
+                    rateLimitTicks--;
+                    tspbMenuBarRateLimit.PerformStep();
+                    if (rateLimitTicks < 1) tspbMenuBarRateLimit.Value = 0;
+                }
             }
         }
 

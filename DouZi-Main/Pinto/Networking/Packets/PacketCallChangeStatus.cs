@@ -8,7 +8,8 @@ namespace PintoNS.Networking.Packets
         public CallStatus CallStatus;
         public string Details;
 
-        public PacketCallChangeStatus() { }
+        public PacketCallChangeStatus()
+        { }
 
         public PacketCallChangeStatus(CallStatus callStatus, string details)
         {

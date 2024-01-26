@@ -39,6 +39,7 @@ namespace PintoNS.Forms
                     cb.CheckedChanged += (object sender, EventArgs e) => ChangedValue(field, cb.Checked);
                     control = cb;
                     break;
+
                 case nameof(String):
                     TextBox txt = new TextBox();
 
@@ -55,6 +56,7 @@ namespace PintoNS.Forms
 
                     control = txt;
                     break;
+
                 case nameof(Int32):
                     NumericUpDown nud = new NumericUpDown();
 
@@ -107,6 +109,7 @@ namespace PintoNS.Forms
                         flpGeneralContainer.Controls.Add(GetControlFromValue(displayName, field, helpInfo,
                             numMin, numMax));
                         break;
+
                     case "Privacy":
                         flpPrivacyContainer.Controls.Add(GetControlFromValue(displayName, field, helpInfo,
                             numMin, numMax));

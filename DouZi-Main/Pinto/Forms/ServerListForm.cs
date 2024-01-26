@@ -13,6 +13,7 @@ namespace PintoNS.Forms
     public partial class ServerListForm : Form
     {
         public const string SERVERS_URL = "http://ponso00.com:8880/pinto-server-list/servers.php";
+
         public event EventHandler<ServerUseEventArgs> ServerUse;
 
         public ServerListForm()
@@ -139,7 +140,6 @@ namespace PintoNS.Forms
 
         private void tpLoading_Click(object sender, EventArgs e)
         {
-
         }
     }
 

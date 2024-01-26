@@ -1,13 +1,4 @@
-﻿using PintoNS.Properties;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.ComponentModel.Design;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows.Forms;
 
 namespace PintoNS.Forms
@@ -29,14 +20,16 @@ namespace PintoNS.Forms
             if (Program.hasSpoofedVersion == true)
             {
                 lVersion.Text = $"Version {Program.VERSION_STRING} ({Program.VERSION_STRING_NOSPOOF})";
-            } else
+            }
+            else
             {
                 lVersion.Text = $"Version {Program.VERSION_STRING}";
             }
             if (Program.hasSpoofedPVN == true)
             {
                 label6.Text = $"Protocol Version {Program.PROTOCOL_VERSION_NOSPOOF} ({Program.PROTOCOL_VERSION_NOSPOOF})";
-            } else
+            }
+            else
             {
                 label6.Text = $"Protocol Version {Program.PROTOCOL_VERSION}";
             }
@@ -44,12 +37,10 @@ namespace PintoNS.Forms
 
         private void label1_Click(object sender, EventArgs e)
         {
-
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-
         }
 
         private void pictureBox1_DoubleClick(object sender, EventArgs e)
@@ -61,7 +52,6 @@ namespace PintoNS.Forms
 
         private void lInfo_Click(object sender, EventArgs e)
         {
-
         }
     }
 }

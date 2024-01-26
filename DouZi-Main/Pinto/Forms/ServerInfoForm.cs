@@ -12,7 +12,6 @@ namespace PintoNS.Forms
 
         private void lInfo_Click(object sender, System.EventArgs e)
         {
-
         }
     }
 }

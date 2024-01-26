@@ -1,6 +1,4 @@
-﻿using Org.BouncyCastle.Security;
-using PintoNS.Networking.Packets;
-using PintoNS.Networking;
+﻿using PintoNS.Networking.Packets;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -37,7 +35,7 @@ namespace PintoNS.Networking
         {
             if (tcpClient == null)
                 throw new ArgumentException("No socket specified");
-            
+
             this.tcpClient = tcpClient;
             this.netHandler = netHandler;
             tcpClient.Client.SetSocketOption(SocketOptionLevel.IP, SocketOptionName.TypeOfService, 24); // IPTOS_THROUGHPUT + IPTOS_LOWDELAY
@@ -208,7 +206,7 @@ namespace PintoNS.Networking
                 if (isTerminating || isClosing)
                     return;
 
-                if (ex is EndOfStreamException) 
+                if (ex is EndOfStreamException)
                 {
                     Shutdown("Server disconnect");
                     return;
@@ -244,7 +242,7 @@ namespace PintoNS.Networking
                         catch (Exception) { }
                     }
 
-                    if (writeThread.IsAlive) 
+                    if (writeThread.IsAlive)
                     {
                         try
                         {
@@ -284,7 +282,7 @@ namespace PintoNS.Networking
             if (sendQueueByteLength > 0x100000) // A megabyte
                 Shutdown("Send buffer overflow");
 
-            if (readPackets.Count == 0) 
+            if (readPackets.Count == 0)
             {
                 if (timeSinceLastRead++ == 600) // 30 seconds
                     Shutdown("No packet read within 30 seconds");

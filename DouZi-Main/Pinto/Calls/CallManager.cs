@@ -18,12 +18,19 @@ namespace PintoNS.Calls
         public IPEndPoint CallHost;
         public readonly List<CallParticipant> Participants = new List<CallParticipant>();
         private Thread recvThread;
+
         public event Action<string> ParticipantAdded;
+
         public event Action<string> ParticipantRemoved;
+
         public event Action CallEnded;
+
         public event Action CallStarted;
+
         public event Action<string> CallFailed;
+
         public event Action<byte[]> CallReceivedAudio;
+
         public Timer TimeOutTimer;
         public int TicksSinceNoParticipant;
         public bool Started;
@@ -326,6 +333,7 @@ namespace PintoNS.Calls
                     if (CallReceivedAudio != null)
                         CallReceivedAudio.Invoke(receivePacket.Data);
                     break;
+
                 default:
                     Program.Console.WriteMessage($"Received bad packet from {receiveEndPoint}", DouZiResources.ConsoleTypes.CALLMGR);
                     break;
@@ -358,6 +366,7 @@ namespace PintoNS.Calls
                     if (CallReceivedAudio != null)
                         CallReceivedAudio.Invoke(receivePacket.Data);
                     break;
+
                 default:
                     Program.Console.WriteMessage("Received bad packet", DouZiResources.ConsoleTypes.CALLMGR);
                     break;

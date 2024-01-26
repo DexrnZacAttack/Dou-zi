@@ -37,6 +37,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.rateLimitCheckBox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // button1
@@ -45,7 +46,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
+            this.button1.Text = "Set";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -106,6 +107,7 @@
             this.label3.Size = new System.Drawing.Size(35, 13);
             this.label3.TabIndex = 8;
             this.label3.Text = "label3";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label4
             // 
@@ -125,11 +127,23 @@
             this.label5.TabIndex = 9;
             this.label5.Text = "Version";
             // 
+            // rateLimitCheckBox
+            // 
+            this.rateLimitCheckBox.AutoSize = true;
+            this.rateLimitCheckBox.Location = new System.Drawing.Point(12, 136);
+            this.rateLimitCheckBox.Name = "rateLimitCheckBox";
+            this.rateLimitCheckBox.Size = new System.Drawing.Size(170, 17);
+            this.rateLimitCheckBox.TabIndex = 11;
+            this.rateLimitCheckBox.Text = "Ignore client-enforced rate limit";
+            this.rateLimitCheckBox.UseVisualStyleBackColor = true;
+            this.rateLimitCheckBox.CheckedChanged += new System.EventHandler(this.rateLimitCheckBox_CheckedChanged);
+            // 
             // DbgForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(237, 142);
+            this.ClientSize = new System.Drawing.Size(237, 157);
+            this.Controls.Add(this.rateLimitCheckBox);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
@@ -157,5 +171,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.CheckBox rateLimitCheckBox;
     }
 }
