@@ -21,6 +21,7 @@ namespace PintoNS
 {
     public partial class MainForm : Form
     {
+        public bool isLoggedIn = false;
         private bool doNotCancelClose;
         private bool isPortable;
         public User LocalUser = new User();
@@ -28,6 +29,7 @@ namespace PintoNS
         public InWindowPopupController InWindowPopupController;
         public PopupController PopupController;
         public List<MessageForm> MessageForms;
+        public string StatusString = null;
         public NetClientHandler NetHandler;
         internal Thread loginPacketCheckThread;
         public CallStatus CurrentCallStatus = CallStatus.ENDED;
@@ -43,6 +45,9 @@ namespace PintoNS
         internal void OnLogin()
         {
             Program.Console.WriteMessage("Changing UI state to logged in", DouZiResources.ConsoleTypes.GENERAL);
+            isLoggedIn = true;
+            Program.discordRPC.UpdateRPC(RPCTypes.Details, $"Logged in as {LocalUser.Name}");
+            Program.discordRPC.UpdateRPC(RPCTypes.State, null);
             tcTabs.TabPages.Clear();
             tcTabs.TabPages.Add(tpStart);
             tcTabs.TabPages.Add(tpContacts);
@@ -111,6 +116,22 @@ namespace PintoNS
 
             LocalUser.Status = status;
             LocalUser.MOTD = motd;
+            // https://stackoverflow.com/questions/4135317/make-first-letter-of-a-string-upper-case-with-maximum-performance
+            StatusString = status.ToString().First().ToString().ToUpper() + String.Join("", status.ToString().ToLower().Skip(1));
+
+            if (isLoggedIn == true)
+            {
+                if (LocalUser.Status != UserStatus.ONLINE && LocalUser.Status != UserStatus.OFFLINE && LocalUser.MOTD != null)
+                {
+                    Program.discordRPC.UpdateRPC(RPCTypes.State, $"{StatusString} ({LocalUser.MOTD})");
+                    Program.discordRPC.UpdateRPC(RPCTypes.Details, $"Logged in as {LocalUser.Name}");
+                }
+                else {
+                    Program.discordRPC.UpdateRPC(RPCTypes.State, $"{StatusString}");
+                    Program.discordRPC.UpdateRPC(RPCTypes.Details, $"Logged in as {LocalUser.Name}");
+                }
+
+            }
 
             SyncTray();
         }
@@ -118,6 +139,8 @@ namespace PintoNS
         internal void OnLogout(bool noSound = false)
         {
             Program.Console.WriteMessage("Changing UI state to logged out", DouZiResources.ConsoleTypes.GENERAL);
+            Program.discordRPC.UpdateRPC(RPCTypes.Details, $"Not logged in");
+            Program.discordRPC.UpdateRPC(RPCTypes.State, null);
             tcTabs.TabPages.Clear();
             tcTabs.TabPages.Add(tpLogin);
             UpdateQuickActions(false);
@@ -179,6 +202,8 @@ namespace PintoNS
             bool callEnded = CallStatusMeansEnded(status);
             CurrentCallStatus = status;
             Program.Console.WriteMessage($"Changed call status: {previousStatus} -> {CurrentCallStatus}", DouZiResources.ConsoleTypes.GENERAL);
+            Program.discordRPC.UpdateRPC(RPCTypes.Details, $"In a call");
+            Program.discordRPC.UpdateRPC(RPCTypes.State, null);
 
             if (!previousStatusEnded && callEnded)
             {
@@ -269,6 +294,8 @@ namespace PintoNS
 
         public async Task Connect(string ip, int port, string username, string password, bool register)
         {
+            Program.discordRPC.UpdateRPC(RPCTypes.Details, $"Logging in...");
+            Program.discordRPC.UpdateRPC(RPCTypes.State, null);
             tcTabs.TabPages.Clear();
             tcTabs.TabPages.Add(tpConnecting);
             OnStatusChange(UserStatus.CONNECTING, "");
@@ -341,6 +368,8 @@ namespace PintoNS
 
         public void Disconnect()
         {
+            Program.discordRPC.UpdateRPC(RPCTypes.Details, $"Not logged in");
+            Program.discordRPC.UpdateRPC(RPCTypes.State, null);
             Program.Console.WriteMessage("Disconnecting...", DouZiResources.ConsoleTypes.NETWORKING);
             bool wasLoggedIn = NetHandler != null ? NetHandler.LoggedIn : false;
 

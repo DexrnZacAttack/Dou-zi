@@ -1,2 +1,4 @@
 
 *.vsidx
+pinto/bin/**
+pinto/obj/**

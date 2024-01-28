@@ -83,6 +83,10 @@ namespace PintoNS.Forms
                         case ConsoleTypes.BROWSER:
                             rtxtLog.AppendText("[BrowserWindow]" + $" {msg}" + (newLine ? Environment.NewLine : ""));
                             break;
+
+                        case ConsoleTypes.DISCORD:
+                            rtxtLog.AppendText("[Discord RPC]" + $" {msg}" + (newLine ? Environment.NewLine : ""));
+                            break;
                     }
                 }));
             }));

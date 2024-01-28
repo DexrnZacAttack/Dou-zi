@@ -20,7 +20,6 @@ namespace PintoNS
     {
         // Constants
         public static ConsoleForm Console;
-
         public static bool doNotShowNotification = false;
         public static bool hasServerInfo = false;
         public static byte PROTOCOL_VERSION = 11;
@@ -39,14 +38,15 @@ namespace PintoNS
 
         // Extra ---------------
         public static string VERSION_STRING_NOSPOOF = "b1.2";
-
         public static byte PROTOCOL_VERSION_NOSPOOF = 11;
         public static bool ignoreNonAlphaChars = false;
         public static bool ignoreRateLimit = false;
+        public static DouZiResources.RPC discordRPC;
         public static bool hasSpoofedVersion = false;
         public static bool hasSpoofedPVN = false;
         public static string ServerID = "";
         public static string ServerSoftware = "";
+        public static string Status = null;
         // ==========================
 
         // Data paths
@@ -72,6 +72,7 @@ namespace PintoNS
         [STAThread]
         private static void Main()
         {
+            discordRPC = new DouZiResources.RPC();
             bool createdNew;
             Mutex mutex = new Mutex(true, "PintoIM/Pinto", out createdNew);
 
@@ -98,6 +99,7 @@ namespace PintoNS
             // Setup console
             Console = new ConsoleForm();
             Console.Show();
+            discordRPC.StartRPC();
 
             // Detect what runtime we are being ran under
             try

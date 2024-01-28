@@ -135,6 +135,7 @@ namespace PintoNS.Networking
 
         public void SendStatusChange(UserStatus status, string motd)
         {
+            Program.Status = status.ToString();
             SendPacket(new PacketStatus("", status, motd));
         }
 

@@ -10,6 +10,7 @@
         MESSAGING = 4,
         UPDATER = 5,
         CALLMGR = 6,
-        BROWSER = 7
+        BROWSER = 7,
+        DISCORD = 8
     }
 }

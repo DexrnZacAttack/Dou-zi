@@ -135,8 +135,10 @@
       <DependentUpon>Assets.resx</DependentUpon>
     </Compile>
     <Compile Include="DouZiResources\ConsoleTypes.cs" />
+    <Compile Include="DouZiResources\RPC.cs" />
     <Compile Include="DouZiResources\MessageHandler.cs" />
     <Compile Include="DouZiResources\NotificationHandler.cs" />
+    <Compile Include="DouZiResources\RPCTypes.cs" />
     <Compile Include="Forms\AboutForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -566,6 +568,9 @@
   <ItemGroup>
     <PackageReference Include="CS-Script.bin">
       <Version>3.30.5.1</Version>
+    </PackageReference>
+    <PackageReference Include="DiscordRichPresence">
+      <Version>1.2.1.24</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Bcl.Async">
       <Version>1.0.168</Version>
