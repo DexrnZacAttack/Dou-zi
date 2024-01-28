@@ -1,0 +1,958 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DouZi</name>
+    </assembly>
+    <members>
+        <member name="T:PintoNS.Assets">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Assets.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Assets.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Assets.ADDCONTACT_DISABLED">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Assets.ADDCONTACT_ENABLED">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Assets.COLOR_PALETTE">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Assets.CONTACT">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Assets.CONTACT_BIG">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Assets.ENDCALL_DISABLED">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Assets.ENDCALL_ENABLED">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Assets.GPLV3">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Assets.HISTORY_DISABLED">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Assets.HISTORY_ENABLED">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Assets.HOUSE">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Assets.HOUSE_LOCKED">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Assets.IM_DISABLED">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Assets.IM_ENABLED">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Assets.INFO_DISABLED">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Assets.INFO_ENABLED">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Assets.LOCK_DISABLED">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Assets.LOCK_ENABLED">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Assets.MICROPHONE_DISABLED">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Assets.MICROPHONE_ENABLED">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Assets.MICROPHONE_MUTED">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Assets.MISSEDCALLS">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Assets.PAUSECALL_DISABLED">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Assets.PAUSECALL_ENABLED">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Assets.PLUS_DISABLED">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Assets.PLUS_ENABLED">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Assets.REMOVECONTACT_DISABLED">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Assets.REMOVECONTACT_ENABLED">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Assets.RESUMECALL">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Assets.SEARCH_DISABLED">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Assets.SEARCH_ENABLED">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Assets.SECONDARY_INFO">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Assets.STAR">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Assets.STARTCALL_DISABLED">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Assets.STARTCALL_ENABLED">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Assets.TRASHCAN_DISABLED">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Assets.TRASHCAN_ENABLED">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Assets.WARNING">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="F:PintoNS.Forms.AboutForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PintoNS.Forms.AboutForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PintoNS.Forms.AboutForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:PintoNS.Forms.DbgForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PintoNS.Forms.DbgForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PintoNS.Forms.DbgForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:PintoNS.Forms.ScriptsViewerForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PintoNS.Forms.ScriptsViewerForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PintoNS.Forms.ScriptsViewerForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:PintoNS.Forms.ServerInfoForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PintoNS.Forms.ServerInfoForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PintoNS.Forms.ServerInfoForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:PintoNS.Forms.AddContactForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PintoNS.Forms.AddContactForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PintoNS.Forms.AddContactForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:PintoNS.Forms.BrowserForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PintoNS.Forms.BrowserForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PintoNS.Forms.BrowserForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:PintoNS.Forms.ChangeMOTDForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PintoNS.Forms.ChangeMOTDForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PintoNS.Forms.ChangeMOTDForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:PintoNS.Forms.ConsoleForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PintoNS.Forms.ConsoleForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PintoNS.Forms.ConsoleForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:PintoNS.Forms.FatalErrorForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PintoNS.Forms.FatalErrorForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PintoNS.Forms.FatalErrorForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:PintoNS.Forms.MessageForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PintoNS.Forms.MessageForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PintoNS.Forms.MessageForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:PintoNS.Forms.MoreFontOptionsForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PintoNS.Forms.MoreFontOptionsForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PintoNS.Forms.MoreFontOptionsForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:PintoNS.Forms.MsgBoxForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PintoNS.Forms.MsgBoxForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PintoNS.Forms.MsgBoxForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:PintoNS.Forms.OptionsForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PintoNS.Forms.OptionsForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PintoNS.Forms.OptionsForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:PintoNS.Forms.PopupForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PintoNS.Forms.PopupForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PintoNS.Forms.PopupForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:PintoNS.Forms.RSAKeyVerifierForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PintoNS.Forms.RSAKeyVerifierForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PintoNS.Forms.RSAKeyVerifierForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:PintoNS.Forms.ServerListForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PintoNS.Forms.ServerListForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PintoNS.Forms.ServerListForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:PintoNS.Forms.UsingPintoForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PintoNS.Forms.UsingPintoForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PintoNS.Forms.UsingPintoForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:PintoNS.Forms.ViewAllPopupContentForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PintoNS.Forms.ViewAllPopupContentForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PintoNS.Forms.ViewAllPopupContentForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:PintoNS.Networking.NetClientHandlerFactory">
+            <summary>
+            It shits out NetClientHandlers
+            </summary>
+        </member>
+        <member name="M:PintoNS.Networking.Packets.PacketNotification.#ctor(System.Byte,System.Int32,System.String,System.String)">
+            <summary>
+            Types:<para />
+            - 0 -> In Window Pop-up (Warning)<para />
+            - 1 -> In Window Pop-up (Information)<para />
+            - 2 -> Pop-up (Notification)<para />
+            </summary>
+            <param name="type"></param>
+            <param name="autoCloseDelay"></param>
+            <param name="title"></param>
+            <param name="body"></param>
+        </member>
+        <member name="F:PintoNS.UI.Controls.Header.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PintoNS.UI.Controls.Header.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PintoNS.UI.Controls.Header.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:PintoNS.UI.Controls.Loader.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PintoNS.UI.Controls.Loader.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PintoNS.UI.Controls.Loader.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:PintoNS.UI.Controls.Separator.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PintoNS.UI.Controls.Separator.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PintoNS.UI.Controls.Separator.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:PintoNS.UI.Controls.InWindowPopupControl.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PintoNS.UI.Controls.InWindowPopupControl.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PintoNS.UI.Controls.InWindowPopupControl.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:PintoNS.UI.FormEx.MoveCenteredToWindow(System.Windows.Forms.Form,System.Windows.Forms.Form)">
+            <summary>
+            Moves this form to the center of the specified window
+            </summary>
+            <param name="form"></param>
+            <param name="window">the window to move to</param>
+        </member>
+        <member name="M:PintoNS.Scripting.IPintoScript.GetScriptInfo">
+            <summary>
+            Information about this script
+            </summary>
+        </member>
+        <member name="M:PintoNS.Scripting.IPintoScript.OnLoad">
+            <summary>
+            Called when the script has been loaded
+            </summary>
+        </member>
+        <member name="M:PintoNS.Scripting.IPintoScript.OnPintoInit">
+            <summary>
+            Called when Pinto! has been fully initialized
+            </summary>
+        </member>
+        <member name="F:PintoNS.MainForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:PintoNS.MainForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:PintoNS.MainForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:PintoNS.Logo">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Logo.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Logo.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Logo.Banner">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Logo.LOADING">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Logo.LOGO">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Logo.LOGO_BACKGROUND">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Logo.LOGO_ICO">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:PintoNS.Logo.LOGO_RED">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="T:PintoNS.Sounds">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Sounds.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Sounds.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Sounds.BUSY">
+            <summary>
+              Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Sounds.CALL_ERROR1">
+            <summary>
+              Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Sounds.CALL_ERROR2">
+            <summary>
+              Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Sounds.CALL_IN">
+            <summary>
+              Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Sounds.CALL_INIT">
+            <summary>
+              Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Sounds.CALL_OUT">
+            <summary>
+              Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Sounds.CALL_RECONNECT_CONTINUOUS">
+            <summary>
+              Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Sounds.CALL_RECONNECT_FRONT">
+            <summary>
+              Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Sounds.FORWARDED">
+            <summary>
+              Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Sounds.FT_COMPLETE">
+            <summary>
+              Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Sounds.FT_FAILED">
+            <summary>
+              Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Sounds.HANGUP">
+            <summary>
+              Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Sounds.HOLD">
+            <summary>
+              Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Sounds.IM">
+            <summary>
+              Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Sounds.IM_ACC">
+            <summary>
+              Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Sounds.IM_SENT">
+            <summary>
+              Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Sounds.INCOMING_AUTH">
+            <summary>
+              Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Sounds.INCOMING_CONTACTS">
+            <summary>
+              Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Sounds.INCOMING_FILE">
+            <summary>
+              Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Sounds.INCOMING_VOICEMAIL">
+            <summary>
+              Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Sounds.KNOCKING">
+            <summary>
+              Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Sounds.LOGIN">
+            <summary>
+              Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Sounds.LOGOUT">
+            <summary>
+              Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Sounds.OFFLINE">
+            <summary>
+              Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Sounds.ONLINE">
+            <summary>
+              Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Sounds.RESUME">
+            <summary>
+              Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Sounds.SEND_VM">
+            <summary>
+              Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Sounds.USER_ADDED">
+            <summary>
+              Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Sounds.USER_LEFT">
+            <summary>
+              Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Sounds.VC_BEEP_1">
+            <summary>
+              Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+            </summary>
+        </member>
+        <member name="T:PintoNS.Statuses">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Statuses.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Statuses.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Statuses.AFK">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Statuses.AFK1">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:PintoNS.Statuses.AWAY">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Statuses.AWAY1">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:PintoNS.Statuses.BUSY">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Statuses.BUSY1">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:PintoNS.Statuses.CONNECTING">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Statuses.CONNECTING1">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:PintoNS.Statuses.INVISIBLE">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Statuses.INVISIBLE1">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:PintoNS.Statuses.OFFLINE">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Statuses.OFFLINE1">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:PintoNS.Statuses.ONLINE">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Statuses.ONLINE1">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="T:PintoNS.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:PintoNS.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+    </members>
+</doc>
