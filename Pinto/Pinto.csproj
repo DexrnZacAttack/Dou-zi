@@ -177,6 +177,7 @@
     <Compile Include="Networking\Packets\PacketTyping.cs" />
     <Compile Include="Networking\PintoConnectionException.cs" />
     <Compile Include="Networking\PintoVerificationException.cs" />
+    <Compile Include="Networking\PMSGMessage.cs" />
     <Compile Include="UI\Controls\ExRichTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -254,12 +255,6 @@
     </Compile>
     <Compile Include="Forms\MessageForm.Designer.cs">
       <DependentUpon>MessageForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\MoreFontOptionsForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\MoreFontOptionsForm.Designer.cs">
-      <DependentUpon>MoreFontOptionsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\MsgBoxForm.cs">
       <SubType>Form</SubType>
@@ -389,9 +384,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MessageForm.resx">
       <DependentUpon>MessageForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MoreFontOptionsForm.resx">
-      <DependentUpon>MoreFontOptionsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MsgBoxForm.resx">
       <DependentUpon>MsgBoxForm.cs</DependentUpon>

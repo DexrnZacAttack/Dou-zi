@@ -1,8 +1,10 @@
-﻿using PintoNS.Forms;
+﻿/*using PintoNS.Forms;
 using PintoNS.Networking.Packets;
 using System;
+using System.Drawing;
 using System.IO;
 using System.Media;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace PintoNS.DouZiResources
@@ -30,7 +32,7 @@ namespace PintoNS.DouZiResources
                         // TODO: Seperate this into it's own method/whatever.
                         // This is meant to be for sending chunked base64 encoded data, hopefully for image sharing in the future
                         // since the server doesn't support images.
-                        if (Program.base64IsMultipleMessages && packet.Message.TrimStart().StartsWith("Base64ChunkEnd"))
+                        if (Program.base64IsMultipleMessages && packet.Payload.StartsWith("Base64ChunkEnd"))
                         {
                             handleBase64EndChunk(packet, messageForm, instance);
                         }
@@ -75,32 +77,32 @@ namespace PintoNS.DouZiResources
                 {
                     case 0:
                         writeExtraStuff(messageForm, packet, instance);
-                        messageForm.WriteFeatureMessage(message, MessageForm.MsgContentColor, false);
+                        messageForm.WriteFeatureMessage(message, MessageForm.currentColor, false);
                         break;
 
                     case 1:
                         writeExtraStuff(messageForm, packet, instance);
-                        messageForm.WriteFeatureMessage(message, MessageForm.MsgContentColor, false);
+                        messageForm.WriteFeatureMessage(message, MessageForm.currentColor, false);
                         break;
 
                     case 2:
                         writeExtraStuff(messageForm, packet, instance);
-                        messageForm.WriteFeatureMessage($"Sent Base64 Chunk {Program.chunksCount}", MessageForm.MsgInfoColor, false);
+                        messageForm.WriteFeatureMessage($"Sent Base64 Chunk {Program.chunksCount}", MessageForm.currentColor, false);
                         break;
 
                     case 3:
                         writeExtraStuff(messageForm, packet, instance);
-                        messageForm.WriteFeatureMessage($"Sent Base64 Chunk {Program.chunksCount}, File name is \"{Program.fileName}\"", MessageForm.MsgInfoColor, false);
+                        messageForm.WriteFeatureMessage($"Sent Base64 Chunk {Program.chunksCount}, File name is \"{Program.fileName}\"", MessageForm.currentColor, false);
                         break;
 
                     case 4:
                         writeExtraStuff(messageForm, packet, instance);
-                        messageForm.WriteFeatureMessage($"Sent file! File name is \"{Program.fileName}\"", MessageForm.MsgInfoColor, false);
+                        messageForm.WriteFeatureMessage($"Sent file! File name is \"{Program.fileName}\"", MessageForm.currentColor, false);
                         break;
 
                     default:
                         writeExtraStuff(messageForm, packet, instance);
-                        messageForm.WriteFeatureMessage(message, MessageForm.MsgContentColor, false);
+                        messageForm.WriteFeatureMessage(message, MessageForm.currentColor, false);
                         break;
                 }
 
@@ -145,11 +147,38 @@ namespace PintoNS.DouZiResources
                 {
                     Program.data = Convert.FromBase64String(packet.Message.TrimStart().Replace("Base64", ""));
                     Program.decodedString = System.Text.Encoding.UTF8.GetString(Program.data);
-                    sendMessage(messageForm, Program.decodedString, instance, packet, 1);
+
+                    if (packet.Sender.Trim().Length > 0)
+                    {
+                        messageForm.WriteMessage($"{packet.Sender}",
+                            packet.Sender == instance.LocalUser.Name ?
+                                MessageForm.MsgSelfSenderColor : MessageForm.MsgOtherSenderColor, false);
+                        messageForm.WriteMessage($" - ", MessageForm.MsgSeparatorColor, false);
+                        messageForm.WriteMessage($"{DateTime.Now.ToString("HH:mm:ss")}",
+                            MessageForm.MsgTimeColor, false);
+                        messageForm.WriteMessage($":", MessageForm.MsgSeparatorColor);
+                        messageForm.WriteMessage($" ", MessageForm.MsgSeparatorColor, false);
+                        messageForm.WriteRTF(Program.decodedString);
+                    }
+                    else
+                        messageForm.WriteFeatureMessage(Program.decodedString, Color.Black);
                 }
                 else
                 {
-                    sendMessage(messageForm, packet.Message, instance, packet, 0);
+                    if (packet.Sender.Trim().Length > 0)
+                    {
+                        messageForm.WriteMessage($"{packet.Sender}",
+                            packet.Sender == instance.LocalUser.Name ?
+                                MessageForm.MsgSelfSenderColor : MessageForm.MsgOtherSenderColor, false);
+                        messageForm.WriteMessage($" - ", MessageForm.MsgSeparatorColor, false);
+                        messageForm.WriteMessage($"{DateTime.Now.ToString("HH:mm:ss")}",
+                            MessageForm.MsgTimeColor, false);
+                        messageForm.WriteMessage($":", MessageForm.MsgSeparatorColor);
+                        messageForm.WriteMessage($" ", MessageForm.MsgSeparatorColor, false);
+                        messageForm.WriteRTF(Encoding.BigEndianUnicode.GetString(packet.Payload.Data));
+                    }
+                    else
+                        messageForm.WriteFeatureMessage(Encoding.BigEndianUnicode.GetString(packet.Payload.Data), Color.Black);
                 }
             }
             catch
@@ -274,4 +303,4 @@ namespace PintoNS.DouZiResources
             Program.base64IsMultipleMessages = false;
         }
     }
-}
+}*/

@@ -3,8 +3,13 @@ using PintoNS.DouZiResources;
 using PintoNS.Forms;
 using PintoNS.Networking.Packets;
 using PintoNS.UI;
+using System.Drawing;
 using System;
 using System.Media;
+using System.Text;
+using System.Windows.Forms;
+using System.Windows.Documents;
+using System.IO;
 
 namespace PintoNS.Networking
 {
@@ -66,8 +71,54 @@ namespace PintoNS.Networking
 
         public void HandleMessagePacket(PacketMessage packet)
         {
-            MessageHandler altMessageHandler = new MessageHandler();
-            altMessageHandler.HandleMessage(packet, instance);
+            instance.Invoke(new Action(() =>
+            {
+                MessageForm messageForm = instance.GetMessageFormFromReceiverName(packet.ContactName);
+                if (messageForm == null)
+                {
+                    Program.Console.WriteMessage(
+                        $" Unable to get a message form for {packet.ContactName}!", ConsoleTypes.GENERAL);
+                    return;
+                }
+
+                if (packet.Sender.Trim().Length > 0)
+                {
+                    messageForm.WriteMessage($"{packet.Sender}",
+                        packet.Sender == instance.LocalUser.Name ?
+                            MessageForm.MsgSelfSenderColor : MessageForm.MsgOtherSenderColor, false);
+                    messageForm.WriteMessage($" - ", MessageForm.MsgSeparatorColor, false);
+                    messageForm.WriteMessage($"{DateTime.Now.ToString("HH:mm:ss")}",
+                        MessageForm.MsgTimeColor, false);
+                    messageForm.WriteMessage($":", MessageForm.MsgSeparatorColor);
+                    messageForm.WriteMessage($" ", MessageForm.MsgSeparatorColor, false);
+                    messageForm.WriteRTF(Encoding.BigEndianUnicode.GetString(packet.Payload.Data));
+                }
+                else
+                    messageForm.WriteFeatureMessage(Encoding.BigEndianUnicode.GetString(packet.Payload.Data), Color.Black);
+
+                if (Settings.doNotShowMessageBodyPreview != false)
+                {
+                    instance.PopupController.CreatePopup($"New message!", $"Received a " +
+                        $"new message from {packet.ContactName}!");
+                }
+                else
+                {
+                    if (packet.Sender != instance.LocalUser.Name)
+                    {
+                        string rtfS = Encoding.BigEndianUnicode.GetString(packet.Payload.Data);
+                        FlowDocument RTFDoc = new FlowDocument();
+
+                        using (MemoryStream memoryStream = new MemoryStream(Encoding.UTF8.GetBytes(rtfS)))
+                        {
+                            TextRange textRange = new TextRange(RTFDoc.ContentStart, RTFDoc.ContentEnd);
+                            textRange.Load(memoryStream, DataFormats.Rtf);
+                        }
+                        string RTF2PT = new TextRange(RTFDoc.ContentStart, RTFDoc.ContentEnd).Text;
+                        instance.PopupController.CreatePopup($"{RTF2PT}", $"Received a new message from {packet.ContactName}!");
+                    }
+                }
+                new SoundPlayer() { Stream = Sounds.IM }.Play();
+            }));
         }
 
         public void HandleNotificationPacket(PacketNotification packet)

@@ -73,6 +73,13 @@ namespace PintoNS
         )]
         public static bool NoLoadScripts = false;
 
+        [OptionsDisplay(DisplayName = "Alter networking to improve performance" +
+    " (may not work on older systems) (reconnect required)",
+    Category = "General", HelpInfo = "When this is enabled," +
+    " Pinto! will set the TypeOfService field in the IP header to improve networking performance." +
+    " This option breaks networking on older systems, so disable it if you encounter issues")]
+        public static bool SpecifySocketTOS = false;
+
         [OptionsDisplay(
             DisplayName = "Use popup notifications instead of UWP (restart recommended)",
             Category = "General",

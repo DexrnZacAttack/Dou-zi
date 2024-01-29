@@ -1,4 +1,5 @@
 ﻿using PintoNS.Contacts;
+using PintoNS.Networking;
 using PintoNS.UI;
 using System;
 using System.Diagnostics;
@@ -12,15 +13,13 @@ namespace PintoNS.Forms
     {
         public static Color MsgSelfSenderColor = Color.Blue;
         public static Color MsgOtherSenderColor = Color.Red;
-        public static Color MsgErrorColor = Color.DarkRed;
         public static Color MsgSeparatorColor = Color.Black;
-        public static Color MsgContentColor = Color.Black;
-        public static Color MsgInfoColor = Color.DarkGreen;
         public static Color MsgTimeColor = Color.Gray;
         private MainForm mainForm;
         public Contact Receiver;
         private bool isTypingLastStatus;
         public bool HasBeenInactive;
+        public static Color currentColor = Color.Black;
         public InWindowPopupController InWindowPopupController;
         private int rateLimitTicks;
 
@@ -28,6 +27,7 @@ namespace PintoNS.Forms
         {
             InitializeComponent();
             tsslStatusStripTyping.Text = "";
+
             Icon = Program.GetFormIcon();
             Text = $"Pinto! - Instant Messaging - Chatting with {receiver.Name}";
             this.mainForm = mainForm;
@@ -58,25 +58,17 @@ namespace PintoNS.Forms
             {
                 string filePath = Path.Combine(Program.DataFolder, "chats", mainForm.LocalUser.Name,
                     mainForm.NetHandler.ServerID, $"{Receiver.Name.Replace(":", "%3A")}.rtf");
+                if (!File.Exists(filePath)) return;
+                rtxtMessages.Rtf = File.ReadAllText(filePath);
             }
             catch (Exception ex)
             {
                 Program.Console.WriteMessage(
-                    $" Unable to load the chat: {ex}", DouZiResources.ConsoleTypes.GENERAL);
+                    $"Unable to load the chat: {ex}", DouZiResources.ConsoleTypes.GENERAL);
                 MsgBox.Show(this,
                     "Unable to load the chat!",
                     "Error", MsgBoxIconType.ERROR);
             }
-        }
-
-        protected override void WndProc(ref Message message)
-        {
-            if (!Program.RunningUnderMono)
-                if (message.Msg == PInvoke.WM_SYSCOMMAND &&
-                    (int)message.WParam == PInvoke.SC_RESTORE)
-                    Invalidate();
-
-            base.WndProc(ref message);
         }
 
         private void SaveChat()
@@ -91,7 +83,7 @@ namespace PintoNS.Forms
             catch (Exception ex)
             {
                 Program.Console.WriteMessage(
-                    $" Unable to save the chat: {ex}", DouZiResources.ConsoleTypes.GENERAL);
+                    $"Unable to save the chat: {ex}", DouZiResources.ConsoleTypes.GENERAL);
                 MsgBox.Show(this,
                     "Unable to save the chat",
                     "Error", MsgBoxIconType.ERROR);
@@ -111,7 +103,7 @@ namespace PintoNS.Forms
             catch (Exception ex)
             {
                 Program.Console.WriteMessage(
-                    $" Unable to delete the chat: {ex}", DouZiResources.ConsoleTypes.GENERAL);
+                    $"Unable to delete the chat: {ex}", DouZiResources.ConsoleTypes.GENERAL);
                 MsgBox.Show(this,
                     "Unable to delete the chat",
                     "Error", MsgBoxIconType.ERROR);
@@ -128,13 +120,29 @@ namespace PintoNS.Forms
             return style;
         }
 
-        private void WriteMessage(string msg, Color color, bool bold = false, bool italic = false,
-            bool strikeout = false, bool underLine = false)
+        public void WriteRTF(string rtf)
         {
             Invoke(new Action(() =>
             {
-                int selectionStartOriginal = rtxtMessages.SelectionStart;
-                int selectionEndOriginal = rtxtMessages.SelectionLength;
+                try
+                {
+                    rtxtMessages.SelectionStart = rtxtMessages.Text.Length;
+                    rtxtMessages.SelectedRtf = rtf;
+                }
+                catch
+                {
+                    WriteMessage("(INVALID RTF) ", Color.Red, false);
+                    WriteMessage(rtf, Color.Red);
+                }
+            }));
+        }
+
+        public void WriteMessage(string msg, Color color, bool newLine = true, bool bold = false,
+            bool italic = false, bool strikeout = false, bool underLine = false)
+        {
+            Invoke(new Action(() =>
+            {
+                msg += newLine ? Environment.NewLine : "";
 
                 if (string.IsNullOrWhiteSpace(msg.Trim()))
                 {
@@ -169,7 +177,7 @@ namespace PintoNS.Forms
                 switch (msg[i])
                 {
                     case (char)0xA7:
-                        WriteMessage(buffer, currentColor, bold, italic, strikeout, underline);
+                        WriteMessage(buffer, currentColor, false, bold, italic, strikeout, underline);
 
                         buffer = "";
                         try
@@ -199,15 +207,15 @@ namespace PintoNS.Forms
 
                         // 0 (0xA7) + 6 (RRGGBB)
                         i += 6;
-                        break;
 
+                        break;
                     default:
                         buffer += msg[i];
                         break;
                 }
             }
 
-            WriteMessage(buffer + (newLine ? Environment.NewLine : ""), currentColor,
+            WriteMessage(buffer, currentColor, newLine,
                 bold, italic, strikeout, underline);
         }
 
@@ -226,10 +234,6 @@ namespace PintoNS.Forms
         {
             // Strip RTF
             string text = rtxtInput.Text;
-            int caretPosition = rtxtInput.SelectionStart;
-            rtxtInput.Text = text;
-            rtxtInput.SelectionStart = caretPosition;
-            rtxtInput.SelectionLength = 0;
 
             if (text.Trim().Length < 1)
                 btnSend.Enabled = false;
@@ -255,31 +259,28 @@ namespace PintoNS.Forms
 
         private void btnSend_Click(object sender, EventArgs e)
         {
-            string input = rtxtInput.Text;
+            string input = rtxtInput.Rtf;
 
-            if (string.IsNullOrWhiteSpace(input))
+            if (string.IsNullOrWhiteSpace(rtxtInput.Text))
             {
                 return;
             }
 
-            if (Program.ignoreRateLimit != true)
+            if (rateLimitTicks > 0)
             {
-                if (rateLimitTicks > 0)
-                {
-                    InWindowPopupController.ClearPopups();
-                    InWindowPopupController.CreatePopup(
-                        "Slow down!\nWait 1.2 seconds before sending another message!", false, 2f);
-                    return;
-                }
+                InWindowPopupController.ClearPopups();
+                InWindowPopupController.CreatePopup(
+                    "Slow down!\nWait 1.2 seconds before sending another message!", false, 2f);
+                return;
             }
+
+            if (rtxtInput.Text.StartsWith("/"))
+                input = rtxtInput.Text;
 
             rtxtInput.Clear();
             if (mainForm.NetHandler != null)
-                mainForm.NetHandler.MessageContact(Receiver.Name, input);
-            if (Program.ignoreRateLimit != true)
-            {
-                rateLimitTicks = 12;
-            }
+                mainForm.NetHandler.MessageContact(Receiver.Name, new PMSGMessage(input));
+            rateLimitTicks = 12;
         }
 
         private void MessageForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -308,9 +309,13 @@ namespace PintoNS.Forms
         private void btnColor_Click(object sender, EventArgs e)
         {
             if (cdPicker.ShowDialog() != DialogResult.OK) return;
-            Color color = cdPicker.Color;
-            rtxtInput.SelectionLength = 0;
-            rtxtInput.AppendText(string.Format($"{{0}}{color.R:X2}{color.G:X2}{color.B:X2}", (char)0xA7));
+            rtxtInput.SelectionColor = cdPicker.Color;
+        }
+
+        private void btnFont_Click(object sender, EventArgs e)
+        {
+            if (fdPicker.ShowDialog() != DialogResult.OK) return;
+            rtxtInput.SelectionFont = fdPicker.Font;
         }
 
         private void tsmiMenuBarFileClearSavedData_Click(object sender, EventArgs e)
@@ -363,25 +368,27 @@ namespace PintoNS.Forms
             // While loop here to bypass a bug when scrolling in with the mouse
             while (rtxtMessages.ZoomFactor != 1.0f)
                 rtxtMessages.ZoomFactor = 1.0f;
-        }
 
-        private void rtxtInput_ContentsResized(object sender, ContentsResizedEventArgs e)
-        {
-            // While loop here to bypass a bug when scrolling in with the mouse
             while (rtxtInput.ZoomFactor != 1.0f)
                 rtxtInput.ZoomFactor = 1.0f;
         }
 
+        protected override void WndProc(ref Message message)
+        {
+            if (message.Msg == PInvoke.WM_SYSCOMMAND &&
+                (int)message.WParam == PInvoke.SC_RESTORE)
+                Invalidate();
+
+            base.WndProc(ref message);
+        }
+
         private void tRateLimit_Tick(object sender, EventArgs e)
         {
-            if (Program.ignoreRateLimit != true)
+            if (rateLimitTicks > 0)
             {
-                if (rateLimitTicks > 0)
-                {
-                    rateLimitTicks--;
-                    tspbMenuBarRateLimit.PerformStep();
-                    if (rateLimitTicks < 1) tspbMenuBarRateLimit.Value = 0;
-                }
+                rateLimitTicks--;
+                tspbMenuBarRateLimit.PerformStep();
+                if (rateLimitTicks < 1) tspbMenuBarRateLimit.Value = 0;
             }
         }
 
@@ -394,15 +401,6 @@ namespace PintoNS.Forms
         public void SetReceiverTypingState(bool state)
         {
             tsslStatusStripTyping.Text = state ? $"{Receiver.Name} is typing..." : "";
-        }
-
-        private void btnMoreFontOptions_Click(object sender, EventArgs e)
-        {
-            MoreFontOptionsForm moreFontOptionsForm = new MoreFontOptionsForm(rtxtInput);
-            moreFontOptionsForm.Show(this);
-            moreFontOptionsForm.CenterToParent();
-            moreFontOptionsForm.BringToFront();
-            moreFontOptionsForm.Focus();
         }
     }
 }

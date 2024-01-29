@@ -1,4 +1,6 @@
-﻿using PintoNS.Networking.Packets;
+﻿using Org.BouncyCastle.Security;
+using PintoNS.Networking.Packets;
+using PintoNS.Networking;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,11 +14,11 @@ namespace PintoNS.Networking
 {
     public class NetworkTCPManager : INetworkManager
     {
-        private const int PACKET_SIZE_MODIFIER = 4 + 16 + 4 + 4;
+        private const int PACKET_SIZE_MODIFIER = 4 + 4 + 16 + 4;
         private TcpClient tcpClient;
         private NetworkAddress address;
-        private BinaryReader inputStream;
-        private BinaryWriter outputStream;
+        private BinaryReader streamReader;
+        private BinaryWriter streamWriter;
         private Aes aes;
         private bool connected;
         private bool isTerminating;
@@ -38,9 +40,10 @@ namespace PintoNS.Networking
 
             this.tcpClient = tcpClient;
             this.netHandler = netHandler;
-            tcpClient.Client.SetSocketOption(SocketOptionLevel.IP, SocketOptionName.TypeOfService, 24); // IPTOS_THROUGHPUT + IPTOS_LOWDELAY
-            inputStream = new BinaryReader(tcpClient.GetStream());
-            outputStream = new BinaryWriter(tcpClient.GetStream());
+            if (Settings.SpecifySocketTOS)
+                tcpClient.Client.SetSocketOption(SocketOptionLevel.IP, SocketOptionName.TypeOfService, 24); // IPTOS_THROUGHPUT + IPTOS_LOWDELAY
+            streamReader = new BinaryReader(tcpClient.GetStream());
+            streamWriter = new BinaryWriter(tcpClient.GetStream());
             address = new NetworkAddress(tcpClient.Client);
             connected = true;
 
@@ -111,7 +114,7 @@ namespace PintoNS.Networking
 
                 MemoryStream memoryStream = new MemoryStream();
                 BinaryWriter binaryWriter = new BinaryWriter(memoryStream);
-                BufferedStream bufferedStream = new BufferedStream(outputStream.BaseStream, 4096);
+                BufferedStream bufferedStream = new BufferedStream(streamWriter.BaseStream, 4096);
                 IPacket packet;
 
                 lock (sendQueueLock)
@@ -152,20 +155,10 @@ namespace PintoNS.Networking
         {
             try
             {
-                int headerPart0 = inputStream.ReadByte();
-                int headerPart1 = inputStream.ReadByte();
-                int headerPart2 = inputStream.ReadByte();
-                int headerPart3 = inputStream.ReadByte();
-
-                // C#'s BinaryReader throws an exception if reached the end
-                //if (headerPart0 == -1 ||
-                //    headerPart1 == -1 ||
-                //    headerPart2 == -1 ||
-                //    headerPart3 == -1)
-                //{
-                //    Shutdown("Server disconnect");
-                //    return;
-                //}
+                int headerPart0 = streamReader.ReadByte();
+                int headerPart1 = streamReader.ReadByte();
+                int headerPart2 = streamReader.ReadByte();
+                int headerPart3 = streamReader.ReadByte();
 
                 if (headerPart0 != 'P' ||
                     headerPart1 != 'M' ||
@@ -176,14 +169,14 @@ namespace PintoNS.Networking
                     return;
                 }
 
-                byte[] encryptedDataSize = new byte[4];
-                inputStream.Read(encryptedDataSize, 0, 4);
+                byte[] encryptedDataSizeRaw = new byte[4];
+                streamReader.Read(encryptedDataSizeRaw, 0, 4);
 
                 byte[] iv = new byte[16];
-                inputStream.Read(iv, 0, 16);
+                streamReader.Read(iv, 0, 16);
 
-                byte[] encryptedData = new byte[IPAddress.NetworkToHostOrder(BitConverter.ToInt32(encryptedDataSize, 0))];
-                int readAmount = inputStream.Read(encryptedData, 0, encryptedData.Length);
+                int encryptedDataSize = IPAddress.NetworkToHostOrder(BitConverter.ToInt32(encryptedDataSizeRaw, 0));
+                byte[] encryptedData = streamReader.ReadBytes(encryptedDataSize);
 
                 aes.IV = iv;
                 byte[] decryptedData = aes.CreateDecryptor().TransformFinalBlock(encryptedData, 0, encryptedData.Length);
@@ -260,13 +253,13 @@ namespace PintoNS.Networking
 
             try
             {
-                inputStream.Close();
+                streamReader.Close();
             }
             catch (Exception) { }
 
             try
             {
-                outputStream.Close();
+                streamWriter.Close();
             }
             catch (Exception) { }
 
@@ -282,12 +275,9 @@ namespace PintoNS.Networking
             if (sendQueueByteLength > 0x100000) // A megabyte
                 Shutdown("Send buffer overflow");
 
-            if (readPackets.Count == 0)
-            {
-                if (timeSinceLastRead++ == 600) // 30 seconds
-                    Shutdown("No packet read within 30 seconds");
-            }
-            else
+            if (readPackets.Count == 0 && timeSinceLastRead++ == 600) // 30 seconds
+                Shutdown("No packet read within 30 seconds");
+            else if (readPackets.Count > 0)
                 timeSinceLastRead = 0;
 
             int packetsLimit = 100;
@@ -304,9 +294,9 @@ namespace PintoNS.Networking
 
         public NetworkAddress GetAddress() => address;
 
-        public BinaryReader GetInputStream() => inputStream;
+        public BinaryReader GetInputStream() => streamReader;
 
-        public BinaryWriter GetOutputStream() => outputStream;
+        public BinaryWriter GetOutputStream() => streamWriter;
 
         public void Interrupt()
         {

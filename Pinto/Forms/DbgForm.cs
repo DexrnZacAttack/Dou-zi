@@ -27,7 +27,6 @@ namespace PintoNS.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            currentPVN = Program.PROTOCOL_VERSION.ToString();
             if (radioButton1.Checked)
             {
                 if (Program.VERSION_STRING != Program.VERSION_STRING_NOSPOOF)
@@ -48,26 +47,31 @@ namespace PintoNS.Forms
             {
                 try
                 {
+
                     if (Program.PROTOCOL_VERSION.ToString() != Program.PROTOCOL_VERSION_NOSPOOF.ToString())
                     {
                         Program.hasSpoofedPVN = true;
                         Program.PROTOCOL_VERSION = byte.Parse(label1.Text);
-                        label3.Text = currentPVN;
                     }
                     else
                     {
                         Program.hasSpoofedPVN = false;
-
                         Program.PROTOCOL_VERSION = byte.Parse(label1.Text);
-                        label3.Text = currentPVN;
                     }
                 }
-                catch (FormatException ex)
+                catch (Exception ex)
                 {
-                    Program.Console.WriteMessage($"Protocol Version must be of type Byte: {ex}", DouZiResources.ConsoleTypes.NETWORKING);
-                    MsgBox.Show(this, $"Error: Protocol Version must be of type Byte", "Error", MsgBoxIconType.ERROR);
+                    if (ex is FormatException || ex is OverflowException)
+                    {
+                        Program.Console.WriteMessage($"Protocol Version must be of type Byte: {ex}", DouZiResources.ConsoleTypes.NETWORKING);
+                        MsgBox.Show(this, $"Error: Protocol Version must be of type Byte", "Error", MsgBoxIconType.ERROR);
+                    }
+                    else
+                        throw;
                 }
             }
+            currentPVN = Program.PROTOCOL_VERSION.ToString();
+            label3.Text = currentPVN;
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -95,6 +99,29 @@ namespace PintoNS.Forms
             else
             {
                 Program.ignoreRateLimit = false;
+            }
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton1.Checked)
+            {
+                label1.Text = Program.VERSION_STRING;
+            } else
+            {
+                label1.Text = Program.PROTOCOL_VERSION.ToString();
+            }
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton2.Checked)
+            {
+                label1.Text = Program.PROTOCOL_VERSION.ToString();
+            }
+            else
+            {
+                label1.Text = Program.VERSION_STRING;
             }
         }
     }

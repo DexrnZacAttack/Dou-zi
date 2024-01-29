@@ -21,7 +21,7 @@ namespace PintoNS
 
         public static bool doNotShowNotification = false;
         public static bool hasServerInfo = false;
-        public static byte PROTOCOL_VERSION = 11;
+        public static byte PROTOCOL_VERSION = 12;
         public static string VERSION_STRING = "b1.2";
 
         // Dexrn ====================
@@ -38,7 +38,7 @@ namespace PintoNS
         // Extra ---------------
         public static string VERSION_STRING_NOSPOOF = "b1.2";
 
-        public static byte PROTOCOL_VERSION_NOSPOOF = 11;
+        public static byte PROTOCOL_VERSION_NOSPOOF = 12;
         public static bool ignoreNonAlphaChars = false;
         public static bool ignoreRateLimit = false;
         public static DouZiResources.RPC discordRPC;
