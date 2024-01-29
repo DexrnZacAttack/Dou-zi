@@ -1,21 +1,14 @@
-﻿using DiscordRPC.Logging;
-using DiscordRPC;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Windows.Media.Protection.PlayReady;
-using PintoNS.Forms;
-using System.Drawing;
-using Newtonsoft.Json;
+﻿using DiscordRPC;
+using DiscordRPC.Logging;
 using PintoNS.Contacts;
+using System;
 
 namespace PintoNS.DouZiResources
 {
     public class RPC
     {
         public DiscordRpcClient DRPC;
+
         public void StartRPC()
         {
             try
@@ -33,7 +26,8 @@ namespace PintoNS.DouZiResources
                     Program.Console.WriteMessage($"Received Update! {e.Presence}", ConsoleTypes.DISCORD);
                 };
                 DRPC.Initialize();
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 Program.Console.WriteMessage($"Failed to connect to Discord RPC: {ex}", ConsoleTypes.DISCORD);
             }
@@ -47,7 +41,6 @@ namespace PintoNS.DouZiResources
                 RichPresence presence = new RichPresence();
                 if (details == "Unset")
                 {
-
                 }
                 else
     if (details != null)
@@ -57,7 +50,6 @@ namespace PintoNS.DouZiResources
 
                 if (state == "Unset")
                 {
-
                 }
                 else
                 if (state != null)
@@ -73,7 +65,8 @@ namespace PintoNS.DouZiResources
                         LargeImageText = largeImageText,
                         SmallImageKey = smallImage
                     };
-                } else
+                }
+                else
                 {
                     presence.Assets = new DiscordRPC.Assets()
                     {
@@ -83,13 +76,15 @@ namespace PintoNS.DouZiResources
 
                 DRPC.SetPresence(presence);
                 DRPC.Invoke();
-            } else
+            }
+            else
             {
                 DRPC.ClearPresence();
             }
         }
 
-        public void UpdateRPC(RPCTypes whatToUpdate, string whatToPut) {
+        public void UpdateRPC(RPCTypes whatToUpdate, string whatToPut)
+        {
             // Dexrn -----------------
             // Usage: UpdateRPC(RPCTypes.Details, "Test"); (I think if whatToPut is null it'll unset it.)
             if (Program.Status != UserStatus.INVISIBLE.ToString())
@@ -100,6 +95,7 @@ namespace PintoNS.DouZiResources
                     case RPCTypes.Details:
                         DRPC.UpdateDetails(whatToPut);
                         break;
+
                     case RPCTypes.State:
                         DRPC.UpdateState(whatToPut);
                         break;
@@ -112,19 +108,20 @@ namespace PintoNS.DouZiResources
                     case RPCTypes.LargeImage:
                         DRPC.UpdateLargeAsset(whatToPut);
                         break;
+
                     case RPCTypes.SmallImage:
                         DRPC.UpdateSmallAsset(whatToPut);
                         break;
                 }
-            } else
+            }
+            else
             {
                 DRPC.ClearPresence();
             }
-            
         }
 
-
-        public void stopRPC() {
+        public void stopRPC()
+        {
             DRPC.Dispose();
         }
     }

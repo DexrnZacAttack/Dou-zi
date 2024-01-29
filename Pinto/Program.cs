@@ -1,5 +1,4 @@
 ﻿using CSScriptLibrary;
-using Microsoft.Toolkit.Uwp.Notifications;
 using PintoNS.DouZiResources;
 using PintoNS.Forms;
 using PintoNS.Scripting;
@@ -12,7 +11,6 @@ using System.Net;
 using System.Reflection;
 using System.Threading;
 using System.Windows.Forms;
-using Windows.UI.Notifications;
 
 namespace PintoNS
 {
@@ -20,6 +18,7 @@ namespace PintoNS
     {
         // Constants
         public static ConsoleForm Console;
+
         public static bool doNotShowNotification = false;
         public static bool hasServerInfo = false;
         public static byte PROTOCOL_VERSION = 11;
@@ -38,6 +37,7 @@ namespace PintoNS
 
         // Extra ---------------
         public static string VERSION_STRING_NOSPOOF = "b1.2";
+
         public static byte PROTOCOL_VERSION_NOSPOOF = 11;
         public static bool ignoreNonAlphaChars = false;
         public static bool ignoreRateLimit = false;

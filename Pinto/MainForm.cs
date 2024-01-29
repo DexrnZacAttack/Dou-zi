@@ -126,11 +126,11 @@ namespace PintoNS
                     Program.discordRPC.UpdateRPC(RPCTypes.State, $"{StatusString} ({LocalUser.MOTD})");
                     Program.discordRPC.UpdateRPC(RPCTypes.Details, $"Logged in as {LocalUser.Name}");
                 }
-                else {
+                else
+                {
                     Program.discordRPC.UpdateRPC(RPCTypes.State, $"{StatusString}");
                     Program.discordRPC.UpdateRPC(RPCTypes.Details, $"Logged in as {LocalUser.Name}");
                 }
-
             }
 
             SyncTray();

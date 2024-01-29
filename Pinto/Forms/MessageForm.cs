@@ -128,7 +128,7 @@ namespace PintoNS.Forms
             return style;
         }
 
-        private void WriteMessageRaw(string msg, Color color, bool bold = false, bool italic = false,
+        private void WriteMessage(string msg, Color color, bool bold = false, bool italic = false,
             bool strikeout = false, bool underLine = false)
         {
             Invoke(new Action(() =>
@@ -155,7 +155,7 @@ namespace PintoNS.Forms
             }));
         }
 
-        public void WriteMessage(string msg, Color color, bool newLine = true)
+        public void WriteFeatureMessage(string msg, Color color, bool newLine = true)
         {
             string buffer = "";
             Color currentColor = color;
@@ -169,7 +169,7 @@ namespace PintoNS.Forms
                 switch (msg[i])
                 {
                     case (char)0xA7:
-                        WriteMessageRaw(buffer, currentColor, bold, italic, strikeout, underline);
+                        WriteMessage(buffer, currentColor, bold, italic, strikeout, underline);
 
                         buffer = "";
                         try
@@ -207,7 +207,7 @@ namespace PintoNS.Forms
                 }
             }
 
-            WriteMessageRaw(buffer + (newLine ? Environment.NewLine : ""), currentColor,
+            WriteMessage(buffer + (newLine ? Environment.NewLine : ""), currentColor,
                 bold, italic, strikeout, underline);
         }
 

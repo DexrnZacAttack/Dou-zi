@@ -49,7 +49,7 @@ namespace PintoNS.Networking
 
         public static int ReadBEInt(this BinaryReader reader)
         {
-            return IPAddress.NetworkToHostOrder(reader.ReadInt32());
+                return IPAddress.NetworkToHostOrder(reader.ReadInt32());
         }
 
         public static string ReadPintoString(this BinaryReader reader, int maxLength)

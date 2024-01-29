@@ -139,8 +139,8 @@ namespace PintoNS
                     field.SetValue(null, property.Value.ToObject(field.FieldType));
                 }
             }
-            catch {
-            
+            catch
+            {
             }
         }
     }

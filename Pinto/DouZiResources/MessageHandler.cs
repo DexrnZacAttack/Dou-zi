@@ -50,7 +50,7 @@ namespace PintoNS.DouZiResources
 
         public void writeExtraStuff(MessageForm messageForm, PacketMessage packet, MainForm instance)
         {
-            messageForm.WriteMessage(
+            messageForm.WriteFeatureMessage(
                 $"\n{packet.Sender}",
                 packet.Sender == instance.LocalUser.Name
                     ? MessageForm.MsgSelfSenderColor
@@ -58,13 +58,13 @@ namespace PintoNS.DouZiResources
                 false
             );
 
-            messageForm.WriteMessage($" - ", MessageForm.MsgSeparatorColor, false);
-            messageForm.WriteMessage(
+            messageForm.WriteFeatureMessage($" - ", MessageForm.MsgSeparatorColor, false);
+            messageForm.WriteFeatureMessage(
                 $"{DateTime.Now.ToString("HH:mm:ss")}",
                 MessageForm.MsgTimeColor,
                 false
             );
-            messageForm.WriteMessage($":", MessageForm.MsgSeparatorColor);
+            messageForm.WriteFeatureMessage($":", MessageForm.MsgSeparatorColor);
         }
 
         public void sendMessage(MessageForm messageForm, string message, MainForm instance, PacketMessage packet, int messageType = 0)
@@ -75,32 +75,32 @@ namespace PintoNS.DouZiResources
                 {
                     case 0:
                         writeExtraStuff(messageForm, packet, instance);
-                        messageForm.WriteMessage(message, MessageForm.MsgContentColor, false);
+                        messageForm.WriteFeatureMessage(message, MessageForm.MsgContentColor, false);
                         break;
 
                     case 1:
                         writeExtraStuff(messageForm, packet, instance);
-                        messageForm.WriteMessage(message, MessageForm.MsgContentColor, false);
+                        messageForm.WriteFeatureMessage(message, MessageForm.MsgContentColor, false);
                         break;
 
                     case 2:
                         writeExtraStuff(messageForm, packet, instance);
-                        messageForm.WriteMessage($"Sent Base64 Chunk {Program.chunksCount}", MessageForm.MsgInfoColor, false);
+                        messageForm.WriteFeatureMessage($"Sent Base64 Chunk {Program.chunksCount}", MessageForm.MsgInfoColor, false);
                         break;
 
                     case 3:
                         writeExtraStuff(messageForm, packet, instance);
-                        messageForm.WriteMessage($"Sent Base64 Chunk {Program.chunksCount}, File name is \"{Program.fileName}\"", MessageForm.MsgInfoColor, false);
+                        messageForm.WriteFeatureMessage($"Sent Base64 Chunk {Program.chunksCount}, File name is \"{Program.fileName}\"", MessageForm.MsgInfoColor, false);
                         break;
 
                     case 4:
                         writeExtraStuff(messageForm, packet, instance);
-                        messageForm.WriteMessage($"Sent file! File name is \"{Program.fileName}\"", MessageForm.MsgInfoColor, false);
+                        messageForm.WriteFeatureMessage($"Sent file! File name is \"{Program.fileName}\"", MessageForm.MsgInfoColor, false);
                         break;
 
                     default:
                         writeExtraStuff(messageForm, packet, instance);
-                        messageForm.WriteMessage(message, MessageForm.MsgContentColor, false);
+                        messageForm.WriteFeatureMessage(message, MessageForm.MsgContentColor, false);
                         break;
                 }
 
@@ -154,7 +154,7 @@ namespace PintoNS.DouZiResources
             }
             catch
             {
-                messageForm.WriteMessage(
+                messageForm.WriteFeatureMessage(
                     $"Invalid Base64 encoded data: {packet.Message}",
                     MessageForm.MsgErrorColor
                 );
@@ -256,7 +256,7 @@ namespace PintoNS.DouZiResources
             }
             catch (Exception ex)
             {
-                messageForm.WriteMessage(
+                messageForm.WriteFeatureMessage(
                     $"Exception occured while decoding Base64 data! Check console for more details.",
                     MessageForm.MsgErrorColor
                 );
